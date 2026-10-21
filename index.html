@@ -650,18 +650,15 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   }
   function renderPanel() {
     renderPanelBody();
-    if (state.gap && !state.selected) {
+    if (state.selected) {
+      const c = CLAIMS.find(x => x.id === state.selected);
+      $("#panel").insertAdjacentHTML("beforeend", `<div class="gapnote">${detailHTML(c)}</div>`);
+    } else if (state.gap) {
       $("#panel").insertAdjacentHTML("beforeend", gapNote());
     }
   }
   function renderPanelBody() {
     const p = $("#panel");
-    if (state.selected) {
-      const c = CLAIMS.find(x => x.id === state.selected);
-      p.innerHTML = `<button type="button" class="back" id="back">← Overview</button>` + detailHTML(c);
-      $("#back").addEventListener("click", () => select(null));
-      return;
-    }
     const claims = visibleClaims();
     if (state.dim === "temporal") {
       const rows = DIMS.temporal.levels.map((label, k) => {
@@ -696,7 +693,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     renderPanel();
   }
 
-  function select(id) { state.selected = id; state.gap = null; render(); }
+  function select(id) { state.selected = state.selected === id ? null : id; state.gap = null; render(); }
 
   // ---------- fiction modal + multiplane sketch ----------
   let raf = null, lastFocus = null;
