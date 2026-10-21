@@ -83,7 +83,7 @@ button:focus-visible, [tabindex]:focus-visible, input:focus-visible { outline: 2
 .cell { fill: transparent; stroke: var(--rule); stroke-width: 1; }
 .cell.filled { fill: var(--accent-soft); }
 .cell.gap { fill: url(#hatch); stroke: var(--accent); stroke-dasharray: 4 4; cursor: pointer; }
-.cell.gap:hover, .cell.gap:focus-visible { stroke-width: 2.5; outline: none; }
+.cell.gap:focus-visible { outline: none; }
 .cell.gap.sel { fill: url(#hatch-sel); }
 .hatch-hl { fill: var(--cell-sel); }
 .gapnote { display: grid; gap: 10px; border-top: 1px solid var(--rule); padding-top: 16px; }
