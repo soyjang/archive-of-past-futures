@@ -101,6 +101,7 @@ button:focus-visible, [tabindex]:focus-visible, input:focus-visible { outline: 2
 @keyframes flip { from { transform: perspective(1200px) rotateY(-90deg); opacity: .4; } to { transform: none; opacity: 1; } }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .panel.depth2 { --panel:#2b2b2b; --ink:#f4f4f4; --muted:#b5b5b5; --rule:#3d3d3d; --accent:#ffffff; --accent-soft:#3a3a3a; border-color:#2b2b2b; } }
 :root[data-theme="dark"] .panel.depth2 { --panel:#2b2b2b; --ink:#f4f4f4; --muted:#b5b5b5; --rule:#3d3d3d; --accent:#ffffff; --accent-soft:#3a3a3a; border-color:#2b2b2b; }
+.cb-steps { margin: 6px 0; padding-left: 20px; display: grid; gap: 4px; }
 .ov-block { display: grid; gap: 8px; border-top: 1px solid var(--rule); padding-top: 14px; }
 .ov-block h3 { margin: 0; }
 .ov-key { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 16px; font-size: 13px; }
@@ -355,7 +356,10 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
         <section id="cb-attr"><h3>Attributes</h3><p>Descriptive facts about the speculation, recorded rather than interpreted.</p>
           <dl class="cb-dl"><dt>Year</dt><dd>When the speculation was made or first published.</dd>
           <dt>Medium</dt><dd>The medium the speculation promotes or imagines, from a fixed list: stereograph · film · radio · television · teaching machine (mechanical or robot teachers) · computer · virtual reality · internet (online courses, platforms) · AI · direct transmission to the brain. The source’s own wording is kept as a detail (television: <q>parlour walls</q>; computer: <q>learning pods</q>). New media are added to the list as they appear. For colour and filtering only, media are shown in seven families: stereograph and film · radio and television · teaching machines · computers · internet · AI · VR and direct transmission.</dd>
-          <dt>Medium status</dt><dd>Whether the medium existed when the speculation was made: <em>Existing</em> (in use or on sale at the time) · <em>Emerging</em> (built or demonstrated as a prototype or trial, not yet in general use) · <em>Imagined</em> (no working version existed; the speculation invents it). Code the medium as the speculation describes it, not its family: Bradbury’s parlour walls are imagined, although broadcast television existed in 1953. The status separates speculation about an existing medium from speculation that is itself a speculative medium.</dd>
+          <dt>Medium status</dt><dd>Whether the medium, as the speculation describes it being used in education, existed at the date of the speculation. The judgement is about the described use, not the component technology: computers existed in 1971, but not a computer that matched learners by shared interests. Decide in two steps:
+            <ol class="cb-steps"><li>Did a working version that does what the speculation describes, for the educational use it describes, exist at the date? If not, <em>Imagined</em>, even if its parts existed.</li>
+            <li>If so, was it in use beyond its makers: sold, broadcast or adopted by schools or the public? If yes, <em>Existing</em>; if it ran only as its makers’ prototype, trial, pilot or demonstration, <em>Emerging</em>.</li></ol>
+            Examples: Keystone stereographs sold to schools (1906) are <em>existing</em>; Skinner’s machines in his own Harvard trials (1958) and the Teacherbot in Bayne’s own MOOC (2015) are <em>emerging</em>; Bradbury’s parlour walls (1953) and Corning’s connected glass (2012) are <em>imagined</em>, although broadcast television and glass both existed. Status separates speculation about an existing medium from speculation that is itself a speculative medium.</dd>
           <dt>Format</dt><dd>The form in which the speculation was first made, not where it was found (an Edison interview quoted by Cuban is <em>press</em>): <em>Press or magazine</em> · <em>Talk or broadcast</em> (speech, lecture, keynote, broadcast interview, statement in a legislature) · <em>Book</em> · <em>Academic paper</em> · <em>Report</em> (policy, technical or corporate) · <em>Novel or story</em> · <em>Film or television</em> · <em>Image</em> (illustration, postcard, poster) · <em>Design project</em> (artefact, prototype, bot). Format is descriptive. Whether a work functions as speculative design is a question for the analysis, not a code: a novel or a policy scenario can do the work of speculative design as much as a designed artefact.</dd>
           <dt>Speaker</dt><dd><em>Inventor</em> (promotes a medium they created) · <em>Company</em> (speaks for a firm with a stake in it) · <em>Policymaker</em> (government or regulator) · <em>Educator</em> (teacher, administrator, school broadcaster) · <em>Researcher</em> (academic or laboratory) · <em>Speculative designer</em> · <em>Writer or artist</em>. Code the role in which the person spoke, not their best-known role.</dd>
           <dt>Source</dt><dd>Full citation of the original; where quoted via a compilation, cite both. “N/A” when none is known.</dd>
@@ -556,7 +560,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
   // Medium status when the speculation was made (provisional, one coder)
   const STATUS = ["Existing", "Emerging", "Imagined"];
   const STATUS_OF = { 1: 1, 2: 1, 3: 1, 4: 1, 5: 1, 6: 1, 7: 1, 8: 2, 9: 1, 10: 1, 11: 2, 12: 1, 13: 2, 14: 1, 15: 1, 16: 1, 17: 1, 18: 1,
-    19: 3, 20: 3, 21: 3, 22: 2, 23: 3, 24: 2, 25: 1, 26: 1, 27: 3, 28: 3, 29: 3, 30: 3, 31: 2 };
+    19: 3, 20: 3, 21: 3, 22: 3, 23: 3, 24: 2, 25: 1, 26: 1, 27: 3, 28: 3, 29: 3, 30: 3, 31: 3 };
   CLAIMS.forEach(c => { c.status = STATUS_OF[c.id]; });
   CLAIMS.forEach(c => { c.documented = true; c.genre = FORMAT[c.id]; c.succ = SUCC_OF[c.id]; c.detail = c.medium; c.medium = SUCC[c.succ]; c.short = c.who.split(/[,(]/)[0].trim(); [c.spatial, c.social, c.hyp] = CODES[c.id]; [c.temporal, c.when] = WHEN[c.id]; c.speaker = SPEAKERS[SPEAKER[c.id]]; });
 
@@ -850,7 +854,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
     const b = ev.target.closest("[data-fam]"); if (!b) return;
     const id = b.dataset.fam;
     if (id === "all") state.fams.clear();
-    else if (state.fams.has(id)) state.fams.delete(id); else state.fams.add(id);
+    else if (state.fams.has(id)) state.fams.clear(); else { state.fams.clear(); state.fams.add(id); }
     state.selected = null; state.gap = null;
     renderChips(); render();
   });
