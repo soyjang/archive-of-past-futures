@@ -60,3 +60,14 @@ Open `index.html` in a browser. It is a single self-contained page; fonts load f
 ## Project 2 · Climate futures (being collected)
 
 Breadth to Project 1's depth: speculation about climate change across genres, coded with the same codebook adapted from media to artefacts, technologies, policies and practices. Strands: academic speculative design (the 28 papers in Soden et al. 2021), historical climate fiction (Blythe 2023, 1880–1978, with the climate novels he discusses), about 20 films, about 20 reports and about 20 design projects, each with its own selection rule.
+
+## Data
+
+Each case lives in its own file, separate from the site's code, so the cases can be versioned, cited and double-coded independently:
+
+- `data/book.json` — Project 1, past futures of the book (31 speculations, v0.1).
+- `data/climate.json` — Project 2, climate futures (corpus being collected; empty for now).
+
+Every record uses the codebook's own labels (for example `"scope": "Replaces the medium"`, `"medium_status": "Imagined"`), and the file lists the allowed values at the top. The site turns the labels into the codes the views use and warns in the browser console about any label it does not recognise. To add or recode a speculation, edit the JSON; the wheel, overview, sources and readings update from it.
+
+Because the site loads these files, open it through a web server rather than as a local file, e.g. `python3 -m http.server` in this folder, then visit `http://localhost:8000`.
