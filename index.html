@@ -155,6 +155,7 @@ button:focus-visible, [tabindex]:focus-visible, input:focus-visible { outline: 2
 .dot { transition: opacity .25s; }
 .dot.dim { opacity: .22; }
 .span-line { stroke: var(--ink); stroke-width: 1.5; stroke-dasharray: 4 5; fill: none; animation: dash 1.2s linear infinite; }
+.span.preview { opacity: .45; pointer-events: none; } .span.preview .span-line { animation: none; }
 .span-ring { fill: none; stroke: var(--ink); stroke-width: 1.5; }
 .span-label { font: 500 11px var(--font-mono); fill: var(--ink); paint-order: stroke; stroke: var(--paper); stroke-width: 4px; }
 .halo { fill: none; stroke-width: 2.5; pointer-events: none; transform-box: fill-box; transform-origin: center; animation: halo 1.6s ease-out infinite; }
@@ -210,6 +211,11 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
 .sitenav a { font: 500 15px var(--font-body); color: var(--muted); text-decoration: none; padding: 8px 0 9px; border-bottom: 2px solid transparent; margin-bottom: -1px; }
 .sitenav a:hover { color: var(--ink); }
 .sitenav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--accent); }
+#pg-bookhead { gap: 14px; }
+.subnav { display: flex; flex-wrap: wrap; gap: 4px; }
+.subnav a { font: 500 13px var(--font-mono); color: var(--muted); text-decoration: none; padding: 5px 12px; border: 1px solid var(--rule); border-radius: 999px; }
+.subnav a:hover { color: var(--ink); border-color: var(--muted); }
+.subnav a[aria-current="true"] { color: var(--paper); background: var(--ink); border-color: var(--ink); }
 .page { display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; }
 .pagehead { display: grid; gap: 6px; max-width: 80ch; }
 .pagehead h2 { font-family: var(--font-display); font-size: 28px; margin: 0; }
@@ -311,8 +317,16 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
     </nav>
   </header>
 
-  <section id="pg-archive" class="page">
+  <section id="pg-bookhead" class="page" hidden>
   <div class="pagehead"><h2>Project 1 · Past futures of the book</h2><p class="small">Depth: one claim, that a new medium would replace the book in education, traced across more than a century.</p></div>
+  <nav class="subnav" aria-label="Project 1">
+    <a href="#book" data-sub="archive">Tetrad wheel</a>
+    <a href="#sources" data-sub="sources">Sources</a>
+    <a href="#readings" data-sub="readings">Readings</a>
+  </nav>
+  </section>
+
+  <section id="pg-archive" class="page">
     <p class="lede">Speculations that a new medium would transform or replace the book in education, from the stereograph and Edison’s films to AI tutors, in press interviews, talks, novels, films, images, papers, reports and design projects. Each speculation sits in the Tetrad sector it promised (enhance, obsolesce, retrieve, reverse), on the ring for the scope of change it claims, from supplementing teaching to replacing the institution.</p>
     <p class="notice"><strong>Pilot sample.</strong> 31 documented speculations, from press interviews and talks to novels, films, images, academic papers, reports and a design project, quoted or described from primary sources or reputable compilations. Codes are provisional (one coder, <a href="#codebook">codebook</a> v0.1), and claims marked “to verify” still need checking against the original page. Speculative design projects from CHI and DIS on AI tutors and future classrooms are being added.</p>
   <div class="controls" role="group" aria-label="View controls">
@@ -336,7 +350,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
   </section>
 
   <section id="pg-sources" class="page" hidden>
-    <div class="pagehead"><h2>Sources</h2><p class="small">Every speculation by the year it was made. Hover a dot for a summary and select it to find its source in the list. Search to filter both.</p></div>
+    <div class="pagehead"><p class="small">Every speculation by the year it was made. Hover a dot for a summary and select it to find its source in the list. Search to filter both.</p></div>
     <div class="src-work">
       <div class="src-tools"><input type="search" id="src-q" placeholder="Search speculations, people, media…" aria-label="Search sources"><span class="small" id="src-count"></span></div>
       <div class="strip-wrap"><div id="strip-svg"></div>
@@ -346,7 +360,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
   </section>
 
   <section id="pg-readings" class="page" hidden>
-    <div class="pagehead"><h2>Readings</h2><p>What the coding of Project 1 shows when its parts are read against each other, and what follows for reading speculations and for designing them.</p>
+    <div class="pagehead"><p>What the coding of Project 1 shows when its parts are read against each other, and what follows for reading speculations and for designing them.</p>
       <p class="small">Provisional: 31 speculations, one coder. These are patterns to test on a larger archive, not results. Counts are computed from the archive as it stands.</p></div>
     <div class="readings" id="readings"></div>
   </section>
@@ -967,8 +981,20 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
   }
   const hideTip = () => { $("#tip").hidden = true; };
   const wheel = $("#wheel-wrap");
-  wheel.addEventListener("mouseover", (e) => { const d = e.target.closest("circle.dot[data-id]"); if (d) showTip(d); });
-  wheel.addEventListener("mouseout", (e) => { if (e.target.closest("circle.dot[data-id]")) hideTip(); });
+  // Hovering a speculation that codes for several laws previews the lines that link its copies
+  function spanPreview(id) {
+    clearPreview();
+    const svg = wheel.querySelector("svg"); if (!svg || +id === state.selected) return;
+    const pts = [...svg.querySelectorAll(`circle.dot[data-id="${id}"]`)].map(d => [+d.getAttribute("cx"), +d.getAttribute("cy")]);
+    if (pts.length < 2) return;
+    const ns = "http://www.w3.org/2000/svg", g = document.createElementNS(ns, "g");
+    g.setAttribute("class", "span preview");
+    g.innerHTML = `<circle class="span-ring" r="44"></circle>` + pts.map(([x, y]) => { const d = Math.hypot(x, y); return `<path class="span-line" d="M${(x / d * 44).toFixed(1)} ${(y / d * 44).toFixed(1)} L${x} ${y}"></path>`; }).join("");
+    svg.insertBefore(g, svg.querySelector("circle.dot"));
+  }
+  function clearPreview() { wheel.querySelectorAll(".span.preview").forEach(g => g.remove()); }
+  wheel.addEventListener("mouseover", (e) => { const d = e.target.closest("circle.dot[data-id]"); if (d) { showTip(d); spanPreview(d.dataset.id); } });
+  wheel.addEventListener("mouseout", (e) => { if (e.target.closest("circle.dot[data-id]")) { hideTip(); clearPreview(); } });
   wheel.addEventListener("focusin", (e) => { const d = e.target.closest("circle.dot[data-id]"); if (d) showTip(d); });
   wheel.addEventListener("focusout", hideTip);
   wheel.addEventListener("click", hideTip, true);
@@ -1095,19 +1121,24 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
         <li>Richmond Y. Wong and Vera Khovanskaya. 2018. Speculative design in HCI: from corporate imaginations to critical orientations. In <em>New Directions in Third Wave Human-Computer Interaction: Volume 2 – Methodologies</em>, Michael Filimowicz and Veronika Tzankova (Eds.). Springer, 175–202.</li></ul></section>`;
   }
   const PAGES = ["codebook", "book", "climate", "counterfactual"];
-  const SECTIONS = { book: ["archive", "sources", "readings"], codebook: ["codebook"], climate: ["climate"], counterfactual: ["counterfactual"] };
+  const SECTIONS = { book: ["bookhead", "archive", "sources", "readings"], codebook: ["codebook"], climate: ["climate"], counterfactual: ["counterfactual"] };
   function route() {
     let h = location.hash.slice(1);
     if (h === "gaps" || h === "ideas") h = "counterfactual";
     if (h.startsWith("cb-")) { const t = document.getElementById(h); if (t && !$("#pg-codebook").hidden) { t.scrollIntoView(); return; } }
-    const sub = ["archive", "sources", "readings"].includes(h) ? h : null;
+    const sub = h === "book" || h === "archive" ? "archive" : ["sources", "readings"].includes(h) ? h : null;
     const page = sub ? "book" : PAGES.includes(h) ? h : "codebook";
-    Object.entries(SECTIONS).forEach(([pg, secs]) => secs.forEach(x => { $(`#pg-${x}`).hidden = pg !== page; }));
+    Object.entries(SECTIONS).forEach(([pg, secs]) => secs.forEach(x => {
+      const show = pg === page && (pg !== "book" || x === "bookhead" || x === sub);
+      $(`#pg-${x}`).hidden = !show;
+    }));
     document.querySelectorAll(".sitenav a").forEach(a => { if (a.dataset.page === page) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
-    if (page === "book") { render(); renderSources(); renderReadings(); }
+    document.querySelectorAll(".subnav a").forEach(a => a.setAttribute("aria-current", String(a.dataset.sub === sub)));
+    if (sub === "archive") render();
+    if (sub === "sources") renderSources();
+    if (sub === "readings") renderReadings();
     if (page === "counterfactual") renderCF();
     if (h.startsWith("cb-")) document.getElementById(h)?.scrollIntoView();
-    else if (sub && sub !== "archive") document.getElementById(`pg-${sub}`)?.scrollIntoView();
     else window.scrollTo(0, 0);
   }
   window.addEventListener("hashchange", route);
