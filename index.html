@@ -103,6 +103,7 @@ button:focus-visible, [tabindex]:focus-visible, input:focus-visible { outline: 2
 :root[data-theme="dark"] .panel.depth2 { --panel:#2b2b2b; --ink:#f4f4f4; --muted:#b5b5b5; --rule:#3d3d3d; --accent:#ffffff; --accent-soft:#3a3a3a; border-color:#2b2b2b; }
 .cb-steps { margin: 6px 0; padding-left: 20px; display: grid; gap: 4px; }
 .intro { display: grid; gap: 30px; max-width: 80ch; }
+.ov-findings { margin: 0; padding-left: 18px; display: grid; gap: 8px; line-height: 1.5; }
 .intro a { color: var(--accent); }
 .cases { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .case { display: grid; gap: 6px; align-content: start; padding: 16px 18px; border: 1px solid var(--rule); border-radius: 10px; color: var(--ink) !important; text-decoration: none; background: var(--panel); }
@@ -329,33 +330,32 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
 
   <section id="pg-overview" class="page" hidden>
     <div class="pagehead"><h2>Overview</h2>
-      <p>This prototype accompanies the PhD project <em>Historicising Speculative Design</em>. It reads speculation, documented claims and works about what a new technology will do to the world, for what it imagines and what it leaves out.</p></div>
+      <p>Every new medium has been promised as the one that would replace the book in education, from Edison’s films in 1913 to AI tutors today. Such futures shape what is funded and built, and speculative design sets out to question them. But does it imagine differently?</p></div>
     <div class="intro">
-      <section class="rd"><h3>Why</h3>
-        <p>Speculative design and other futuring practices are now common in HCI (Kozubaev et al. 2020; Sanchez et al. 2025), yet there is little agreement on how to tell critical speculation from the affirmative visions they set out to question. Existing accounts match evaluative frames to the traditions a speculation draws on (Baumer et al. 2020), list the qualities a good speculation should have, from fictional, critical and socio-political to thought-provoking, grounded and playful (Ringfort-Felner et al. 2025), or review the papers that report it (Soden et al. 2021b; Sanchez et al. 2025). Few code what speculations actually imagine, and fewer place speculative design on the same scale as the corporate and policy futures it is said to resemble (Wong &amp; Khovanskaya 2018; Jang &amp; Bolter 2026) or resist (Dunne &amp; Raby 2013).</p>
-        <p><strong>The gap.</strong> There is no shared way to describe, from the speculations themselves, what a future imagines and what it leaves out: one that applies alike to a design project, a novel, a film and a policy report, that reads each against its own present, and that others can apply and check. Without it, whether a speculation is critical rests largely on what its authors claim.</p>
-        <p><strong>The aim.</strong> To build that description and test what it reveals: a codebook, grounded in media theory and construal-level theory, that reads any speculation for what it imagines and leaves unimagined; readings of two cases that identify the patterns separating critical from affirmative speculation; and a way of turning those patterns into design.</p></section>
-      <section class="rd"><h3>Historicising</h3>
-        <p>Following Soden et al. (2021a), to historicise is “to contextualize a thing, a practice, or an organization, within dynamic temporal processes of emergence, change, continuity, decline, disappearance, or revival”. Here the things historicised are speculations themselves, speculative design included. Each is read as a document of its own present: its distance is measured from the moment it was made, not from today, and it is set against the speculations that came before and after it. As Soden et al. put it, “historicism and futurism can be allies”.</p></section>
-      <section class="rd"><h3>What it does</h3>
-        <p>A single <a href="#codebook">codebook</a> reads each speculation in two ways. McLuhan’s Tetrad asks what it imagines a new artefact will enhance, obsolesce, retrieve and reverse. <strong>Speculative distance</strong> asks how far it departs from its own present: the scope of change it claims, together with the four dimensions of psychological distance from construal-level theory (time, space, social distance and hypotheticality). Construal level, whether a speculation is written concretely or abstractly, is coded separately, so that the theory’s prediction, that distant futures are construed abstractly, can be tested rather than assumed.</p>
-        <p>Read against each other, the codes show patterns in what speculation imagines and leaves unimagined. Those readings then become material for design: <a href="#counterfactual">counterfactual obsolescence</a> takes a past prediction at its word and completes it with what it failed to imagine.</p></section>
+      <section class="rd">
+        <p><strong>The gap.</strong> We cannot yet say, because no shared method describes what a future imagines and what it leaves out, across design projects, fiction, films and reports alike, reading each against its own present. Existing accounts offer evaluative frames (Baumer et al. 2020), lists of qualities (Ringfort-Felner et al. 2025) or reviews of papers (Soden et al. 2021b; Sanchez et al. 2025), not readings of the futures themselves. Two things follow. Whether speculative design differs from the corporate and policy futures it is said to resemble (Wong &amp; Khovanskaya 2018; Jang &amp; Bolter 2026) or resist (Dunne &amp; Raby 2013) remains untested. And we do not know what a century of such predictions repeatedly failed to imagine.</p>
+        <p><strong>The aim.</strong> To ask what speculation imagines and leaves unimagined, and whether critical speculation differs from affirmative speculation, which confirms a technology’s course rather than questioning it. To answer, I build a <a href="#codebook">codebook</a>, read two cases through it, and turn what it reveals into design.</p></section>
+      <section class="rd"><h3>Approach</h3>
+        <p>Each speculation is read in two ways. McLuhan’s Tetrad asks what it imagines a new artefact will enhance, obsolesce, retrieve and reverse. <strong>Speculative distance</strong> asks how far it departs from its own present: the scope of change it claims, plus the four dimensions of psychological distance in construal-level theory (Trope &amp; Liberman 2010). Construal level is coded separately, to test the theory’s prediction that distant futures are construed abstractly.</p>
+        <p>This is historicising in Soden et al.’s (2021a) sense: every speculation, speculative design included, is read as a document of its own present. Edison’s 1913 claim is measured from 1913, not from today. The readings then become material for design: <a href="#counterfactual">counterfactual obsolescence</a> takes a past prediction at its word and completes it with what it failed to imagine.</p></section>
       <section class="rd"><h3>Two cases</h3>
-        <p>The codebook is applied to two cases that play equal parts and complement each other. The readings of each are reported separately before they are compared; patterns that hold in both are more likely to be general than artefacts of one domain.</p>
+        <p>Equal in weight, read separately, then compared.</p>
         <div class="cases">
-          <a class="case" href="#book"><span class="case-k">Case 1 · Depth</span><strong>Past futures of the book</strong><span>One claim, that a new medium would replace the book in education, traced across more than a century: from the stereograph and Edison’s films to AI tutors. It shows how the same promise is made, and remade, as each new medium arrives. Pilot of 31 speculations; speculative design projects from CHI and DIS are being added.</span></a>
-          <a class="case" href="#climate"><span class="case-k">Case 2 · Breadth</span><strong>Climate futures</strong><span>One problem, climate change, addressed in every genre: academic speculative design, fiction, film, reports and design practice, each sampled across its own history, from ecological fiction of the 1880s to recent design projects. It places speculative design on the same timeline and the same scale as the other futures around it. Corpus being collected.</span></a>
+          <a class="case" href="#book"><span class="case-k">Case 1 · Depth</span><strong>Past futures of the book</strong><span>One claim, that a new medium would replace the book in education, traced from the stereograph in 1906 to AI tutors. Pilot of 31 speculations; speculative design projects from CHI and DIS being added.</span></a>
+          <a class="case" href="#climate"><span class="case-k">Case 2 · Breadth</span><strong>Climate futures</strong><span>One problem, climate change, across every genre, from ecological fiction of the 1880s and reports of the 1970s to recent speculative design. Corpus being collected.</span></a>
         </div></section>
-      <p class="small">Working prototype, v0.1. All codes are provisional, made by one coder, and will be revised after double-coding.</p>
+      <section class="rd"><h3>First readings</h3>
+        <ul class="ov-findings" id="ov-findings"></ul>
+        <p class="small">Pilot, one coder: patterns to test on both cases, not results. See <a href="#readings">Readings</a>.</p></section>
       <section class="rd rd-refs"><h3>References</h3><ul class="cb-refs">
         <li>Eric P. S. Baumer, Mark Blythe, and Theresa Jean Tanenbaum. 2020. Evaluating Design Fiction: The Right Tool for the Job. In <em>Proceedings of the 2020 ACM Designing Interactive Systems Conference (DIS ’20)</em>. ACM, 1901–1913.</li>
         <li>Anthony Dunne and Fiona Raby. 2013. <em>Speculative Everything: Design, Fiction, and Social Dreaming</em>. MIT Press.</li>
         <li>Soyoun Jang and Jay D. Bolter. 2026. Historicising Speculative Design with McLuhan’s Tetrad. In <em>Proceedings of DRS2026</em>. Design Research Society. https://doi.org/10.21606/drs.2026.479</li>
-        <li>Sandjar Kozubaev, Chris Elsden, Noura Howell, Marie Louise Juul Søndergaard, Nick Merrill, Britta Schulte, and Richmond Y. Wong. 2020. Expanding Modes of Reflection in Design Futuring. In <em>Proceedings of the 2020 CHI Conference on Human Factors in Computing Systems (CHI ’20)</em>. ACM. https://doi.org/10.1145/3313831.3376526</li>
         <li>Ronda Ringfort-Felner, Judith Dörrenbächer, and Marc Hassenzahl. 2025. The Quality of Speculation – A Scoping Review. In <em>Proceedings of the 2025 ACM Designing Interactive Systems Conference (DIS ’25)</em>. ACM, 2373–2394. https://doi.org/10.1145/3715336.3735794</li>
         <li>Camilo Sanchez, Sui Wang, Kaisa Savolainen, Felix Anand Epp, and Antti Salovaara. 2025. Let’s Talk Futures: A Literature Review of HCI’s Future Orientation. In <em>Proceedings of the 2025 CHI Conference on Human Factors in Computing Systems (CHI ’25)</em>. ACM. https://doi.org/10.1145/3706598.3713759</li>
         <li>Robert Soden, David Ribes, Seyram Avle, and Will Sutherland. 2021a. Time for Historicism in CSCW: An Invitation. <em>Proceedings of the ACM on Human-Computer Interaction</em> 5, CSCW2, Article 459. https://doi.org/10.1145/3479603</li>
         <li>Robert Soden, Pradnaya Pathak, and Olivia Doggett. 2021b. What We Speculate About When We Speculate About Sustainable HCI. In <em>ACM SIGCAS Conference on Computing and Sustainable Societies (COMPASS ’21)</em>. ACM, 188–198. https://doi.org/10.1145/3460112.3471956</li>
+        <li>Yaacov Trope and Nira Liberman. 2010. Construal-level theory of psychological distance. <em>Psychological Review</em> 117, 2, 440–463.</li>
         <li>Richmond Y. Wong and Vera Khovanskaya. 2018. Speculative design in HCI: from corporate imaginations to critical orientations. In <em>New Directions in Third Wave Human-Computer Interaction: Volume 2 – Methodologies</em>, Michael Filimowicz and Veronika Tzankova (Eds.). Springer, 175–202.</li></ul></section>
     </div>
   </section>
@@ -1114,6 +1114,17 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
   });
 
   // ---------- pages ----------
+  // ---------- overview: first readings, counted from the data ----------
+  function renderOverview() {
+    const C = CLAIMS, cnt = (a, f) => a.filter(f).length, abs = c => c.lang === "abstract";
+    const ex = C.filter(c => c.status === 1), im = C.filter(c => c.status === 3);
+    const rr = C.filter(c => c.laws.includes("retrieve") || c.laws.includes("reverse"));
+    $("#ov-findings").innerHTML = C.length ? [
+      `<strong>The most distant futures were the most concrete.</strong> Speculations that imagine a medium are concrete in ${cnt(im, c => !abs(c))} of ${im.length}; those about an existing medium are abstract in ${cnt(ex, abs)} of ${ex.length}. Construal-level theory predicts the reverse.`,
+      `<strong>Retrieval and reversal live in imagined media.</strong> Of the ${rr.length} speculations that imagine either, ${cnt(rr, c => c.status === 3)} concern a medium that did not yet exist.`,
+      `<strong>Two signatures.</strong> Together the patterns separate an affirmative signature (existing medium, worldwide, “will”, abstract, one law) from a critical one (imagined or scaled down, depicted, concrete, several laws).`
+    ].map(t => `<li>${t}</li>`).join("") : "";
+  }
   // ---------- readings ----------
   function renderReadings() {
     const C = CLAIMS, cnt = (a, f) => a.filter(f).length;
@@ -1181,6 +1192,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
     if (sub === "sources") renderSources();
     if (sub === "readings") renderReadings();
     if (page === "counterfactual") renderCF();
+    if (page === "overview") renderOverview();
     if (h.startsWith("cb-")) document.getElementById(h)?.scrollIntoView();
     else window.scrollTo(0, 0);
   }
