@@ -225,7 +225,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   </section>
 
   <section id="pg-sources" class="page" hidden>
-    <div class="pagehead"><h2>Sources</h2><p class="small">Every claim in the archive, in order of the year it was made. Select a claim to see it on the wheel with its coding.</p></div>
+    <div class="pagehead"><h2>Sources</h2><p class="small">Every claim in the archive, in order of the year it was made.</p></div>
     <ol class="srclist" id="srclist"></ol>
   </section>
 
@@ -735,15 +735,8 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
           <p class="q">“${c.text}”</p>
           <p class="meta">${c.who} · ${c.medium} · ${c.speaker}</p>
           <p class="cite">${c.source}${c.verify ? ` <span class="tag ill">To verify</span> ${c.verify}` : ""}</p>
-          <button type="button" class="linkbtn" data-goto="${c.id}">See on the wheel →</button>
         </div></li>`).join("");
   }
-  $("#srclist").addEventListener("click", (e) => {
-    const b = e.target.closest("[data-goto]");
-    if (!b) return;
-    state.selected = +b.dataset.goto;
-    location.hash = "#archive";
-  });
 
   // ---------- gaps page ----------
   function gapsOn(dim) {
