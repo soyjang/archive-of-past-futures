@@ -794,8 +794,8 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
       while (cols.some(([cx, ck]) => ck === k && Math.abs(cx - x) < r * 2 + 3)) k++;
       cols.push([x, k]);
       const y = base - k * step; top = Math.min(top, y - r - 10);
-      const col = `var(${famOf(c).v})`, abstract = c.lang === "abstract", sel = src.sel === c.id;
-      dots += `<circle class="dot${abstract ? " hollow" : ""}${sel ? " sel" : src.sel ? " dim" : ""}" cx="${x.toFixed(1)}" cy="${y}" r="${r}" style="${abstract ? `stroke:${col}` : `fill:${col}`}" tabindex="0" role="button" data-jump="${c.id}" aria-label="${c.year}, ${c.short}: ${c.text}"></circle>`;
+      const col = `var(${famOf(c).v})`, sel = src.sel === c.id;
+      dots += `<circle class="dot${sel ? " sel" : src.sel ? " dim" : ""}" cx="${x.toFixed(1)}" cy="${y}" r="${r}" style="fill:${col}" tabindex="0" role="button" data-jump="${c.id}" aria-label="${c.year}, ${c.short}: ${c.text}"></circle>`;
       if (sel) dots += `<circle class="halo" cx="${x.toFixed(1)}" cy="${y}" r="${r}" style="stroke:${col}"></circle>`;
     });
     const span = src.range[1] - src.range[0], tick = span > 80 ? 20 : span > 30 ? 10 : span > 12 ? 5 : 1;
@@ -823,7 +823,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   }
   function renderSources() {
     if (src.sel && !shownSrc().some(c => c.id === src.sel)) src.sel = null;
-    $("#src-legend").innerHTML = FAMS.map(f => `<span><span class="swatch" style="background:var(${f.v})"></span>${f.label}</span>`).join("") + `<span><i class="lg-dot"></i>Concrete language</span><span><i class="lg-dot hollow"></i>Abstract language</span>`;
+    $("#src-legend").innerHTML = FAMS.map(f => `<span><span class="swatch" style="background:var(${f.v})"></span>${f.label}</span>`).join("");
     renderStrip(); renderSrcList();
   }
   // tooltip
