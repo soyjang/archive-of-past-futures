@@ -30,7 +30,7 @@ Temporal distance is coded from the horizon a claim *states*, not a year, becaus
   - A decade slider ("Play decades") and era filters apply to both views.
 - **Codebook** — the full coding scheme (v0.1): unit of analysis, attributes, each dimension with definitions, decision rules and examples from the archive, the definition of a gap, and the reliability plan. The table below summarises it.
 - **Sources** — every claim with its speaker, full citation and verification status.
-- **Gaps for speculative design** — every gap on scope of change, each opening a design-fiction prompt with a multiplane animation sketch.
+- **Ideas for speculative design** — five approaches for turning the archive into design fictions, each with prompts written from documented speculations: *take it at its word* (play a replacement claim forward to what it did not imagine), *change the distance* (bring a far claim near, or push a near one far), *the returning promise* (follow a promise across eras), *let fiction answer forecasts*, and *anachronistic conversations* (speculations from different eras in dialogue). Each prompt opens a storyboard sketch. Hatched cells on the wheel remain as a descriptive view of what no speculation codes for.
 
 ## Status of the data
 
