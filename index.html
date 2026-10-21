@@ -75,7 +75,7 @@ button:focus-visible, [tabindex]:focus-visible, input:focus-visible { outline: 2
 .figure { min-width: 0; }
 .figure svg { width: 100%; height: auto; display: block; }
 .timeline-scroll { overflow-x: auto; }
-.timeline-scroll svg { min-width: 680px; }
+.timeline-scroll svg { min-width: 600px; }
 
 .cell { fill: transparent; stroke: var(--rule); stroke-width: 1; }
 .cell.filled { fill: var(--accent-soft); }
@@ -94,6 +94,9 @@ button:focus-visible, [tabindex]:focus-visible, input:focus-visible { outline: 2
 .tl-tick { font-family: var(--font-mono); font-size: 11px; fill: var(--muted); }
 .tl-label { font-family: var(--font-body); font-size: 12.5px; fill: var(--ink); }
 .tl-row { cursor: pointer; }
+.tl-band { fill: var(--panel); stroke: var(--rule); }
+.tl-band.alt { fill: color-mix(in srgb, var(--panel) 60%, var(--paper)); }
+.tl-band-label { font-family: var(--font-mono); font-size: 12px; fill: var(--muted); }
 .tl-row:hover .tl-label, .tl-row.sel .tl-label { fill: var(--accent); }
 
 .panel { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: 20px; display: grid; gap: 16px; min-width: 0; }
@@ -149,7 +152,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
       <button type="button" id="v-wheel" aria-pressed="true">Tetrad wheel</button>
       <button type="button" id="v-time" aria-pressed="false">Timeline</button>
     </div>
-    <div class="slider">
+    <div class="slider" id="rings-ctl">
       <label for="dim">Rings show</label>
       <select id="dim" class="dimsel">
         <option value="scope">Scope of change</option>
@@ -174,7 +177,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     <aside class="panel" id="panel" aria-live="polite"></aside>
   </div>
 
-  <footer>Coding scheme: Tetrad laws after McLuhan &amp; McLuhan (1988). Each claim also records who is speaking. Speculative distance, how far a claim departs from its own present, is coded on five dimensions: the four dimensions of psychological distance in construal-level theory (Trope &amp; Liberman 2010), temporal, spatial, social and hypotheticality, as marked in the claim's text, plus scope of change. Temporal distance is coded from the horizon a claim states (imminent, near, distant), since most give no year; “unstated” is a value in its own right. Construal level (concrete or abstract language) is coded as the kind of thinking distance is expected to produce; on the wheel, filled dots are concrete and hollow dots abstract. Scope of change (supplement, transform practice, replace the medium, replace the institution) is the dimension construal-level theory lacks: how much of the world the claim alters. The wheel's rings show the two main dimensions, scope of change and temporal distance; the others are reported descriptively. On the timeline, line length shows the stated horizon (imminent, near, distant), dotted where none is stated. Design-fiction storyboards are placeholders for AI-assisted animations.</footer>
+  <footer>Coding scheme: Tetrad laws after McLuhan &amp; McLuhan (1988). Each claim also records who is speaking. Speculative distance, how far a claim departs from its own present, is coded on five dimensions: the four dimensions of psychological distance in construal-level theory (Trope &amp; Liberman 2010), temporal, spatial, social and hypotheticality, as marked in the claim's text, plus scope of change. Temporal distance is coded from the horizon a claim states (imminent, near, distant), since most give no year; “unstated” is a value in its own right. Construal level (concrete or abstract language) is coded as the kind of thinking distance is expected to produce; on the wheel, filled dots are concrete and hollow dots abstract. Scope of change (supplement, transform practice, replace the medium, replace the institution) is the dimension construal-level theory lacks: how much of the world the claim alters. The wheel's rings show the two main dimensions, scope of change and temporal distance; the others are reported descriptively. The timeline places each claim by the year it was made, in a band for the horizon it states, to show how the horizon of prophecy shifts across a century. The archive records predictions only, not outcomes. Design-fiction storyboards are placeholders for AI-assisted animations.</footer>
 </div>
 
 <div class="overlay" id="overlay" hidden>
@@ -250,9 +253,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     13: [1, "in a few years"], 14: [2, "in the near future"], 15: [3, "eventually"], 16: [4, ""] };
   const SPEAKERS = ["Inventor", "Company", "Policymaker", "Educator", "Researcher", "Speculative designer"];
   const SPEAKER = { 1: 1, 2: 0, 3: 3, 4: 1, 5: 2, 6: 4, 7: 1, 8: 4, 9: 4, 10: 1, 11: 1, 12: 1, 13: 1, 14: 1, 15: 5, 16: 0 };
-  CLAIMS.forEach(c => { [c.spatial, c.social, c.hyp] = CODES[c.id]; [c.temporal, c.when] = WHEN[c.id]; c.speaker = SPEAKERS[SPEAKER[c.id]];
-    // The timeline draws each claim's line to a nominal end set by its stated horizon, not to a predicted year
-    c.horizon = Math.min(2040, c.year + [5, 15, 30, 30][c.temporal - 1]); });
+  CLAIMS.forEach(c => { [c.spatial, c.social, c.hyp] = CODES[c.id]; [c.temporal, c.when] = WHEN[c.id]; c.speaker = SPEAKERS[SPEAKER[c.id]]; });
 
   const FICTIONS = {
     "reverse-4": {
@@ -350,31 +351,38 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
 
   // ---------- timeline ----------
   function renderTimeline() {
+    // Bands by stated horizon; x = the year the claim was made. Dots pack into sub-rows so labels never overlap.
     const claims = visibleClaims().slice().sort((a, b) => a.year - b.year);
-    const x0 = 230, x1 = 880, y0 = 40, rowH = 30;
+    const x0 = 96, x1 = 560, top = 34, subH = 30, pad = 12;
     const X = (y) => x0 + (y - 1900) / 140 * (x1 - x0);
-    const H = y0 + claims.length * rowH + 30;
-    let s = `<svg viewBox="0 0 900 ${H}" role="img" aria-label="Timeline: each claim drawn from the year it was made to the year it predicted">`;
-    for (let y = 1900; y <= 2040; y += 20) {
-      s += `<line class="tl-axis" x1="${X(y)}" x2="${X(y)}" y1="${y0 - 14}" y2="${H - 20}"></line><text class="tl-tick" x="${X(y)}" y="${y0 - 20}" text-anchor="middle">${y}</text>`;
-    }
-    claims.forEach((c, i) => {
-      const y = y0 + i * rowH + 12;
-      const col = `var(${eraOf(c.year).v})`;
-      const sel = state.selected === c.id ? " sel" : "";
-      const w = 1.5 + c.ring * 1.2;
-      let end;
-      if (c.outcome === "absorbed") end = `<rect x="${X(c.horizon) - 5}" y="${y - 5}" width="10" height="10" style="fill:${col}"></rect>`;
-      else if (c.outcome === "unrealised") end = `<path d="M${X(c.horizon) - 5} ${y - 5} l10 10 M${X(c.horizon) + 5} ${y - 5} l-10 10" style="stroke:${col};stroke-width:2.5"></path>`;
-      else end = `<circle cx="${X(c.horizon)}" cy="${y}" r="5" style="fill:var(--panel);stroke:${col};stroke-width:2.5" stroke-dasharray="3 2"></circle>`;
-      s += `<g class="tl-row${sel}" tabindex="0" role="button" data-id="${c.id}" aria-label="${c.year}, ${DIMS.temporal.levels[c.temporal - 1].toLowerCase()} horizon, ${c.medium}: ${c.text}">
-        <rect x="0" y="${y - 13}" width="900" height="${rowH - 2}" fill="transparent"></rect>
-        <text class="tl-label" x="${x0 - 14}" y="${y + 4}" text-anchor="end">${c.year} · ${c.medium}</text>
-        <line x1="${X(c.year)}" x2="${X(c.horizon)}" y1="${y}" y2="${y}" style="stroke:${col};stroke-width:${w}" stroke-linecap="round"${c.temporal === 4 ? ' stroke-dasharray="2 6"' : ""}></line>
-        <circle cx="${X(c.year)}" cy="${y}" r="4" style="fill:${col}"></circle>${end}</g>`;
+    const bands = DIMS.temporal.levels.map((label, k) => {
+      const rows = [];
+      claims.filter(c => c.temporal === k + 1).forEach(c => {
+        const xa = X(c.year) - 9, xb = X(c.year) + 14 + c.medium.length * 6.4;
+        let r = rows.findIndex(end => end < xa);
+        if (r < 0) { r = rows.length; rows.push(0); }
+        rows[r] = xb; c._sub = r;
+      });
+      return { label, k: k + 1, n: Math.max(1, rows.length) };
     });
-    s += `</svg>`;
-    $("#time-wrap").innerHTML = s;
+    let y = top, s = "";
+    for (let t = 1900; t <= 2040; t += 20) s += `<text class="tl-tick" x="${X(t)}" y="${top - 14}" text-anchor="middle">${t}</text>`;
+    bands.forEach((b, bi) => {
+      const h = b.n * subH + pad * 2;
+      s += `<rect x="${x0 - 16}" y="${y}" width="${700 - x0 + 14}" height="${h}" class="${bi % 2 ? "tl-band alt" : "tl-band"}"></rect>
+        <text class="tl-band-label" x="${x0 - 26}" y="${y + h / 2 + 4}" text-anchor="end">${b.label}</text>`;
+      claims.filter(c => c.temporal === b.k).forEach(c => {
+        const cy = y + pad + c._sub * subH + subH / 2, cx = X(c.year);
+        const col = `var(${eraOf(c.year).v})`, abstract = c.lang === "abstract";
+        const sel = state.selected === c.id ? " sel" : "";
+        s += `<g class="tl-row${sel}" tabindex="0" role="button" data-id="${c.id}" aria-label="${c.year}, ${b.label.toLowerCase()} horizon${c.when ? ` (${c.when})` : ""}, ${c.medium}: ${c.text}">
+          <circle class="dot${abstract ? " hollow" : ""}${sel}" cx="${cx}" cy="${cy}" r="8" style="${abstract ? `stroke:${col}` : `fill:${col}`}"></circle>
+          <text class="tl-label" x="${cx + 13}" y="${cy + 4}">${c.medium}</text></g>`;
+      });
+      y += h + 4;
+    });
+    for (let t = 1900; t <= 2040; t += 20) s = `<line class="tl-axis" x1="${X(t)}" x2="${X(t)}" y1="${top - 6}" y2="${y - 4}"></line>` + s;
+    $("#time-wrap").innerHTML = `<svg viewBox="0 0 700 ${y + 8}" role="img" aria-label="Timeline: claims by the year they were made, in bands by the horizon they state">${s}</svg>`;
   }
 
   // ---------- panel ----------
@@ -405,7 +413,6 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
           <dt>Social</dt><dd>${DIMS.social.levels[c.social - 1]}</dd>
           <dt>Hypothetical</dt><dd>${DIMS.hyp.levels[c.hyp - 1]}</dd>
           <dt>Construal</dt><dd>${c.lang === "abstract" ? "Abstract language" : "Concrete language"}</dd>
-          <dt>Outcome</dt><dd>${OUTCOME[c.outcome]}</dd>
           <dt>Source</dt><dd>${c.source || "N/A"}</dd>
         </dl>`;
       $("#back").addEventListener("click", () => select(null));
@@ -427,7 +434,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   function legend() {
     $("#legend").innerHTML = state.view === "wheel"
       ? `<span><i class="lg-dot"></i>Concrete language</span><span><i class="lg-dot hollow"></i>Abstract language</span><span><i class="lg-hatch"></i>Gap: no claim imagined this</span>`
-      : `<span>Line ends: ■ absorbed into practice · ✕ not realised · ○ still open</span><span>Dotted line: no horizon stated</span>`;
+      : `<span><i class="lg-dot"></i>Concrete language</span><span><i class="lg-dot hollow"></i>Abstract language</span><span>Bands: the horizon each claim states</span>`;
   }
 
   function render() {
@@ -555,6 +562,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     $("#v-time").setAttribute("aria-pressed", v === "time");
     $("#wheel-wrap").hidden = v !== "wheel";
     $("#time-wrap").hidden = v !== "time";
+    $("#rings-ctl").hidden = v !== "wheel";
     render();
   }
   $("#v-wheel").addEventListener("click", () => setView("wheel"));

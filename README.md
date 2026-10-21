@@ -24,7 +24,7 @@ Temporal distance is coded from the horizon a claim *states*, not a year, becaus
 ## Views
 
 - **Tetrad wheel** — four sectors for the Tetrad laws, rings for one of the two main dimensions, scope of change or temporal distance. Spatial distance, social distance, hypotheticality and construal level are shown per claim and reported descriptively. Dots are filled for concrete language and hollow for abstract, so you can see whether distant rings fill with abstract claims. Hatched cells are *gaps*: combinations no claim imagined. Opening a gap shows the design fiction it calls for, with a multiplane animation sketch.
-- **Timeline** — each claim drawn from the year it was made, its length set by the stated horizon (imminent, near, distant; dotted where unstated), ending by outcome (absorbed, not realised, still open).
+- **Timeline** — each claim placed by the year it was made, in a band for the horizon it states (imminent, near, distant, unstated), to show how the horizon of prophecy shifts across a century. The archive records predictions only, not outcomes.
 - A decade slider ("Play decades") and era filters.
 
 ## Status of the data
