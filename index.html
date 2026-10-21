@@ -83,6 +83,13 @@ button:focus-visible, [tabindex]:focus-visible, input:focus-visible { outline: 2
 .cell { fill: transparent; stroke: var(--rule); stroke-width: 1; }
 .cell.filled { fill: var(--accent-soft); }
 .cell.filled.hl { fill: var(--cell-sel); }
+.tetrad { width: min(100%, 320px); justify-self: center; display: block; margin: 4px auto 0; }
+.tet-cell { fill: var(--panel); stroke: var(--ink); stroke-width: 1.2; }
+.tet-mid { fill: var(--accent-soft); stroke: var(--ink); stroke-width: 1.2; }
+.tet-n { font: 700 22px var(--font-display); fill: var(--ink); }
+.tet-l { font: 500 11px var(--font-mono); fill: var(--muted); }
+.tet-mid-n { font: 700 20px var(--font-display); fill: var(--ink); }
+.tet-mid-l { font: 500 9px var(--font-mono); fill: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
 .horizons { display: grid; gap: 6px; }
 .horizons h3 { margin: 0; }
 .hbar { display: flex; height: 10px; border-radius: 999px; overflow: hidden; gap: 2px; }
@@ -413,7 +420,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     </div>
   </section>
 
-  <footer>Study 1 of <em>Historicising Speculative Design</em> (Soy Jang). The coding scheme is set out in the <a href="#codebook">Codebook</a>. Design-fiction storyboards are placeholders for AI-assisted animations.</footer>
+  <footer>Study 1 of <em>Historicising Speculative Design</em> (Soy Jang). The coding scheme is set out in the <a href="#codebook">Codebook</a>; for how the archive becomes design fictions, see <a href="#counterfactual">Counterfactual obsolescence</a>. Design-fiction storyboards are placeholders for AI-assisted animations.</footer>
 </div>
 
 <div class="tip" id="tip" hidden></div>
@@ -641,6 +648,18 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
           <dt>Source</dt><dd>${c.source || "N/A"}${c.verify ? `<br><em>To verify:</em> ${c.verify}` : ""}</dd>
         </dl>`;
   }
+  // McLuhan's Tetrad as a figure: four laws around the medium, placed as on the wheel
+  function tetradSVG(claims) {
+    const h = 58, n = (l) => claims.filter(c => c.laws.includes(l)).length;
+    const dia = (cx, cy) => `M${cx} ${cy - h} L${cx + h} ${cy} L${cx} ${cy + h} L${cx - h} ${cy}Z`;
+    const pos = { enhance: [-h, -h], reverse: [h, -h], retrieve: [-h, h], obsolesce: [h, h] };
+    let g = `<path class="tet-mid" d="${dia(0, 0)}"></path><text class="tet-mid-n" text-anchor="middle" y="2">${claims.length}</text><text class="tet-mid-l" text-anchor="middle" y="20">speculations</text>`;
+    for (const law of LAW_ORDER) {
+      const [x, y] = pos[law];
+      g += `<path class="tet-cell" d="${dia(x, y)}"></path><text class="tet-n" x="${x}" y="${y - 2}" text-anchor="middle">${n(law)}</text><text class="tet-l" x="${x}" y="${y + 18}" text-anchor="middle">${LAWS[law].label}</text>`;
+    }
+    return `<svg class="tetrad" viewBox="${-2 * h - 2} ${-2 * h - 2} ${4 * h + 4} ${4 * h + 4}" role="img" aria-label="Tetrad: ${LAW_ORDER.map(l => `${LAWS[l].label} ${n(l)}`).join(", ")} of ${claims.length} speculations">${g}</svg>`;
+  }
   function gapNote() {
     const [law, ring] = state.gap.split("-"), L = LAWS[law], R = rings()[+ring - 1];
     const near = CLAIMS.filter(c => c.laws.includes(law)).length;
@@ -669,14 +688,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     p.innerHTML = `<div><h3>Overview · ${claims.length} speculations</h3></div>
       <h2>${(() => { const n = (l) => claims.filter(c => c.laws.includes(l)).length;
         return `Most speculations promise to enhance and to replace; ${n("retrieve")} imagine retrieval, ${n("reverse")} reversal.`; })()}</h2>
-      <div class="bars">${counts.map(([l, n]) => `<div class="bar"><span>${LAWS[l].label}</span><span class="track"><span class="fill" style="display:block;width:${(n / max) * 100}%"></span></span><span class="n">${n}</span></div>`).join("")}</div>
-      <div class="horizons">${(() => {
-        const h = DIMS.temporal.levels.map((l, k) => [l, claims.filter(c => c.temporal === k + 1).length]);
-        const n = claims.length || 1;
-        return `<h3>Stated horizon</h3><div class="hbar">${h.map(([l, v], k) => v ? `<span class="hseg h${k + 1}" style="flex:${v}" title="${l}: ${v}"></span>` : "").join("")}</div>
-          <p class="small">${h.map(([l, v]) => `${l.toLowerCase()} ${v}`).join(" · ")}. ${h[3][1]} of ${claims.length} speculations state no horizon at all.</p>`;
-      })()}</div>
-      <p class="small">${g.length} hatched cells: combinations no speculation codes for. Select one for a note. For how the archive becomes design fictions, see <a href="#counterfactual">Counterfactual obsolescence</a>. Select a dot for its coding.</p>`;
+      ${tetradSVG(claims)}`;
   }
 
   function legend() {
