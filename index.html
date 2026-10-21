@@ -18,6 +18,7 @@
   --rule: #e0e0e0;
   --accent: #1a1a1a;      /* grayscale interface; colour is kept for the media families only */
   --accent-soft: #f3f3f3;
+  --cell-sel: #d2d2d2;
   --era1: #8a6a14;        /* image and film */
   --era2: #23786a;        /* broadcast */
   --era3: #5a3fb0;        /* machines and computers */
@@ -31,14 +32,14 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --paper: #121212; --panel: #1b1b1b; --ink: #ededed; --muted: #a3a3a3; --rule: #2f2f2f;
-    --accent: #f0f0f0; --accent-soft: #2b2b2b;
+    --accent: #f0f0f0; --accent-soft: #2b2b2b; --cell-sel: #4a4a4a;
     --era1: #d6b45a; --era2: #5fc6ad; --era3: #a58ff2; --era4: #f17ba6; --fam5: #79aef0; --fam6: #b8c1cf;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --paper: #121212; --panel: #1b1b1b; --ink: #ededed; --muted: #a3a3a3; --rule: #2f2f2f;
-  --accent: #f0f0f0; --accent-soft: #2b2b2b;
+  --accent: #f0f0f0; --accent-soft: #2b2b2b; --cell-sel: #4a4a4a;
   --era1: #d6b45a; --era2: #5fc6ad; --era3: #a58ff2; --era4: #f17ba6; --fam5: #79aef0; --fam6: #b8c1cf;
   color-scheme: dark;
 }
@@ -83,7 +84,10 @@ button:focus-visible, [tabindex]:focus-visible, input:focus-visible { outline: 2
 .cell.filled { fill: var(--accent-soft); }
 .cell.gap { fill: url(#hatch); stroke: var(--accent); stroke-dasharray: 4 4; cursor: pointer; }
 .cell.gap:hover, .cell.gap:focus-visible, .cell.gap.sel { stroke-width: 2.5; outline: none; }
-.cell.gap.sel { fill: var(--accent-soft); }
+.cell.gap.sel { fill: var(--cell-sel); stroke: var(--ink); }
+.gapnote { display: grid; gap: 10px; border-top: 1px solid var(--rule); padding-top: 16px; }
+.gapnote-head { display: flex; justify-content: space-between; align-items: baseline; }
+.gapnote-head h3 { margin: 0; }
 .axis-label { font-family: var(--font-display); font-weight: 700; font-size: 20px; fill: var(--ink); }
 .axis-sub { font-family: var(--font-mono); font-size: 11px; fill: var(--muted); letter-spacing: .04em; }
 .ring-label { font-family: var(--font-mono); font-size: 10.5px; fill: var(--muted); }
@@ -631,19 +635,25 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
           <dt>Source</dt><dd>${c.source || "N/A"}${c.verify ? `<br><em>To verify:</em> ${c.verify}` : ""}</dd>
         </dl>`;
   }
-  function renderPanel() {
-    const p = $("#panel");
-    if (state.gap) {
-      const [law, ring] = state.gap.split("-"), L = LAWS[law], R = rings()[+ring - 1];
-      const near = CLAIMS.filter(c => c.laws.includes(law)).length;
-      p.innerHTML = `<button type="button" class="back" id="back">← Overview</button>
-        <div><h3>Empty cell</h3></div>
+  function gapNote() {
+    const [law, ring] = state.gap.split("-"), L = LAWS[law], R = rings()[+ring - 1];
+    const near = CLAIMS.filter(c => c.laws.includes(law)).length;
+    return `<div class="gapnote">
+        <div class="gapnote-head"><h3>Empty cell</h3><button type="button" class="back" id="gap-close" aria-label="Close note">Close ×</button></div>
         <h2>${L.label} · ${R.label}</h2>
         <p style="margin:0">No speculation in the archive imagines a medium that would ${L.verb} ${state.dim === "scope" ? `at the scale of “${R.label.toLowerCase()}”` : +ring === 4 ? "without stating a horizon" : `on ${R.label === "Imminent" ? "an imminent" : `a ${R.label.toLowerCase()}`} horizon`}. ${near} speculation${near === 1 ? "" : "s"} ${near === 1 ? "codes" : "code"} for ${L.label.toLowerCase()} ${state.dim === "scope" ? "at other scales" : "on other horizons"}.</p>
-        <p class="small">An empty cell describes the archive; it is not an instruction for what to design, and it may reflect what the archive happened to collect. For how the archive becomes design fictions, see <a href="#counterfactual">Counterfactual obsolescence</a>.</p>`;
-      $("#back").addEventListener("click", () => { state.gap = null; render(); });
-      return;
+        <p class="small">An empty cell describes the archive; it is not an instruction for what to design, and it may reflect what the archive happened to collect.</p>
+      </div>`;
+  }
+  function renderPanel() {
+    renderPanelBody();
+    if (state.gap && !state.selected) {
+      $("#panel").insertAdjacentHTML("beforeend", gapNote());
+      $("#gap-close").addEventListener("click", () => { state.gap = null; render(); });
     }
+  }
+  function renderPanelBody() {
+    const p = $("#panel");
     if (state.selected) {
       const c = CLAIMS.find(x => x.id === state.selected);
       p.innerHTML = `<button type="button" class="back" id="back">← Overview</button>` + detailHTML(c);
