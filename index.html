@@ -120,6 +120,8 @@ button:focus-visible, [tabindex]:focus-visible, input:focus-visible { outline: 2
 .legend span { display: inline-flex; align-items: center; gap: 6px; }
 .lg-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--muted); display: inline-block; }
 .lg-dot.hollow { background: transparent; border: 3px solid var(--muted); }
+.shape { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--muted); display: inline-block; }
+.shape.dia { border-radius: 1px; transform: rotate(45deg); width: 9px; height: 9px; }
 .lg-dot.dash { background: transparent; border: 2px dashed var(--muted); }
 .lg-hatch { width: 16px; height: 12px; border: 1px dashed var(--accent); background: repeating-linear-gradient(45deg, var(--accent-soft) 0 3px, transparent 3px 6px); display: inline-block; }
 [hidden] { display: none !important; }
@@ -195,8 +197,8 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
       <a href="#sources" data-page="sources">Sources</a>
       <a href="#gaps" data-page="gaps">Gaps for speculative design</a>
     </nav>
-    <p class="lede">Claims that a new medium would transform or replace the book in education, from the stereograph and Edison’s films to AI tutors. Each claim sits in the Tetrad sector it promised (enhance, obsolesce, retrieve, reverse) at its speculative distance from its own present. Hatched cells are gaps: no claim imagined them. Open a gap to see the design fiction it calls for.</p>
-    <p class="notice"><strong>Pilot sample.</strong> 18 documented claims, quoted from primary sources or reputable compilations. Codes are provisional (one coder, <a href="#codebook">codebook</a> v0.1), and claims marked “to verify” still need checking against the original page.</p>
+    <p class="lede">Speculations that a new medium would transform or replace the book in education, from the stereograph and Edison’s films to AI tutors: forecasts and promotions, but also fiction, academic and policy scenarios, and speculative design. Each speculation sits in the Tetrad sector it promised (enhance, obsolesce, retrieve, reverse) at its speculative distance from its own present. Hatched cells are gaps: no claim imagined them. Open a gap to see the design fiction it calls for.</p>
+    <p class="notice"><strong>Pilot sample.</strong> 26 documented speculations: forecasts, fiction, academic and policy scenarios, and speculative design, quoted or described from primary sources or reputable compilations. Codes are provisional (one coder, <a href="#codebook">codebook</a> v0.1), and claims marked “to verify” still need checking against the original page.</p>
   </header>
 
   <section id="pg-archive" class="page">
@@ -212,6 +214,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
       <button type="button" class="play" id="play">Play decades</button>
     </div>
     <div class="chips" id="eras" role="group" aria-label="Filter by era"></div>
+    <div class="chips" id="genres" role="group" aria-label="Filter by genre"></div>
   </div>
 
   <div class="main">
@@ -242,15 +245,17 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
       </nav>
       <div class="cb-body">
         <section id="cb-unit"><h3>Unit of analysis</h3>
-          <p>A <strong>claim</strong> is a documented statement, made at a datable moment, that a new medium will transform or replace the book, teaching or the school. A source may yield several claims; each is coded separately.</p>
-          <ul><li><strong>Include</strong> when the statement is forward-looking, attributable to a named person or organisation, dated, and about education.</li>
-          <li><strong>Exclude</strong> descriptions of what a medium already does, unattributed paraphrases, and claims about media outside education.</li>
+          <p>A <strong>speculation</strong> is a documented statement or work, made at a datable moment, that imagines a new medium transforming or replacing the book, reading, teaching or the school. It may be a prediction (a forecast or promotion) or an imagined world (fiction, a scenario, a speculative design). A source may yield several speculations; each is coded separately. “Claim” is used for forecasts.</p>
+          <ul><li><strong>Include</strong> when the speculation is forward-looking or set in a future, attributable to a named person, organisation or work, dated, and concerns the book, reading, teaching or schooling.</li>
+          <li><strong>Exclude</strong> descriptions of what a medium already does, unattributed paraphrases, and speculations about media with no bearing on learning or reading.</li>
+          <li><strong>Text.</strong> Quote the passage that carries the speculation. Where none does, as with an image or a whole novel, write a one-sentence description, shown in italics and never in quotation marks.</li>
           <li>The archive records <strong>predictions only</strong>. What each medium went on to do is read against the claims in the written analysis, not coded here.</li></ul></section>
 
         <section id="cb-attr"><h3>Attributes</h3><p>Descriptive facts about the claim, recorded rather than interpreted.</p>
           <dl class="cb-dl"><dt>Year</dt><dd>When the claim was made or first published. Era follows from the year.</dd>
           <dt>Medium</dt><dd>The medium the claim promotes (stereograph, motion picture, school radio, educational television, teaching machine, computer, VR, online courses, generative AI).</dd>
-          <dt>Speaker</dt><dd><em>Inventor</em> (promotes a medium they created) · <em>Company</em> (speaks for a firm with a stake in it) · <em>Policymaker</em> (government or regulator) · <em>Educator</em> (teacher, administrator, school broadcaster) · <em>Researcher</em> (academic or laboratory) · <em>Speculative designer</em>. Code the role in which the person spoke, not their best-known role.</dd>
+          <dt>Genre</dt><dd><em>Forecast or promotion</em> (a prediction made in earnest, often by someone with a stake) · <em>Fiction</em> (novels, stories, films, illustrations) · <em>Academic or policy scenario</em> (scenarios, proposals and “social science fiction” by researchers or institutions) · <em>Speculative design</em> (a designed artefact or intervention made to provoke reflection). Genre is coded from the form of the work, not its accuracy.</dd>
+          <dt>Speaker</dt><dd><em>Inventor</em> (promotes a medium they created) · <em>Company</em> (speaks for a firm with a stake in it) · <em>Policymaker</em> (government or regulator) · <em>Educator</em> (teacher, administrator, school broadcaster) · <em>Researcher</em> (academic or laboratory) · <em>Speculative designer</em> · <em>Writer or artist</em>. Code the role in which the person spoke, not their best-known role.</dd>
           <dt>Source</dt><dd>Full citation of the original; where quoted via a compilation, cite both. “N/A” when none is known.</dd>
           <dt>To verify</dt><dd>Flag when the wording or venue comes only from a secondary source.</dd></dl></section>
 
@@ -259,7 +264,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
           <dl class="cb-dl"><dt>Enhances</dt><dd>Extends or intensifies an existing capacity. <q>Television can extend the influence of the most talented teachers.</q> (RCA, 1959)</dd>
           <dt>Obsolesces</dt><dd>Pushes an existing medium or practice out of use. <q>Textbooks as the principal medium of teaching will be as obsolete as the horse and carriage.</q> (Edison, 1925)</dd>
           <dt>Retrieves</dt><dd>Brings back something older that had been lost. <q>…what Philip of Macedon’s son Alexander enjoyed as a royal prerogative: the personal services of a tutor…</q> (Suppes, 1966)</dd>
-          <dt>Reverses</dt><dd>Pushed to its limit, flips into its opposite. No claim in the pilot sample codes here.</dd></dl>
+          <dt>Reverses</dt><dd>Pushed to its limit, flips into its opposite. In the pilot sample this appears only outside forecasts: in Asimov’s story, individual machine teaching turns into isolation and longing for the old school.</dd></dl>
           <p class="cb-rule"><strong>Rule.</strong> Code what is promised, not what the coder thinks would follow. A denial (“would not replace teachers”) is not coded as obsolescence.</p></section>
 
         <section id="cb-distance"><h3>2 · Speculative distance</h3>
@@ -278,7 +283,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
           <dt>Near</dt><dd>About five to fifteen years. <q>inside of ten years</q>, <q>over the next decade</q>, <q>in the next 10 to 15 years</q>.</dd>
           <dt>Distant</dt><dd>Beyond about fifteen years. <q>fifty years from now</q>, <q>one day</q>, <q>eventually</q>.</dd>
           <dt>Unstated</dt><dd>No horizon given, or only a vague one (<q>in the future</q>). A value in its own right: a vague horizon may itself mark abstract construal.</dd></dl>
-          <p class="cb-rule"><strong>Rules.</strong> If a year is given, map it by the thresholds. If two phrases conflict, code the more specific (Edison 1913: <q>soon</q> and <q>inside of ten years</q> → near). Thresholds are provisional.</p>
+          <p class="cb-rule"><strong>Rules.</strong> If a year is given, map it by the thresholds. If two phrases conflict, code the more specific (Edison 1913: <q>soon</q> and <q>inside of ten years</q> → near). For fiction and scenarios, use the setting year if one is given (Asimov’s 2157 → distant). Thresholds are provisional.</p>
 
           <h4>2c · Spatial distance</h4>
           <dl class="cb-dl"><dt>This classroom</dt><dd>A single room, school or teacher.</dd><dt>This country</dt><dd>A national or regional school system (<q>the public schools</q>, <q>the Nation’s finest teaching personnel</q>).</dd><dt>Elsewhere</dt><dd>Another country or region than the speaker’s.</dd><dt>Worldwide</dt><dd>Education everywhere (<q>in the whole world</q>).</dd></dl>
@@ -287,7 +292,8 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
           <dl class="cb-dl"><dt>Our children</dt><dd>The speaker’s or audience’s own pupils (<q>your children</q>).</dd><dt>Other groups</dt><dd>A named group unlike the audience (<q>children who might otherwise fail</q>, <q>struggling colleges</q>).</dd><dt>Everyone</dt><dd>Learners in general (<q>millions of schoolchildren</q>).</dd></dl>
 
           <h4>2e · Hypotheticality</h4>
-          <dl class="cb-dl"><dt>Will</dt><dd>Stated as fact or certainty: <q>will</q>, <q>is destined to</q>, present-tense assertion.</dd><dt>Should</dt><dd>Stated as a goal or obligation: <q>should</q>, <q>must</q>, <q>ought to</q>.</dd><dt>Could</dt><dd>Stated as possibility: <q>can</q>, <q>could</q>, <q>may</q>, conditional <q>would</q>.</dd></dl>
+          <dl class="cb-dl"><dt>Will</dt><dd>Stated as fact or certainty: <q>will</q>, <q>is destined to</q>, present-tense assertion.</dd><dt>Should</dt><dd>Stated as a goal or obligation: <q>should</q>, <q>must</q>, <q>ought to</q>.</dd><dt>Could</dt><dd>Stated as possibility: <q>can</q>, <q>could</q>, <q>may</q>, conditional <q>would</q>. Scenarios offered as one possibility among several also code here.</dd>
+          <dt>Depicted</dt><dd>Shown as already real within an imagined world, as in fiction, illustration or a scenario vignette.</dd></dl>
           <p class="cb-rule"><strong>Rule.</strong> Code the main verb of the predictive clause; hedges in surrounding text do not change it.</p></section>
 
         <section id="cb-construal"><h3>3 · Construal level <span class="cb-src">Trope &amp; Liberman 2010</span></h3>
@@ -348,7 +354,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     temporal: { label: "Temporal distance", levels: ["Imminent", "Near", "Distant", "Unstated"], get: c => c.temporal },
     spatial:  { label: "Spatial distance", levels: ["This classroom", "This country", "Elsewhere", "Worldwide"], get: c => c.spatial },
     social:   { label: "Social distance", levels: ["Our children", "Other groups", "Everyone"], get: c => c.social },
-    hyp:      { label: "Hypotheticality", levels: ["Will", "Should", "Could"], get: c => c.hyp }
+    hyp:      { label: "Hypotheticality", levels: ["Will", "Should", "Could", "Depicted"], get: c => c.hyp }
   };
   function rings() {
     const D = DIMS[state.dim], n = D.levels.length, r0 = 44, r1 = 296, step = (r1 - r0) / n;
@@ -377,18 +383,29 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     { id: 15, year: 2013, medium: "Online learning", who: "Clayton Christensen", text: "A host of struggling colleges and universities … will disappear or merge in the next 10 to 15 years.", ring: 4, laws: ["obsolesce"], lang: "abstract", source: "“Clayton Christensen: Bottom 25 Percent of Colleges Will Disappear”, EdSurge, 5 November 2013." },
     { id: 16, year: 2023, medium: "Generative AI", who: "Sal Khan, Khan Academy", text: "We’re at the cusp of using AI for probably the biggest positive transformation that education has ever seen.", ring: 2, laws: ["enhance"], lang: "abstract", source: "Sal Khan, “How AI Could Save (Not Destroy) Education”, TED, 2023; Khan Academy blog, 1 May 2023." },
     { id: 17, year: 2023, medium: "Generative AI", who: "Bill Gates", text: "If you just took the next 18 months, the AIs will come in as a teacher’s aide and give feedback on writing. … The AIs will get to that ability, to be as good a tutor as any human ever could.", ring: 2, laws: ["enhance"], lang: "concrete", source: "Bill Gates, ASU+GSV Summit, San Diego, April 2023; reported in CNBC, 22 April 2023." },
-    { id: 18, year: 2025, medium: "Generative AI", who: "Bill Gates", text: "With AI, over the next decade, that will become free, commonplace — great medical advice, great tutoring.", ring: 3, laws: ["enhance", "obsolesce"], lang: "abstract", source: "Bill Gates, The Tonight Show Starring Jimmy Fallon, NBC, February 2025; reported by NBC/CNBC." }
+    { id: 18, year: 2025, medium: "Generative AI", who: "Bill Gates", text: "With AI, over the next decade, that will become free, commonplace — great medical advice, great tutoring.", ring: 3, laws: ["enhance", "obsolesce"], lang: "abstract", source: "Bill Gates, The Tonight Show Starring Jimmy Fallon, NBC, February 2025; reported by NBC/CNBC." },
+    { id: 19, year: 1910, genre: "fiction", desc: true, medium: "Imagined machine", who: "Villemard, En l’an 2000 postcard series", text: "At school: books are fed into a hand-cranked machine, and their contents are transmitted through wires to the pupils’ heads.", ring: 2, laws: ["enhance", "obsolesce"], lang: "concrete", verify: "Series dated c.1899–1910 in secondary sources; confirm the card’s date.", source: "Villemard, “En l’an 2000” (school scene), French illustrated card, c.1910. Reproduced in Postcrossing Blog, “En l’an 2000”, 17 October 2013." },
+    { id: 20, year: 1951, genre: "fiction", medium: "Mechanical teacher", who: "Isaac Asimov, “The Fun They Had”", text: "Today Tommy found a real book!", ring: 4, laws: ["obsolesce", "retrieve", "reverse"], lang: "concrete", note: "Set in 2157. Children are taught alone at home by mechanical teachers; a printed book found in an attic makes Margie long for the old schools and “the fun they had”.", source: "Isaac Asimov, “The Fun They Had”, Boys and Girls Page (newspaper supplement), 1 December 1951; collected in Earth Is Room Enough (1957)." },
+    { id: 21, year: 1953, genre: "fiction", medium: "Parlour-wall television", who: "Ray Bradbury, Fahrenheit 451 (Faber)", text: "The same infinite detail and awareness could be projected through radios and televisors, but are not.", ring: 3, laws: ["obsolesce", "reverse"], lang: "abstract", note: "Books are banned and burned; wall-sized televisions fill the home. Faber’s line insists the loss lies in use, not in the medium.", verify: "Page reference varies by edition.", source: "Ray Bradbury, Fahrenheit 451 (New York: Ballantine, 1953)." },
+    { id: 22, year: 1971, genre: "scenario", medium: "Computer learning networks", who: "Ivan Illich, Deschooling Society", text: "A computer would send him back the names and addresses of all those who had inserted the same description.", ring: 4, laws: ["obsolesce", "enhance"], lang: "concrete", note: "Illich proposes replacing schools with “learning webs”, including computer-based peer matching.", verify: "First edition year (1971) and publisher to confirm.", source: "Ivan Illich, Deschooling Society (New York: Harper & Row, 1971)." },
+    { id: 23, year: 1995, genre: "fiction", desc: true, medium: "Interactive book (AI tutor)", who: "Neal Stephenson, The Diamond Age", text: "An interactive book, A Young Lady’s Illustrated Primer, raises and educates a girl, Nell, through stories that respond to her life, voiced by a remote human actor.", ring: 3, laws: ["enhance", "retrieve"], lang: "concrete", note: "Set in the 22nd century. The tutor of the future takes the form of a book.", source: "Neal Stephenson, The Diamond Age: Or, a Young Lady’s Illustrated Primer (New York: Bantam Spectra, 1995)." },
+    { id: 24, year: 2015, genre: "design", medium: "Teaching bot", who: "Siân Bayne, Teacherbot", text: "…explore new ways of valuing teacher presence which are not resistant to the generative potential of automation.", ring: 2, laws: ["enhance"], lang: "abstract", note: "A Twitter bot developed from teaching the Edinburgh MOOC ‘E-learning and digital cultures’, as a critical intervention in automated teaching.", source: "Siân Bayne, “Teacherbot: Interventions in Automated Teaching”, Teaching in Higher Education 20(4), 2015. doi:10.1080/13562517.2015.1020783" },
+    { id: 25, year: 2020, genre: "scenario", desc: true, medium: "Data-driven platforms", who: "Selwyn, Pangrazio, Nemorin and Perrotta", text: "Five vignettes of a fictional Australian high school, Lakeside, in 2030: growing dataveillance, digital deskilling of teachers, and the de-territorialisation of schooling.", ring: 2, laws: ["reverse", "obsolesce"], lang: "concrete", source: "Neil Selwyn, Luci Pangrazio, Selena Nemorin and Carlo Perrotta, “What Might the School of 2030 Be Like? An Exercise in Social Science Fiction”, Learning, Media and Technology 45(1), 2020, pp. 90–106. doi:10.1080/17439884.2020.1694944" },
+    { id: 26, year: 2020, genre: "scenario", desc: true, medium: "Digital learning (scenario)", who: "OECD, Back to the Future of Education", text: "Scenario 4, ‘Learn-as-you-go’ (2040): school-based learning ends, and schooling as an institution disappears.", ring: 4, laws: ["obsolesce"], lang: "abstract", source: "OECD, Back to the Future of Education: Four OECD Scenarios for Schooling (Paris: OECD Publishing, 2020)." }
   ];
   // Provisional distance codes per claim: [spatial 1–4, social 1–3, hypotheticality 1–3 (will, should, could)]
   const CODES = { 1: [1, 1, 3], 2: [4, 3, 1], 3: [2, 1, 1], 4: [2, 1, 1], 5: [4, 3, 1], 6: [2, 1, 1], 7: [2, 1, 1], 8: [1, 1, 1], 9: [2, 1, 3],
-    10: [2, 1, 3], 11: [2, 3, 1], 12: [4, 3, 1], 13: [2, 2, 1], 14: [4, 3, 1], 15: [2, 2, 1], 16: [4, 3, 1], 17: [4, 3, 1], 18: [4, 3, 1] };
+    10: [2, 1, 3], 11: [2, 3, 1], 12: [4, 3, 1], 13: [2, 2, 1], 14: [4, 3, 1], 15: [2, 2, 1], 16: [4, 3, 1], 17: [4, 3, 1], 18: [4, 3, 1],
+    19: [1, 1, 4], 20: [1, 1, 4], 21: [2, 3, 4], 22: [2, 3, 3], 23: [3, 2, 4], 24: [1, 1, 3], 25: [2, 1, 4], 26: [4, 3, 3] };
   // Stated horizon (1 imminent, 2 near, 3 distant, 4 unstated) and the phrase that signals it
   const WHEN = { 1: [4, ""], 2: [4, ""], 3: [2, "soon … inside of ten years"], 4: [1, "in a few years"], 5: [4, ""], 6: [4, ""], 7: [4, ""], 8: [4, ""], 9: [4, ""],
     10: [4, ""], 11: [1, "in a few more years"], 12: [4, "in the future"], 13: [4, ""], 14: [3, "fifty years from now"], 15: [2, "in the next 10 to 15 years"],
-    16: [1, "at the cusp"], 17: [1, "the next 18 months"], 18: [2, "over the next decade"] };
-  const SPEAKERS = ["Inventor", "Company", "Policymaker", "Educator", "Researcher", "Speculative designer"];
-  const SPEAKER = { 1: 3, 2: 0, 3: 0, 4: 0, 5: 0, 6: 3, 7: 2, 8: 4, 9: 1, 10: 2, 11: 4, 12: 4, 13: 4, 14: 1, 15: 4, 16: 1, 17: 1, 18: 1 };
-  CLAIMS.forEach(c => { c.documented = true; c.short = c.who.split(/[,(]/)[0].trim(); [c.spatial, c.social, c.hyp] = CODES[c.id]; [c.temporal, c.when] = WHEN[c.id]; c.speaker = SPEAKERS[SPEAKER[c.id]]; });
+    16: [1, "at the cusp"], 17: [1, "the next 18 months"], 18: [2, "over the next decade"],
+    19: [3, "the year 2000"], 20: [3, "2157"], 21: [4, ""], 22: [4, ""], 23: [3, "the 22nd century"], 24: [1, "now (deployed)"], 25: [2, "2030"], 26: [3, "2040"] };
+  const SPEAKERS = ["Inventor", "Company", "Policymaker", "Educator", "Researcher", "Speculative designer", "Writer or artist"];
+  const GENRES = { forecast: "Forecast or promotion", fiction: "Fiction", scenario: "Academic or policy scenario", design: "Speculative design" };
+  const SPEAKER = { 1: 3, 2: 0, 3: 0, 4: 0, 5: 0, 6: 3, 7: 2, 8: 4, 9: 1, 10: 2, 11: 4, 12: 4, 13: 4, 14: 1, 15: 4, 16: 1, 17: 1, 18: 1, 19: 6, 20: 6, 21: 6, 22: 4, 23: 6, 24: 4, 25: 4, 26: 2 };
+  CLAIMS.forEach(c => { c.documented = true; c.genre ||= "forecast"; c.short = c.who.split(/[,(]/)[0].trim(); [c.spatial, c.social, c.hyp] = CODES[c.id]; [c.temporal, c.when] = WHEN[c.id]; c.speaker = SPEAKERS[SPEAKER[c.id]]; });
 
   const FICTIONS = {
     "reverse-4": {
@@ -421,12 +438,12 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
   const eraOf = (y) => ERAS.find(e => y >= e.from && y <= e.to) || ERAS[ERAS.length - 1];
 
-  const state = { view: "wheel", dim: "scope", decade: 2030, eras: new Set(ERAS.map(e => e.id)), selected: null };
+  const state = { genres: new Set(["forecast", "fiction", "scenario", "design"]), view: "wheel", dim: "scope", decade: 2030, eras: new Set(ERAS.map(e => e.id)), selected: null };
   const fictionFor = (key) => (state.dim === "scope" ? FICTIONS[key] : null);
   const lawsOf = (c) => c.laws;
 
   function visibleClaims() {
-    return CLAIMS.filter(c => c.year <= state.decade + 9 && state.eras.has(eraOf(c.year).id));
+    return CLAIMS.filter(c => c.year <= state.decade + 9 && state.eras.has(eraOf(c.year).id) && state.genres.has(c.genre));
   }
 
   // ---------- geometry ----------
@@ -435,6 +452,13 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   function sector(r0, r1, a0, a1) {
     const [x1, y1] = pt(r1, a0), [x2, y2] = pt(r1, a1), [x3, y3] = pt(r0, a1), [x4, y4] = pt(r0, a0);
     return `M${x1.toFixed(1)} ${y1.toFixed(1)} A${r1} ${r1} 0 0 0 ${x2.toFixed(1)} ${y2.toFixed(1)} L${x3.toFixed(1)} ${y3.toFixed(1)} A${r0} ${r0} 0 0 1 ${x4.toFixed(1)} ${y4.toFixed(1)}Z`;
+  }
+
+  // A forecast is a circle; fiction, scenarios and speculative design are diamonds
+  function mark(c, x, y, r, cls, style, attrs = "") {
+    if (c.genre === "forecast") return `<circle class="${cls}" cx="${x}" cy="${y}" r="${r}" style="${style}"${attrs}></circle>`;
+    const d = r * 1.25;
+    return `<path class="${cls}" d="M${x} ${y - d} L${x + d} ${y} L${x} ${+y + d} L${x - d} ${y}Z" style="${style}"${attrs}></path>`;
   }
 
   // ---------- wheel ----------
@@ -477,7 +501,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
         const abstract = c.lang === "abstract";
         const sel = state.selected === c.id ? " sel" : "";
         const style = abstract ? `stroke:${col}` : `fill:${col}`;
-        s += `<circle class="dot${abstract ? " hollow" : ""}${sel}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="9" style="${style}" tabindex="0" role="button" data-id="${c.id}" aria-label="${c.year}, ${c.medium}, ${abstract ? "abstract" : "concrete"} language: ${c.text}"></circle>`;
+        s += mark(c, +x.toFixed(1), +y.toFixed(1), 9, `dot${abstract ? " hollow" : ""}${sel}`, style, ` tabindex="0" role="button" data-id="${c.id}" aria-label="${c.year}, ${GENRES[c.genre]}, ${c.medium}, ${abstract ? "abstract" : "concrete"} language: ${c.text}"`);
       });
     }
     s += `</svg>`;
@@ -511,7 +535,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
         const col = `var(${eraOf(c.year).v})`, abstract = c.lang === "abstract";
         const sel = state.selected === c.id ? " sel" : "";
         s += `<g class="tl-row${sel}" tabindex="0" role="button" data-id="${c.id}" aria-label="${c.year}, ${b.label.toLowerCase()} horizon${c.when ? ` (${c.when})` : ""}, ${c.medium}: ${c.text}">
-          <circle class="dot${abstract ? " hollow" : ""}${sel}" cx="${cx}" cy="${cy}" r="8" style="${abstract ? `stroke:${col}` : `fill:${col}`}"></circle>
+          ${mark(c, cx, cy, 8, `dot${abstract ? " hollow" : ""}${sel}`, abstract ? `stroke:${col}` : `fill:${col}`)}
           <text class="tl-label" x="${cx + 13}" y="${cy + 4}">${c.short}</text></g>`;
       });
       y += h + 4;
@@ -536,11 +560,13 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
       const era = eraOf(c.year);
       p.innerHTML = `<button type="button" class="back" id="back">← Overview</button>
         <div><h3>${c.year} · ${c.medium}</h3></div>
-        <p class="quote">${c.documented ? "“" + c.text + "”" : c.text}</p>
+        <p class="quote">${c.desc ? `<em>${c.text}</em>` : "“" + c.text + "”"}</p>
+        ${c.note ? `<p class="small">${c.note}</p>` : ""}
         <p class="small">— ${c.who}, ${c.year}</p>
-        <div><span class="tag">Documented claim</span>${c.verify ? ` <span class="tag ill">To verify</span>` : ""}</div>
+        <div><span class="tag">${GENRES[c.genre]}</span>${c.verify ? ` <span class="tag ill">To verify</span>` : ""}</div>
         <dl class="meta">
           <dt>Era</dt><dd><span class="swatch" style="background:var(${era.v})"></span> ${era.label}</dd>
+          <dt>Genre</dt><dd>${GENRES[c.genre]}</dd>
           <dt>Speaker</dt><dd>${c.speaker}</dd>
           <dt>Tetrad</dt><dd>${c.laws.map(l => `<span class="tag">${LAWS[l].label}</span>`).join("")}</dd>
           <dt>Scope</dt><dd>${DIMS.scope.levels[c.ring - 1]}</dd>
@@ -571,15 +597,16 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     const max = Math.max(1, ...counts.map(x => x[1]));
     const g = gaps();
     p.innerHTML = `<div><h3>Overview · ${claims.length} claims</h3></div>
-      <h2>Past futures promise to enhance and to replace. They rarely imagine retrieval, and never reversal.</h2>
+      <h2>${(() => { const f = claims.filter(c => c.genre === "forecast"), o = claims.filter(c => c.genre !== "forecast"), rr = (xs) => xs.filter(c => c.laws.includes("retrieve") || c.laws.includes("reverse")).length;
+        return `${rr(f)} of ${f.length} forecasts imagine retrieval or reversal; ${rr(o)} of ${o.length} fictions, scenarios and designs do.`; })()}</h2>
       <div class="bars">${counts.map(([l, n]) => `<div class="bar"><span>${LAWS[l].label}</span><span class="track"><span class="fill" style="display:block;width:${(n / max) * 100}%"></span></span><span class="n">${n}</span></div>`).join("")}</div>
       <p class="small">${g.length} gaps: the hatched cells. Open one on the wheel, or see them all under <a href="#gaps">Gaps for speculative design</a>. Select a dot for its coding.</p>`;
   }
 
   function legend() {
     $("#legend").innerHTML = state.view === "wheel"
-      ? `<span><i class="lg-dot"></i>Concrete language</span><span><i class="lg-dot hollow"></i>Abstract language</span><span><i class="lg-hatch"></i>Gap: no claim imagined this</span>`
-      : `<span><i class="lg-dot"></i>Concrete language</span><span><i class="lg-dot hollow"></i>Abstract language</span><span>Bands: the horizon each claim states</span>`;
+      ? `<span><i class="lg-dot"></i>Concrete language</span><span><i class="lg-dot hollow"></i>Abstract language</span><span><i class="shape"></i>Forecast</span><span><i class="shape dia"></i>Fiction, scenario or design</span><span><i class="lg-hatch"></i>Gap: no claim imagined this</span>`
+      : `<span><i class="lg-dot"></i>Concrete language</span><span><i class="lg-dot hollow"></i>Abstract language</span><span><i class="shape"></i>Forecast</span><span><i class="shape dia"></i>Fiction, scenario or design</span><span>Bands: the horizon each claim states</span>`;
   }
 
   function render() {
@@ -690,6 +717,14 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     b.setAttribute("aria-pressed", state.eras.has(id));
     render();
   });
+  $("#genres").innerHTML = Object.entries(GENRES).map(([k, l]) => `<button type="button" class="chip" aria-pressed="true" data-genre="${k}"><span class="shape ${k === "forecast" ? "" : "dia"}"></span>${l}</button>`).join("");
+  $("#genres").addEventListener("click", (ev) => {
+    const b = ev.target.closest("[data-genre]"); if (!b) return;
+    const id = b.dataset.genre;
+    if (state.genres.has(id) && state.genres.size > 1) state.genres.delete(id); else state.genres.add(id);
+    b.setAttribute("aria-pressed", state.genres.has(id));
+    render();
+  });
   $("#decade").addEventListener("input", (e) => { state.decade = +e.target.value; render(); });
   let timer = null;
   $("#play").addEventListener("click", () => {
@@ -732,8 +767,9 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     $("#srclist").innerHTML = CLAIMS.slice().sort((a, b) => a.year - b.year || a.id - b.id).map(c => `
       <li><div class="yr"><i style="background:var(${eraOf(c.year).v})"></i>${c.year}</div>
         <div class="body">
-          <p class="q">“${c.text}”</p>
-          <p class="meta">${c.who} · ${c.medium} · ${c.speaker}</p>
+          <p class="q">${c.desc ? `<em>${c.text}</em>` : `“${c.text}”`}</p>
+          ${c.note ? `<p class="meta">${c.note}</p>` : ""}
+          <p class="meta">${c.who} · ${c.medium} · ${GENRES[c.genre]}</p>
           <p class="cite">${c.source}${c.verify ? ` <span class="tag ill">To verify</span> ${c.verify}` : ""}</p>
         </div></li>`).join("");
   }
