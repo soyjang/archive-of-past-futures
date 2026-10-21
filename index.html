@@ -714,7 +714,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
     const mx = Math.max(1, ...sp.map(x => x[1]));
     const speaker = `<section class="ov-block"><h3>Speaker</h3>
       <div class="bars sm">${sp.map(([l, v]) => `<div class="bar"><span>${l}</span><span class="track"><span class="fill" style="display:block;width:${(v / mx) * 100}%"></span></span><span class="n">${v}</span></div>`).join("")}</div></section>`;
-    return media + status + horizon + speaker;
+    return (state.fams.size ? "" : media) + status + horizon + speaker;
   }
   function gapNote() {
     const [law, ring] = state.gap.split("-"), L = LAWS[law], R = rings()[+ring - 1];
