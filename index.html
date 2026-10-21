@@ -221,8 +221,9 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
 .cb-rule { font-size: 14px; background: var(--panel); border: 1px solid var(--rule); border-radius: 8px; padding: 10px 12px; }
 .cb-refs { font-size: 14px; }
 .cb-ex dd strong { font-weight: 700; }
-.cb-ex .sep { border-top: 1px dotted var(--muted); padding-top: 10px; margin-top: 4px; }
-.cb-ex dt.sep { margin-right: -18px; padding-right: 18px; }
+.cb-ex dt.grp { grid-column: 1 / -1; margin-top: 12px; }
+.cb-ex dt.grp:first-child { margin-top: 0; }
+.cb-ex dt.grp span { font: 500 11px var(--font-mono); text-transform: uppercase; letter-spacing: .06em; background: var(--accent-soft); color: var(--accent); border-radius: 4px; padding: 2px 8px; }
 @media (max-width: 760px) { .cb { grid-template-columns: minmax(0, 1fr); } .cb-toc { position: static; display: flex; flex-wrap: wrap; gap: 6px 14px; border-left: 0; padding-left: 0; } .cb-dl { grid-template-columns: minmax(0, 1fr); gap: 2px; } .cb-dl dd { margin-bottom: 8px; } }
 .fill.abs { background: transparent !important; box-shadow: inset 0 0 0 2px var(--accent); border-radius: 0 999px 999px 0; }
 .key { display: inline-block; width: 12px; height: 12px; border-radius: 3px; background: var(--accent); vertical-align: -1px; }
@@ -362,20 +363,25 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
           <p class="quote">“I believe that the motion picture is destined to revolutionize our educational system and that in a few years it will supplant largely, if not entirely, the use of textbooks.”</p>
           <p class="small">— Thomas Edison, in Hugh Weir, “The Story of the Motion Picture”, <em>McClure’s</em>, November 1922</p>
           <dl class="cb-dl cb-ex">
+            <dt class="grp"><span>Unit of analysis</span></dt>
             <dt>Unit</dt><dd><strong>One speculation.</strong> Forward-looking, attributed, dated, and about the book and schooling. The two clauses make one prediction, so they are coded together.</dd>
+            <dt class="grp"><span>Attributes</span></dt>
             <dt>Year</dt><dd><strong>1922.</strong> The date of first publication in <em>McClure’s</em>, not of later quotation (Cuban 1986).</dd>
             <dt>Medium</dt><dd><strong>Film.</strong> “The motion picture”.</dd>
             <dt>Format</dt><dd><strong>Press or magazine.</strong> An interview published in a magazine; where it was found (a book) does not change the format.</dd>
             <dt>Speaker</dt><dd><strong>Inventor.</strong> Edison speaks as the promoter of a medium he helped create, not as an educator.</dd>
             <dt>Source</dt><dd><strong>Hugh Weir, “The Story of the Motion Picture”, <em>McClure’s</em> 54, November 1922, p. 85; quoted in Cuban (1986).</strong> The original is cited first, then the compilation where it was found.</dd>
             <dt>To verify</dt><dd><strong>Yes.</strong> The full wording comes from secondary sources and is checked against <em>McClure’s</em> before the code is final.</dd>
-            <dt class="sep">Tetrad</dt><dd class="sep"><strong>Enhances, Obsolesces.</strong> “Revolutionize our educational system” promises enhancement; “supplant … the use of textbooks” names what becomes obsolete. Nothing is said about what film would bring back or turn into, so retrieval and reversal are not coded, however tempting they are in hindsight.</dd>
+            <dt class="grp"><span>1 · Tetrad</span></dt>
+            <dt>Tetrad</dt><dd><strong>Enhances, Obsolesces.</strong> “Revolutionize our educational system” promises enhancement; “supplant … the use of textbooks” names what becomes obsolete. Nothing is said about what film would bring back or turn into, so retrieval and reversal are not coded, however tempting they are in hindsight.</dd>
+            <dt class="grp"><span>2 · Speculative distance</span></dt>
             <dt>Scope</dt><dd><strong>Replaces the medium.</strong> The textbook is displaced; the school is not. “Revolutionize our educational system” is rhetoric about the system, but the change asserted is to its medium. Rule: code the largest change the claim asserts, not its most dramatic word.</dd>
             <dt>Temporal</dt><dd><strong>Imminent</strong> (“in a few years”). An explicit horizon of up to about five years.</dd>
             <dt>Spatial</dt><dd><strong>This country.</strong> “Our educational system”: the national school system of the speaker.</dd>
             <dt>Social</dt><dd><strong>Our children.</strong> The pupils of “our” system; no other group is singled out.</dd>
             <dt>Hypothetical</dt><dd><strong>Will.</strong> “Is destined to” and “will supplant” state certainty. “I believe” frames the claim but does not hedge the main verb.</dd>
-            <dt class="sep">Construal</dt><dd class="sep"><strong>Abstract.</strong> The claim names an end (a revolution, the textbook’s disappearance) and no means: no projectors, rooms, teachers or costs.</dd>
+            <dt class="grp"><span>3 · Construal level</span></dt>
+            <dt>Construal</dt><dd><strong>Abstract.</strong> The claim names an end (a revolution, the textbook’s disappearance) and no means: no projectors, rooms, teachers or costs.</dd>
           </dl></section>
 
         <section id="cb-rel"><h3>Reliability</h3><p>All codes in this version are by one coder. Planned: a second coder codes a 20% sample after training on this codebook; agreement is reported per dimension (Cohen’s κ), and the codebook is revised where disagreement clusters.</p></section>
