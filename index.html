@@ -50,7 +50,7 @@ body {
   padding-right: max(16px, env(safe-area-inset-right, 0px));
   padding-block: 28px 48px;
 }
-.wrap { max-width: 1180px; margin: 0 auto; display: grid; gap: 22px; }
+.wrap { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; }
 header { display: grid; gap: 10px; }
 .eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
 h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 5vw, 48px); line-height: 1.05; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
@@ -62,9 +62,9 @@ h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 
 .seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 999px; overflow: hidden; }
 .seg button { font: 500 14px var(--font-body); background: transparent; color: var(--ink); border: 0; padding: 6px 14px; cursor: pointer; }
 .seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
-.slider { display: flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 13px; color: var(--muted); }
+.slider { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; min-width: 0; font-family: var(--font-mono); font-size: 13px; color: var(--muted); }
 .slider input { width: min(260px, 50vw); accent-color: var(--accent); }
-.slider output { color: var(--ink); min-width: 9ch; font-variant-numeric: tabular-nums; }
+.slider output { color: var(--ink); min-width: 5ch; font-variant-numeric: tabular-nums; }
 .play { font: 500 13px var(--font-mono); border: 1px solid var(--rule); background: var(--panel); color: var(--ink); border-radius: 6px; padding: 5px 10px; cursor: pointer; }
 .dimsel { font: 500 14px var(--font-body); border: 1px solid var(--rule); background: var(--panel); color: var(--ink); border-radius: 6px; padding: 5px 8px; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
@@ -83,13 +83,13 @@ button:focus-visible, [tabindex]:focus-visible, input:focus-visible { outline: 2
 .cell { fill: transparent; stroke: var(--rule); stroke-width: 1; }
 .cell.filled { fill: var(--accent-soft); }
 .cell.filled.hl { fill: var(--cell-sel); }
-.tetrad { width: min(100%, 320px); justify-self: center; display: block; margin: 4px auto 0; }
+.tetrad { width: min(100%, 180px); justify-self: center; display: block; margin: 4px auto 0; }
 .tet-cell { fill: var(--panel); stroke: var(--ink); stroke-width: 1.2; }
 .tet-mid { fill: var(--accent-soft); stroke: var(--ink); stroke-width: 1.2; }
-.tet-n { font: 700 22px var(--font-display); fill: var(--ink); }
-.tet-l { font: 500 11px var(--font-mono); fill: var(--muted); }
-.tet-mid-n { font: 700 20px var(--font-display); fill: var(--ink); }
-.tet-mid-l { font: 500 9px var(--font-mono); fill: var(--muted); text-transform: uppercase; letter-spacing: .06em; }
+.tet-n { font: 700 28px var(--font-display); fill: var(--ink); }
+.tet-l { font: 500 11.5px var(--font-mono); fill: var(--muted); }
+.tet-mid-n { font: 700 26px var(--font-display); fill: var(--ink); }
+.tet-mid-l { font: 500 12px var(--font-mono); fill: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
 .horizons { display: grid; gap: 6px; }
 .horizons h3 { margin: 0; }
 .hbar { display: flex; height: 10px; border-radius: 999px; overflow: hidden; gap: 2px; }
@@ -171,7 +171,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
 .sitenav a { font: 500 15px var(--font-body); color: var(--muted); text-decoration: none; padding: 8px 0 9px; border-bottom: 2px solid transparent; margin-bottom: -1px; }
 .sitenav a:hover { color: var(--ink); }
 .sitenav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--accent); }
-.page { display: grid; gap: 22px; }
+.page { display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; }
 .pagehead { display: grid; gap: 6px; max-width: 80ch; }
 .pagehead h2 { font-family: var(--font-display); font-size: 28px; margin: 0; }
 .strip-wrap { overflow-x: auto; display: grid; gap: 10px; background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: 12px; }
@@ -254,7 +254,8 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
 .bar .fill.con { border-radius: 999px 0 0 999px; }
 .key { display: inline-block; width: 12px; height: 12px; border-radius: 3px; background: var(--accent); vertical-align: -1px; }
 .key.abs { background: transparent; box-shadow: inset 0 0 0 2px var(--accent); margin-left: 8px; }
-footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 14px; max-width: 90ch; }
+footer { position: fixed; left: 0; right: 0; bottom: 0; z-index: 10; font-size: 12.5px; line-height: 1.45; color: var(--muted); background: var(--paper); border-top: 1px solid var(--rule); padding: 9px max(16px, env(safe-area-inset-left, 0px)) calc(9px + env(safe-area-inset-bottom, 0px)); text-align: center; }
+.wrap { padding-bottom: 72px; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 
@@ -420,7 +421,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     </div>
   </section>
 
-  <footer>Study 1 of <em>Historicising Speculative Design</em> (Soy Jang). The coding scheme is set out in the <a href="#codebook">Codebook</a>; for how the archive becomes design fictions, see <a href="#counterfactual">Counterfactual obsolescence</a>. Design-fiction storyboards are placeholders for AI-assisted animations.</footer>
+  <footer>Study 1 of <em>Historicising Speculative Design</em> (Soy Jang) · <a href="#codebook">Codebook</a> · <a href="#counterfactual">Counterfactual obsolescence</a></footer>
 </div>
 
 <div class="tip" id="tip" hidden></div>
@@ -653,10 +654,10 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     const h = 58, n = (l) => claims.filter(c => c.laws.includes(l)).length;
     const dia = (cx, cy) => `M${cx} ${cy - h} L${cx + h} ${cy} L${cx} ${cy + h} L${cx - h} ${cy}Z`;
     const pos = { enhance: [-h, -h], reverse: [h, -h], retrieve: [-h, h], obsolesce: [h, h] };
-    let g = `<path class="tet-mid" d="${dia(0, 0)}"></path><text class="tet-mid-n" text-anchor="middle" y="2">${claims.length}</text><text class="tet-mid-l" text-anchor="middle" y="20">speculations</text>`;
+    let g = `<path class="tet-mid" d="${dia(0, 0)}"></path><text class="tet-mid-n" text-anchor="middle" y="9">${claims.length}</text>`;
     for (const law of LAW_ORDER) {
       const [x, y] = pos[law];
-      g += `<path class="tet-cell" d="${dia(x, y)}"></path><text class="tet-n" x="${x}" y="${y - 2}" text-anchor="middle">${n(law)}</text><text class="tet-l" x="${x}" y="${y + 18}" text-anchor="middle">${LAWS[law].label}</text>`;
+      g += `<path class="tet-cell" d="${dia(x, y)}"></path><text class="tet-n" x="${x}" y="${y + 2}" text-anchor="middle">${n(law)}</text><text class="tet-l" x="${x}" y="${y + 22}" text-anchor="middle">${LAWS[law].label}</text>`;
     }
     return `<svg class="tetrad" viewBox="${-2 * h - 2} ${-2 * h - 2} ${4 * h + 4} ${4 * h + 4}" role="img" aria-label="Tetrad: ${LAW_ORDER.map(l => `${LAWS[l].label} ${n(l)}`).join(", ")} of ${claims.length} speculations">${g}</svg>`;
   }
