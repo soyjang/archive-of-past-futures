@@ -185,13 +185,6 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
       <button type="button" id="v-wheel" aria-pressed="true">Tetrad wheel</button>
       <button type="button" id="v-time" aria-pressed="false">Timeline</button>
     </div>
-    <div class="slider" id="rings-ctl">
-      <label for="dim">Rings show</label>
-      <select id="dim" class="dimsel">
-        <option value="scope">Scope of change</option>
-        <option value="temporal">Temporal distance</option>
-      </select>
-    </div>
     <div class="slider">
       <label for="decade">Claims up to</label>
       <input type="range" id="decade" min="1900" max="2030" step="10" value="2030">
@@ -221,7 +214,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     <div id="gapgroups"></div>
   </section>
 
-  <footer>Coding scheme: Tetrad laws after McLuhan &amp; McLuhan (1988). Each claim also records who is speaking. Speculative distance, how far a claim departs from its own present, is coded on five dimensions: the four dimensions of psychological distance in construal-level theory (Trope &amp; Liberman 2010), temporal, spatial, social and hypotheticality, as marked in the claim's text, plus scope of change. Temporal distance is coded from the horizon a claim states (imminent, near, distant), since most give no year; “unstated” is a value in its own right. Construal level (concrete or abstract language) is coded as the kind of thinking distance is expected to produce; on the wheel, filled dots are concrete and hollow dots abstract. Scope of change (supplement, transform practice, replace the medium, replace the institution) is the dimension construal-level theory lacks: how much of the world the claim alters. The wheel's rings show the two main dimensions, scope of change and temporal distance; the others are reported descriptively. The timeline places each claim by the year it was made, in a band for the horizon it states, to show how the horizon of prophecy shifts across a century. The archive records predictions only, not outcomes. Design-fiction storyboards are placeholders for AI-assisted animations.</footer>
+  <footer>Coding scheme: Tetrad laws after McLuhan &amp; McLuhan (1988). Each claim also records who is speaking. Speculative distance, how far a claim departs from its own present, is coded on five dimensions: the four dimensions of psychological distance in construal-level theory (Trope &amp; Liberman 2010), temporal, spatial, social and hypotheticality, as marked in the claim's text, plus scope of change. Temporal distance is coded from the horizon a claim states (imminent, near, distant), since most give no year; “unstated” is a value in its own right. Construal level (concrete or abstract language) is coded as the kind of thinking distance is expected to produce; on the wheel, filled dots are concrete and hollow dots abstract. Scope of change (supplement, transform practice, replace the medium, replace the institution) is the dimension construal-level theory lacks: how much of the world the claim alters. The wheel's rings show scope of change and the timeline shows temporal distance, the two main dimensions; the others are reported descriptively. The timeline places each claim by the year it was made, in a band for the horizon it states, to show how the horizon of prophecy shifts across a century. The archive records predictions only, not outcomes. Design-fiction storyboards are placeholders for AI-assisted animations.</footer>
 </div>
 
 <div class="overlay" id="overlay" hidden>
@@ -485,7 +478,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     p.innerHTML = `<div><h3>Overview · ${claims.length} claims</h3></div>
       <h2>Past futures promise to enhance and to replace. They rarely imagine retrieval, and never reversal.</h2>
       <div class="bars">${counts.map(([l, n]) => `<div class="bar"><span>${LAWS[l].label}</span><span class="track"><span class="fill" style="display:block;width:${(n / max) * 100}%"></span></span><span class="n">${n}</span></div>`).join("")}</div>
-      <p class="small">${g.length} gaps on ${DIMS[state.dim].label.toLowerCase()}: the hatched cells. Open one on the wheel, or see them all under <a href="#gaps">Gaps for speculative design</a>. Select a dot for its coding.</p>`;
+      <p class="small">${g.length} gaps: the hatched cells. Open one on the wheel, or see them all under <a href="#gaps">Gaps for speculative design</a>. Select a dot for its coding.</p>`;
   }
 
   function legend() {
@@ -506,7 +499,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   // ---------- fiction modal + multiplane sketch ----------
   let raf = null, lastFocus = null;
   function openFiction(key) {
-    if (key.includes(":")) { const [d, k] = key.split(":"); state.dim = d; $("#dim").value = d; key = k; }
+    if (key.includes(":")) key = key.split(":")[1];
     const [law, ring] = key.split("-");
     const L = LAWS[law], R = rings()[+ring - 1];
     const f = fictionFor(key) || {
@@ -603,7 +596,6 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     render();
   });
   $("#decade").addEventListener("input", (e) => { state.decade = +e.target.value; render(); });
-  $("#dim").addEventListener("change", (e) => { state.dim = e.target.value; render(); });
   let timer = null;
   $("#play").addEventListener("click", () => {
     if (timer) { clearInterval(timer); timer = null; $("#play").textContent = "Play decades"; return; }
@@ -620,7 +612,6 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     $("#v-time").setAttribute("aria-pressed", v === "time");
     $("#wheel-wrap").hidden = v !== "wheel";
     $("#time-wrap").hidden = v !== "time";
-    $("#rings-ctl").hidden = v !== "wheel";
     render();
   }
   $("#v-wheel").addEventListener("click", () => setView("wheel"));
@@ -668,7 +659,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     return out;
   }
   function renderGaps() {
-    $("#gapgroups").innerHTML = ["scope", "temporal"].map(dim => {
+    $("#gapgroups").innerHTML = ["scope"].map(dim => {
       const g = gapsOn(dim);
       return `<div class="gapgroup"><h3>${DIMS[dim].label} · ${g.length} gaps</h3><div class="gapcards">${g.map(x => {
         const star = dim === "scope" && FICTIONS[`${x.law}-${x.k}`];

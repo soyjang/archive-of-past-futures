@@ -15,7 +15,7 @@ The archive collects claims that a new medium would transform or replace the boo
 | Construal level | construal-level theory (outcome) | concrete or abstract language |
 | Speaker | | inventor, company, policymaker, educator, researcher, speculative designer |
 
-*Speculative distance* (how far a claim departs from its own present) is coded on five dimensions: the four dimensions of psychological distance in construal-level theory (Trope & Liberman 2010), as marked in the claim's text, plus scope of change, which the theory lacks because it studies everyday events rather than imagined changes to the world. Psychological distance proper is a person's sense of distance and cannot be read from a document, hence the separate term. Construal level is coded as what distance is expected to produce, so the archive can test whether far claims were in fact written abstractly. Scope of change and temporal distance are the primary dimensions for locating gaps; the others are reported descriptively.
+*Speculative distance* (how far a claim departs from its own present) is coded on five dimensions: the four dimensions of psychological distance in construal-level theory (Trope & Liberman 2010), as marked in the claim's text, plus scope of change, which the theory lacks because it studies everyday events rather than imagined changes to the world. Psychological distance proper is a person's sense of distance and cannot be read from a document, hence the separate term. Construal level is coded as what distance is expected to produce, so the archive can test whether far claims were in fact written abstractly. Scope of change and temporal distance are the primary dimensions: the wheel shows scope (and locates the gaps), the timeline shows temporal distance. The others are reported descriptively.
 
 Claims of replacement mostly state what a medium enhances and obsolesces, so the archive records only what was predicted. Reading these predictions against what each medium did in practice (television did not replace the book, but it did retrieve the lecture) belongs to the written analysis, drawing on histories of educational technology, not to the archive. The speaker code asks whether a claim's distance follows the interests behind it, and whether speculative design projects sit at different distances from commercial forecasts (Wong & Khovanskaya 2018).
 
@@ -24,11 +24,11 @@ Temporal distance is coded from the horizon a claim *states*, not a year, becaus
 ## Pages
 
 - **Archive** — two views of the claims.
-  - *Tetrad wheel*: four sectors for the Tetrad laws, rings for scope of change or temporal distance. Dots are filled for concrete language and hollow for abstract. Hatched cells are gaps: combinations no claim imagined. The overview counts claims per Tetrad law.
+  - *Tetrad wheel*: four sectors for the Tetrad laws, rings for scope of change. Dots are filled for concrete language and hollow for abstract. Hatched cells are gaps: combinations no claim imagined. The overview counts claims per Tetrad law.
   - *Timeline*: each claim placed by the year it was made, in a band for the horizon it states (imminent, near, distant, unstated). The overview counts claims per horizon, split by concrete and abstract language.
   - A decade slider ("Play decades") and era filters apply to both views.
 - **Sources** — every claim with its speaker, full citation and verification status, linking back to its place on the wheel.
-- **Gaps for speculative design** — every gap on scope of change and on temporal distance, each opening a design-fiction prompt with a multiplane animation sketch.
+- **Gaps for speculative design** — every gap on scope of change, each opening a design-fiction prompt with a multiplane animation sketch.
 
 ## Status of the data
 
