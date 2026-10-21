@@ -212,7 +212,6 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
       <button type="button" class="play" id="play">Play decades</button>
     </div>
     <div class="chips" id="eras" role="group" aria-label="Filter by era"></div>
-    <div class="chips" id="genres" role="group" aria-label="Filter by format"></div>
   </div>
 
   <div class="main">
@@ -439,12 +438,12 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
   const eraOf = (y) => ERAS.find(e => y >= e.from && y <= e.to) || ERAS[ERAS.length - 1];
 
-  const state = { genres: new Set(Object.keys(GENRES)), view: "wheel", dim: "scope", decade: 2030, eras: new Set(ERAS.map(e => e.id)), selected: null };
+  const state = { view: "wheel", dim: "scope", decade: 2030, eras: new Set(ERAS.map(e => e.id)), selected: null };
   const fictionFor = (key) => (state.dim === "scope" ? FICTIONS[key] : null);
   const lawsOf = (c) => c.laws;
 
   function visibleClaims() {
-    return CLAIMS.filter(c => c.year <= state.decade + 9 && state.eras.has(eraOf(c.year).id) && state.genres.has(c.genre));
+    return CLAIMS.filter(c => c.year <= state.decade + 9 && state.eras.has(eraOf(c.year).id));
   }
 
   // ---------- geometry ----------
@@ -714,14 +713,6 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     const id = b.dataset.era;
     if (state.eras.has(id) && state.eras.size > 1) state.eras.delete(id); else state.eras.add(id);
     b.setAttribute("aria-pressed", state.eras.has(id));
-    render();
-  });
-  $("#genres").innerHTML = Object.entries(GENRES).filter(([k]) => CLAIMS.some(c => c.genre === k)).map(([k, l]) => `<button type="button" class="chip" aria-pressed="true" data-genre="${k}">${l}</button>`).join("");
-  $("#genres").addEventListener("click", (ev) => {
-    const b = ev.target.closest("[data-genre]"); if (!b) return;
-    const id = b.dataset.genre;
-    if (state.genres.has(id) && state.genres.size > 1) state.genres.delete(id); else state.genres.add(id);
-    b.setAttribute("aria-pressed", state.genres.has(id));
     render();
   });
   $("#decade").addEventListener("input", (e) => { state.decade = +e.target.value; render(); });
