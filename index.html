@@ -89,10 +89,10 @@ button:focus-visible, [tabindex]:focus-visible, input:focus-visible { outline: 2
 .ring-label { font-family: var(--font-mono); font-size: 10.5px; fill: var(--muted); }
 .center-label { font-family: var(--font-mono); font-size: 10.5px; fill: var(--ink); }
 .hatch-line { stroke: var(--accent); stroke-width: 1.2; opacity: .55; }
-.dot { cursor: pointer; stroke: var(--panel); stroke-width: 2; }
-.dot.hollow { fill: var(--panel) !important; stroke-width: 3; }
+.dot { cursor: pointer; stroke: none; stroke-width: 2; }
+.dot.hollow { fill: var(--panel) !important; stroke-width: 2.5; }
 .dot:hover, .dot:focus-visible, .dot.sel { stroke: var(--ink); outline: none; }
-.dot.hollow:hover, .dot.hollow.sel { stroke-width: 4; }
+.dot.hollow:hover, .dot.hollow.sel { stroke-width: 3.5; }
 .dot { transition: opacity .25s; }
 .dot.dim { opacity: .22; }
 .span-line { stroke: var(--ink); stroke-width: 1.5; stroke-dasharray: 4 5; fill: none; animation: dash 1.2s linear infinite; }
@@ -131,7 +131,7 @@ button:focus-visible, [tabindex]:focus-visible, input:focus-visible { outline: 2
 .legend { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; color: var(--muted); }
 .legend span { display: inline-flex; align-items: center; gap: 6px; }
 .lg-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--muted); display: inline-block; }
-.lg-dot.hollow { background: transparent; border: 3px solid var(--muted); }
+.lg-dot.hollow { background: transparent; border: 2px solid var(--muted); box-sizing: border-box; }
 .lg-dot.dash { background: transparent; border: 2px dashed var(--muted); }
 .lg-hatch { width: 16px; height: 12px; border: 1px dashed var(--accent); background: repeating-linear-gradient(45deg, var(--accent-soft) 0 3px, transparent 3px 6px); display: inline-block; }
 [hidden] { display: none !important; }
@@ -534,8 +534,10 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   }
 
   // Every speculation is drawn the same way
+  // Hollow dots are drawn smaller so their outer edge matches a filled dot of the same size
   function mark(c, x, y, r, cls, style, attrs = "") {
-    return `<circle class="${cls}" cx="${x}" cy="${y}" r="${r}" style="${style}"${attrs}></circle>`;
+    const rr = cls.includes("hollow") ? r - 1.25 : r;
+    return `<circle class="${cls}" cx="${x}" cy="${y}" r="${rr}" style="${style}"${attrs}></circle>`;
   }
 
   // ---------- wheel ----------
