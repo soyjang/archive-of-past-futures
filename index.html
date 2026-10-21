@@ -102,6 +102,23 @@ button:focus-visible, [tabindex]:focus-visible, input:focus-visible { outline: 2
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .panel.depth2 { --panel:#2b2b2b; --ink:#f4f4f4; --muted:#b5b5b5; --rule:#3d3d3d; --accent:#ffffff; --accent-soft:#3a3a3a; border-color:#2b2b2b; } }
 :root[data-theme="dark"] .panel.depth2 { --panel:#2b2b2b; --ink:#f4f4f4; --muted:#b5b5b5; --rule:#3d3d3d; --accent:#ffffff; --accent-soft:#3a3a3a; border-color:#2b2b2b; }
 .cb-steps { margin: 6px 0; padding-left: 20px; display: grid; gap: 4px; }
+.readings { display: grid; gap: 34px; max-width: 80ch; }
+.rd { display: grid; gap: 12px; }
+.rd h3 { font-family: var(--font-display); font-size: 20px; margin: 0; display: flex; gap: 12px; align-items: baseline; }
+.rd-k { font: 500 12px var(--font-mono); color: var(--muted); min-width: 1.5ch; }
+.rd p { margin: 0; line-height: 1.55; }
+.rd-i { border-left: 2px solid var(--ink); padding-left: 12px; }
+.rd-fig { display: grid; gap: 8px; padding: 14px 16px; background: var(--accent-soft); border-radius: 8px; }
+.rd-row { display: grid; grid-template-columns: 15ch minmax(0, 1fr) 9ch; gap: 12px; align-items: center; font-size: 13px; }
+.rd-row .hbar { height: 10px; }
+.rd-n { font: 500 12px var(--font-mono); color: var(--muted); text-align: right; }
+.rd-key { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 12px; color: var(--muted); padding-top: 4px; }
+.rd-key span { display: inline-flex; align-items: center; gap: 6px; }
+.sig { border-collapse: collapse; width: 100%; font-size: 14px; }
+.sig th, .sig td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.sig thead th { font: 500 12px var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.sig tbody th { font: 500 12px var(--font-mono); color: var(--muted); font-weight: 500; width: 12ch; }
+@media (max-width: 560px) { .rd-row { grid-template-columns: 11ch minmax(0, 1fr) 7ch; gap: 8px; } .sig th, .sig td { padding: 6px; } }
 .ov-block { display: grid; gap: 8px; border-top: 1px solid var(--rule); padding-top: 14px; }
 .ov-block h3 { margin: 0; }
 .ov-key { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 16px; font-size: 13px; }
@@ -289,6 +306,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
       <a href="#archive" data-page="archive">Archive</a>
       <a href="#codebook" data-page="codebook">Codebook</a>
       <a href="#sources" data-page="sources">Sources</a>
+      <a href="#readings" data-page="readings">Readings</a>
       <a href="#counterfactual" data-page="counterfactual">Counterfactual obsolescence</a>
     </nav>
     <p class="lede">Speculations that a new medium would transform or replace the book in education, from the stereograph and Edison’s films to AI tutors, in press interviews, talks, novels, films, images, papers, reports and design projects. Each speculation sits in the Tetrad sector it promised (enhance, obsolesce, retrieve, reverse), on the ring for the scope of change it claims, from supplementing teaching to replacing the institution. Hatched cells are empty: no speculation in the archive codes for them.</p>
@@ -324,6 +342,12 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
         <div class="legend" id="src-legend"></div></div>
       <ol class="srclist src-pane" id="srclist" tabindex="0" aria-label="Sources"></ol>
     </div>
+  </section>
+
+  <section id="pg-readings" class="page" hidden>
+    <div class="pagehead"><h2>Readings</h2><p>What the coding shows when its parts are read against each other, and what follows for reading speculations and for designing them.</p>
+      <p class="small">Provisional: 31 speculations, one coder. These are patterns to test on a larger archive, not results. Counts are computed from the archive as it stands.</p></div>
+    <div class="readings" id="readings"></div>
   </section>
 
   <section id="pg-counterfactual" class="page" hidden>
@@ -1031,7 +1055,50 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
   });
 
   // ---------- pages ----------
-  const PAGES = ["archive", "sources", "counterfactual", "codebook"];
+  // ---------- readings ----------
+  function renderReadings() {
+    const C = CLAIMS, cnt = (a, f) => a.filter(f).length;
+    const abs = c => c.lang === "abstract", rr = c => c.laws.includes("retrieve") || c.laws.includes("reverse"), multi = c => c.laws.length > 1;
+    const byStatus = STATUS.map((l, i) => [l, C.filter(c => c.status === i + 1)]);
+    const bySpace = DIMS.spatial.levels.map((l, i) => [l, C.filter(c => c.spatial === i + 1)]).filter(x => x[1].length);
+    const byPeriod = [["Before 1960", c => c.year < 1960], ["1960–1999", c => c.year >= 1960 && c.year < 2000], ["2000 on", c => c.year >= 2000]].map(([l, f]) => [l, C.filter(f)]);
+    const ex = byStatus[0][1], im = byStatus[2][1], room = bySpace.find(x => x[0] === "This classroom")?.[1] || [], world = bySpace.find(x => x[0] === "Worldwide")?.[1] || [];
+    const early = byPeriod[0][1], late = byPeriod[2][1];
+    const writers = C.filter(c => c.speaker === "Writer or artist");
+    const R = C.filter(c => c.laws.includes("retrieve")), V = C.filter(c => c.laws.includes("reverse"));
+    // rows of 100% bars: segs = [[label, filter, cls]]
+    const fig = (groups, segs) => `<div class="rd-fig">${groups.map(([g, a]) => `<div class="rd-row"><span class="rd-g">${g}</span><span class="hbar">${segs.map(([l, f, k]) => { const v = cnt(a, f); return v ? `<span class="hseg ${k}" style="flex:${v}" title="${l}: ${v}"></span>` : ""; }).join("")}</span><span class="rd-n">${segs.map(([l, f]) => cnt(a, f)).join(" · ")}</span></div>`).join("")}
+      <div class="rd-key">${segs.map(([l, , k]) => `<span><i class="hkey ${k}"></i>${l}</span>`).join("")}</div></div>`;
+    const conc = [["Concrete", c => !abs(c), "s1"], ["Abstract", abs, "s3"]];
+    const items = [
+      { t: "Construal follows the medium’s existence, not its horizon",
+        p: `Speculations about an existing medium are mostly abstract (${cnt(ex, abs)} of ${ex.length}); speculations that imagine a medium are almost all concrete (${cnt(im, c => !abs(c))} of ${im.length}). Construal-level theory predicts that distant futures are construed abstractly. Here the most distant media are described most concretely: those promoting a medium that exists promise outcomes; those inventing one have to show it working.`,
+        f: fig(byStatus, conc),
+        i: "Read an abstract promise about an existing medium as promotion, and ask what it would look like in use." },
+      { t: "Construal follows space",
+        p: `Speculations set in one classroom are almost all concrete (${cnt(room, c => !abs(c))} of ${room.length}); worldwide ones are almost all abstract (${cnt(world, abs)} of ${world.length}), say “will” (${cnt(world, c => c.hyp === 1)} of ${world.length}) and never retrieve or reverse (${cnt(world, rr)} of ${world.length}). The theory holds for spatial distance and fails for temporal distance.`,
+        f: fig(bySpace, conc),
+        i: "Scale down. Concreteness, and with it room for retrieval and reversal, arrives at the scale of a room." },
+      { t: "Retrieval and reversal live in imagined media",
+        p: `Of ${R.length} speculations that retrieve, ${cnt(R, c => c.status === 3)} imagine their medium; of ${V.length} that reverse, ${cnt(V, c => c.status === 3)} do. Speculations about existing media almost never imagine the medium turning against itself (${cnt(ex, rr)} of ${ex.length}). The gaps in what promoters imagined are the gaps that fiction has filled.`,
+        f: fig(byStatus, [["Retrieves or reverses", rr, "s1"], ["Neither", c => !rr(c), "s3"]]),
+        i: "Counterfactual obsolescence completes a promotional speculation with the laws only fiction has imagined." },
+      { t: "Fiction holds several laws at once",
+        p: `${cnt(writers, multi) === writers.length ? "Every" : "Most"} speculation${cnt(writers, multi) === writers.length ? "" : "s"} by a writer or artist code${cnt(writers, multi) === writers.length ? "s" : ""} for more than one law (${cnt(writers, multi)} of ${writers.length}), against ${cnt(ex, multi)} of ${ex.length} about existing media. Asimov’s mechanical teacher enhances, obsolesces and reverses at once; promoters make single-law promises.`,
+        f: fig(byStatus, [["Several laws", multi, "s1"], ["One law", c => !multi(c), "s3"]]),
+        i: "Holding more than one law can be coded and tested on any design; inventing a medium is one way to get there, not the goal." },
+      { t: "Recent speculations are dated and close",
+        p: `Before 1960, ${cnt(early, c => c.temporal < 4)} of ${early.length} speculations state a horizon; since 2000, ${cnt(late, c => c.temporal < 4)} of ${late.length} do, ${cnt(late, c => c.temporal <= 2)} of them imminent or near (“the next 18 months”). The present future of AI and online courses leaves little time for consequences to unfold.`,
+        f: fig(byPeriod, [["Imminent or near", c => c.temporal <= 2, "s1"], ["Distant", c => c.temporal === 3, "s2"], ["Unstated", c => c.temporal === 4, "s3"]]),
+        i: "Speculative design can widen the horizon that recent promotion has narrowed." }
+    ];
+    const sig = [["Medium", "Existing", "Imagined, or an existing one scaled down"], ["Scale", "Worldwide", "One classroom"], ["Mode", "Will", "Depicted"], ["Horizon", "Stated and imminent", "Distant or unstated"], ["Language", "Abstract", "Concrete"], ["Tetrad", "One law, usually enhance or obsolesce", "Several laws, including retrieval or reversal"]];
+    $("#readings").innerHTML = items.map((r, k) => `<section class="rd"><h3><span class="rd-k">${k + 1}</span>${r.t}</h3><p>${r.p}</p>${r.f}<p class="rd-i"><strong>Implication.</strong> ${r.i}</p></section>`).join("") +
+      `<section class="rd"><h3><span class="rd-k">→</span>Two signatures</h3><p>Taken together, the patterns describe a promotional signature and a speculative one. For readers, the first is a check on claims about new media in education, AI among them: a claim with this signature says nothing about retrieval or reversal, so ask. For designers, the second is a set of heuristics for evaluating speculative design.</p>
+        <table class="sig"><thead><tr><th></th><th>Promotional</th><th>Speculative</th></tr></thead><tbody>${sig.map(([a, b, c]) => `<tr><th>${a}</th><td>${b}</td><td>${c}</td></tr>`).join("")}</tbody></table>
+        <p class="small">Status, format, hypotheticality and construal move together in this sample; ${cnt(im, c => c.hyp === 4)} of the ${im.length} imagined media are depicted rather than predicted. They may be one split, between predicting what an existing medium will do and depicting one that does not exist, which a larger archive would need to separate.</p></section>`;
+  }
+  const PAGES = ["archive", "sources", "readings", "counterfactual", "codebook"];
   function route() {
     let h = location.hash.slice(1);
     if (h === "gaps" || h === "ideas") h = "counterfactual";
@@ -1042,6 +1109,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
     $(".lede").hidden = page !== "archive";
     if (page === "sources") renderSources();
     if (page === "counterfactual") renderCF();
+    if (page === "readings") renderReadings();
     if (page === "archive") render();
     if (h.startsWith("cb-")) document.getElementById(h)?.scrollIntoView();
   }
