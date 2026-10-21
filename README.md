@@ -8,13 +8,15 @@ The archive collects claims that a new medium would transform or replace the boo
 |---|---|---|
 | Tetrad law(s) | McLuhan & McLuhan 1988 | enhance, obsolesce, retrieve, reverse |
 | Scope of change | specific to obsolescence | supplements, transforms practice, replaces the medium, replaces the institution |
-| Temporal distance | construal-level theory | time horizon in years from the claim's own present |
+| Temporal distance | construal-level theory | stated horizon: imminent, near, distant, unstated |
 | Spatial distance | construal-level theory | this classroom, this country, elsewhere, worldwide |
 | Social distance | construal-level theory | our children, other groups, everyone |
 | Hypotheticality | construal-level theory | will, should, could |
 | Construal level | construal-level theory (outcome) | concrete or abstract language |
 
 The four distance dimensions follow Trope & Liberman (2010). Construal level is coded as what distance is expected to produce, so the archive can test whether far claims were in fact written abstractly. Scope of change is my own addition, specific to claims of replacement.
+
+Temporal distance is coded from the horizon a claim *states*, not a year, because most claims (and most speculative design) give none: Edison's "soon", a design fiction's "near future". The signalling phrase is recorded with the code, a year is noted where given, and *unstated* is a value in its own right: in construal-level terms, a vague horizon may itself indicate abstract construal. Placing phrases on the scale is interpretive, so the codebook gives example phrases per level and a second coder checks a sample.
 
 ## Views
 
@@ -24,7 +26,7 @@ The four distance dimensions follow Trope & Liberman (2010). Construal level is 
 
 ## Status of the data
 
-**Mock-up.** All entries are illustrative paraphrases, except Edison's 1913 statement ("Books will soon be obsolete in the public schools"), which is a documented claim still to be verified against its source (commonly cited via Cuban 1986). Distance codes (`CODES`) are likewise illustrative. Replace the `CLAIMS` and `CODES` arrays in `index.html` with sourced entries as the archive is collected.
+**Mock-up.** All entries are illustrative paraphrases, except Edison's 1913 statement ("Books will soon be obsolete in the public schools"), which is a documented claim still to be verified against its source (commonly cited via Cuban 1986). Distance codes (`CODES`, `WHEN`) are likewise illustrative, and each claim's end year is a coder's estimate used only to draw the timeline. Replace the `CLAIMS`, `CODES` and `WHEN` arrays in `index.html` with sourced entries as the archive is collected.
 
 ## Running it
 

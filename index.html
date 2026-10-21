@@ -181,7 +181,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     <aside class="panel" id="panel" aria-live="polite"></aside>
   </div>
 
-  <footer>Coding scheme: Tetrad laws after McLuhan &amp; McLuhan (1988). Speculative distance on construal-level theory's four dimensions of psychological distance (Trope &amp; Liberman 2010): temporal, spatial, social and hypotheticality. Construal level (concrete or abstract language) is coded as the kind of thinking distance is expected to produce. Scope of change (supplement, transform practice, replace the medium, replace the institution) is a dimension specific to obsolescence. Design-fiction storyboards are placeholders for AI-assisted animations.</footer>
+  <footer>Coding scheme: Tetrad laws after McLuhan &amp; McLuhan (1988). Speculative distance on construal-level theory's four dimensions of psychological distance (Trope &amp; Liberman 2010): temporal, spatial, social and hypotheticality. Temporal distance is coded from the horizon a claim states (imminent, near, distant), since most give no year; “unstated” is a value in its own right. Construal level (concrete or abstract language) is coded as the kind of thinking distance is expected to produce. Scope of change (supplement, transform practice, replace the medium, replace the institution) is a dimension specific to obsolescence. Design-fiction storyboards are placeholders for AI-assisted animations.</footer>
 </div>
 
 <div class="overlay" id="overlay" hidden>
@@ -217,7 +217,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   const LAW_ORDER = ["enhance", "obsolesce", "retrieve", "reverse"];
   const DIMS = {
     scope:    { label: "Scope of change", levels: ["Supplements", "Transforms practice", "Replaces the medium", "Replaces the institution"], get: c => c.ring },
-    temporal: { label: "Temporal distance", levels: ["Up to 5 years", "6–15 years", "16–30 years", "Over 30 years"], get: c => { const d = c.horizon - c.year; return d <= 5 ? 1 : d <= 15 ? 2 : d <= 30 ? 3 : 4; } },
+    temporal: { label: "Temporal distance", levels: ["Imminent", "Near", "Distant", "Unstated"], get: c => c.temporal },
     spatial:  { label: "Spatial distance", levels: ["This classroom", "This country", "Elsewhere", "Worldwide"], get: c => c.spatial },
     social:   { label: "Social distance", levels: ["Our children", "Other groups", "Everyone"], get: c => c.social },
     hyp:      { label: "Hypotheticality", levels: ["Will", "Should", "Could"], get: c => c.hyp }
@@ -251,7 +251,11 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   // Illustrative distance codes per claim: [spatial 1–4, social 1–3, hypotheticality 1–3 (will, should, could)]
   const CODES = { 1: [1, 1, 1], 2: [2, 1, 1], 3: [2, 1, 1], 4: [2, 1, 2], 5: [2, 1, 1], 6: [1, 1, 3], 7: [1, 1, 1], 8: [4, 3, 1],
     9: [1, 1, 3], 10: [4, 3, 1], 11: [4, 3, 1], 12: [1, 1, 2], 13: [4, 3, 1], 14: [2, 1, 1], 15: [4, 3, 1], 16: [3, 2, 1] };
-  CLAIMS.forEach(c => { [c.spatial, c.social, c.hyp] = CODES[c.id]; });
+  // Stated horizon as an ordinal (1 imminent, 2 near, 3 distant, 4 unstated), with the phrase that signals it. Illustrative.
+  const WHEN = { 1: [4, ""], 2: [1, "soon"], 3: [2, "within a generation"], 4: [1, "in a few years"], 5: [2, "in the near future"], 6: [1, "now"],
+    7: [2, "by the end of the decade"], 8: [3, "one day"], 9: [4, ""], 10: [3, "eventually"], 11: [2, "within ten years"], 12: [1, "today"],
+    13: [1, "in a few years"], 14: [2, "in the near future"], 15: [3, "eventually"], 16: [4, ""] };
+  CLAIMS.forEach(c => { [c.spatial, c.social, c.hyp] = CODES[c.id]; [c.temporal, c.when] = WHEN[c.id]; });
 
   const FICTIONS = {
     "reverse-4": {
@@ -399,7 +403,8 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
           <dt>Era</dt><dd><span class="swatch" style="background:var(${era.v})"></span> ${era.label}</dd>
           <dt>Tetrad</dt><dd>${c.laws.map(l => `<span class="tag">${LAWS[l].label}</span>`).join("")}</dd>
           <dt>Scope</dt><dd>${DIMS.scope.levels[c.ring - 1]}</dd>
-          <dt>Temporal</dt><dd>${c.horizon} (${c.horizon - c.year} years ahead)</dd>
+          <dt>Temporal</dt><dd>${DIMS.temporal.levels[c.temporal - 1]}${c.when ? ` (“${c.when}”)` : ""}</dd>
+          <dt>Plotted to</dt><dd>${c.horizon} (coder's estimate, for the timeline)</dd>
           <dt>Spatial</dt><dd>${DIMS.spatial.levels[c.spatial - 1]}</dd>
           <dt>Social</dt><dd>${DIMS.social.levels[c.social - 1]}</dd>
           <dt>Hypothetical</dt><dd>${DIMS.hyp.levels[c.hyp - 1]}</dd>
