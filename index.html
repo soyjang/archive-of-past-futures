@@ -113,6 +113,7 @@ button:focus-visible, [tabindex]:focus-visible, input:focus-visible { outline: 2
 .horizons h3 { margin: 0; }
 .hbar { display: flex; height: 10px; border-radius: 999px; overflow: hidden; gap: 2px; }
 .hseg { display: block; background: var(--ink); }
+.hseg.s2, .hkey.s2 { opacity: .5; } .hseg.s3 { background: transparent; box-shadow: inset 0 0 0 1.25px var(--ink); border-radius: 0 999px 999px 0; } .hkey.s3 { background: transparent; box-shadow: inset 0 0 0 1.25px var(--ink); }
 .hseg.h2 { opacity: .7; } .hseg.h3 { opacity: .45; } .hseg.h4 { background: transparent; box-shadow: inset 0 0 0 1.25px var(--ink); border-radius: 0 999px 999px 0; }
 .cell.gap { fill: url(#hatch); stroke: var(--accent); stroke-dasharray: 4 4; cursor: pointer; }
 .cell.gap:focus, .cell.gap:active { outline: none; }
@@ -354,6 +355,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
         <section id="cb-attr"><h3>Attributes</h3><p>Descriptive facts about the speculation, recorded rather than interpreted.</p>
           <dl class="cb-dl"><dt>Year</dt><dd>When the speculation was made or first published.</dd>
           <dt>Medium</dt><dd>The medium the speculation promotes or imagines, from a fixed list: stereograph · film · radio · television · teaching machine (mechanical or robot teachers) · computer · virtual reality · internet (online courses, platforms) · AI · direct transmission to the brain. The source’s own wording is kept as a detail (television: <q>parlour walls</q>; computer: <q>learning pods</q>). New media are added to the list as they appear. For colour and filtering only, media are shown in seven families: stereograph and film · radio and television · teaching machines · computers · internet · AI · VR and direct transmission.</dd>
+          <dt>Medium status</dt><dd>Whether the medium existed when the speculation was made: <em>Existing</em> (in use or on sale at the time) · <em>Emerging</em> (built or demonstrated as a prototype or trial, not yet in general use) · <em>Imagined</em> (no working version existed; the speculation invents it). Code the medium as the speculation describes it, not its family: Bradbury’s parlour walls are imagined, although broadcast television existed in 1953. The status separates speculation about an existing medium from speculation that is itself a speculative medium.</dd>
           <dt>Format</dt><dd>The form in which the speculation was first made, not where it was found (an Edison interview quoted by Cuban is <em>press</em>): <em>Press or magazine</em> · <em>Talk or broadcast</em> (speech, lecture, keynote, broadcast interview, statement in a legislature) · <em>Book</em> · <em>Academic paper</em> · <em>Report</em> (policy, technical or corporate) · <em>Novel or story</em> · <em>Film or television</em> · <em>Image</em> (illustration, postcard, poster) · <em>Design project</em> (artefact, prototype, bot). Format is descriptive. Whether a work functions as speculative design is a question for the analysis, not a code: a novel or a policy scenario can do the work of speculative design as much as a designed artefact.</dd>
           <dt>Speaker</dt><dd><em>Inventor</em> (promotes a medium they created) · <em>Company</em> (speaks for a firm with a stake in it) · <em>Policymaker</em> (government or regulator) · <em>Educator</em> (teacher, administrator, school broadcaster) · <em>Researcher</em> (academic or laboratory) · <em>Speculative designer</em> · <em>Writer or artist</em>. Code the role in which the person spoke, not their best-known role.</dd>
           <dt>Source</dt><dd>Full citation of the original; where quoted via a compilation, cite both. “N/A” when none is known.</dd>
@@ -414,6 +416,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
             <dt class="grp"><span>Attributes</span></dt>
             <dt>Year</dt><dd><strong>1922.</strong> The date of first publication in <em>McClure’s</em>, not of later quotation (Cuban 1986).</dd>
             <dt>Medium</dt><dd><strong>Film.</strong> “The motion picture”.</dd>
+            <dt>Medium status</dt><dd><strong>Existing.</strong> Films had been made and screened for more than two decades by 1922, and some schools already used them. Edison speculates about what an existing medium will do, not about an invented one.</dd>
             <dt>Format</dt><dd><strong>Press or magazine.</strong> An interview published in a magazine; where it was found (a book) does not change the format.</dd>
             <dt>Speaker</dt><dd><strong>Inventor.</strong> Edison speaks as the promoter of a medium he helped create, not as an educator.</dd>
             <dt>Source</dt><dd><strong>Hugh Weir, “The Story of the Motion Picture”, <em>McClure’s</em> 54, November 1922, p. 85; quoted in Cuban (1986).</strong> The original is cited first, then the compilation where it was found.</dd>
@@ -550,6 +553,11 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
   const FORMAT = { 1: "book", 2: "press", 3: "press", 4: "press", 5: "press", 6: "talk", 7: "press", 8: "paper", 9: "press", 10: "talk", 11: "press", 12: "unknown",
     13: "report", 14: "press", 15: "press", 16: "talk", 17: "talk", 18: "talk", 19: "image", 20: "story", 21: "story", 22: "book", 23: "story", 24: "design", 25: "paper", 26: "report", 27: "film", 28: "film", 29: "film", 30: "film", 31: "film" };
   const SPEAKER = { 1: 3, 2: 0, 3: 0, 4: 0, 5: 0, 6: 3, 7: 2, 8: 4, 9: 1, 10: 2, 11: 4, 12: 4, 13: 4, 14: 1, 15: 4, 16: 1, 17: 1, 18: 1, 19: 6, 20: 6, 21: 6, 22: 4, 23: 6, 24: 4, 25: 4, 26: 2, 27: 6, 28: 1, 29: 6, 30: 6, 31: 1 };
+  // Medium status when the speculation was made (provisional, one coder)
+  const STATUS = ["Existing", "Emerging", "Imagined"];
+  const STATUS_OF = { 1: 1, 2: 1, 3: 1, 4: 1, 5: 1, 6: 1, 7: 1, 8: 2, 9: 1, 10: 1, 11: 2, 12: 1, 13: 2, 14: 1, 15: 1, 16: 1, 17: 1, 18: 1,
+    19: 3, 20: 3, 21: 3, 22: 2, 23: 3, 24: 2, 25: 1, 26: 1, 27: 3, 28: 3, 29: 3, 30: 3, 31: 2 };
+  CLAIMS.forEach(c => { c.status = STATUS_OF[c.id]; });
   CLAIMS.forEach(c => { c.documented = true; c.genre = FORMAT[c.id]; c.succ = SUCC_OF[c.id]; c.detail = c.medium; c.medium = SUCC[c.succ]; c.short = c.who.split(/[,(]/)[0].trim(); [c.spatial, c.social, c.hyp] = CODES[c.id]; [c.temporal, c.when] = WHEN[c.id]; c.speaker = SPEAKERS[SPEAKER[c.id]]; });
 
   const $ = (s) => document.querySelector(s);
@@ -658,6 +666,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
         <div><span class="tag">${GENRES[c.genre]}</span>${c.verify ? ` <span class="tag ill">To verify</span>` : ""}</div>
         <dl class="meta">
           <dt>Medium</dt><dd><span class="swatch" style="background:var(${famOf(c).v})"></span> ${c.medium}${c.detail.toLowerCase() !== c.medium.toLowerCase() ? ` <span class="small">(${c.detail.charAt(0).toLowerCase() + c.detail.slice(1)})</span>` : ""}</dd>
+          <dt>Status</dt><dd>${STATUS[c.status - 1]}</dd>
           <dt>Format</dt><dd>${GENRES[c.genre]}</dd>
           <dt>Speaker</dt><dd>${c.speaker}</dd>
           <dt>Tetrad</dt><dd>${c.laws.map(l => `<span class="tag">${LAWS[l].label}</span>`).join("")}</dd>
@@ -689,6 +698,10 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
     const media = `<section class="ov-block"><h3>Media</h3>
       <div class="hbar">${fam.map(([f, v]) => `<span class="hseg" style="flex:${v};background:var(${f.v})" title="${f.label}: ${v}"></span>`).join("")}</div>
       <ul class="ov-key">${fam.map(([f, v]) => `<li><span class="swatch" style="background:var(${f.v})"></span>${f.label}<b>${v}</b></li>`).join("")}</ul></section>`;
+    const st = STATUS.map((l, k) => [l, k + 1, claims.filter(c => c.status === k + 1).length]);
+    const status = `<section class="ov-block"><h3>Medium status</h3>
+      <div class="hbar">${st.map(([l, k, v]) => v ? `<span class="hseg s${k}" style="flex:${v}" title="${l}: ${v}"></span>` : "").join("")}</div>
+      <ul class="ov-key">${st.map(([l, k, v]) => `<li><span class="hkey s${k}"></span>${l}<b>${v}</b></li>`).join("")}</ul></section>`;
     const hz = DIMS.temporal.levels.map((l, k) => [l, k + 1, claims.filter(c => c.temporal === k + 1).length]);
     const horizon = `<section class="ov-block"><h3>Stated horizon</h3>
       <div class="hbar">${hz.map(([l, k, v]) => v ? `<span class="hseg h${k}" style="flex:${v}" title="${l}: ${v}"></span>` : "").join("")}</div>
@@ -697,7 +710,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
     const mx = Math.max(1, ...sp.map(x => x[1]));
     const speaker = `<section class="ov-block"><h3>Speaker</h3>
       <div class="bars sm">${sp.map(([l, v]) => `<div class="bar"><span>${l}</span><span class="track"><span class="fill" style="display:block;width:${(v / mx) * 100}%"></span></span><span class="n">${v}</span></div>`).join("")}</div></section>`;
-    return media + horizon + speaker;
+    return media + status + horizon + speaker;
   }
   function gapNote() {
     const [law, ring] = state.gap.split("-"), L = LAWS[law], R = rings()[+ring - 1];
