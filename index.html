@@ -673,10 +673,10 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
     const h = 58, n = (l) => claims.filter(c => c.laws.includes(l)).length;
     const dia = (cx, cy) => `M${cx} ${cy - h} L${cx + h} ${cy} L${cx} ${cy + h} L${cx - h} ${cy}Z`;
     const pos = { enhance: [-h, -h], reverse: [h, -h], retrieve: [-h, h], obsolesce: [h, h] };
-    let g = `<path class="tet-mid" d="${dia(0, 0)}"></path><text class="tet-mid-n" text-anchor="middle" y="3">${claims.length}</text><text class="tet-l" text-anchor="middle" y="17">Medium</text>`;
+    let g = `<path class="tet-mid" d="${dia(0, 0)}"></path><text class="tet-mid-n" text-anchor="middle" y="2">${claims.length}</text><text class="tet-l" text-anchor="middle" y="16">Medium</text>`;
     for (const law of LAW_ORDER) {
       const [x, y] = pos[law];
-      g += `<path class="tet-cell" d="${dia(x, y)}"></path><text class="tet-n" x="${x}" y="${y + 3}" text-anchor="middle">${n(law)}</text><text class="tet-l" x="${x}" y="${y + 17}" text-anchor="middle">${LAWS[law].label}</text>`;
+      g += `<path class="tet-cell" d="${dia(x, y)}"></path><text class="tet-n" x="${x}" y="${y + 2}" text-anchor="middle">${n(law)}</text><text class="tet-l" x="${x}" y="${y + 16}" text-anchor="middle">${LAWS[law].label}</text>`;
     }
     return `<svg class="tetrad" viewBox="${-2 * h - 2} ${-2 * h - 2} ${4 * h + 4} ${4 * h + 4}" role="img" aria-label="Tetrad: ${LAW_ORDER.map(l => `${LAWS[l].label} ${n(l)}`).join(", ")} of ${claims.length} speculations">${g}</svg>`;
   }
