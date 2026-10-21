@@ -154,12 +154,19 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
 .page { display: grid; gap: 22px; }
 .pagehead { display: grid; gap: 6px; max-width: 80ch; }
 .pagehead h2 { font-family: var(--font-display); font-size: 28px; margin: 0; }
-.src-main { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); gap: 26px; align-items: start; }
-@media (max-width: 900px) { .src-main { grid-template-columns: minmax(0, 1fr); } }
-.strip-wrap { overflow-x: auto; display: grid; gap: 10px; position: sticky; top: 12px; background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: 12px; }
-.strip-wrap svg { min-width: 520px; width: 100%; }
-@media (max-width: 900px) { .strip-wrap { position: static; } }
-.stepper { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.strip-wrap { overflow-x: auto; display: grid; gap: 10px; background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: 12px; }
+.src-work { display: grid; gap: 12px; }
+.src-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
+.src-tools input { font: 400 15px var(--font-body); padding: 7px 12px; border: 1px solid var(--rule); border-radius: 8px; background: var(--panel); color: var(--ink); min-width: min(100%, 320px); }
+.strip-wrap svg { width: 100%; min-width: 700px; touch-action: none; user-select: none; }
+.brush-area { fill: transparent; cursor: crosshair; }
+.brush { fill: var(--accent-soft); stroke: var(--accent); stroke-dasharray: 3 3; pointer-events: none; }
+.srclist.src-pane { height: min(60vh, 560px); overflow-y: auto; border: 1px solid var(--rule); border-radius: 10px; background: var(--panel); padding: 0 16px; position: relative; scroll-behavior: auto; }
+.srclist.src-pane::after { content: ""; display: block; height: calc(min(60vh, 560px) - 140px); }
+.srclist.src-pane li { cursor: pointer; border-top: 1px solid var(--rule); padding: 14px 8px; margin: 0 -8px; border-radius: 6px; }
+.src-pane li:first-child { border-top: 0; }
+.src-pane li.sel { background: var(--accent-soft); box-shadow: inset 3px 0 0 var(--accent); }
+.src-pane li.none { cursor: default; color: var(--muted); }
 .play:disabled { opacity: .35; cursor: default; }
 .tip { position: absolute; z-index: 15; max-width: 300px; background: var(--ink); color: var(--paper); border-radius: 8px; padding: 8px 10px; display: grid; gap: 3px; font-size: 13px; line-height: 1.4; pointer-events: none; box-shadow: 0 4px 14px rgb(0 0 0 / .18); }
 .tip strong { font-weight: 700; }
@@ -262,14 +269,14 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   </section>
 
   <section id="pg-sources" class="page" hidden>
-    <div class="pagehead"><h2>Sources</h2><p class="small">Every speculation in the archive by the year it was made. Hover for a summary; select a dot for the full entry, then step through in date order with the arrows or the arrow keys.</p></div>
-    <div class="src-main">
-      <div class="strip-wrap" id="strip"></div>
-      <aside class="panel" id="src-panel" aria-live="polite"></aside>
+    <div class="pagehead"><h2>Sources</h2><p class="small">Every speculation by the year it was made. Hover a dot for a summary and select it to find its source in the list. Drag across the timeline to zoom into a period; search to filter. Arrow keys step through in date order.</p></div>
+    <div class="src-work">
+      <div class="src-tools"><input type="search" id="src-q" placeholder="Search speculations, people, media…" aria-label="Search sources"><span class="small" id="src-count"></span></div>
+      <div class="strip-wrap"><div id="strip-svg"></div>
+        <div class="legend" id="src-legend"></div></div>
+      <ol class="srclist src-pane" id="srclist" tabindex="0" aria-label="Sources"></ol>
     </div>
     <div class="tip" id="tip" hidden></div>
-    <div><button type="button" class="linkbtn" id="list-toggle" aria-expanded="false">Show all as list ↓</button></div>
-    <ol class="srclist" id="srclist" hidden></ol>
   </section>
 
   <section id="pg-counterfactual" class="page" hidden>
@@ -762,40 +769,62 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("#overlay").hidden) closeFiction(); });
 
   // ---------- sources page ----------
+  // ---------- sources page: timeline + scrolling list in one fixed workspace ----------
   const SORTED = () => CLAIMS.slice().sort((a, b) => a.year - b.year || a.id - b.id);
-  let srcSel = null;
+  const FULL = [1900, 2030];
+  const src = { sel: null, range: FULL.slice(), q: "" };
+  const matchQ = (c) => !src.q || [c.text, c.who, c.medium, c.detail, c.note || "", c.source, GENRES[c.genre], String(c.year)].join(" ").toLowerCase().includes(src.q);
+  const shownSrc = () => SORTED().filter(c => c.year >= src.range[0] && c.year <= src.range[1] && matchQ(c));
+  const entryHTML = (c) => `<div class="yr"><i style="background:var(${famOf(c).v})"></i>${c.year}</div>
+        <div class="body">
+          <p class="q">${c.desc ? `<em>${c.text}</em>` : `“${c.text}”`}</p>
+          ${c.note ? `<p class="meta">${c.note}</p>` : ""}
+          <p class="meta">${c.who} · ${c.medium} · ${GENRES[c.genre]}</p>
+          <p class="cite">${c.source}${c.verify ? ` <span class="tag ill">To verify</span> ${c.verify}` : ""}</p>
+        </div>`;
+  const SW = 1100, SX0 = 24, SX1 = 1076;
+  const sX = (y) => SX0 + (y - src.range[0]) / Math.max(1, src.range[1] - src.range[0]) * (SX1 - SX0);
+  const sYear = (x) => src.range[0] + (x - SX0) / (SX1 - SX0) * (src.range[1] - src.range[0]);
   function renderStrip() {
-    const x0 = 20, x1 = 660, X = (y) => x0 + (y - 1900) / 130 * (x1 - x0), cols = [], base = 300, step = 28;
-    let dots = "", top = base;
-    SORTED().forEach(c => {
-      const x = X(c.year); let k = 0;
-      while (cols.some(([cx, ck]) => ck === k && Math.abs(cx - x) < 22)) k++;
+    const list = shownSrc(), n = list.length;
+    const r = n > 80 ? 5 : n > 40 ? 7 : 9, step = r * 2 + 4, base = 260, cols = [];
+    let dots = "", top = base - 40;
+    list.forEach(c => {
+      const x = sX(c.year); let k = 0;
+      while (cols.some(([cx, ck]) => ck === k && Math.abs(cx - x) < r * 2 + 3)) k++;
       cols.push([x, k]);
-      const y = base - k * step; top = Math.min(top, y);
-      const col = `var(${famOf(c).v})`, abstract = c.lang === "abstract", sel = srcSel === c.id;
-      dots += `<circle class="dot${abstract ? " hollow" : ""}${sel ? " sel" : srcSel ? " dim" : ""}" cx="${x.toFixed(1)}" cy="${y}" r="10" style="${abstract ? `stroke:${col}` : `fill:${col}`}" tabindex="0" role="button" data-jump="${c.id}" aria-label="${c.year}, ${c.short}: ${c.text}"></circle>`;
-      if (sel) dots += `<circle class="halo" cx="${x.toFixed(1)}" cy="${y}" r="10" style="stroke:${col}"></circle>`;
+      const y = base - k * step; top = Math.min(top, y - r - 10);
+      const col = `var(${famOf(c).v})`, abstract = c.lang === "abstract", sel = src.sel === c.id;
+      dots += `<circle class="dot${abstract ? " hollow" : ""}${sel ? " sel" : src.sel ? " dim" : ""}" cx="${x.toFixed(1)}" cy="${y}" r="${r}" style="${abstract ? `stroke:${col}` : `fill:${col}`}" tabindex="0" role="button" data-jump="${c.id}" aria-label="${c.year}, ${c.short}: ${c.text}"></circle>`;
+      if (sel) dots += `<circle class="halo" cx="${x.toFixed(1)}" cy="${y}" r="${r}" style="stroke:${col}"></circle>`;
     });
-    let axis = `<line class="tl-axis" x1="${x0}" x2="${x1}" y1="${base + 22}" y2="${base + 22}"></line>`;
-    for (let t = 1900; t <= 2030; t += 10) axis += `<line class="tl-axis" x1="${X(t)}" x2="${X(t)}" y1="${base + 18}" y2="${base + 26}"></line>${t % 20 === 0 ? `<text class="tl-tick" x="${X(t)}" y="${base + 44}" text-anchor="middle">${t}</text>` : ""}`;
-    $("#strip").innerHTML = `<svg viewBox="0 ${top - 22} 680 ${base + 54 - top}" role="img" aria-label="All speculations by year">${axis}${dots}</svg>
-      <div class="legend">${FAMS.map(f => `<span><span class="swatch" style="background:var(${f.v})"></span>${f.label}</span>`).join("")}<span><i class="lg-dot hollow"></i>Abstract language</span></div>`;
+    const span = src.range[1] - src.range[0], tick = span > 80 ? 20 : span > 30 ? 10 : span > 12 ? 5 : 1;
+    let axis = `<rect class="brush-area" x="${SX0 - 10}" y="${top}" width="${SX1 - SX0 + 20}" height="${base + 40 - top}"></rect><line class="tl-axis" x1="${SX0}" x2="${SX1}" y1="${base + 18}" y2="${base + 18}"></line>`;
+    for (let t = Math.ceil(src.range[0] / tick) * tick; t <= src.range[1]; t += tick) axis += `<line class="tl-axis" x1="${sX(t)}" x2="${sX(t)}" y1="${base + 14}" y2="${base + 22}"></line><text class="tl-tick" x="${sX(t)}" y="${base + 38}" text-anchor="middle">${t}</text>`;
+    $("#strip-svg").innerHTML = `<svg viewBox="0 ${top} ${SW} ${base + 46 - top}" role="img" aria-label="Speculations by year; drag across the axis to zoom">${axis}${dots}<rect class="brush" id="brush" x="0" y="${top}" width="0" height="${base + 40 - top}"></rect></svg>`;
+    const zoomed = src.range[0] !== FULL[0] || src.range[1] !== FULL[1];
+    $("#src-count").innerHTML = `${n} of ${CLAIMS.length} speculations · ${src.range[0]}–${Math.min(src.range[1], 2025)}${zoomed || src.q ? ` <button type="button" class="linkbtn" id="src-reset">Show all</button>` : ""}`;
   }
-  function renderSrcPanel() {
-    const p = $("#src-panel"), list = SORTED();
-    if (!srcSel) {
-      p.innerHTML = `<div><h3>${list.length} speculations · ${list[0].year}–${list[list.length - 1].year}</h3></div><h2>Select a dot to read its entry.</h2><p class="small">Or start from the first and step forward through the century.</p><div><button type="button" class="play" data-step="first">Start with ${list[0].year} →</button></div>`;
-      return;
-    }
-    const i = list.findIndex(c => c.id === srcSel), c = list[i];
-    p.innerHTML = `<div class="stepper"><button type="button" class="play" data-step="-1" ${i === 0 ? "disabled" : ""} aria-label="Previous speculation">← ${i > 0 ? list[i - 1].year : ""}</button><span class="small">${i + 1} of ${list.length}</span><button type="button" class="play" data-step="1" ${i === list.length - 1 ? "disabled" : ""} aria-label="Next speculation">${i < list.length - 1 ? list[i + 1].year : ""} →</button></div>` + detailHTML(c);
+  function renderSrcList() {
+    const list = shownSrc();
+    $("#srclist").innerHTML = list.length ? list.map(c => `<li id="src-${c.id}" class="${src.sel === c.id ? "sel" : ""}" data-pick="${c.id}">${entryHTML(c)}</li>`).join("") : `<li class="none">No speculations match.</li>`;
   }
-  function srcSelect(id) { srcSel = id; renderStrip(); renderSrcPanel(); }
+  function scrollPaneTo(id) {
+    const li = document.getElementById(`src-${id}`), pane = $("#srclist");
+    if (!li) return;
+    const delta = li.getBoundingClientRect().top - pane.getBoundingClientRect().top - 6;
+    pane.scrollTo({ top: pane.scrollTop + delta, behavior: Math.abs(delta) > 600 || window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" });
+  }
+  function srcSelect(id, scroll = true) { src.sel = id; renderStrip(); renderSrcList(); if (scroll) scrollPaneTo(id); }
   function srcStep(d) {
-    const list = SORTED(), i = list.findIndex(c => c.id === srcSel);
-    const n = d === "first" ? 0 : Math.max(0, Math.min(list.length - 1, i + d));
-    srcSelect(list[n].id);
-    if (window.matchMedia("(max-width: 900px)").matches) $("#src-panel").scrollIntoView({ block: "nearest" });
+    const list = shownSrc(); if (!list.length) return;
+    const i = list.findIndex(c => c.id === src.sel);
+    srcSelect(list[i < 0 ? 0 : Math.max(0, Math.min(list.length - 1, i + d))].id);
+  }
+  function renderSources() {
+    if (src.sel && !shownSrc().some(c => c.id === src.sel)) src.sel = null;
+    $("#src-legend").innerHTML = FAMS.map(f => `<span><span class="swatch" style="background:var(${f.v})"></span>${f.label}</span>`).join("") + `<span><i class="lg-dot hollow"></i>Abstract language</span>`;
+    renderStrip(); renderSrcList();
   }
   // tooltip
   function showTip(el) {
@@ -803,40 +832,44 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     const words = c.text.length > 90 ? c.text.slice(0, 88).replace(/\s+\S*$/, "") + "…" : c.text;
     t.innerHTML = `<strong>${c.year} · ${c.short}</strong><span>${c.desc ? `<em>${words}</em>` : `“${words}”`}</span>`;
     t.hidden = false;
-    const r = el.getBoundingClientRect(), w = t.offsetWidth;
-    t.style.left = `${Math.max(8, Math.min(window.innerWidth - w - 8, r.left + r.width / 2 - w / 2)) + window.scrollX}px`;
-    t.style.top = `${r.top + window.scrollY - t.offsetHeight - 10}px`;
+    const rc = el.getBoundingClientRect(), w = t.offsetWidth;
+    t.style.left = `${Math.max(8, Math.min(window.innerWidth - w - 8, rc.left + rc.width / 2 - w / 2)) + window.scrollX}px`;
+    t.style.top = `${rc.top + window.scrollY - t.offsetHeight - 10}px`;
   }
   const hideTip = () => { $("#tip").hidden = true; };
-  $("#strip").addEventListener("mouseover", (e) => { const d = e.target.closest("[data-jump]"); if (d) showTip(d); });
-  $("#strip").addEventListener("mouseout", (e) => { if (e.target.closest("[data-jump]")) hideTip(); });
-  $("#strip").addEventListener("focusin", (e) => { const d = e.target.closest("[data-jump]"); if (d) showTip(d); });
-  $("#strip").addEventListener("focusout", hideTip);
-  $("#strip").addEventListener("click", (e) => { const d = e.target.closest("[data-jump]"); if (d) { hideTip(); srcSelect(+d.dataset.jump); } });
-  $("#strip").addEventListener("keydown", (e) => { const d = e.target.closest("[data-jump]"); if (d && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); srcSelect(+d.dataset.jump); } });
-  $("#src-panel").addEventListener("click", (e) => { const b = e.target.closest("[data-step]"); if (b) srcStep(b.dataset.step === "first" ? "first" : +b.dataset.step); });
+  const strip = $("#strip-svg");
+  strip.addEventListener("mouseover", (e) => { const d = e.target.closest("[data-jump]"); if (d) showTip(d); });
+  strip.addEventListener("mouseout", (e) => { if (e.target.closest("[data-jump]")) hideTip(); });
+  strip.addEventListener("focusin", (e) => { const d = e.target.closest("[data-jump]"); if (d) showTip(d); });
+  strip.addEventListener("focusout", hideTip);
+  strip.addEventListener("keydown", (e) => { const d = e.target.closest("[data-jump]"); if (d && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); srcSelect(+d.dataset.jump); } });
+  // click a dot, or drag across the timeline to zoom
+  let drag = null;
+  const svgX = (ev) => { const svg = strip.querySelector("svg"), pt = svg.createSVGPoint(); pt.x = ev.clientX; pt.y = ev.clientY; return pt.matrixTransform(svg.getScreenCTM().inverse()).x; };
+  strip.addEventListener("pointerdown", (e) => {
+    if (e.target.closest("[data-jump]") || e.button !== 0) return;
+    drag = { x0: svgX(e) }; strip.setPointerCapture(e.pointerId);
+  });
+  strip.addEventListener("pointermove", (e) => {
+    if (!drag) return;
+    const x = svgX(e), b = $("#brush");
+    b.setAttribute("x", Math.min(drag.x0, x)); b.setAttribute("width", Math.abs(x - drag.x0));
+  });
+  strip.addEventListener("pointerup", (e) => {
+    if (!drag) { const d = e.target.closest("[data-jump]"); if (d) { hideTip(); srcSelect(+d.dataset.jump); } return; }
+    const x = svgX(e), a = Math.min(drag.x0, x), b = Math.max(drag.x0, x); drag = null;
+    if (b - a < 10) { $("#brush").setAttribute("width", 0); return; }
+    const y0 = Math.max(FULL[0], Math.floor(sYear(Math.max(SX0, a)))), y1 = Math.min(FULL[1], Math.ceil(sYear(Math.min(SX1, b))));
+    if (y1 - y0 >= 2) { src.range = [y0, y1]; renderSources(); $("#srclist").scrollTop = 0; }
+  });
+  $("#src-count").addEventListener("click", (e) => { if (e.target.id === "src-reset") { src.range = FULL.slice(); src.q = ""; $("#src-q").value = ""; renderSources(); } });
+  $("#src-q").addEventListener("input", (e) => { src.q = e.target.value.trim().toLowerCase(); renderSources(); $("#srclist").scrollTop = 0; });
+  $("#srclist").addEventListener("click", (e) => { const li = e.target.closest("[data-pick]"); if (li && !window.getSelection().toString()) srcSelect(+li.dataset.pick, false); });
   document.addEventListener("keydown", (e) => {
-    if ($("#pg-sources").hidden || !srcSel || !$("#overlay").hidden) return;
-    if (e.target.closest("input, select, textarea")) return;
-    if (e.key === "ArrowRight") { e.preventDefault(); srcStep(1); }
-    if (e.key === "ArrowLeft") { e.preventDefault(); srcStep(-1); }
+    if ($("#pg-sources").hidden || !$("#overlay").hidden || e.target.closest("input, select, textarea")) return;
+    if (e.key === "ArrowRight" || e.key === "ArrowDown" && e.target.closest("#srclist")) { e.preventDefault(); srcStep(1); }
+    if (e.key === "ArrowLeft" || e.key === "ArrowUp" && e.target.closest("#srclist")) { e.preventDefault(); srcStep(-1); }
   });
-  $("#list-toggle").addEventListener("click", () => {
-    const l = $("#srclist"), open = l.hidden;
-    l.hidden = !open; $("#list-toggle").setAttribute("aria-expanded", open);
-    $("#list-toggle").textContent = open ? "Hide list ↑" : "Show all as list ↓";
-  });
-  function renderSources() {
-    renderStrip(); renderSrcPanel();
-    $("#srclist").innerHTML = CLAIMS.slice().sort((a, b) => a.year - b.year || a.id - b.id).map(c => `
-      <li id="src-${c.id}"><div class="yr"><i style="background:var(${famOf(c).v})"></i>${c.year}</div>
-        <div class="body">
-          <p class="q">${c.desc ? `<em>${c.text}</em>` : `“${c.text}”`}</p>
-          ${c.note ? `<p class="meta">${c.note}</p>` : ""}
-          <p class="meta">${c.who} · ${c.medium} · ${GENRES[c.genre]}</p>
-          <p class="cite">${c.source}${c.verify ? ` <span class="tag ill">To verify</span> ${c.verify}` : ""}</p>
-        </div></li>`).join("");
-  }
 
   const cite = (id) => { const c = CLAIMS.find(x => x.id === id); return c ? `${c.short} ${c.year}` : ""; };
   // ---------- counterfactual obsolescence page ----------
