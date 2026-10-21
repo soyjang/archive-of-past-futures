@@ -2,12 +2,11 @@
 
 A prototype view for Study 1 of the PhD project *Historicising Speculative Design* (Soyoun Jang, Georgia Tech).
 
-The archive collects claims that a new medium would transform or replace the book in education, from the classroom stereoscope and educational film to today's discourse on VR and AI. Each claim is coded on eight codes, with the Tetrad coded twice:
+The archive collects claims that a new medium would transform or replace the book in education, from the classroom stereoscope and educational film to today's discourse on VR and AI. Each claim is coded on eight codes:
 
 | Code | Source | Values |
 |---|---|---|
-| Tetrad law(s), predicted | McLuhan & McLuhan 1988 | enhance, obsolesce, retrieve, reverse |
-| Tetrad law(s), as it happened | histories of educational technology (Cuban 1986; Watters 2021) | same; empty while a claim is still open |
+| Tetrad law(s) | McLuhan & McLuhan 1988 | enhance, obsolesce, retrieve, reverse |
 | Scope of change | specific to obsolescence | supplements, transforms practice, replaces the medium, replaces the institution |
 | Temporal distance | construal-level theory | stated horizon: imminent, near, distant, unstated |
 | Spatial distance | construal-level theory | this classroom, this country, elsewhere, worldwide |
@@ -18,19 +17,19 @@ The archive collects claims that a new medium would transform or replace the boo
 
 The four distance dimensions follow Trope & Liberman (2010). Construal level is coded as what distance is expected to produce, so the archive can test whether far claims were in fact written abstractly. Scope of change is my own addition, specific to claims of replacement.
 
-Claims of replacement mostly state what a medium enhances and obsolesces, so gaps in the predicted Tetrad alone are predictable. The analysis therefore compares the predicted Tetrad with what happened: television did not replace the book, but it did retrieve the lecture. The speaker code asks whether a claim's distance follows the interests behind it, and whether speculative design projects sit at different distances from commercial forecasts (Wong & Khovanskaya 2018).
+Claims of replacement mostly state what a medium enhances and obsolesces, so the archive records only what was predicted. Reading these predictions against what each medium did in practice (television did not replace the book, but it did retrieve the lecture) belongs to the written analysis, drawing on histories of educational technology, not to the archive. The speaker code asks whether a claim's distance follows the interests behind it, and whether speculative design projects sit at different distances from commercial forecasts (Wong & Khovanskaya 2018).
 
 Temporal distance is coded from the horizon a claim *states*, not a year, because most claims (and most speculative design) give none: Edison's "soon", a design fiction's "near future". The signalling phrase is recorded with the code, a year is noted where given, and *unstated* is a value in its own right: in construal-level terms, a vague horizon may itself indicate abstract construal. Placing phrases on the scale is interpretive, so the codebook gives example phrases per level and a second coder checks a sample.
 
 ## Views
 
-- **Tetrad wheel** — switch between the Tetrad as predicted and as it happened; four sectors for the Tetrad laws, rings for one distance dimension at a time (choose scope, temporal, spatial, social or hypotheticality). Hatched cells are *gaps*: combinations no claim imagined. Opening a gap shows the design fiction it calls for, with a multiplane animation sketch.
+- **Tetrad wheel** — four sectors for the Tetrad laws, rings for one distance dimension at a time (choose scope, temporal, spatial, social or hypotheticality). Hatched cells are *gaps*: combinations no claim imagined. Opening a gap shows the design fiction it calls for, with a multiplane animation sketch.
 - **Timeline** — each claim drawn from the year it was made to the year it predicted, ending by outcome (absorbed, not realised, still open).
 - A decade slider ("Play decades") and era filters.
 
 ## Status of the data
 
-**Mock-up.** All entries are illustrative paraphrases, except Edison's 1913 statement ("Books will soon be obsolete in the public schools"), which is a documented claim still to be verified against its source (commonly cited via Cuban 1986). Distance, outcome and speaker codes (`CODES`, `WHEN`, `ACTUAL`, `SPEAKER`) are likewise illustrative, and each claim's end year is a coder's estimate used only to draw the timeline. Replace these arrays in `index.html` with sourced entries as the archive is collected.
+**Mock-up.** All entries are illustrative paraphrases, except Edison's 1913 statement ("Books will soon be obsolete in the public schools"), which is a documented claim still to be verified against its source (commonly cited via Cuban 1986). Distance and speaker codes (`CODES`, `WHEN`, `SPEAKER`) are likewise illustrative, and each claim's end year is a coder's estimate used only to draw the timeline. Replace these arrays in `index.html` with sourced entries as the archive is collected.
 
 ## Running it
 
