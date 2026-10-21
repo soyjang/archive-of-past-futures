@@ -71,7 +71,7 @@ h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .chip { font: 400 13px var(--font-body); display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--rule); background: var(--panel); color: var(--ink); border-radius: 999px; padding: 4px 10px; cursor: pointer; }
 .chip:hover { border-color: var(--muted); }
-.chip[aria-pressed="true"] { background: color-mix(in srgb, var(--c, var(--ink)) 16%, var(--panel)); border-color: var(--c, var(--ink)); font-weight: 700; }
+.chip[aria-pressed="true"] { background: color-mix(in srgb, var(--c, var(--ink)) 16%, var(--panel)); border-color: var(--c, var(--ink)); }
 .chip.all[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 .swatch { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
 button:focus-visible, [tabindex]:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
@@ -673,7 +673,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
     const h = 58, n = (l) => claims.filter(c => c.laws.includes(l)).length;
     const dia = (cx, cy) => `M${cx} ${cy - h} L${cx + h} ${cy} L${cx} ${cy + h} L${cx - h} ${cy}Z`;
     const pos = { enhance: [-h, -h], reverse: [h, -h], retrieve: [-h, h], obsolesce: [h, h] };
-    let g = `<path class="tet-mid" d="${dia(0, 0)}"></path><text class="tet-mid-n" text-anchor="middle" y="2">${claims.length}</text><text class="tet-l" text-anchor="middle" y="16" style="font-size:10px">Speculations</text>`;
+    let g = `<path class="tet-mid" d="${dia(0, 0)}"></path><text class="tet-mid-n" text-anchor="middle" y="1">${claims.length}</text><text class="tet-l" text-anchor="middle" y="15" style="font-size:10px">Speculations</text>`;
     for (const law of LAW_ORDER) {
       const [x, y] = pos[law];
       g += `<path class="tet-cell" d="${dia(x, y)}"></path><text class="tet-n" x="${x}" y="${y + 2}" text-anchor="middle">${n(law)}</text><text class="tet-l" x="${x}" y="${y + 16}" text-anchor="middle">${LAWS[law].label}</text>`;
