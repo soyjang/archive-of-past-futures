@@ -117,6 +117,7 @@ button:focus-visible, [tabindex]:focus-visible, input:focus-visible { outline: 2
 .sig { border-collapse: collapse; width: 100%; font-size: 14px; }
 .sig th, .sig td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--rule); vertical-align: top; }
 .sig thead th { font: 500 12px var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.sig.sig-wide tbody th { width: 18ch; }
 .sig tbody th { font: 500 12px var(--font-mono); color: var(--muted); font-weight: 500; width: 12ch; }
 @media (max-width: 560px) { .rd-row { grid-template-columns: 11ch minmax(0, 1fr) 7ch; gap: 8px; } .sig th, .sig td { padding: 6px; } }
 .ov-block { display: grid; gap: 8px; border-top: 1px solid var(--rule); padding-top: 14px; }
@@ -300,20 +301,20 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
 
 <div class="wrap">
   <header>
-    <div class="eyebrow">Historicising Speculative Design · v0.1</div>
-    <h1>Past Futures of the Book</h1>
+    <div class="eyebrow">Working prototype · v0.1</div>
+    <h1>Historicising Speculative Design</h1>
     <nav class="sitenav" aria-label="Pages">
-      <a href="#archive" data-page="archive">Archive</a>
       <a href="#codebook" data-page="codebook">Codebook</a>
-      <a href="#sources" data-page="sources">Sources</a>
-      <a href="#readings" data-page="readings">Readings</a>
+      <a href="#book" data-page="book">1 · Past futures of the book</a>
+      <a href="#climate" data-page="climate">2 · Climate futures</a>
       <a href="#counterfactual" data-page="counterfactual">Counterfactual obsolescence</a>
     </nav>
-    <p class="lede">Speculations that a new medium would transform or replace the book in education, from the stereograph and Edison’s films to AI tutors, in press interviews, talks, novels, films, images, papers, reports and design projects. Each speculation sits in the Tetrad sector it promised (enhance, obsolesce, retrieve, reverse), on the ring for the scope of change it claims, from supplementing teaching to replacing the institution.</p>
-    <p class="notice"><strong>Pilot sample.</strong> 31 documented speculations, from press interviews and talks to novels, films, images, academic papers, reports and a design project, quoted or described from primary sources or reputable compilations. Codes are provisional (one coder, <a href="#codebook">codebook</a> v0.1), and claims marked “to verify” still need checking against the original page.</p>
   </header>
 
   <section id="pg-archive" class="page">
+  <div class="pagehead"><h2>Project 1 · Past futures of the book</h2><p class="small">Depth: one claim, that a new medium would replace the book in education, traced across more than a century.</p></div>
+    <p class="lede">Speculations that a new medium would transform or replace the book in education, from the stereograph and Edison’s films to AI tutors, in press interviews, talks, novels, films, images, papers, reports and design projects. Each speculation sits in the Tetrad sector it promised (enhance, obsolesce, retrieve, reverse), on the ring for the scope of change it claims, from supplementing teaching to replacing the institution.</p>
+    <p class="notice"><strong>Pilot sample.</strong> 31 documented speculations, from press interviews and talks to novels, films, images, academic papers, reports and a design project, quoted or described from primary sources or reputable compilations. Codes are provisional (one coder, <a href="#codebook">codebook</a> v0.1), and claims marked “to verify” still need checking against the original page. Speculative design projects from CHI and DIS on AI tutors and future classrooms are being added.</p>
   <div class="controls" role="group" aria-label="View controls">
     <div class="slider">
       <label for="decade">Speculations up to</label>
@@ -345,9 +346,28 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
   </section>
 
   <section id="pg-readings" class="page" hidden>
-    <div class="pagehead"><h2>Readings</h2><p>What the coding shows when its parts are read against each other, and what follows for reading speculations and for designing them.</p>
+    <div class="pagehead"><h2>Readings</h2><p>What the coding of Project 1 shows when its parts are read against each other, and what follows for reading speculations and for designing them.</p>
       <p class="small">Provisional: 31 speculations, one coder. These are patterns to test on a larger archive, not results. Counts are computed from the archive as it stands.</p></div>
     <div class="readings" id="readings"></div>
+  </section>
+
+  <section id="pg-climate" class="page" hidden>
+    <div class="pagehead"><h2>Project 2 · Climate futures</h2><p class="small">Breadth: speculation in every genre addressing the same problem, climate change.</p></div>
+    <div class="readings">
+      <section class="rd"><h3>Corpus, being collected</h3>
+        <p>Coded with the same codebook, adapted from media to the artefacts, technologies, policies and practices that respond to climate change. Each strand has its own selection rule, so that the corpus is not chosen to fit the readings of Project 1.</p>
+        <table class="sig sig-wide"><thead><tr><th>Strand</th><th>Source</th><th>Target</th></tr></thead><tbody>
+          <tr><th>Academic speculative design</th><td>The papers in Soden et al.’s (2021) review of speculative design and design fiction for sustainability</td><td>28 papers</td></tr>
+          <tr><th>Fiction</th><td>The historical climate fiction Blythe (2023) lists, 1880–1978, with the climate novels he discusses</td><td>about 15</td></tr>
+          <tr><th>Film</th><td>Feature films whose plot turns on climate change or an environmental intervention, from a published filmography</td><td>about 20</td></tr>
+          <tr><th>Reports</th><td>Intergovernmental, governmental and corporate scenarios</td><td>about 20</td></tr>
+          <tr><th>Design projects</th><td>Exhibited or published speculative design projects outside the ACM corpus</td><td>about 20</td></tr>
+        </tbody></table>
+        <p class="small">Readings for Project 2 will appear here once the corpus is coded, reported separately from Project 1’s.</p></section>
+      <section class="rd rd-refs"><h3>References</h3><ul class="cb-refs">
+        <li>Mark Blythe. 2023. Artificial Design Fiction: Using AI as a Material for Pastiche Scenarios. In <em>Proceedings of the 26th International Academic Mindtrek Conference (Mindtrek ’23)</em>. ACM, 195–206. https://doi.org/10.1145/3616961.3616987</li>
+        <li>Robert Soden, Pradnaya Pathak, and Olivia Doggett. 2021. What We Speculate About When We Speculate About Sustainable HCI. In <em>ACM SIGCAS Conference on Computing and Sustainable Societies (COMPASS ’21)</em>. ACM, 188–198. https://doi.org/10.1145/3460112.3471956</li></ul></section>
+    </div>
   </section>
 
   <section id="pg-counterfactual" class="page" hidden>
@@ -364,7 +384,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
   </section>
 
   <section id="pg-codebook" class="page" hidden>
-    <div class="pagehead"><h2>Codebook</h2><p class="small">How each claim is selected and coded. Version 0.1, provisional: written by one coder from the pilot sample, to be revised after double-coding.</p></div>
+    <div class="pagehead"><h2>Codebook</h2><p class="small">How each speculation is selected and coded. Developed on Project 1 and being adapted for Project 2. Version 0.1, provisional: written by one coder from the pilot sample, to be revised after double-coding.</p></div>
     <div class="cb">
       <nav class="cb-toc" aria-label="Codebook contents">
         <a href="#cb-unit">Unit of analysis</a><a href="#cb-attr">Attributes</a><a href="#cb-codes">Codes</a><a class="sub" href="#cb-tetrad">1. Tetrad</a><a class="sub" href="#cb-distance">2. Speculative distance</a><a class="sub" href="#cb-construal">3. Construal level</a><a href="#cb-example">Worked example</a><a href="#cb-rel">Reliability</a><a href="#cb-refs">References</a>
@@ -1104,20 +1124,21 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
         <li>Yaacov Trope and Nira Liberman. 2010. Construal-level theory of psychological distance. <em>Psychological Review</em> 117, 2, 440–463.</li>
         <li>Richmond Y. Wong and Vera Khovanskaya. 2018. Speculative design in HCI: from corporate imaginations to critical orientations. In <em>New Directions in Third Wave Human-Computer Interaction: Volume 2 – Methodologies</em>, Michael Filimowicz and Veronika Tzankova (Eds.). Springer, 175–202.</li></ul></section>`;
   }
-  const PAGES = ["archive", "sources", "readings", "counterfactual", "codebook"];
+  const PAGES = ["codebook", "book", "climate", "counterfactual"];
+  const SECTIONS = { book: ["archive", "sources", "readings"], codebook: ["codebook"], climate: ["climate"], counterfactual: ["counterfactual"] };
   function route() {
     let h = location.hash.slice(1);
     if (h === "gaps" || h === "ideas") h = "counterfactual";
     if (h.startsWith("cb-")) { const t = document.getElementById(h); if (t && !$("#pg-codebook").hidden) { t.scrollIntoView(); return; } }
-    const page = PAGES.includes(h) ? h : h.startsWith("cb-") ? "codebook" : "archive";
-    PAGES.forEach(pg => { $(`#pg-${pg}`).hidden = pg !== page; });
+    const sub = ["archive", "sources", "readings"].includes(h) ? h : null;
+    const page = sub ? "book" : PAGES.includes(h) ? h : "codebook";
+    Object.entries(SECTIONS).forEach(([pg, secs]) => secs.forEach(x => { $(`#pg-${x}`).hidden = pg !== page; }));
     document.querySelectorAll(".sitenav a").forEach(a => { if (a.dataset.page === page) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
-    $(".lede").hidden = page !== "archive";
-    if (page === "sources") renderSources();
+    if (page === "book") { render(); renderSources(); renderReadings(); }
     if (page === "counterfactual") renderCF();
-    if (page === "readings") renderReadings();
-    if (page === "archive") render();
     if (h.startsWith("cb-")) document.getElementById(h)?.scrollIntoView();
+    else if (sub && sub !== "archive") document.getElementById(`pg-${sub}`)?.scrollIntoView();
+    else window.scrollTo(0, 0);
   }
   window.addEventListener("hashchange", route);
   route();

@@ -1,4 +1,4 @@
-# Past Futures of the Book
+# Historicising Speculative Design: codebook and archives
 
 A prototype for Study 1 of the PhD project *Historicising Speculative Design* (Soyoun Jang, Georgia Tech).
 
@@ -25,6 +25,8 @@ Claims of replacement mostly state what a medium enhances and obsolesces, so the
 Temporal distance is coded from the horizon a claim *states*, not a year, because most claims (and most speculative design) give none: Edison's "soon", a design fiction's "near future". The signalling phrase is recorded with the code, a year is noted where given, and *unstated* is a value in its own right: in construal-level terms, a vague horizon may itself indicate abstract construal. Placing phrases on the scale is interpretive, so the codebook gives example phrases per level and a second coder checks a sample.
 
 ## Pages
+
+The site opens on the Codebook. Project 1 (Past futures of the book) holds the Tetrad wheel, then its Sources and Readings on the same page. Project 2 (Climate futures) sets out the corpus being collected; its readings will be reported separately. Counterfactual obsolescence is unchanged.
 
 - **Archive** — the Tetrad wheel: four sectors for the Tetrad laws, with rings for **scope of change**. Hover a dot for a summary; select it and the overview card flips to a grey depth-2 card with its full coding ("← Overview" or selecting again flips back). Dots are coloured by media family and filled for concrete language or hollow for abstract. Selecting a speculation that spans several laws links and pulses all its copies. Hatched cells are empty: combinations no speculation codes for; selecting one shows a short note. The overview shows the counts as a Tetrad figure, with the four laws around the number of speculations. Below it, counts the wheel cannot show: media family, medium status, stated horizon (imminent, near, distant, unstated) and speaker. Media-family chips (stereograph and film, radio and television, teaching machines, computers, internet, AI, VR and direct transmission) select what to show (all media by default; click a family to show only it, click it again to return to all media); a decade slider ("Play decades") handles time.
 - **Codebook** — the full coding scheme (v0.1): unit of analysis, attributes (recorded), codes (interpreted: Tetrad, speculative distance, construal level) with definitions, decision rules and examples from the archive, a worked example (Edison 1922 coded on every dimension, with reasoning), and the reliability plan. The table below summarises it.
@@ -53,3 +55,8 @@ Open `index.html` in a browser. It is a single self-contained page; fonts load f
 - Audrey Watters. 2021. *Teaching Machines: The History of Personalized Learning*. MIT Press.
 - Richmond Y. Wong and Vera Khovanskaya. 2018. Speculative Design in HCI: From Corporate Imaginations to Critical Orientations. In *New Directions in Third Wave Human-Computer Interaction: Volume 2 – Methodologies*. Springer, 175–202.
 - Yaacov Trope and Nira Liberman. 2010. Construal-level theory of psychological distance. *Psychological Review* 117, 2, 440–463.
+
+
+## Project 2 · Climate futures (being collected)
+
+Breadth to Project 1's depth: speculation about climate change across genres, coded with the same codebook adapted from media to artefacts, technologies, policies and practices. Strands: academic speculative design (the 28 papers in Soden et al. 2021), historical climate fiction (Blythe 2023, 1880–1978, with the climate novels he discusses), about 20 films, about 20 reports and about 20 design projects, each with its own selection rule.
