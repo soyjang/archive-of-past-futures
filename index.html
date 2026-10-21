@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
-<title>Archive of Past Futures</title>
+<title>Past Futures of the Book</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -20,12 +20,13 @@
   --accent: #1a1a1a;      /* grayscale interface; colour is kept for the media families only */
   --accent-soft: #f3f3f3;
   --cell-sel: #f3f3f3;
-  --era1: #8a6a14;        /* image and film */
-  --era2: #23786a;        /* broadcast */
-  --era3: #5a3fb0;        /* machines and computers */
+  --era1: #8a6a14;        /* stereograph and film */
+  --era2: #23786a;        /* radio and television */
+  --era3: #5a3fb0;        /* teaching machines */
   --era4: #c0346a;        /* AI */
   --fam5: #2f6db3;        /* internet */
-  --fam6: #55606e;        /* immersion */
+  --fam6: #55606e;        /* VR and direct transmission */
+  --fam7: #c4621a;        /* computers */
   --font-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
   --font-body: "Atkinson Hyperlegible", "Helvetica Neue", Arial, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
@@ -34,14 +35,14 @@
   :root:not([data-theme="light"]) {
     --paper: #121212; --panel: #1b1b1b; --ink: #ededed; --muted: #a3a3a3; --rule: #2f2f2f;
     --accent: #f0f0f0; --accent-soft: #2b2b2b; --cell-sel: #2b2b2b;
-    --era1: #d6b45a; --era2: #5fc6ad; --era3: #a58ff2; --era4: #f17ba6; --fam5: #79aef0; --fam6: #b8c1cf;
+    --era1: #d6b45a; --era2: #5fc6ad; --era3: #a58ff2; --era4: #f17ba6; --fam5: #79aef0; --fam6: #b8c1cf; --fam7: #f0a061;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --paper: #121212; --panel: #1b1b1b; --ink: #ededed; --muted: #a3a3a3; --rule: #2f2f2f;
   --accent: #f0f0f0; --accent-soft: #2b2b2b; --cell-sel: #2b2b2b;
-  --era1: #d6b45a; --era2: #5fc6ad; --era3: #a58ff2; --era4: #f17ba6; --fam5: #79aef0; --fam6: #b8c1cf;
+  --era1: #d6b45a; --era2: #5fc6ad; --era3: #a58ff2; --era4: #f17ba6; --fam5: #79aef0; --fam6: #b8c1cf; --fam7: #f0a061;
   color-scheme: dark;
 }
 body {
@@ -281,7 +282,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
 <div class="wrap">
   <header>
     <div class="eyebrow">Historicising Speculative Design · v0.1</div>
-    <h1>An Archive of Past Futures</h1>
+    <h1>Past Futures of the Book</h1>
     <nav class="sitenav" aria-label="Pages">
       <a href="#archive" data-page="archive">Archive</a>
       <a href="#codebook" data-page="codebook">Codebook</a>
@@ -352,7 +353,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
 
         <section id="cb-attr"><h3>Attributes</h3><p>Descriptive facts about the speculation, recorded rather than interpreted.</p>
           <dl class="cb-dl"><dt>Year</dt><dd>When the speculation was made or first published.</dd>
-          <dt>Medium</dt><dd>The medium the speculation promotes or imagines, from a fixed list: stereograph · film · radio · television · teaching machine (mechanical or robot teachers) · computer · virtual reality · internet (online courses, platforms) · AI · direct transmission to the brain. The source’s own wording is kept as a detail (television: <q>parlour walls</q>; computer: <q>learning pods</q>). New media are added to the list as they appear. For colour and filtering only, media are shown in six families: image and film · broadcast · machines and computers · online learning · AI · immersion.</dd>
+          <dt>Medium</dt><dd>The medium the speculation promotes or imagines, from a fixed list: stereograph · film · radio · television · teaching machine (mechanical or robot teachers) · computer · virtual reality · internet (online courses, platforms) · AI · direct transmission to the brain. The source’s own wording is kept as a detail (television: <q>parlour walls</q>; computer: <q>learning pods</q>). New media are added to the list as they appear. For colour and filtering only, media are shown in seven families: stereograph and film · radio and television · teaching machines · computers · internet · AI · VR and direct transmission.</dd>
           <dt>Format</dt><dd>The form in which the speculation was first made, not where it was found (an Edison interview quoted by Cuban is <em>press</em>): <em>Press or magazine</em> · <em>Talk or broadcast</em> (speech, lecture, keynote, broadcast interview, statement in a legislature) · <em>Book</em> · <em>Academic paper</em> · <em>Report</em> (policy, technical or corporate) · <em>Novel or story</em> · <em>Film or television</em> · <em>Image</em> (illustration, postcard, poster) · <em>Design project</em> (artefact, prototype, bot). Format is descriptive. Whether a work functions as speculative design is a question for the analysis, not a code: a novel or a policy scenario can do the work of speculative design as much as a designed artefact.</dd>
           <dt>Speaker</dt><dd><em>Inventor</em> (promotes a medium they created) · <em>Company</em> (speaks for a firm with a stake in it) · <em>Policymaker</em> (government or regulator) · <em>Educator</em> (teacher, administrator, school broadcaster) · <em>Researcher</em> (academic or laboratory) · <em>Speculative designer</em> · <em>Writer or artist</em>. Code the role in which the person spoke, not their best-known role.</dd>
           <dt>Source</dt><dd>Full citation of the original; where quoted via a compilation, cite both. “N/A” when none is known.</dd>
@@ -464,12 +465,13 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
 (function () {
   // Media families: used only for colour and filtering; the coded field is the medium itself
   const FAMS = [
-    { id: "image", label: "Image and film", media: ["stereograph", "film"], v: "--era1" },
-    { id: "broadcast", label: "Broadcast", media: ["radio", "tv"], v: "--era2" },
-    { id: "machines", label: "Machines and computers", media: ["machine", "computer"], v: "--era3" },
+    { id: "image", label: "Stereograph and film", media: ["stereograph", "film"], v: "--era1" },
+    { id: "broadcast", label: "Radio and television", media: ["radio", "tv"], v: "--era2" },
+    { id: "machines", label: "Teaching machines", media: ["machine"], v: "--era3" },
+    { id: "computers", label: "Computers", media: ["computer"], v: "--fam7" },
     { id: "online", label: "Internet", media: ["online"], v: "--fam5" },
     { id: "ai", label: "AI", media: ["ai"], v: "--era4" },
-    { id: "immersion", label: "Immersion", media: ["vr", "brain"], v: "--fam6" }
+    { id: "immersion", label: "VR and direct transmission", media: ["vr", "brain"], v: "--fam6" }
   ];
   const LAWS = {
     enhance:   { label: "Enhances",   a0: 90,  a1: 180, verb: "enhance" },
