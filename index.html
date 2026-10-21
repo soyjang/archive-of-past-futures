@@ -106,6 +106,8 @@ button:focus-visible, [tabindex]:focus-visible, input:focus-visible { outline: 2
 .approaches { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; max-width: 980px; }
 .approach { display: grid; gap: 6px; align-content: start; padding: 16px 18px; border: 1px solid var(--rule); border-radius: 10px; background: var(--panel); color: var(--ink); text-decoration: none; }
 a.approach:hover { border-color: var(--muted); }
+.approach.active { background: var(--accent-soft); border-color: var(--accent-soft); }
+.approach.active .from { border-top-color: var(--rule); }
 .approach strong { font-family: var(--font-display); font-size: 19px; }
 .approach > span:nth-child(3) { font-size: 14px; line-height: 1.5; color: var(--muted); }
 .approach .from { font: 500 11.5px var(--font-mono); color: var(--muted); border-top: 1px dashed var(--rule); padding-top: 8px; margin-top: 4px; }
@@ -437,7 +439,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
   <section id="pg-counterfactual" class="page" hidden>
     <div class="pagehead"><h2>From readings to design</h2><p>The readings become material for design through play: game mechanics that let people act on what past speculation imagined and what it left out. Each approach comes from a reading.</p></div>
     <div class="approaches">
-      <a class="approach" href="#cf-full"><span class="case-k">1 · Worked out below</span><strong>Counterfactual obsolescence</strong><span>Take a documented prediction of replacement at its word, assume it came true, and complete its Tetrad with what it failed to imagine.</span><span class="from">From: the gaps in what promoters imagined</span></a>
+      <a class="approach active" href="#cf-full" aria-current="true"><span class="case-k">1 · Worked out below</span><strong>Counterfactual obsolescence</strong><span>Take a documented prediction of replacement at its word, assume it came true, and complete its Tetrad with what it failed to imagine.</span><span class="from">From: the gaps in what promoters imagined</span></a>
       <div class="approach"><span class="case-k">2 · In development</span><strong>Oscillation</strong><span>Players move between a near, concrete version of a counterfactual and a far, abstract one, setting their own speculative distance, to see whether moving between them prompts both critique and concrete reasoning.</span><span class="from">From: speculative distance and construal</span></div>
       <div class="approach"><span class="case-k">3 · In development</span><strong>Four voices</strong><span>Each Tetrad law speaks as a different character in the world: someone who gains, someone who loses, someone who recovers something old, someone undone by the medium’s excess. The world holds several laws at once, and they disagree.</span><span class="from">From: fiction holds several laws at once</span></div>
       <div class="approach"><span class="case-k">4 · In development</span><strong>Scaling down</strong><span>A worldwide promise is moved into one classroom, where it has to be shown working, and where retrieval and reversal become visible.</span><span class="from">From: construal follows space</span></div>
