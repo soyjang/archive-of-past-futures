@@ -168,6 +168,17 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
 .gapcard:hover, .gapcard:focus-visible { background: var(--accent-soft); outline: none; }
 .gapcard strong { font-family: var(--font-display); font-size: 17px; }
 .gapcard span { font-size: 14px; color: var(--muted); }
+.pagehead > p:not(.small) { margin: 0; font-size: 17px; line-height: 1.5; color: var(--ink); }
+.cf-steps { margin: 0; padding-left: 22px; display: grid; gap: 6px; max-width: 86ch; line-height: 1.5; }
+.cfgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 460px), 1fr)); gap: 16px; }
+.cfcard { background: var(--panel); border: 1px solid var(--rule); border-radius: 12px; padding: 18px; display: grid; gap: 12px; align-content: start; }
+.cfcard .quote { font-size: 17px; }
+.cf-tet { display: grid; grid-template-columns: 11ch minmax(0, 1fr); gap: 6px 12px; margin: 0; font-size: 14px; }
+.cf-tet dt { font: 500 12px var(--font-mono); color: var(--muted); padding-top: 2px; }
+.cf-tet dd { margin: 0; }
+.cf-body { display: grid; gap: 8px; border-top: 1px dashed var(--rule); padding-top: 10px; }
+.cf-body p { margin: 0; line-height: 1.5; }
+.cf-label { font: 500 12px var(--font-mono); color: var(--accent); text-transform: uppercase; letter-spacing: .05em; }
 .gapcard .from { font: 400 12px var(--font-mono); color: var(--accent); }
 .approach { display: grid; gap: 14px; padding: 22px 0; border-top: 1px solid var(--rule); }
 .ap-head { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 14px; max-width: 86ch; }
@@ -209,7 +220,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
       <a href="#archive" data-page="archive">Archive</a>
       <a href="#codebook" data-page="codebook">Codebook</a>
       <a href="#sources" data-page="sources">Sources</a>
-      <a href="#ideas" data-page="ideas">Ideas for speculative design</a>
+      <a href="#counterfactual" data-page="counterfactual">Counterfactual obsolescence</a>
     </nav>
     <p class="lede">Speculations that a new medium would transform or replace the book in education, from the stereograph and Edison’s films to AI tutors, in press interviews, talks, novels, films, images, papers, reports and design projects. Each speculation sits in the Tetrad sector it promised (enhance, obsolesce, retrieve, reverse) at its speculative distance from its own present. Hatched cells are empty: no speculation in the archive codes for them.</p>
     <p class="notice"><strong>Pilot sample.</strong> 31 documented speculations, from press interviews and talks to novels, films, images, academic papers, reports and a design project, quoted or described from primary sources or reputable compilations. Codes are provisional (one coder, <a href="#codebook">codebook</a> v0.1), and claims marked “to verify” still need checking against the original page.</p>
@@ -245,9 +256,17 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     <ol class="srclist" id="srclist"></ol>
   </section>
 
-  <section id="pg-ideas" class="page" hidden>
-    <div class="pagehead"><h2>Ideas for speculative design</h2><p class="small">Five approaches for turning the archive into design fictions, each with example prompts written from documented speculations. Open a prompt for its storyboard sketch.</p></div>
-    <div id="ideagroups"></div>
+  <section id="pg-counterfactual" class="page" hidden>
+    <div class="pagehead"><h2>Counterfactual obsolescence</h2><p>Taking past futures at their word: design fictions in which a documented prediction of replacement came true, completed with what it failed to imagine.</p></div>
+    <ol class="cf-steps">
+      <li><strong>Select</strong> claims from the archive by a rule derived from the coding, one per era.</li>
+      <li><strong>Complete the Tetrad.</strong> The claim supplies what it promised; the fiction supplies what it left out: what the new medium retrieves and what it reverses into.</li>
+      <li><strong>Set the distance.</strong> Each counterfactual is made near and concrete, and far and abstract.</li>
+      <li><strong>Watch for remediation.</strong> Leave room for viewers to reject the world or to rebuild something book-like within it; either response is a finding.</li>
+    </ol>
+    <p class="cb-rule" id="cf-rule"></p>
+    <div class="cfgrid" id="cf-cards"></div>
+    <p class="small">From the analysis, not the method: promises recur across eras (the personal tutor in 1966, 1995 and 2023), and fiction already imagines many of the retrievals and reversals that forecasts miss. Anachronistic staging, such as Edison and Gates on one panel, remains an option for presenting the fictions. Storyboards are drafts; animations will be made with an AI-assisted multiplane tool.</p>
   </section>
 
   <section id="pg-codebook" class="page" hidden>
@@ -315,7 +334,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
           <dt>Abstract</dt><dd>Why and what for: values, ends, transformations. <q>…the biggest positive transformation that education has ever seen.</q> (Khan, 2023)</dd></dl>
           <p class="cb-rule"><strong>Rule.</strong> Code the dominant register of the quoted passage. A planned check: score wording against published concreteness norms (Brysbaert et al. 2014).</p></section>
 
-        <section id="cb-gaps"><h3>Gaps</h3><p>A gap is a combination of a Tetrad law and a scope of change that no speculation in the archive codes for, shown hatched on the wheel. Gaps are descriptive, not findings in themselves: some reflect what the archive happened to collect rather than what nobody imagined. Ideas for design fictions are drawn from the analysis as a whole, by the approaches on the <a href="#ideas">Ideas</a> page, not from empty cells alone.</p></section>
+        <section id="cb-gaps"><h3>Gaps</h3><p>A gap is a combination of a Tetrad law and a scope of change that no speculation in the archive codes for, shown hatched on the wheel. Gaps are descriptive, not findings in themselves: some reflect what the archive happened to collect rather than what nobody imagined. Design fictions are selected by a rule applied to the coding, on the <a href="#counterfactual">Counterfactual obsolescence</a> page, not drawn from empty cells.</p></section>
 
         <section id="cb-rel"><h3>Reliability</h3><p>All codes in this version are by one coder. Planned: a second coder codes a 20% sample after training on this codebook; agreement is reported per dimension (Cohen’s κ), and the codebook is revised where disagreement clusters.</p></section>
 
@@ -567,7 +586,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
         <div><h3>Empty cell</h3></div>
         <h2>${L.label} · ${R.label}</h2>
         <p style="margin:0">No speculation in the archive imagines a medium that would ${L.verb} at the scale of “${R.label.toLowerCase()}”. ${near} speculation${near === 1 ? "" : "s"} ${near === 1 ? "codes" : "code"} for ${L.label.toLowerCase()} at other scales.</p>
-        <p class="small">An empty cell describes the archive; it is not an instruction for what to design, and it may reflect what the archive happened to collect. For ways of turning the archive into design fictions, see <a href="#ideas">Ideas for speculative design</a>.</p>`;
+        <p class="small">An empty cell describes the archive; it is not an instruction for what to design, and it may reflect what the archive happened to collect. For how the archive becomes design fictions, see <a href="#counterfactual">Counterfactual obsolescence</a>.</p>`;
       $("#back").addEventListener("click", () => { state.gap = null; render(); });
       return;
     }
@@ -616,7 +635,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
       <h2>${(() => { const n = (l) => claims.filter(c => c.laws.includes(l)).length;
         return `Most speculations promise to enhance and to replace; ${n("retrieve")} imagine retrieval, ${n("reverse")} reversal.`; })()}</h2>
       <div class="bars">${counts.map(([l, n]) => `<div class="bar"><span>${LAWS[l].label}</span><span class="track"><span class="fill" style="display:block;width:${(n / max) * 100}%"></span></span><span class="n">${n}</span></div>`).join("")}</div>
-      <p class="small">${g.length} hatched cells: combinations no speculation codes for. Select one for a note. For ways of turning the archive into design fictions, see <a href="#ideas">Ideas for speculative design</a>. Select a dot for its coding.</p>`;
+      <p class="small">${g.length} hatched cells: combinations no speculation codes for. Select one for a note. For how the archive becomes design fictions, see <a href="#counterfactual">Counterfactual obsolescence</a>. Select a dot for its coding.</p>`;
   }
 
   function legend() {
@@ -767,64 +786,70 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
         </div></li>`).join("");
   }
 
-  // ---------- ideas page ----------
-  // Approaches for turning the archive into design fictions. Prompts are written from documented speculations (ids in `from`).
-  const APPROACHES = [
-    { id: "word", title: "Take it at its word", logic: "Choose a documented speculation of replacement, assume it came true, and play it forward to the law it did not imagine: what did the new medium retrieve, and what did it reverse into?", why: "Counterfactual obsolescence itself: failed predictions become grounded counterfactuals, and remediation (Bolter & Grusin 1999) becomes the turn of the plot.",
-      prompts: [
-        { title: "Edison was right", from: [4], world: "Edison’s 1922 prediction came true: by 1932 textbooks have gone from American schools, and every lesson is a film.", beats: ["1932. A classroom in darkness; the teacher threads a reel; no pupil holds anything.", "A pupil asks to see yesterday’s film again. The projector is booked until Thursday.", "Teachers begin writing summaries on the blackboard and handing out mimeographed notes.", "1940. The notes are bound and handed out: the textbook returns under another name."], note: "Film obsolesces the textbook only to rebuild it as notes: remediation as the turn of the plot." },
-        { title: "The headset school, reversed", from: [12, 13], scene: "pile", world: "Papert’s computer blew up the school, and Winn’s virtual reality took its place: VR replaced the school in 1996. It is now 2026.", beats: ["Each child learns alone at home inside a headset, standing in a virtual Roman forum.", "A new headset generation ships. Last year’s models stack up at the kerb.", "In a park, three children sit around one battered paper book and read aloud.", "The camera pulls back past the pile of headsets to the empty school building behind."], note: "Reversal: total immersion flips into isolation, and the book returns as a shared object." },
-        { title: "The television classroom, 1965", from: [7, 10], world: "Muskie was overruled. By 1965 a large-screen receiver stands in every classroom, and the book has been withdrawn from schools.", beats: ["A master teacher broadcasts the morning lesson to ten thousand rooms at once.", "In one room the reception fails; the class waits in front of a grey screen.", "Pupils copy the broadcast into exercise books by hand, word for word.", "The exercise books are the only books in the school, and the most precious thing in it."], note: "The anchoring counterfactual. People rebuild something book-like inside the world without books." }
-      ] },
-    { id: "distance", title: "Change the distance", logic: "Move a speculation along speculative distance. Bring a distant, abstract claim near and make it concrete, or push a near, concrete claim far and let it turn abstract.", why: "Construal-level theory (Trope & Liberman 2010): near views surface means and costs, far views surface values. Rehearses the oscillation Study 2 tests.",
-      prompts: [
-        { title: "Ten universities, one Tuesday", from: [14], world: "Thrun’s 2012 forecast has come true: ten institutions deliver all the world’s higher education.", beats: ["One seminar, forty thousand students, one professor’s face on every screen.", "A student waits nine days in a queue for five minutes of office hours.", "Students in one town start meeting in the shell of their old campus library.", "They hire a retired lecturer to talk with them. The campus is back, without a university."], note: "Far and abstract made near and concrete: what replacement would cost on an ordinary day." },
-        { title: "The teacher’s aide, a century on", from: [17], world: "Gates’s 2023 forecast came true and kept going: in 2123 every pupil has had an AI aide since birth.", beats: ["No one alive remembers writing without feedback.", "A museum displays an unmarked essay from 2022, behind glass.", "Visitors read it slowly, unsure whether it is finished.", "Caption: what the aide made obsolete was being unread."], note: "Near and concrete pushed far: the claim turns into a question of value." }
-      ] },
-    { id: "returning", title: "The returning promise", logic: "Follow a promise that recurs across eras and media, and make the fiction about the cycle itself: what each version retrieved, and why the promise keeps returning.", why: "Past futures (Koselleck 2004) read in series: the repetition, not any single claim, is the object of speculation.",
-      prompts: [
-        { title: "The tutor that keeps coming back", from: [11, 23, 16, 17], world: "A personal tutor for every child is promised in 1966, imagined as a book in 1995, and promised again in 2023.", beats: ["Alexander and Aristotle, the royal prerogative Suppes invokes.", "1966: a teletype terminal answers a child, slowly.", "1995: Nell reads her Primer, voiced by a stranger far away.", "2023: a chatbot greets a pupil by name. The same promise, four times."], note: "Retrieval in series: each new tutor retrieves the old one." },
-        { title: "The stereoscope comes back", from: [1, 13], scene: "stereo", world: "Virtual reality arrives in classrooms as a field-trip kit, promising travel from the desk, as the stereograph did in 1906.", beats: ["A class passes headsets around for a five-minute trip to the Moon.", "A cupboard opens on a 1906 box of stereographs: travel the world from your desk.", "Split frame: a pupil in 1906 and a pupil in 2026 raise a viewer to their eyes with the same gesture.", "Caption: the same promise, a century apart."], note: "Retrieval: VR revives the classroom stereoscope’s promise of virtual travel." },
-        { title: "The finest teacher, broadcast", from: [6, 7, 9, 16], world: "From radio in 1929 to AI in 2023, each new medium promises to bring the best teacher to every child.", beats: ["1929: a voice on the radio, ‘the flame of living genius’.", "1955: the nation’s finest teacher on a large-screen receiver.", "2023: an AI tutor modelled on great teachers.", "A local teacher, in each era, switches the device off and starts the lesson."], note: "The promise to replace the local teacher with the best one, and what it leaves out." }
-      ] },
-    { id: "answer", title: "Let fiction answer forecasts", logic: "Pair a forecast with a fiction that already imagined its other side, and retell the forecast in the fiction’s mode.", why: "In the pilot sample, retrieval and reversal appear mostly in fiction and scenarios. Fiction becomes a resource for completing the Tetrad of a forecast.",
-      prompts: [
-        { title: "Margie meets the AI tutor", from: [20, 16], world: "Khan’s 2023 transformation has arrived, told from the side of Asimov’s Margie: a child taught alone, at home, by a patient machine.", beats: ["The tutor praises every answer, kindly and at once.", "Margie finds her grandmother’s exercise book from 2019, full of red ink.", "She reads a teacher’s comment aloud to her friend over video.", "They agree to meet in person, to do their homework badly together."], note: "A forecast of transformation retold as Asimov’s reversal: personalisation becomes isolation." },
-        { title: "No TV in the classroom", from: [27, 7], world: "Hennock’s 1955 schoolhouse of the air has been built, and is now the ordinary classroom of the Jetsons.", beats: ["The large-screen receiver Hennock promised is the teacher.", "The teacher scolds a pupil for watching television on his wrist.", "The pupil points out that the teacher is television.", "Freeze frame on the robot teacher, mid-sentence."], note: "The medium that was to enter the classroom becomes what the classroom must keep out." }
-      ] },
-    { id: "anachronism", title: "Anachronistic conversations", logic: "Put speculations from different eras in conversation: let a prophet meet the next prophet, or a fictional child answer a forecaster from another century.", why: "Anachronism makes the repetition audible and shows each claim’s present by contrast. A format suited to animation and to play.",
-      prompts: [
-        { title: "Edison and Gates on a panel", from: [5, 18], world: "A 2025 panel on the future of learning. Edison (1925) and Gates (2025) take the stage, moderated by a schoolteacher.", beats: ["Edison: textbooks will be as obsolete as the horse and carriage.", "Gates: great tutoring will become free and commonplace.", "Each politely predicts that the other’s medium will fail.", "The moderator asks what they read at school. Both say: books."], note: "Two replacement claims a century apart, each sure that the last one was premature." },
-        { title: "Margie writes to Edison", from: [20, 3], world: "A letter from 2157 reaches Edison in 1913, the week he tells the Dramatic Mirror that books will soon be obsolete.", beats: ["Margie describes her mechanical teacher and its big screen.", "She describes the real book Tommy found, and how its words stay still.", "Edison reads the letter beside his projector.", "He files it under ‘things that will soon be obsolete’."], note: "A fictional child answers a documented prophet: obsolescence seen from its far side." },
-        { title: "The robot teacher interviews Skinner", from: [27, 8], world: "The Jetsons’ malfunctioning robot teacher interviews B. F. Skinner about his 1958 teaching machine.", beats: ["Skinner explains that each pupil will proceed at their own level.", "The robot teacher praises a nonsense answer from the audience.", "Skinner asks how it reinforces the right answers.", "The robot hands him a report tape: four Ds, an F and an H."], note: "The teaching machine meets its caricature, five years after it was proposed." }
-      ] }
-  ];
   const cite = (id) => { const c = CLAIMS.find(x => x.id === id); return c ? `${c.short} ${c.year}` : ""; };
-  function renderIdeas() {
-    $("#ideagroups").innerHTML = APPROACHES.map((a, ai) => `
-      <section class="approach" id="ap-${a.id}">
-        <div class="ap-head"><span class="ap-n">${ai + 1}</span><div><h3>${a.title}</h3><p>${a.logic}</p><p class="small">${a.why}</p></div></div>
-        <div class="gapcards">${a.prompts.map((p, pi) => `<button type="button" class="gapcard" data-idea="${ai}-${pi}"><strong>${p.title}</strong><span>${p.world}</span><span class="from">Draws on: ${p.from.map(cite).join(" · ")}</span></button>`).join("")}</div>
-      </section>`).join("");
+  // ---------- counterfactual obsolescence page ----------
+  // Selection rule, applied to the coding: confident prophecies of replacement (scope ≥ replaces the medium, stated as "will", abstract language)
+  const isConfident = (c) => c.ring >= 3 && c.hyp === 1 && c.lang === "abstract";
+  const CF = [
+    { id: 4, era: "e1", why: "Selected by the rule: replacement of the medium, stated as certain, in abstract language.",
+      near: { label: "Near · one classroom, 1932", world: "Tuesday, 3 May 1932. Room 4 of a public school. Textbooks were withdrawn two years ago; every lesson is a film.", beats: ["The teacher draws the blinds and threads a reel. No pupil holds anything.", "A pupil asks to see yesterday’s film again. The projector is booked until Thursday.", "The teacher writes a summary on the blackboard and hands out mimeographed notes.", "A pupil ties the term’s notes together with string and takes them home."], retrieve: "the lecture: the teacher narrating over the film", reverse: "instant access flips into scheduling: one screening, booked in advance" },
+      far: { label: "Far · what schooling became", world: "Film replaced the textbook. By 1960, to read means to watch, and a library is a film archive.", beats: ["Libraries are rebuilt as viewing rooms with numbered seats.", "Literacy is tested by recall: pupils can quote a film but cannot annotate it.", "A market grows for printed ‘film notes’ that summarise each reel.", "The film notes are bound, indexed and assigned: the textbook, under another name."], retrieve: "memorisation and recitation", reverse: "the medium of abundance produces a new scarcity: the annotatable page" } },
+    { id: "tv", era: "e2", anchor: [7, 10], why: "The anchoring juncture. The archive has no confident claim that television will replace the book yet (Hennock promises enhancement; Muskie denies replacement); the counterfactual supplies it.",
+      near: { label: "Near · one classroom, 1965", world: "Monday, 1965. A fourth-grade classroom. The book has been withdrawn from schools; a large-screen receiver stands where the shelves were.", beats: ["A master teacher broadcasts the morning lesson to ten thousand rooms at once.", "In this room the reception fails; the class waits in front of a grey screen.", "Pupils copy the broadcast into exercise books by hand, word for word.", "The exercise books are the only books in the school, and the most precious thing in it."], retrieve: "copying by hand, the scriptorium", reverse: "the finest teacher for everyone flips into no teacher for anyone when the signal fails" },
+      far: { label: "Far · a nation taught at once", world: "A generation has been schooled by broadcast: the whole country learns the same lesson at the same minute.", beats: ["One national timetable; the same bell rings on every screen.", "Regional accents fade from the classroom.", "Disagreement with the lesson takes the form of switching channels.", "Hand-copied exercise books circulate between friends, annotated and argued over."], retrieve: "the catechism: one text, recited in unison", reverse: "universal access flips into uniformity" } },
+    { id: 12, era: "e3", why: "Selected by the rule: replacement of the institution, stated as certain, in abstract language.",
+      near: { label: "Near · one house, 1995", world: "1995. Schools have gone. A ten-year-old learns at home with a personal computer while her parents are at work.", beats: ["She programs a turtle to draw a spiral, then a flower.", "Neighbourhood children start gathering at the one house with the fastest machine.", "A parent sets a time for the gatherings and stays to supervise.", "The gathering gets a timetable, a grown-up and a name: the computer club."], retrieve: "the school, reinvented as a club", reverse: "learning anywhere flips into learning where the machines are" },
+      far: { label: "Far · learning where the machines are", world: "Schools are gone; learning happens wherever a computer is.", beats: ["Maps of learning follow maps of ownership.", "Public libraries become computer halls with waiting lists.", "Districts without machines lose a generation of learners.", "Campaigners demand a public building where any child can learn: a school."], retrieve: "the public library as the people’s university", reverse: "liberation from the institution flips into dependence on ownership" } },
+    { id: 18, era: "e4", why: "Selected by the rule, as a present future: replacement of the medium of teaching, stated as certain, in abstract language.",
+      near: { label: "Near · one school, 2035", world: "A Thursday in 2035. Tutoring is free and commonplace. The school has kept its building but not its teachers.", beats: ["Pupils sit at screens; each tutor greets its pupil by name.", "The caretaker is the only adult in the building.", "Children start bringing him their questions instead.", "He reads aloud to them from a paper book in the corridor."], retrieve: "the reader: being read to by a person", reverse: "free expertise flips into scarce attention" },
+      far: { label: "Far · teaching by a person as luxury", world: "Expertise is free. Being taught by a person has become a luxury.", beats: ["Human tutors become a status good for the rich.", "Certificates of ‘human-taught’ appear on CVs.", "A movement for unassisted learning holds meetings in borrowed rooms.", "Its members carry paper books, as a sign of belonging."], retrieve: "the tutor as aristocratic privilege, Aristotle and Alexander", reverse: "the leveller flips into a new stratifier" } }
+  ];
+  const cfState = {};
+  function renderCF() {
+    const cands = CLAIMS.filter(isConfident).sort((a, b) => a.year - b.year);
+    $("#cf-rule").innerHTML = `<strong>Selection rule.</strong> Confident prophecies of replacement: scope of change at least “replaces the medium”, stated as “will”, in abstract language. ${cands.length} speculations meet it: ${cands.map(c => `${c.short} ${c.year}`).join(" · ")}. One is taken per era, with the anchoring juncture of 1960s television.`;
+    $("#cf-cards").innerHTML = CF.map((x, i) => {
+      const c = typeof x.id === "number" ? CLAIMS.find(k => k.id === x.id) : null;
+      const promised = c ? c.laws : ["enhance", "obsolesce"];
+      const missing = LAW_ORDER.filter(l => !promised.includes(l));
+      const d = cfState[i] || "near", v = x[d];
+      const claim = c ? `<p class="quote">“${c.text}”</p><p class="small">— ${c.who}, ${c.year}</p>` : `<p class="quote"><em>What if the book had been replaced by television in the 1960s?</em></p><p class="small">— anchoring counterfactual; draws on ${x.anchor.map(cite).join(" · ")}</p>`;
+      return `<article class="cfcard">
+        <div class="cf-top"><span class="tag"><span class="swatch" style="background:var(${ERAS.find(e => e.id === x.era).v})"></span> ${ERAS.find(e => e.id === x.era).label}</span></div>
+        ${claim}
+        <p class="small">${x.why}</p>
+        <dl class="cf-tet"><dt>Promised</dt><dd>${promised.map(l => `<span class="tag">${LAWS[l].label}</span>`).join("")}</dd>
+          <dt>To imagine</dt><dd>${missing.map(l => `<span class="tag ill">${LAWS[l].label}</span>`).join("")}</dd></dl>
+        <div class="seg" role="group" aria-label="Distance"><button type="button" data-cf="${i}" data-d="near" aria-pressed="${d === "near"}">Near, concrete</button><button type="button" data-cf="${i}" data-d="far" aria-pressed="${d === "far"}">Far, abstract</button></div>
+        <div class="cf-body"><p class="cf-label">${v.label}</p><p>${v.world}</p>
+          <dl class="cf-tet"><dt>Retrieves</dt><dd>${v.retrieve}</dd><dt>Reverses</dt><dd>${v.reverse}</dd></dl></div>
+        <button type="button" class="linkbtn" data-open="${i}">Open storyboard →</button>
+      </article>`;
+    }).join("");
   }
-  $("#ideagroups").addEventListener("click", (e) => {
-    const b = e.target.closest("[data-idea]"); if (!b) return;
-    const [ai, pi] = b.dataset.idea.split("-").map(Number), a = APPROACHES[ai], p = a.prompts[pi];
-    showFiction({ ...p, scene: p.scene || "generic" }, `Idea · ${a.title}`);
+  $("#cf-cards").addEventListener("click", (e) => {
+    const t = e.target.closest("[data-cf]");
+    if (t) { cfState[+t.dataset.cf] = t.dataset.d; renderCF(); return; }
+    const o = e.target.closest("[data-open]");
+    if (o) {
+      const i = +o.dataset.open, x = CF[i], v = x[cfState[i] || "near"];
+      const c = typeof x.id === "number" ? CLAIMS.find(k => k.id === x.id) : null;
+      showFiction({ title: c ? `${c.short} was right` : "The television classroom", world: v.world, beats: v.beats, note: `Retrieves ${v.retrieve}; reverses: ${v.reverse}. Watch for remediation: where does something book-like return?`, scene: "generic" }, `Counterfactual obsolescence · ${v.label}`);
+    }
   });
 
   // ---------- pages ----------
-  const PAGES = ["archive", "sources", "ideas", "codebook"];
+  const PAGES = ["archive", "sources", "counterfactual", "codebook"];
   function route() {
     let h = location.hash.slice(1);
-    if (h === "gaps") h = "ideas";
+    if (h === "gaps" || h === "ideas") h = "counterfactual";
     if (h.startsWith("cb-")) { const t = document.getElementById(h); if (t && !$("#pg-codebook").hidden) { t.scrollIntoView(); return; } }
     const page = PAGES.includes(h) ? h : h.startsWith("cb-") ? "codebook" : "archive";
     PAGES.forEach(pg => { $(`#pg-${pg}`).hidden = pg !== page; });
     document.querySelectorAll(".sitenav a").forEach(a => { if (a.dataset.page === page) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
     $(".lede").hidden = page !== "archive";
     if (page === "sources") renderSources();
-    if (page === "ideas") renderIdeas();
+    if (page === "counterfactual") renderCF();
     if (page === "archive") render();
     if (h.startsWith("cb-")) document.getElementById(h)?.scrollIntoView();
   }
