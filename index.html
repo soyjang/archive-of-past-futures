@@ -68,7 +68,9 @@ h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 
 .dimsel { font: 500 14px var(--font-body); border: 1px solid var(--rule); background: var(--panel); color: var(--ink); border-radius: 6px; padding: 5px 8px; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .chip { font: 400 13px var(--font-body); display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--rule); background: var(--panel); color: var(--ink); border-radius: 999px; padding: 4px 10px; cursor: pointer; }
-.chip[aria-pressed="false"] { opacity: .45; }
+.chip:hover { border-color: var(--muted); }
+.chip[aria-pressed="true"] { background: color-mix(in srgb, var(--c, var(--ink)) 16%, var(--panel)); border-color: var(--c, var(--ink)); font-weight: 700; }
+.chip.all[aria-pressed="true"] { background: var(--ink); color: var(--paper); border-color: var(--ink); }
 .swatch { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
 button:focus-visible, [tabindex]:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 
@@ -481,11 +483,11 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
   const famOf = (c) => FAMS.find(f => f.media.includes(c.succ));
 
-  const state = { view: "wheel", dim: "scope", decade: 2030, fams: new Set(FAMS.map(f => f.id)), selected: null, gap: null };
+  const state = { view: "wheel", dim: "scope", decade: 2030, fams: new Set(), selected: null, gap: null };
   const lawsOf = (c) => c.laws;
 
   function visibleClaims() {
-    return CLAIMS.filter(c => c.year <= state.decade + 9 && state.fams.has(famOf(c).id));
+    return CLAIMS.filter(c => c.year <= state.decade + 9 && (!state.fams.size || state.fams.has(famOf(c).id)));
   }
 
   // ---------- geometry ----------
@@ -723,13 +725,18 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   }
 
   // ---------- controls ----------
-  $("#eras").innerHTML = FAMS.map(f => `<button type="button" class="chip" aria-pressed="true" data-fam="${f.id}"><span class="swatch" style="background:var(${f.v})"></span>${f.label}</button>`).join("");
+  function renderChips() {
+    $("#eras").innerHTML = `<button type="button" class="chip all" aria-pressed="${!state.fams.size}" data-fam="all">All media</button>` +
+      FAMS.map(f => `<button type="button" class="chip" aria-pressed="${state.fams.has(f.id)}" data-fam="${f.id}" style="--c:var(${f.v})"><span class="swatch" style="background:var(${f.v})"></span>${f.label}</button>`).join("");
+  }
+  renderChips();
   $("#eras").addEventListener("click", (ev) => {
     const b = ev.target.closest("[data-fam]"); if (!b) return;
     const id = b.dataset.fam;
-    if (state.fams.has(id) && state.fams.size > 1) state.fams.delete(id); else state.fams.add(id);
-    b.setAttribute("aria-pressed", state.fams.has(id));
-    render();
+    if (id === "all") state.fams.clear();
+    else if (state.fams.has(id)) state.fams.delete(id); else state.fams.add(id);
+    state.selected = null; state.gap = null;
+    renderChips(); render();
   });
   $("#decade").addEventListener("input", (e) => { state.decade = +e.target.value; render(); });
   let timer = null;
