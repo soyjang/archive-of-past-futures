@@ -24,7 +24,6 @@ Temporal distance is coded from the horizon a claim *states*, not a year, becaus
 ## Views
 
 - **Tetrad wheel** — four sectors for the Tetrad laws, rings for one of the two main dimensions, scope of change or temporal distance. Spatial distance, social distance, hypotheticality and construal level are shown per claim and reported descriptively. Dots are filled for concrete language and hollow for abstract, so you can see whether distant rings fill with abstract claims. Hatched cells are *gaps*: combinations no claim imagined. Opening a gap shows the design fiction it calls for, with a multiplane animation sketch.
-- **Certainty and construal** — in the overview panel, a grid of hypotheticality (will, should, could) against construal level (concrete, abstract). Construal-level theory expects certain claims to be concrete and possible ones abstract; certain-but-abstract claims are the confident prophecies.
 - **Timeline** — each claim drawn from the year it was made, its length set by the stated horizon (imminent, near, distant; dotted where unstated), ending by outcome (absorbed, not realised, still open).
 - A decade slider ("Play decades") and era filters.
 

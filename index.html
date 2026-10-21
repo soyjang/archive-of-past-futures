@@ -132,11 +132,6 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
 .beats li { display: grid; grid-template-columns: 4ch 1fr; gap: 8px; font-size: 15px; }
 .beats li::before { counter-increment: k; content: "K0" counter(k); font-family: var(--font-mono); font-size: 12px; color: var(--accent); padding-top: 3px; }
 .small { font-size: 13px; color: var(--muted); margin: 0; }
-.matrix { display: grid; grid-template-columns: 9ch repeat(3, 1fr); gap: 4px; font-size: 13px; }
-.matrix .hd { color: var(--muted); align-self: end; text-align: center; padding-bottom: 2px; }
-.matrix .rh { color: var(--muted); align-self: center; }
-.matrix .mc { border: 1px solid var(--rule); border-radius: 6px; padding: 8px 4px; text-align: center; font: 500 15px var(--font-mono); position: relative; }
-.matrix .mc.diag { border-color: var(--accent); border-style: dashed; }
 footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 14px; max-width: 90ch; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
@@ -396,7 +391,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     if (state.selected) {
       const c = CLAIMS.find(x => x.id === state.selected);
       const era = eraOf(c.year);
-      p.innerHTML = `<button type="button" class="back" id="back">← Overview</button>
+      p.innerHTML = `<button type="button" class="back" id="back">← Gaps</button>
         <div><h3>${c.year} · ${c.medium}</h3></div>
         <p class="quote">${c.documented ? "“" + c.text + "”" : c.text}</p>
         <div>${c.documented ? `<span class="tag">Documented claim</span>` : `<span class="tag ill">Illustrative paraphrase</span>`}</div>
@@ -417,31 +412,12 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
       return;
     }
     const claims = visibleClaims();
-    const counts = LAW_ORDER.map(l => [l, claims.filter(c => lawsOf(c).includes(l)).length]);
-    const max = Math.max(1, ...counts.map(x => x[1]));
     const g = gaps();
-    p.innerHTML = `<div><h3>Overview · ${claims.length} claims</h3></div>
-      <h2>Past futures promise to enhance and to replace. They rarely imagine retrieval, and never reversal.</h2>
-      <div class="bars">${counts.map(([l, n]) => `<div class="bar"><span>${LAWS[l].label}</span><span class="track"><span class="fill" style="display:block;width:${(n / max) * 100}%"></span></span><span class="n">${n}</span></div>`).join("")}</div>
-      ${matrix(claims)}
+    p.innerHTML = `<div><h3>${claims.length} claims</h3></div>
       <div style="display:grid;gap:8px"><h3>${g.length} gaps to design for</h3>
         <div class="gaplist">${g.map(k => { const [l, r] = k.split("-"); const star = fictionFor(k) ? " ★" : ""; return `<button type="button" class="gapbtn" data-gap="${k}">${LAWS[l].label} · ${rings()[+r - 1].label}${star}</button>`; }).join("")}</div>
         <p class="small">★ has a storyboard sketched. Select a dot or a row for its coding.</p>
       </div>`;
-  }
-
-  function matrix(claims) {
-    const n = (h, lang) => claims.filter(c => c.hyp === h && c.lang === lang).length;
-    const row = (lang, label) => `<span class="rh">${label}</span>` + [1, 2, 3].map(h => {
-      const v = n(h, lang), diag = (h === 1 && lang === "concrete") || (h === 3 && lang === "abstract");
-      return `<span class="mc${diag ? " diag" : ""}" aria-label="${DIMS.hyp.levels[h - 1]}, ${label}: ${v}">${v}</span>`;
-    }).join("");
-    return `<div style="display:grid;gap:8px"><h3>Certainty and construal</h3>
-      <div class="matrix" role="table" aria-label="Claims by hypotheticality and construal level">
-        <span></span>${DIMS.hyp.levels.map(l => `<span class="hd">“${l.toLowerCase()}”</span>`).join("")}
-        ${row("concrete", "Concrete")}${row("abstract", "Abstract")}
-      </div>
-      <p class="small">Construal-level theory expects the dashed cells: certain claims described concretely, possible ones abstractly. Certain but abstract (“will”, abstract) is the confident prophecy.</p></div>`;
   }
 
   function legend() {
