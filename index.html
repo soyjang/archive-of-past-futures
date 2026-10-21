@@ -115,7 +115,6 @@ a.approach:hover { border-color: var(--muted); }
 #cf-full-wrap { display: grid; gap: 22px; }
 #cf-full-wrap[hidden] { display: none; }
 @media (max-width: 640px) { .approaches { grid-template-columns: minmax(0, 1fr); } }
-.ov-findings { margin: 0; padding-left: 18px; display: grid; gap: 8px; line-height: 1.5; }
 .intro a { color: var(--accent); }
 .cases { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .case { display: grid; gap: 6px; align-content: start; padding: 16px 18px; border: 1px solid var(--rule); border-radius: 10px; color: var(--ink) !important; text-decoration: none; background: var(--panel); }
@@ -331,7 +330,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
     <div class="eyebrow">Working prototype · v0.1</div>
     <h1>Historicising Speculative Design</h1>
     <nav class="sitenav" aria-label="Pages">
-      <a href="#overview" data-page="overview">Overview</a>
+      <a href="#intro" data-page="overview">Introduction</a>
       <a href="#codebook" data-page="codebook">Codebook</a>
       <a href="#book" data-page="book">1 · Past futures of the book</a>
       <a href="#climate" data-page="climate">2 · Climate futures</a>
@@ -340,7 +339,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
   </header>
 
   <section id="pg-overview" class="page" hidden>
-    <div class="pagehead"><h2>Overview</h2>
+    <div class="pagehead"><h2>Introduction</h2>
       <p>Every new medium has been promised as the one that would replace the book in education, from Edison’s films in 1913 to AI tutors today; the climate has been imagined for even longer, from ecological fiction of the 1880s to net-zero scenarios. Such futures shape what is funded and built, and speculative design sets out to question them. But does it imagine differently?</p></div>
     <div class="intro">
       <section class="rd">
@@ -355,9 +354,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
           <a class="case" href="#book"><span class="case-k">Case 1 · Depth</span><strong>Past futures of the book</strong><span>One claim, that a new medium would replace the book in education, traced from the stereograph in 1906 to AI tutors. Pilot of 31 speculations; speculative design projects from CHI and DIS being added.</span></a>
           <a class="case" href="#climate"><span class="case-k">Case 2 · Breadth</span><strong>Climate futures</strong><span>One problem, climate change, across several genres, from ecological fiction of the 1880s and reports of the 1970s to recent speculative design. Corpus being collected.</span></a>
         </div></section>
-      <section class="rd"><h3>First readings</h3>
-        <ul class="ov-findings" id="ov-findings"></ul>
-        <p class="small">Pilot, one coder: patterns to test on both cases, not results. See <a href="#readings">Readings</a>.</p></section>
+
       <section class="rd rd-refs"><h3>References</h3><ul class="cb-refs">
         <li>Eric P. S. Baumer, Mark Blythe, and Theresa Jean Tanenbaum. 2020. Evaluating Design Fiction: The Right Tool for the Job. In <em>Proceedings of the 2020 ACM Designing Interactive Systems Conference (DIS ’20)</em>. ACM, 1901–1913.</li>
         <li>Anthony Dunne and Fiona Raby. 2013. <em>Speculative Everything: Design, Fiction, and Social Dreaming</em>. MIT Press.</li>
@@ -1135,17 +1132,6 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
   });
 
   // ---------- pages ----------
-  // ---------- overview: first readings, counted from the data ----------
-  function renderOverview() {
-    const C = CLAIMS, cnt = (a, f) => a.filter(f).length, abs = c => c.lang === "abstract";
-    const ex = C.filter(c => c.status === 1), im = C.filter(c => c.status === 3);
-    const rr = C.filter(c => c.laws.includes("retrieve") || c.laws.includes("reverse"));
-    $("#ov-findings").innerHTML = C.length ? [
-      `<strong>The most distant futures were the most concrete.</strong> Speculations that imagine a medium are concrete in ${cnt(im, c => !abs(c))} of ${im.length}; those about an existing medium are abstract in ${cnt(ex, abs)} of ${ex.length}. Construal-level theory predicts the reverse.`,
-      `<strong>Retrieval and reversal live in imagined media.</strong> Of the ${rr.length} speculations that imagine either, ${cnt(rr, c => c.status === 3)} concern a medium that did not yet exist.`,
-      `<strong>Two signatures.</strong> Together the patterns separate an affirmative signature, which confirms a technology’s course (existing medium, worldwide, “will”, abstract, one law), from a critical one, which questions it (imagined or scaled down, depicted, concrete, several laws).`
-    ].map(t => `<li>${t}</li>`).join("") : "";
-  }
   // ---------- readings ----------
   function renderReadings() {
     const C = CLAIMS, cnt = (a, f) => a.filter(f).length;
@@ -1200,6 +1186,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
   function route() {
     let h = location.hash.slice(1);
     if (h === "gaps" || h === "ideas" || h === "design") h = "counterfactual";
+    if (h === "intro") h = "overview";
     const anchor = h === "cf-full" ? h : null; if (anchor) h = "counterfactual";
     if (anchor) setCF(true);
     if (h.startsWith("cb-")) { const t = document.getElementById(h); if (t && !$("#pg-codebook").hidden) { t.scrollIntoView(); return; } }
@@ -1215,7 +1202,6 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
     if (sub === "sources") renderSources();
     if (sub === "readings") renderReadings();
     if (page === "counterfactual") renderCF();
-    if (page === "overview") renderOverview();
     if (h.startsWith("cb-")) document.getElementById(h)?.scrollIntoView();
     else if (anchor) document.getElementById(anchor)?.scrollIntoView();
     else window.scrollTo(0, 0);
