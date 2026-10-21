@@ -231,6 +231,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
 .cb-ex dt.grp span { font: 500 11px var(--font-mono); text-transform: uppercase; letter-spacing: .06em; background: var(--accent-soft); color: var(--accent); border-radius: 4px; padding: 2px 8px; }
 @media (max-width: 760px) { .cb { grid-template-columns: minmax(0, 1fr); } .cb-toc { position: static; display: flex; flex-wrap: wrap; gap: 6px 14px; border-left: 0; padding-left: 0; } .cb-dl { grid-template-columns: minmax(0, 1fr); gap: 2px; } .cb-dl dd { margin-bottom: 8px; } }
 .fill.abs { background: transparent !important; box-shadow: inset 0 0 0 2px var(--accent); border-radius: 0 999px 999px 0; }
+.bar .fill.con { border-radius: 999px 0 0 999px; }
 .key { display: inline-block; width: 12px; height: 12px; border-radius: 3px; background: var(--accent); vertical-align: -1px; }
 .key.abs { background: transparent; box-shadow: inset 0 0 0 2px var(--accent); margin-left: 8px; }
 footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 14px; max-width: 90ch; }
@@ -656,7 +657,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
       const mx = Math.max(1, ...rows.map(r => r[1] + r[2]));
       p.innerHTML = `<div><h3>Overview · ${claims.length} speculations</h3></div>
         <h2>How far ahead past futures look, and in what language.</h2>
-        <div class="bars">${rows.map(([l, c, a]) => `<div class="bar"><span>${l}</span><span class="track" style="display:flex"><span class="fill" style="display:block;width:${(c / mx) * 100}%"></span><span class="fill abs" style="display:block;width:${(a / mx) * 100}%"></span></span><span class="n">${c + a}</span></div>`).join("")}</div>
+        <div class="bars">${rows.map(([l, c, a]) => `<div class="bar"><span>${l}</span><span class="track" style="display:flex"><span class="fill${a ? " con" : ""}" style="display:block;width:${(c / mx) * 100}%"></span><span class="fill abs" style="display:block;width:${(a / mx) * 100}%"></span></span><span class="n">${c + a}</span></div>`).join("")}</div>
         <p class="small"><span class="key"></span> concrete <span class="key abs"></span> abstract. Use “Play decades” to watch the horizons fill over time. Select a dot or a hatched cell.</p>`;
       return;
     }
