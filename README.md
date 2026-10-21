@@ -14,7 +14,7 @@ The archive collects claims that a new medium would transform or replace the boo
 | Hypotheticality | construal-level theory | will, should, could, depicted |
 | Construal level | construal-level theory (outcome) | concrete or abstract language |
 | Format | | press or magazine, talk or broadcast, book, academic paper, report, novel or story, film or television, image, design project |
-| Successor medium | | stereograph, film, radio, television, teaching machine, computer, virtual reality, online learning, AI, direct transmission to the brain |
+| Medium | | stereograph, film, radio, television, teaching machine, computer, virtual reality, online learning, AI, direct transmission to the brain (source wording kept as a detail) |
 | Speaker | | inventor, company, policymaker, educator, researcher, speculative designer, writer or artist |
 
 *Speculative distance* (how far a claim departs from its own present) is coded on five dimensions: the four dimensions of psychological distance in construal-level theory (Trope & Liberman 2010), as marked in the claim's text, plus scope of change, which the theory lacks because it studies everyday events rather than imagined changes to the world. Psychological distance proper is a person's sense of distance and cannot be read from a document, hence the separate term. Construal level is coded as what distance is expected to produce, so the archive can test whether far claims were in fact written abstractly. Scope of change and temporal distance are the primary dimensions: the wheel shows scope (and locates the gaps), the timeline shows temporal distance. The others are reported descriptively.
@@ -28,10 +28,10 @@ Temporal distance is coded from the horizon a claim *states*, not a year, becaus
 - **Archive** — two views of the claims.
   - *Tetrad wheel*: four sectors for the Tetrad laws, rings for scope of change. Dots are filled for concrete language and hollow for abstract. Hatched cells are empty: combinations no speculation codes for. Selecting one shows a short note; it does not open a design fiction. The overview counts claims per Tetrad law.
   - *Timeline*: each claim placed by the year it was made, in a band for the horizon it states (imminent, near, distant, unstated). The overview counts claims per horizon, split by concrete and abstract language.
-  - A decade slider ("Play decades") and era filters apply to both views.
+  - A decade slider ("Play decades") and era filters (1900–1929, 1930–1969, 1970–1999, 2000 onwards; time only) apply to both views.
 - **Codebook** — the full coding scheme (v0.1): unit of analysis, attributes, each dimension with definitions, decision rules and examples from the archive, the definition of a gap, and the reliability plan. The table below summarises it.
 - **Sources** — every claim with its speaker, full citation and verification status.
-- **Counterfactual obsolescence** — taking past futures at their word. Eligible: every speculation, in any format, whose scope of change is at least “replaces the medium”. One is selected per successor medium: the speculation with the most unimagined Tetrad laws, ties to the earliest. Each counterfactual assumes it came true and supplies what it left unimagined, in a near, concrete version and a far, abstract one, with a storyboard sketch. Current set: Edison 1925 (film), Asimov 1951 (teaching machine), Bradbury 1953 (television), Papert 1984 (computer), Stephenson 1995 (AI), *The Matrix* 1999 (direct transmission to the brain), Thrun 2012 (online learning).
+- **Counterfactual obsolescence** — taking past futures at their word. Eligible: every speculation, in any format, whose scope of change is at least “replaces the medium”. One is selected per medium: the speculation with the most unimagined Tetrad laws, ties to the earliest. Each counterfactual assumes it came true and supplies what it left unimagined, in a near, concrete version and a far, abstract one, with a storyboard sketch. Current set: Edison 1925 (film), Asimov 1951 (teaching machine), Bradbury 1953 (television), Papert 1984 (computer), Stephenson 1995 (AI), *The Matrix* 1999 (direct transmission to the brain), Thrun 2012 (online learning).
 
 ## Status of the data
 
