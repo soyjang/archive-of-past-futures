@@ -83,6 +83,11 @@ button:focus-visible, [tabindex]:focus-visible, input:focus-visible { outline: 2
 .cell { fill: transparent; stroke: var(--rule); stroke-width: 1; }
 .cell.filled { fill: var(--accent-soft); }
 .cell.filled.hl { fill: var(--cell-sel); }
+.horizons { display: grid; gap: 6px; }
+.horizons h3 { margin: 0; }
+.hbar { display: flex; height: 10px; border-radius: 999px; overflow: hidden; gap: 2px; }
+.hseg { display: block; background: var(--ink); }
+.hseg.h2 { opacity: .7; } .hseg.h3 { opacity: .45; } .hseg.h4 { background: transparent; box-shadow: inset 0 0 0 1.25px var(--ink); border-radius: 0 999px 999px 0; }
 .cell.gap { fill: url(#hatch); stroke: var(--accent); stroke-dasharray: 4 4; cursor: pointer; }
 .cell.gap:focus, .cell.gap:active { outline: none; }
 .cell.gap { -webkit-tap-highlight-color: transparent; }
@@ -256,16 +261,12 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
       <a href="#sources" data-page="sources">Sources</a>
       <a href="#counterfactual" data-page="counterfactual">Counterfactual obsolescence</a>
     </nav>
-    <p class="lede">Speculations that a new medium would transform or replace the book in education, from the stereograph and Edison’s films to AI tutors, in press interviews, talks, novels, films, images, papers, reports and design projects. Each speculation sits in the Tetrad sector it promised (enhance, obsolesce, retrieve, reverse) at its speculative distance from its own present. Hatched cells are empty: no speculation in the archive codes for them.</p>
+    <p class="lede">Speculations that a new medium would transform or replace the book in education, from the stereograph and Edison’s films to AI tutors, in press interviews, talks, novels, films, images, papers, reports and design projects. Each speculation sits in the Tetrad sector it promised (enhance, obsolesce, retrieve, reverse), on the ring for the scope of change it claims, from supplementing teaching to replacing the institution. Hatched cells are empty: no speculation in the archive codes for them.</p>
     <p class="notice"><strong>Pilot sample.</strong> 31 documented speculations, from press interviews and talks to novels, films, images, academic papers, reports and a design project, quoted or described from primary sources or reputable compilations. Codes are provisional (one coder, <a href="#codebook">codebook</a> v0.1), and claims marked “to verify” still need checking against the original page.</p>
   </header>
 
   <section id="pg-archive" class="page">
   <div class="controls" role="group" aria-label="View controls">
-    <div class="seg" role="group" aria-label="Rings show">
-      <button type="button" id="d-scope" aria-pressed="true">Scope of change</button>
-      <button type="button" id="d-temporal" aria-pressed="false">Temporal distance</button>
-    </div>
     <div class="slider">
       <label for="decade">Claims up to</label>
       <input type="range" id="decade" min="1900" max="2030" step="10" value="2030">
@@ -340,7 +341,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
           <p class="cb-rule"><strong>Rule.</strong> Code what is promised, not what the coder thinks would follow. A denial (“would not replace teachers”) is not coded as obsolescence.</p></section>
 
         <section id="cb-distance" class="cb-sub"><h3>2. Speculative distance</h3>
-          <p>How far the claim departs from its own present, coded on five dimensions. The first, <strong>scope of change</strong>, is how much of the world the claim alters: the dimension construal-level theory lacks, and the one that matters most for obsolescence. The other four are the dimensions of psychological distance in construal-level theory (Trope &amp; Liberman 2010): <strong>temporal</strong>, <strong>spatial</strong>, <strong>social</strong> and <strong>hypotheticality</strong>. They are coded as the claim marks them in its text, since psychological distance proper is a person’s sense of distance and cannot be read from a document. Scope and temporal distance are primary, as the two settings of the wheel’s rings; the other three are reported descriptively.</p>
+          <p>How far the claim departs from its own present, coded on five dimensions. The first, <strong>scope of change</strong>, is how much of the world the claim alters: the dimension construal-level theory lacks, and the one that matters most for obsolescence. The other four are the dimensions of psychological distance in construal-level theory (Trope &amp; Liberman 2010): <strong>temporal</strong>, <strong>spatial</strong>, <strong>social</strong> and <strong>hypotheticality</strong>. They are coded as the claim marks them in its text, since psychological distance proper is a person’s sense of distance and cannot be read from a document. Scope is primary: crossed with the Tetrad, it forms the wheel. The other four are reported descriptively. Temporal distance, for example, belongs to a claim as a whole rather than to any one law, and most claims state no horizon at all.</p>
 
           <h4>2a. Scope of change</h4>
           <dl class="cb-dl"><dt>Supplements</dt><dd>Adds alongside existing teaching. <q>The stereograph may be used advantageously either with or without a textbook.</q> (Eliot, 1906)</dd>
@@ -662,18 +663,6 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   function renderPanelBody() {
     const p = $("#panel");
     const claims = visibleClaims();
-    if (state.dim === "temporal") {
-      const rows = DIMS.temporal.levels.map((label, k) => {
-        const inBand = claims.filter(c => c.temporal === k + 1);
-        return [label, inBand.filter(c => c.lang === "concrete").length, inBand.filter(c => c.lang === "abstract").length];
-      });
-      const mx = Math.max(1, ...rows.map(r => r[1] + r[2]));
-      p.innerHTML = `<div><h3>Overview · ${claims.length} speculations</h3></div>
-        <h2>How far ahead past futures look, and in what language.</h2>
-        <div class="bars">${rows.map(([l, c, a]) => `<div class="bar"><span>${l}</span><span class="track" style="display:flex"><span class="fill${a ? " con" : ""}" style="display:block;width:${(c / mx) * 100}%"></span><span class="fill abs" style="display:block;width:${(a / mx) * 100}%"></span></span><span class="n">${c + a}</span></div>`).join("")}</div>
-        <p class="small"><span class="key"></span> concrete <span class="key abs"></span> abstract. Use “Play decades” to watch the horizons fill over time. Select a dot or a hatched cell.</p>`;
-      return;
-    }
     const counts = LAW_ORDER.map(l => [l, claims.filter(c => lawsOf(c).includes(l)).length]);
     const max = Math.max(1, ...counts.map(x => x[1]));
     const g = gaps();
@@ -681,6 +670,12 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
       <h2>${(() => { const n = (l) => claims.filter(c => c.laws.includes(l)).length;
         return `Most speculations promise to enhance and to replace; ${n("retrieve")} imagine retrieval, ${n("reverse")} reversal.`; })()}</h2>
       <div class="bars">${counts.map(([l, n]) => `<div class="bar"><span>${LAWS[l].label}</span><span class="track"><span class="fill" style="display:block;width:${(n / max) * 100}%"></span></span><span class="n">${n}</span></div>`).join("")}</div>
+      <div class="horizons">${(() => {
+        const h = DIMS.temporal.levels.map((l, k) => [l, claims.filter(c => c.temporal === k + 1).length]);
+        const n = claims.length || 1;
+        return `<h3>Stated horizon</h3><div class="hbar">${h.map(([l, v], k) => v ? `<span class="hseg h${k + 1}" style="flex:${v}" title="${l}: ${v}"></span>` : "").join("")}</div>
+          <p class="small">${h.map(([l, v]) => `${l.toLowerCase()} ${v}`).join(" · ")}. ${h[3][1]} of ${claims.length} speculations state no horizon at all.</p>`;
+      })()}</div>
       <p class="small">${g.length} hatched cells: combinations no speculation codes for. Select one for a note. For how the archive becomes design fictions, see <a href="#counterfactual">Counterfactual obsolescence</a>. Select a dot for its coding.</p>`;
   }
 
@@ -797,14 +792,6 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
       state.decade += 10; $("#decade").value = state.decade; render();
     }, 900);
   });
-  function setDim(d) {
-    state.dim = d; state.gap = null;
-    $("#d-scope").setAttribute("aria-pressed", d === "scope");
-    $("#d-temporal").setAttribute("aria-pressed", d === "temporal");
-    render();
-  }
-  $("#d-scope").addEventListener("click", () => setDim("scope"));
-  $("#d-temporal").addEventListener("click", () => setDim("temporal"));
 
   function activate(target) {
     const gap = target.closest("[data-gap]");
