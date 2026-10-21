@@ -149,6 +149,13 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
       <button type="button" id="v-time" aria-pressed="false">Timeline</button>
     </div>
     <div class="slider">
+      <label for="tet">Tetrad</label>
+      <select id="tet" class="dimsel">
+        <option value="predicted">As predicted</option>
+        <option value="actual">As it happened</option>
+      </select>
+    </div>
+    <div class="slider">
       <label for="dim">Rings show</label>
       <select id="dim" class="dimsel">
         <option value="scope">Scope of change</option>
@@ -181,7 +188,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     <aside class="panel" id="panel" aria-live="polite"></aside>
   </div>
 
-  <footer>Coding scheme: Tetrad laws after McLuhan &amp; McLuhan (1988). Speculative distance on construal-level theory's four dimensions of psychological distance (Trope &amp; Liberman 2010): temporal, spatial, social and hypotheticality. Temporal distance is coded from the horizon a claim states (imminent, near, distant), since most give no year; “unstated” is a value in its own right. Construal level (concrete or abstract language) is coded as the kind of thinking distance is expected to produce. Scope of change (supplement, transform practice, replace the medium, replace the institution) is a dimension specific to obsolescence. Design-fiction storyboards are placeholders for AI-assisted animations.</footer>
+  <footer>Coding scheme: Tetrad laws after McLuhan &amp; McLuhan (1988), coded twice: as each claim predicted, and as it happened, from histories of educational technology (Cuban 1986; Watters 2021). Each claim also records who is speaking. Speculative distance on construal-level theory's four dimensions of psychological distance (Trope &amp; Liberman 2010): temporal, spatial, social and hypotheticality. Temporal distance is coded from the horizon a claim states (imminent, near, distant), since most give no year; “unstated” is a value in its own right. Construal level (concrete or abstract language) is coded as the kind of thinking distance is expected to produce. Scope of change (supplement, transform practice, replace the medium, replace the institution) is a dimension specific to obsolescence. Design-fiction storyboards are placeholders for AI-assisted animations.</footer>
 </div>
 
 <div class="overlay" id="overlay" hidden>
@@ -255,7 +262,13 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   const WHEN = { 1: [4, ""], 2: [1, "soon"], 3: [2, "within a generation"], 4: [1, "in a few years"], 5: [2, "in the near future"], 6: [1, "now"],
     7: [2, "by the end of the decade"], 8: [3, "one day"], 9: [4, ""], 10: [3, "eventually"], 11: [2, "within ten years"], 12: [1, "today"],
     13: [1, "in a few years"], 14: [2, "in the near future"], 15: [3, "eventually"], 16: [4, ""] };
-  CLAIMS.forEach(c => { [c.spatial, c.social, c.hyp] = CODES[c.id]; [c.temporal, c.when] = WHEN[c.id]; });
+  // What happened, coded from histories of educational technology (illustrative; empty while a claim is still open)
+  const ACTUAL = { 1: ["enhance"], 2: ["enhance", "retrieve"], 3: ["enhance"], 4: ["enhance", "retrieve"], 5: ["enhance", "retrieve"], 6: ["enhance", "reverse"],
+    7: ["enhance", "reverse"], 8: ["enhance"], 9: ["enhance"], 10: ["enhance", "retrieve"], 11: ["retrieve", "reverse"], 12: ["enhance"],
+    13: [], 14: [], 15: [], 16: ["enhance", "reverse"] };
+  const SPEAKERS = ["Inventor", "Company", "Policymaker", "Educator", "Researcher", "Speculative designer"];
+  const SPEAKER = { 1: 1, 2: 0, 3: 3, 4: 1, 5: 2, 6: 4, 7: 1, 8: 4, 9: 4, 10: 1, 11: 1, 12: 1, 13: 1, 14: 1, 15: 5, 16: 0 };
+  CLAIMS.forEach(c => { [c.spatial, c.social, c.hyp] = CODES[c.id]; [c.temporal, c.when] = WHEN[c.id]; c.actual = ACTUAL[c.id]; c.speaker = SPEAKERS[SPEAKER[c.id]]; });
 
   const FICTIONS = {
     "reverse-4": {
@@ -288,8 +301,9 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
   const eraOf = (y) => ERAS.find(e => y >= e.from && y <= e.to) || ERAS[ERAS.length - 1];
 
-  const state = { view: "wheel", dim: "scope", decade: 2030, eras: new Set(ERAS.map(e => e.id)), selected: null };
-  const fictionFor = (key) => (state.dim === "scope" ? FICTIONS[key] : null);
+  const state = { view: "wheel", tetrad: "predicted", dim: "scope", decade: 2030, eras: new Set(ERAS.map(e => e.id)), selected: null };
+  const fictionFor = (key) => (state.dim === "scope" && state.tetrad === "predicted" ? FICTIONS[key] : null);
+  const lawsOf = (c) => (state.tetrad === "actual" ? c.actual : c.laws);
 
   function visibleClaims() {
     return CLAIMS.filter(c => c.year <= state.decade + 9 && state.eras.has(eraOf(c.year).id));
@@ -308,7 +322,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     const claims = visibleClaims();
     const RS = rings();
     const cells = {};
-    claims.forEach(c => c.laws.forEach(l => { (cells[`${l}-${levelOf(c)}`] ||= []).push(c); }));
+    claims.forEach(c => lawsOf(c).forEach(l => { (cells[`${l}-${levelOf(c)}`] ||= []).push(c); }));
     let s = `<svg viewBox="-345 -345 690 690" role="img" aria-label="Tetrad wheel: claims placed by Tetrad law and speculative distance">
       <defs><pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line class="hatch-line" x1="0" y1="0" x2="0" y2="8"></line></pattern></defs>`;
     for (const law of LAW_ORDER) {
@@ -328,7 +342,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     const corner = { enhance: [-330, -318, "start"], reverse: [330, -318, "end"], retrieve: [-330, 322, "start"], obsolesce: [330, 322, "end"] };
     for (const law of LAW_ORDER) {
       const [x, y, anchor] = corner[law];
-      const n = claims.filter(c => c.laws.includes(law)).length;
+      const n = claims.filter(c => lawsOf(c).includes(law)).length;
       s += `<text class="axis-label" x="${x}" y="${y}" text-anchor="${anchor}">${LAWS[law].label}</text>
             <text class="axis-sub" x="${x}" y="${y + 16}" text-anchor="${anchor}">${n} claim${n === 1 ? "" : "s"}</text>`;
     }
@@ -386,7 +400,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     const claims = visibleClaims();
     const out = [];
     for (const law of LAW_ORDER) for (const R of rings()) {
-      if (!claims.some(c => levelOf(c) === R.k && c.laws.includes(law))) out.push(`${law}-${R.k}`);
+      if (!claims.some(c => levelOf(c) === R.k && lawsOf(c).includes(law))) out.push(`${law}-${R.k}`);
     }
     return out;
   }
@@ -401,7 +415,9 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
         <div>${c.documented ? `<span class="tag">Documented claim</span>` : `<span class="tag ill">Illustrative paraphrase</span>`}</div>
         <dl class="meta">
           <dt>Era</dt><dd><span class="swatch" style="background:var(${era.v})"></span> ${era.label}</dd>
-          <dt>Tetrad</dt><dd>${c.laws.map(l => `<span class="tag">${LAWS[l].label}</span>`).join("")}</dd>
+          <dt>Speaker</dt><dd>${c.speaker}</dd>
+          <dt>Predicted</dt><dd>${c.laws.map(l => `<span class="tag">${LAWS[l].label}</span>`).join("")}</dd>
+          <dt>Happened</dt><dd>${c.actual.length ? c.actual.map(l => `<span class="tag">${LAWS[l].label}</span>`).join("") : "Not yet known"}</dd>
           <dt>Scope</dt><dd>${DIMS.scope.levels[c.ring - 1]}</dd>
           <dt>Temporal</dt><dd>${DIMS.temporal.levels[c.temporal - 1]}${c.when ? ` (“${c.when}”)` : ""}</dd>
           <dt>Plotted to</dt><dd>${c.horizon} (coder's estimate, for the timeline)</dd>
@@ -416,11 +432,11 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
       return;
     }
     const claims = visibleClaims();
-    const counts = LAW_ORDER.map(l => [l, claims.filter(c => c.laws.includes(l)).length]);
+    const counts = LAW_ORDER.map(l => [l, claims.filter(c => lawsOf(c).includes(l)).length]);
     const max = Math.max(1, ...counts.map(x => x[1]));
     const g = gaps();
     p.innerHTML = `<div><h3>Overview · ${claims.length} claims</h3></div>
-      <h2>Past futures promise to enhance and to replace. They rarely imagine retrieval, and never reversal.</h2>
+      <h2>${state.tetrad === "actual" ? "What happened: retrieval and reversal, which the claims rarely foresaw, appear once the record is in." : "Past futures promise to enhance and to replace. They rarely imagine retrieval, and never reversal."}</h2>
       <div class="bars">${counts.map(([l, n]) => `<div class="bar"><span>${LAWS[l].label}</span><span class="track"><span class="fill" style="display:block;width:${(n / max) * 100}%"></span></span><span class="n">${n}</span></div>`).join("")}</div>
       <div style="display:grid;gap:8px"><h3>${g.length} gaps to design for</h3>
         <div class="gaplist">${g.map(k => { const [l, r] = k.split("-"); const star = fictionFor(k) ? " ★" : ""; return `<button type="button" class="gapbtn" data-gap="${k}">${LAWS[l].label} · ${rings()[+r - 1].label}${star}</button>`; }).join("")}</div>
@@ -535,6 +551,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     render();
   });
   $("#decade").addEventListener("input", (e) => { state.decade = +e.target.value; render(); });
+  $("#tet").addEventListener("change", (e) => { state.tetrad = e.target.value; render(); });
   $("#dim").addEventListener("change", (e) => { state.dim = e.target.value; render(); });
   let timer = null;
   $("#play").addEventListener("click", () => {
