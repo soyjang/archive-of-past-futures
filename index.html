@@ -536,7 +536,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   // Every speculation is drawn the same way
   // Hollow dots are drawn smaller so their outer edge matches a filled dot of the same size
   function mark(c, x, y, r, cls, style, attrs = "") {
-    const rr = cls.includes("hollow") ? r - 1.25 : r;
+    const rr = cls.includes("hollow") ? r - 1.25 : r - 0.6;
     return `<circle class="${cls}" cx="${x}" cy="${y}" r="${rr}" style="${style}"${attrs}></circle>`;
   }
 
