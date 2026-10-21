@@ -687,9 +687,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
     const counts = LAW_ORDER.map(l => [l, claims.filter(c => lawsOf(c).includes(l)).length]);
     const max = Math.max(1, ...counts.map(x => x[1]));
     const g = gaps();
-    p.innerHTML = `<div><h3>Overview · ${claims.length} speculations</h3></div>
-      <h2>${(() => { const n = (l) => claims.filter(c => c.laws.includes(l)).length;
-        return `Most speculations promise to enhance and to replace; ${n("retrieve")} imagine retrieval, ${n("reverse")} reversal.`; })()}</h2>
+    p.innerHTML = `<div><h3>Overview</h3></div>
       ${tetradSVG(claims)}`;
   }
 
