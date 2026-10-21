@@ -90,6 +90,15 @@ button:focus-visible, [tabindex]:focus-visible, input:focus-visible { outline: 2
 .dot.hollow { fill: var(--panel) !important; stroke-width: 3; }
 .dot:hover, .dot:focus-visible, .dot.sel { stroke: var(--ink); outline: none; }
 .dot.hollow:hover, .dot.hollow.sel { stroke-width: 4; }
+.dot { transition: opacity .25s; }
+.dot.dim { opacity: .22; }
+.span-line { stroke: var(--ink); stroke-width: 1.5; stroke-dasharray: 4 5; fill: none; animation: dash 1.2s linear infinite; }
+.span-ring { fill: none; stroke: var(--ink); stroke-width: 1.5; }
+.span-label { font: 500 11px var(--font-mono); fill: var(--ink); paint-order: stroke; stroke: var(--paper); stroke-width: 4px; }
+.halo { fill: none; stroke-width: 2.5; pointer-events: none; transform-box: fill-box; transform-origin: center; animation: halo 1.6s ease-out infinite; }
+@keyframes dash { to { stroke-dashoffset: -18; } }
+@keyframes halo { from { transform: scale(1); opacity: .9; } to { transform: scale(2.6); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .span-line, .halo { animation: none; } .halo { transform: scale(1.6); opacity: .5; } }
 .tl-axis { stroke: var(--rule); }
 .tl-tick { font-family: var(--font-mono); font-size: 11px; fill: var(--muted); }
 .tl-label { font-family: var(--font-body); font-size: 12.5px; fill: var(--ink); }
@@ -495,6 +504,8 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
       s += `<text class="axis-label" x="${x}" y="${y}" text-anchor="${anchor}">${LAWS[law].label}</text>
             <text class="axis-sub" x="${x}" y="${y + 16}" text-anchor="${anchor}">${n} claim${n === 1 ? "" : "s"}</text>`;
     }
+    let ds = "";
+    const selPts = [];
     for (const [key, list] of Object.entries(cells)) {
       const [law, ring] = key.split("-");
       const L = LAWS[law], R = RS[+ring - 1];
@@ -504,10 +515,20 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
         const [x, y] = pt(r, a);
         const col = `var(${eraOf(c.year).v})`;
         const abstract = c.lang === "abstract";
-        const sel = state.selected === c.id ? " sel" : "";
+        const sel = state.selected === c.id ? " sel" : state.selected ? " dim" : "";
+        if (state.selected === c.id) selPts.push([+x.toFixed(1), +y.toFixed(1), col]);
         const style = abstract ? `stroke:${col}` : `fill:${col}`;
-        s += mark(c, +x.toFixed(1), +y.toFixed(1), 9, `dot${abstract ? " hollow" : ""}${sel}`, style, ` tabindex="0" role="button" data-id="${c.id}" aria-label="${c.year}, ${GENRES[c.genre]}, ${c.medium}, ${abstract ? "abstract" : "concrete"} language: ${c.text}"`);
+        ds += mark(c, +x.toFixed(1), +y.toFixed(1), 9, `dot${abstract ? " hollow" : ""}${sel}`, style, ` tabindex="0" role="button" data-id="${c.id}" aria-label="${c.year}, ${GENRES[c.genre]}, ${c.medium}, ${abstract ? "abstract" : "concrete"} language: ${c.text}"`);
       });
+    }
+    // A selected speculation that spans several Tetrad laws: link its copies through the centre and pulse each one
+    if (selPts.length > 1) {
+      s += `<g class="span"><circle class="span-ring" r="44"></circle>${selPts.map(([x, y]) => { const d = Math.hypot(x, y); return `<path class="span-line" d="M${(x / d * 44).toFixed(1)} ${(y / d * 44).toFixed(1)} L${x} ${y}"></path>`; }).join("")}</g>`;
+    }
+    s += ds;
+    if (selPts.length) {
+      s += selPts.map(([x, y, col]) => `<circle class="halo" cx="${x}" cy="${y}" r="9" style="stroke:${col}"></circle>`).join("");
+      if (selPts.length > 1) s += `<text class="span-label" text-anchor="middle" y="62">spans ${selPts.length} laws</text>`;
     }
     s += `</svg>`;
     $("#wheel-wrap").innerHTML = s;
