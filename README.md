@@ -1,6 +1,6 @@
 # An Archive of Past Futures
 
-A prototype view for Study 1 of the PhD project *Historicising Speculative Design* (Soyoun Jang, Georgia Tech).
+A prototype for Study 1 of the PhD project *Historicising Speculative Design* (Soyoun Jang, Georgia Tech).
 
 The archive collects claims that a new medium would transform or replace the book in education, from the classroom stereoscope and educational film to today's discourse on VR and AI. Each claim is coded on eight codes:
 
@@ -21,15 +21,24 @@ Claims of replacement mostly state what a medium enhances and obsolesces, so the
 
 Temporal distance is coded from the horizon a claim *states*, not a year, because most claims (and most speculative design) give none: Edison's "soon", a design fiction's "near future". The signalling phrase is recorded with the code, a year is noted where given, and *unstated* is a value in its own right: in construal-level terms, a vague horizon may itself indicate abstract construal. Placing phrases on the scale is interpretive, so the codebook gives example phrases per level and a second coder checks a sample.
 
-## Views
+## Pages
 
-- **Tetrad wheel** — four sectors for the Tetrad laws, rings for one of the two main dimensions, scope of change or temporal distance. Spatial distance, social distance, hypotheticality and construal level are shown per claim and reported descriptively. Dots are filled for concrete language and hollow for abstract, so you can see whether distant rings fill with abstract claims. Hatched cells are *gaps*: combinations no claim imagined. Opening a gap shows the design fiction it calls for, with a multiplane animation sketch.
-- **Timeline** — each claim placed by the year it was made, in a band for the horizon it states (imminent, near, distant, unstated), to show how the horizon of prophecy shifts across a century. The archive records predictions only, not outcomes.
-- A decade slider ("Play decades") and era filters.
+- **Archive** — two views of the claims.
+  - *Tetrad wheel*: four sectors for the Tetrad laws, rings for scope of change or temporal distance. Dots are filled for concrete language and hollow for abstract. Hatched cells are gaps: combinations no claim imagined. The overview counts claims per Tetrad law.
+  - *Timeline*: each claim placed by the year it was made, in a band for the horizon it states (imminent, near, distant, unstated). The overview counts claims per horizon, split by concrete and abstract language.
+  - A decade slider ("Play decades") and era filters apply to both views.
+- **Sources** — every claim with its speaker, full citation and verification status, linking back to its place on the wheel.
+- **Gaps for speculative design** — every gap on scope of change and on temporal distance, each opening a design-fiction prompt with a multiplane animation sketch.
 
 ## Status of the data
 
-**Mock-up.** All entries are illustrative paraphrases, except Edison's 1913 statement ("Books will soon be obsolete in the public schools"), which is a documented claim still to be verified against its source (commonly cited via Cuban 1986). Distance and speaker codes (`CODES`, `WHEN`, `SPEAKER`) are likewise illustrative, Replace these arrays in `index.html` with sourced entries as the archive is collected.
+**Pilot sample of 18 documented claims** (1906–2025), quoted from primary sources or from reputable compilations: Edison (1911, 1913, 1922, 1925), the Keystone teachers' guide (1906), the Ohio School of the Air (1929), FCC Commissioner Frieda Hennock (1955), Skinner (1958), RCA's *Electronic Age* (1959), Senator Muskie (1961), Suppes (1966), Papert (1984), Winn (1993), Thrun (2012), Christensen (2013), Sal Khan (2023) and Bill Gates (2023, 2025).
+
+- Codes are provisional: one coder, no codebook yet.
+- Claims marked *to verify* need checking against the original page or venue (Edison 1913 and 1922 wordings, Papert's 1984 venue, Thrun's wording, the edition of the Keystone guide).
+- Still missing: a documented 1960s claim that television would replace the book (the anchoring counterfactual), 1990s VR claims of replacement, and speculative design projects.
+
+The data lives in the `CLAIMS`, `CODES`, `WHEN` and `SPEAKER` arrays in `index.html`.
 
 ## Running it
 

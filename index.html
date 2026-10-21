@@ -135,6 +135,33 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
 .beats li { display: grid; grid-template-columns: 4ch 1fr; gap: 8px; font-size: 15px; }
 .beats li::before { counter-increment: k; content: "K0" counter(k); font-family: var(--font-mono); font-size: 12px; color: var(--accent); padding-top: 3px; }
 .small { font-size: 13px; color: var(--muted); margin: 0; }
+.sitenav { display: flex; flex-wrap: wrap; gap: 4px 22px; border-bottom: 1px solid var(--rule); margin: 6px 0 4px; }
+.sitenav a { font: 500 15px var(--font-body); color: var(--muted); text-decoration: none; padding: 8px 0 9px; border-bottom: 2px solid transparent; margin-bottom: -1px; }
+.sitenav a:hover { color: var(--ink); }
+.sitenav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--accent); }
+.page { display: grid; gap: 22px; }
+.pagehead { display: grid; gap: 6px; max-width: 80ch; }
+.pagehead h2 { font-family: var(--font-display); font-size: 28px; margin: 0; }
+.srclist { list-style: none; margin: 0; padding: 0; display: grid; }
+.srclist li { display: grid; grid-template-columns: 7ch minmax(0, 1fr); gap: 4px 18px; padding: 16px 0; border-top: 1px solid var(--rule); }
+.srclist .yr { font: 500 15px var(--font-mono); color: var(--ink); }
+.srclist .yr i { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; }
+.srclist .body { display: grid; gap: 6px; min-width: 0; }
+.srclist .q { margin: 0; font-size: 16px; line-height: 1.45; }
+.srclist .meta { font-size: 13px; color: var(--muted); margin: 0; }
+.srclist .cite { font-size: 13px; margin: 0; overflow-wrap: anywhere; }
+.linkbtn { justify-self: start; font: 500 13px var(--font-mono); background: transparent; border: 0; color: var(--accent); cursor: pointer; padding: 0; }
+.gapgroup { display: grid; gap: 12px; margin-bottom: 26px; }
+.gapgroup h3 { margin: 0; }
+.gapcards { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 12px; }
+.gapcard { background: var(--panel); border: 1px dashed var(--accent); border-radius: 10px; padding: 14px; display: grid; gap: 8px; align-content: start; text-align: left; font: inherit; color: var(--ink); cursor: pointer; }
+.gapcard:hover, .gapcard:focus-visible { background: var(--accent-soft); outline: none; }
+.gapcard strong { font-family: var(--font-display); font-size: 17px; }
+.gapcard span { font-size: 14px; color: var(--muted); }
+.panel a, .pagehead a { color: var(--accent); }
+.fill.abs { background: transparent !important; box-shadow: inset 0 0 0 2px var(--accent); border-radius: 0 999px 999px 0; }
+.key { display: inline-block; width: 12px; height: 12px; border-radius: 3px; background: var(--accent); vertical-align: -1px; }
+.key.abs { background: transparent; box-shadow: inset 0 0 0 2px var(--accent); margin-left: 8px; }
 footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 14px; max-width: 90ch; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
@@ -143,10 +170,16 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   <header>
     <div class="eyebrow">Study 1 · prototype view</div>
     <h1>An Archive of Past Futures</h1>
-    <p class="lede">Claims that a new medium would transform or replace the book in education, from the classroom stereoscope to AI tutors. Each claim sits in the Tetrad sector it promised (enhance, obsolesce, retrieve, reverse) at its speculative distance from its own present. Hatched cells are gaps: no claim imagined them. Open a gap to see the design fiction it calls for.</p>
-    <p class="notice"><strong>Mock-up.</strong> Entries are illustrative placeholders, paraphrased to show how the archive will work. Only Edison's 1913 statement is a documented claim, and it still needs verifying against its source. Replace these with sourced entries as the archive is collected.</p>
+    <nav class="sitenav" aria-label="Pages">
+      <a href="#archive" data-page="archive">Archive</a>
+      <a href="#sources" data-page="sources">Sources</a>
+      <a href="#gaps" data-page="gaps">Gaps for speculative design</a>
+    </nav>
+    <p class="lede">Claims that a new medium would transform or replace the book in education, from the stereograph and Edison’s films to AI tutors. Each claim sits in the Tetrad sector it promised (enhance, obsolesce, retrieve, reverse) at its speculative distance from its own present. Hatched cells are gaps: no claim imagined them. Open a gap to see the design fiction it calls for.</p>
+    <p class="notice"><strong>Pilot sample.</strong> 18 documented claims, quoted from primary sources or reputable compilations. Codes are provisional (one coder, no codebook yet), and claims marked “to verify” still need checking against the original page.</p>
   </header>
 
+  <section id="pg-archive" class="page">
   <div class="controls" role="group" aria-label="View controls">
     <div class="seg" role="group" aria-label="View">
       <button type="button" id="v-wheel" aria-pressed="true">Tetrad wheel</button>
@@ -176,6 +209,17 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     </div>
     <aside class="panel" id="panel" aria-live="polite"></aside>
   </div>
+  </section>
+
+  <section id="pg-sources" class="page" hidden>
+    <div class="pagehead"><h2>Sources</h2><p class="small">Every claim in the archive, in order of the year it was made. Select a claim to see it on the wheel with its coding.</p></div>
+    <ol class="srclist" id="srclist"></ol>
+  </section>
+
+  <section id="pg-gaps" class="page" hidden>
+    <div class="pagehead"><h2>Gaps for speculative design</h2><p class="small">Combinations of a Tetrad law and a distance that no claim in the archive imagines. Each is a prompt for a design fiction, for example on the anchoring counterfactual: what if the book had been replaced by television in the 1960s?</p></div>
+    <div id="gapgroups"></div>
+  </section>
 
   <footer>Coding scheme: Tetrad laws after McLuhan &amp; McLuhan (1988). Each claim also records who is speaking. Speculative distance, how far a claim departs from its own present, is coded on five dimensions: the four dimensions of psychological distance in construal-level theory (Trope &amp; Liberman 2010), temporal, spatial, social and hypotheticality, as marked in the claim's text, plus scope of change. Temporal distance is coded from the horizon a claim states (imminent, near, distant), since most give no year; “unstated” is a value in its own right. Construal level (concrete or abstract language) is coded as the kind of thinking distance is expected to produce; on the wheel, filled dots are concrete and hollow dots abstract. Scope of change (supplement, transform practice, replace the medium, replace the institution) is the dimension construal-level theory lacks: how much of the world the claim alters. The wheel's rings show the two main dimensions, scope of change and temporal distance; the others are reported descriptively. The timeline places each claim by the year it was made, in a band for the horizon it states, to show how the horizon of prophecy shifts across a century. The archive records predictions only, not outcomes. Design-fiction storyboards are placeholders for AI-assisted animations.</footer>
 </div>
@@ -199,8 +243,8 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
 <script>
 (function () {
   const ERAS = [
-    { id: "e1", label: "Stereoscope & film", from: 1900, to: 1929, v: "--era1" },
-    { id: "e2", label: "Radio, TV & teaching machines", from: 1930, to: 1969, v: "--era2" },
+    { id: "e1", label: "Stereograph & film", from: 1900, to: 1928, v: "--era1" },
+    { id: "e2", label: "Radio, TV & teaching machines", from: 1929, to: 1969, v: "--era2" },
     { id: "e3", label: "Computers & VR", from: 1970, to: 1999, v: "--era3" },
     { id: "e4", label: "Online learning & AI", from: 2000, to: 2039, v: "--era4" }
   ];
@@ -225,35 +269,38 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   const levelOf = (c) => DIMS[state.dim].get(c);
   const OUTCOME = { absorbed: "Absorbed into practice", unrealised: "Not realised", open: "Still open" };
 
-  // Illustrative entries. Only #2 is a documented claim (verify against source).
+  // Documented claims, gathered from primary sources or reputable compilations. Codes are provisional (single coder).
+  // verify: wording or original venue still to be checked against the primary source.
   const CLAIMS = [
-    { id: 1, year: 1906, medium: "Classroom stereoscope", text: "Sets of stereographs will let every pupil travel the world from their desk.", ring: 1, laws: ["enhance"], lang: "concrete", outcome: "absorbed", documented: false },
-    { id: 2, year: 1913, medium: "Motion picture", text: "Books will soon be obsolete in the public schools.", ring: 3, laws: ["obsolesce", "enhance"], lang: "abstract", outcome: "unrealised", documented: true, source: "Thomas Edison, 1913; commonly cited via Cuban (1986). Verify." },
-    { id: 3, year: 1924, medium: "Educational film", text: "Film will become the main way children learn about the world.", ring: 2, laws: ["enhance", "obsolesce"], lang: "abstract", outcome: "unrealised", documented: false },
-    { id: 4, year: 1932, medium: "School radio", text: "Radio broadcasts will become a textbook of the air for every school.", ring: 2, laws: ["enhance"], lang: "abstract", outcome: "absorbed", documented: false },
-    { id: 5, year: 1957, medium: "Educational television", text: "Television will put a master teacher in every classroom.", ring: 3, laws: ["enhance", "obsolesce"], lang: "abstract", outcome: "unrealised", documented: false },
-    { id: 6, year: 1958, medium: "Teaching machine", text: "Machines will teach more in less time and free teachers from drill.", ring: 2, laws: ["enhance", "obsolesce"], lang: "concrete", outcome: "absorbed", documented: false },
-    { id: 7, year: 1984, medium: "Classroom computer", text: "A computer in every classroom will transform how children learn.", ring: 2, laws: ["enhance"], lang: "abstract", outcome: "absorbed", documented: false },
-    { id: 8, year: 1993, medium: "Virtual reality", text: "Students will learn by entering worlds rather than reading about them.", ring: 3, laws: ["enhance", "obsolesce"], lang: "abstract", outcome: "unrealised", documented: false },
-    { id: 9, year: 1995, medium: "Virtual reality", text: "VR brings back learning by doing, as in an apprenticeship.", ring: 2, laws: ["retrieve"], lang: "concrete", outcome: "unrealised", documented: false },
-    { id: 10, year: 1996, medium: "Virtual classroom", text: "Virtual classrooms will replace the schoolhouse.", ring: 4, laws: ["obsolesce"], lang: "abstract", outcome: "unrealised", documented: false },
-    { id: 11, year: 2012, medium: "Online courses (MOOCs)", text: "Online courses will make the campus obsolete.", ring: 4, laws: ["obsolesce"], lang: "abstract", outcome: "unrealised", documented: false },
-    { id: 12, year: 2016, medium: "VR headsets", text: "Virtual field trips for every classroom, anywhere in the world.", ring: 1, laws: ["enhance"], lang: "concrete", outcome: "absorbed", documented: false },
-    { id: 13, year: 2023, medium: "AI tutor", text: "Every student will have a personal AI tutor.", ring: 3, laws: ["enhance", "obsolesce"], lang: "abstract", outcome: "open", documented: false },
-    { id: 14, year: 2024, medium: "Generative AI", text: "AI will make the textbook obsolete.", ring: 3, laws: ["obsolesce"], lang: "abstract", outcome: "open", documented: false },
-    { id: 15, year: 2025, medium: "Generative AI", text: "Schools as we know them will disappear.", ring: 4, laws: ["obsolesce"], lang: "abstract", outcome: "open", documented: false },
-    { id: 16, year: 2005, medium: "Low-cost laptops", text: "Laptops will transform learning for children in developing countries.", ring: 2, laws: ["enhance"], lang: "abstract", outcome: "unrealised", documented: false }
+    { id: 1, year: 1906, medium: "Stereograph", who: "Charles W. Eliot (introduction to Keystone’s teachers’ guide)", text: "The stereograph may be used advantageously either with or without a textbook.", ring: 1, laws: ["enhance"], lang: "concrete", verify: "Guide copyrighted 1906–1922; confirm which edition carries this introduction.", source: "Charles W. Eliot, General Introduction, in Keystone View Company, Visual Education: Teachers’ Guide to Keystone “600 Set” (Meadville, PA: Keystone View Company, 1906; digitised edition c.1922). Internet Archive." },
+    { id: 2, year: 1911, medium: "Motion picture", who: "Thomas Edison", text: "The moving picture art will largely supplement the art of printing.", ring: 2, laws: ["enhance"], lang: "abstract", source: "Frank Parker Hulette, interview with Thomas Edison, Moving Picture World, 22 July 1911, pp. 104–105. Compiled in “Thomas Edison’s Education Predictions”, muninn.net." },
+    { id: 3, year: 1913, medium: "Motion picture", who: "Thomas Edison", text: "Books will soon be obsolete in the public schools. … Our school system will be completely changed inside of ten years.", ring: 3, laws: ["obsolesce", "enhance"], lang: "abstract", verify: "Second sentence confirmed in the compilation; check the first against the original page.", source: "Frederick James Smith, “The Evolution of the Motion Picture VI”, New York Dramatic Mirror 70, 9 July 1913, p. 24; cited in Cuban (1986)." },
+    { id: 4, year: 1922, medium: "Motion picture", who: "Thomas Edison", text: "I believe that the motion picture is destined to revolutionize our educational system and that in a few years it will supplant largely, if not entirely, the use of textbooks.", ring: 3, laws: ["enhance", "obsolesce"], lang: "abstract", verify: "Full wording taken from secondary sources; check against McClure’s.", source: "Hugh Weir, “The Story of the Motion Picture”, McClure’s 54, November 1922, p. 85; quoted in Cuban (1986)." },
+    { id: 5, year: 1925, medium: "Motion picture", who: "Thomas Edison", text: "Textbooks as the principal medium of teaching will be as obsolete as the horse and carriage are now.", ring: 3, laws: ["obsolesce"], lang: "abstract", source: "Hugh Weir, “What Edison Would Like to Do with the Movies”, Collier’s 75, 21 February 1925, pp. 20–21. Compiled in muninn.net (as above)." },
+    { id: 6, year: 1929, medium: "School radio", who: "Benjamin H. Darrow, Ohio School of the Air", text: "The minds of boys and girls will be dipped directly into the flame of living genius.", ring: 2, laws: ["enhance"], lang: "abstract", source: "Benjamin H. Darrow, first Ohio School of the Air conference, November 1929; quoted in Ohio History Connection, “‘The Flame of Living Genius’: The Ohio School of the Air”, Ohio Memory." },
+    { id: 7, year: 1955, medium: "Educational television", who: "Frieda Hennock, Federal Communications Commission", text: "With a large-screen receiver in every room, programs can be fashioned to the needs of your children. … These programs will be able to tap the Nation’s finest teaching personnel and material.", ring: 2, laws: ["enhance"], lang: "concrete", source: "“Federal Communications Commissioner Predicts Educational TV Will Become the Schoolhouse of the Air”, TV Guide, 18 June 1955. Media History Digital Library (Lantern)." },
+    { id: 8, year: 1958, medium: "Teaching machine", who: "B. F. Skinner", text: "The role of the teacher may well be changed, for machine instruction will affect several traditional practices.", ring: 2, laws: ["enhance", "obsolesce"], lang: "concrete", source: "B. F. Skinner, “Teaching Machines”, Science 128(3330), 24 October 1958, pp. 969–977." },
+    { id: 9, year: 1959, medium: "Educational television", who: "Electronic Age (RCA)", text: "Television can extend the influence of the most talented teachers.", ring: 1, laws: ["enhance"], lang: "abstract", source: "“Television and the Crisis in Our Classrooms”, Electronic Age (RCA), Autumn 1959, pp. 3–5. World Radio History archive." },
+    { id: 10, year: 1961, medium: "Educational television", who: "Senator Edmund S. Muskie", text: "Educational television would not replace teachers but would increase their power to teach.", ring: 1, laws: ["enhance"], lang: "abstract", source: "Edmund S. Muskie, Congressional Record – Senate, 12 September 1961. Muskie Archives, Bates College." },
+    { id: 11, year: 1966, medium: "Classroom computer", who: "Patrick Suppes", text: "One can predict that in a few more years millions of schoolchildren will have access to what Philip of Macedon’s son Alexander enjoyed as a royal prerogative: the personal services of a tutor as well-informed and responsive as Aristotle.", ring: 2, laws: ["enhance", "retrieve"], lang: "abstract", source: "Patrick Suppes, “The Uses of Computers in Education”, Scientific American 215(3), September 1966, pp. 206–220." },
+    { id: 12, year: 1984, medium: "Personal computer", who: "Seymour Papert", text: "I think the computer will blow up the school. … There won’t be schools in the future.", ring: 4, laws: ["obsolesce"], lang: "abstract", verify: "Original 1984 venue not yet identified.", source: "Seymour Papert, 1984; quoted in Cuban (1986)." },
+    { id: 13, year: 1993, medium: "Virtual reality", who: "William Winn, HIT Lab", text: "VR provides a route to success for children who might otherwise fail in our education system.", ring: 2, laws: ["enhance"], lang: "abstract", source: "William Winn, “A Conceptual Basis for Educational Applications of Virtual Reality”, Technical Report R-93-9, Human Interface Technology Laboratory, University of Washington, August 1993." },
+    { id: 14, year: 2012, medium: "Online courses (MOOCs)", who: "Sebastian Thrun, Udacity", text: "Fifty years from now, there will be only 10 institutions in the whole world that deliver higher education.", ring: 4, laws: ["obsolesce"], lang: "abstract", verify: "Wording via secondary sources; check against the Wired article.", source: "Steven Leckart, “The Stanford Education Experiment Could Change Higher Learning Forever”, Wired, March 2012." },
+    { id: 15, year: 2013, medium: "Online learning", who: "Clayton Christensen", text: "A host of struggling colleges and universities … will disappear or merge in the next 10 to 15 years.", ring: 4, laws: ["obsolesce"], lang: "abstract", source: "“Clayton Christensen: Bottom 25 Percent of Colleges Will Disappear”, EdSurge, 5 November 2013." },
+    { id: 16, year: 2023, medium: "Generative AI", who: "Sal Khan, Khan Academy", text: "We’re at the cusp of using AI for probably the biggest positive transformation that education has ever seen.", ring: 2, laws: ["enhance"], lang: "abstract", source: "Sal Khan, “How AI Could Save (Not Destroy) Education”, TED, 2023; Khan Academy blog, 1 May 2023." },
+    { id: 17, year: 2023, medium: "Generative AI", who: "Bill Gates", text: "If you just took the next 18 months, the AIs will come in as a teacher’s aide and give feedback on writing. … The AIs will get to that ability, to be as good a tutor as any human ever could.", ring: 2, laws: ["enhance"], lang: "concrete", source: "Bill Gates, ASU+GSV Summit, San Diego, April 2023; reported in CNBC, 22 April 2023." },
+    { id: 18, year: 2025, medium: "Generative AI", who: "Bill Gates", text: "With AI, over the next decade, that will become free, commonplace — great medical advice, great tutoring.", ring: 3, laws: ["enhance", "obsolesce"], lang: "abstract", source: "Bill Gates, The Tonight Show Starring Jimmy Fallon, NBC, February 2025; reported by NBC/CNBC." }
   ];
-  // Illustrative distance codes per claim: [spatial 1–4, social 1–3, hypotheticality 1–3 (will, should, could)]
-  const CODES = { 1: [1, 1, 1], 2: [2, 1, 1], 3: [2, 1, 1], 4: [2, 1, 2], 5: [2, 1, 1], 6: [1, 1, 3], 7: [1, 1, 1], 8: [4, 3, 1],
-    9: [1, 1, 3], 10: [4, 3, 1], 11: [4, 3, 1], 12: [1, 1, 2], 13: [4, 3, 1], 14: [2, 1, 1], 15: [4, 3, 1], 16: [3, 2, 1] };
-  // Stated horizon as an ordinal (1 imminent, 2 near, 3 distant, 4 unstated), with the phrase that signals it. Illustrative.
-  const WHEN = { 1: [4, ""], 2: [1, "soon"], 3: [2, "within a generation"], 4: [1, "in a few years"], 5: [2, "in the near future"], 6: [1, "now"],
-    7: [2, "by the end of the decade"], 8: [3, "one day"], 9: [4, ""], 10: [3, "eventually"], 11: [2, "within ten years"], 12: [1, "today"],
-    13: [1, "in a few years"], 14: [2, "in the near future"], 15: [3, "eventually"], 16: [4, ""] };
+  // Provisional distance codes per claim: [spatial 1–4, social 1–3, hypotheticality 1–3 (will, should, could)]
+  const CODES = { 1: [1, 1, 3], 2: [4, 3, 1], 3: [2, 1, 1], 4: [2, 1, 1], 5: [4, 3, 1], 6: [2, 1, 1], 7: [2, 1, 1], 8: [1, 1, 1], 9: [2, 1, 3],
+    10: [2, 1, 3], 11: [2, 3, 1], 12: [4, 3, 1], 13: [2, 2, 1], 14: [4, 3, 1], 15: [2, 2, 1], 16: [4, 3, 1], 17: [4, 3, 1], 18: [4, 3, 1] };
+  // Stated horizon (1 imminent, 2 near, 3 distant, 4 unstated) and the phrase that signals it
+  const WHEN = { 1: [4, ""], 2: [4, ""], 3: [2, "soon … inside of ten years"], 4: [1, "in a few years"], 5: [4, ""], 6: [4, ""], 7: [4, ""], 8: [4, ""], 9: [4, ""],
+    10: [4, ""], 11: [1, "in a few more years"], 12: [4, "in the future"], 13: [4, ""], 14: [3, "fifty years from now"], 15: [2, "in the next 10 to 15 years"],
+    16: [1, "at the cusp"], 17: [1, "the next 18 months"], 18: [2, "over the next decade"] };
   const SPEAKERS = ["Inventor", "Company", "Policymaker", "Educator", "Researcher", "Speculative designer"];
-  const SPEAKER = { 1: 1, 2: 0, 3: 3, 4: 1, 5: 2, 6: 4, 7: 1, 8: 4, 9: 4, 10: 1, 11: 1, 12: 1, 13: 1, 14: 1, 15: 5, 16: 0 };
-  CLAIMS.forEach(c => { [c.spatial, c.social, c.hyp] = CODES[c.id]; [c.temporal, c.when] = WHEN[c.id]; c.speaker = SPEAKERS[SPEAKER[c.id]]; });
+  const SPEAKER = { 1: 3, 2: 0, 3: 0, 4: 0, 5: 0, 6: 3, 7: 2, 8: 4, 9: 1, 10: 2, 11: 4, 12: 4, 13: 4, 14: 1, 15: 4, 16: 1, 17: 1, 18: 1 };
+  CLAIMS.forEach(c => { c.documented = true; c.short = c.who.split(/[,(]/)[0].trim(); [c.spatial, c.social, c.hyp] = CODES[c.id]; [c.temporal, c.when] = WHEN[c.id]; c.speaker = SPEAKERS[SPEAKER[c.id]]; });
 
   const FICTIONS = {
     "reverse-4": {
@@ -358,7 +405,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     const bands = DIMS.temporal.levels.map((label, k) => {
       const rows = [];
       claims.filter(c => c.temporal === k + 1).forEach(c => {
-        const xa = X(c.year) - 9, xb = X(c.year) + 14 + c.medium.length * 6.4;
+        const xa = X(c.year) - 9, xb = X(c.year) + 14 + c.short.length * 6.4;
         let r = rows.findIndex(end => end < xa);
         if (r < 0) { r = rows.length; rows.push(0); }
         rows[r] = xb; c._sub = r;
@@ -377,7 +424,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
         const sel = state.selected === c.id ? " sel" : "";
         s += `<g class="tl-row${sel}" tabindex="0" role="button" data-id="${c.id}" aria-label="${c.year}, ${b.label.toLowerCase()} horizon${c.when ? ` (${c.when})` : ""}, ${c.medium}: ${c.text}">
           <circle class="dot${abstract ? " hollow" : ""}${sel}" cx="${cx}" cy="${cy}" r="8" style="${abstract ? `stroke:${col}` : `fill:${col}`}"></circle>
-          <text class="tl-label" x="${cx + 13}" y="${cy + 4}">${c.medium}</text></g>`;
+          <text class="tl-label" x="${cx + 13}" y="${cy + 4}">${c.short}</text></g>`;
       });
       y += h + 4;
     });
@@ -402,7 +449,8 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
       p.innerHTML = `<button type="button" class="back" id="back">← Overview</button>
         <div><h3>${c.year} · ${c.medium}</h3></div>
         <p class="quote">${c.documented ? "“" + c.text + "”" : c.text}</p>
-        <div>${c.documented ? `<span class="tag">Documented claim</span>` : `<span class="tag ill">Illustrative paraphrase</span>`}</div>
+        <p class="small">— ${c.who}, ${c.year}</p>
+        <div><span class="tag">Documented claim</span>${c.verify ? ` <span class="tag ill">To verify</span>` : ""}</div>
         <dl class="meta">
           <dt>Era</dt><dd><span class="swatch" style="background:var(${era.v})"></span> ${era.label}</dd>
           <dt>Speaker</dt><dd>${c.speaker}</dd>
@@ -413,22 +461,31 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
           <dt>Social</dt><dd>${DIMS.social.levels[c.social - 1]}</dd>
           <dt>Hypothetical</dt><dd>${DIMS.hyp.levels[c.hyp - 1]}</dd>
           <dt>Construal</dt><dd>${c.lang === "abstract" ? "Abstract language" : "Concrete language"}</dd>
-          <dt>Source</dt><dd>${c.source || "N/A"}</dd>
+          <dt>Source</dt><dd>${c.source || "N/A"}${c.verify ? `<br><em>To verify:</em> ${c.verify}` : ""}</dd>
         </dl>`;
       $("#back").addEventListener("click", () => select(null));
       return;
     }
     const claims = visibleClaims();
+    if (state.view === "time") {
+      const rows = DIMS.temporal.levels.map((label, k) => {
+        const inBand = claims.filter(c => c.temporal === k + 1);
+        return [label, inBand.filter(c => c.lang === "concrete").length, inBand.filter(c => c.lang === "abstract").length];
+      });
+      const mx = Math.max(1, ...rows.map(r => r[1] + r[2]));
+      p.innerHTML = `<div><h3>Overview · ${claims.length} claims</h3></div>
+        <h2>How far ahead past futures look, and in what language.</h2>
+        <div class="bars">${rows.map(([l, c, a]) => `<div class="bar"><span>${l}</span><span class="track" style="display:flex"><span class="fill" style="display:block;width:${(c / mx) * 100}%"></span><span class="fill abs" style="display:block;width:${(a / mx) * 100}%"></span></span><span class="n">${c + a}</span></div>`).join("")}</div>
+        <p class="small"><span class="key"></span> concrete <span class="key abs"></span> abstract. Select a dot for its coding.</p>`;
+      return;
+    }
     const counts = LAW_ORDER.map(l => [l, claims.filter(c => lawsOf(c).includes(l)).length]);
     const max = Math.max(1, ...counts.map(x => x[1]));
     const g = gaps();
     p.innerHTML = `<div><h3>Overview · ${claims.length} claims</h3></div>
       <h2>Past futures promise to enhance and to replace. They rarely imagine retrieval, and never reversal.</h2>
       <div class="bars">${counts.map(([l, n]) => `<div class="bar"><span>${LAWS[l].label}</span><span class="track"><span class="fill" style="display:block;width:${(n / max) * 100}%"></span></span><span class="n">${n}</span></div>`).join("")}</div>
-      <div style="display:grid;gap:8px"><h3>${g.length} gaps to design for</h3>
-        <div class="gaplist">${g.map(k => { const [l, r] = k.split("-"); const star = fictionFor(k) ? " ★" : ""; return `<button type="button" class="gapbtn" data-gap="${k}">${LAWS[l].label} · ${rings()[+r - 1].label}${star}</button>`; }).join("")}</div>
-        <p class="small">★ has a storyboard sketched. Select a dot or a row for its coding.</p>
-      </div>`;
+      <p class="small">${g.length} gaps on ${DIMS[state.dim].label.toLowerCase()}: the hatched cells. Open one on the wheel, or see them all under <a href="#gaps">Gaps for speculative design</a>. Select a dot for its coding.</p>`;
   }
 
   function legend() {
@@ -449,6 +506,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   // ---------- fiction modal + multiplane sketch ----------
   let raf = null, lastFocus = null;
   function openFiction(key) {
+    if (key.includes(":")) { const [d, k] = key.split(":"); state.dim = d; $("#dim").value = d; key = k; }
     const [law, ring] = key.split("-");
     const L = LAWS[law], R = rings()[+ring - 1];
     const f = fictionFor(key) || {
@@ -583,7 +641,56 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   $("#overlay").addEventListener("click", (e) => { if (e.target.id === "overlay") closeFiction(); });
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("#overlay").hidden) closeFiction(); });
 
-  render();
+  // ---------- sources page ----------
+  function renderSources() {
+    $("#srclist").innerHTML = CLAIMS.slice().sort((a, b) => a.year - b.year || a.id - b.id).map(c => `
+      <li><div class="yr"><i style="background:var(${eraOf(c.year).v})"></i>${c.year}</div>
+        <div class="body">
+          <p class="q">“${c.text}”</p>
+          <p class="meta">${c.who} · ${c.medium} · ${c.speaker}</p>
+          <p class="cite">${c.source}${c.verify ? ` <span class="tag ill">To verify</span> ${c.verify}` : ""}</p>
+          <button type="button" class="linkbtn" data-goto="${c.id}">See on the wheel →</button>
+        </div></li>`).join("");
+  }
+  $("#srclist").addEventListener("click", (e) => {
+    const b = e.target.closest("[data-goto]");
+    if (!b) return;
+    state.selected = +b.dataset.goto;
+    location.hash = "#archive";
+  });
+
+  // ---------- gaps page ----------
+  function gapsOn(dim) {
+    const D = DIMS[dim], out = [];
+    for (const law of LAW_ORDER) D.levels.forEach((label, i) => {
+      if (!CLAIMS.some(c => D.get(c) === i + 1 && c.laws.includes(law))) out.push({ law, k: i + 1, label });
+    });
+    return out;
+  }
+  function renderGaps() {
+    $("#gapgroups").innerHTML = ["scope", "temporal"].map(dim => {
+      const g = gapsOn(dim);
+      return `<div class="gapgroup"><h3>${DIMS[dim].label} · ${g.length} gaps</h3><div class="gapcards">${g.map(x => {
+        const star = dim === "scope" && FICTIONS[`${x.law}-${x.k}`];
+        return `<button type="button" class="gapcard" data-gap="${dim}:${x.law}-${x.k}"><strong>${LAWS[x.law].label} · ${x.label}${star ? " ★" : ""}</strong><span>No claim imagines a medium that would ${LAWS[x.law].verb} ${dim === "scope" ? `at the scale of “${x.label.toLowerCase()}”` : x.k === 4 ? "without stating a horizon" : `on a ${x.label.toLowerCase()} horizon`}.</span></button>`;
+      }).join("")}</div></div>`;
+    }).join("") + `<p class="small">★ has a storyboard sketched. Gaps are computed from the whole archive, regardless of the era filters on the Archive page.</p>`;
+  }
+  $("#gapgroups").addEventListener("click", (e) => { const g = e.target.closest("[data-gap]"); if (g) openFiction(g.dataset.gap); });
+
+  // ---------- pages ----------
+  const PAGES = ["archive", "sources", "gaps"];
+  function route() {
+    const h = location.hash.slice(1), page = PAGES.includes(h) ? h : "archive";
+    PAGES.forEach(pg => { $(`#pg-${pg}`).hidden = pg !== page; });
+    document.querySelectorAll(".sitenav a").forEach(a => { if (a.dataset.page === page) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
+    $(".lede").hidden = page !== "archive";
+    if (page === "sources") renderSources();
+    if (page === "gaps") renderGaps();
+    if (page === "archive") render();
+  }
+  window.addEventListener("hashchange", route);
+  route();
 })();
 </script>
 </body>
