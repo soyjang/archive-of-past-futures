@@ -220,6 +220,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
 .cb-dl q { font-style: italic; }
 .cb-rule { font-size: 14px; background: var(--panel); border: 1px solid var(--rule); border-radius: 8px; padding: 10px 12px; }
 .cb-refs { font-size: 14px; }
+.cb-ex dd strong { font-weight: 700; }
 @media (max-width: 760px) { .cb { grid-template-columns: minmax(0, 1fr); } .cb-toc { position: static; display: flex; flex-wrap: wrap; gap: 6px 14px; border-left: 0; padding-left: 0; } .cb-dl { grid-template-columns: minmax(0, 1fr); gap: 2px; } .cb-dl dd { margin-bottom: 8px; } }
 .fill.abs { background: transparent !important; box-shadow: inset 0 0 0 2px var(--accent); border-radius: 0 999px 999px 0; }
 .key { display: inline-block; width: 12px; height: 12px; border-radius: 3px; background: var(--accent); vertical-align: -1px; }
@@ -274,7 +275,6 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
         <div class="legend" id="src-legend"></div></div>
       <ol class="srclist src-pane" id="srclist" tabindex="0" aria-label="Sources"></ol>
     </div>
-    <div class="tip" id="tip" hidden></div>
   </section>
 
   <section id="pg-counterfactual" class="page" hidden>
@@ -294,7 +294,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     <div class="pagehead"><h2>Codebook</h2><p class="small">How each claim is selected and coded. Version 0.1, provisional: written by one coder from the pilot sample, to be revised after double-coding.</p></div>
     <div class="cb">
       <nav class="cb-toc" aria-label="Codebook contents">
-        <a href="#cb-unit">Unit of analysis</a><a href="#cb-attr">Attributes</a><a href="#cb-tetrad">1 · Tetrad</a><a href="#cb-distance">2 · Speculative distance</a><a href="#cb-construal">3 · Construal level</a><a href="#cb-rel">Reliability</a><a href="#cb-refs">References</a>
+        <a href="#cb-unit">Unit of analysis</a><a href="#cb-attr">Attributes</a><a href="#cb-tetrad">1 · Tetrad</a><a href="#cb-distance">2 · Speculative distance</a><a href="#cb-construal">3 · Construal level</a><a href="#cb-example">Worked example</a><a href="#cb-rel">Reliability</a><a href="#cb-refs">References</a>
       </nav>
       <div class="cb-body">
         <section id="cb-unit"><h3>Unit of analysis</h3>
@@ -355,6 +355,26 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
           <dt>Abstract</dt><dd>Why and what for: values, ends, transformations. <q>…the biggest positive transformation that education has ever seen.</q> (Khan, 2023)</dd></dl>
           <p class="cb-rule"><strong>Rule.</strong> Code the dominant register of the quoted passage. A planned check: score wording against published concreteness norms (Brysbaert et al. 2014).</p></section>
 
+        <section id="cb-example"><h3>Worked example</h3>
+          <p>One speculation coded on every dimension, with the reasoning for each decision.</p>
+          <p class="quote">“I believe that the motion picture is destined to revolutionize our educational system and that in a few years it will supplant largely, if not entirely, the use of textbooks.”</p>
+          <p class="small">— Thomas Edison, in Hugh Weir, “The Story of the Motion Picture”, <em>McClure’s</em>, November 1922</p>
+          <dl class="cb-dl cb-ex">
+            <dt>Unit</dt><dd><strong>One speculation.</strong> Forward-looking, attributed, dated, and about the book and schooling. The two clauses make one prediction, so they are coded together.</dd>
+            <dt>Year</dt><dd><strong>1922.</strong> The date of first publication in <em>McClure’s</em>, not of later quotation (Cuban 1986).</dd>
+            <dt>Medium</dt><dd><strong>Film.</strong> “The motion picture”.</dd>
+            <dt>Format</dt><dd><strong>Press or magazine.</strong> An interview published in a magazine; where it was found (a book) does not change the format.</dd>
+            <dt>Speaker</dt><dd><strong>Inventor.</strong> Edison speaks as the promoter of a medium he helped create, not as an educator.</dd>
+            <dt>Tetrad</dt><dd><strong>Enhances, Obsolesces.</strong> “Revolutionize our educational system” promises enhancement; “supplant … the use of textbooks” names what becomes obsolete. Nothing is said about what film would bring back or turn into, so retrieval and reversal are not coded, however tempting they are in hindsight.</dd>
+            <dt>Scope</dt><dd><strong>Replaces the medium.</strong> The textbook is displaced; the school is not. “Revolutionize our educational system” is rhetoric about the system, but the change asserted is to its medium. Rule: code the largest change the claim asserts, not its most dramatic word.</dd>
+            <dt>Temporal</dt><dd><strong>Imminent</strong> (“in a few years”). An explicit horizon of up to about five years.</dd>
+            <dt>Spatial</dt><dd><strong>This country.</strong> “Our educational system”: the national school system of the speaker.</dd>
+            <dt>Social</dt><dd><strong>Our children.</strong> The pupils of “our” system; no other group is singled out.</dd>
+            <dt>Hypothetical</dt><dd><strong>Will.</strong> “Is destined to” and “will supplant” state certainty. “I believe” frames the claim but does not hedge the main verb.</dd>
+            <dt>Construal</dt><dd><strong>Abstract.</strong> The claim names an end (a revolution, the textbook’s disappearance) and no means: no projectors, rooms, teachers or costs.</dd>
+            <dt>To verify</dt><dd><strong>Yes.</strong> The full wording comes from secondary sources and is checked against <em>McClure’s</em> before the code is final.</dd>
+          </dl></section>
+
         <section id="cb-rel"><h3>Reliability</h3><p>All codes in this version are by one coder. Planned: a second coder codes a 20% sample after training on this codebook; agreement is reported per dimension (Cohen’s κ), and the codebook is revised where disagreement clusters.</p></section>
 
         <section id="cb-refs"><h3>References</h3><ul class="cb-refs">
@@ -369,6 +389,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   <footer>Study 1 of <em>Historicising Speculative Design</em> (Soy Jang). The coding scheme is set out in the <a href="#codebook">Codebook</a>. Design-fiction storyboards are placeholders for AI-assisted animations.</footer>
 </div>
 
+<div class="tip" id="tip" hidden></div>
 <div class="overlay" id="overlay" hidden>
   <div class="modal" role="dialog" aria-modal="true" aria-labelledby="m-title">
     <header>
@@ -827,7 +848,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   }
   // tooltip
   function showTip(el) {
-    const c = CLAIMS.find(k => k.id === +el.dataset.jump), t = $("#tip");
+    const c = CLAIMS.find(k => k.id === +(el.dataset.jump || el.dataset.id)), t = $("#tip");
     const words = c.text.length > 90 ? c.text.slice(0, 88).replace(/\s+\S*$/, "") + "…" : c.text;
     t.innerHTML = `<strong>${c.year} · ${c.short}</strong><span>${c.desc ? `<em>${words}</em>` : `“${words}”`}</span>`;
     t.hidden = false;
@@ -836,6 +857,12 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     t.style.top = `${rc.top + window.scrollY - t.offsetHeight - 10}px`;
   }
   const hideTip = () => { $("#tip").hidden = true; };
+  const wheel = $("#wheel-wrap");
+  wheel.addEventListener("mouseover", (e) => { const d = e.target.closest("circle.dot[data-id]"); if (d) showTip(d); });
+  wheel.addEventListener("mouseout", (e) => { if (e.target.closest("circle.dot[data-id]")) hideTip(); });
+  wheel.addEventListener("focusin", (e) => { const d = e.target.closest("circle.dot[data-id]"); if (d) showTip(d); });
+  wheel.addEventListener("focusout", hideTip);
+  wheel.addEventListener("click", hideTip, true);
   const strip = $("#strip-svg");
   strip.addEventListener("mouseover", (e) => { const d = e.target.closest("[data-jump]"); if (d) showTip(d); });
   strip.addEventListener("mouseout", (e) => { if (e.target.closest("[data-jump]")) hideTip(); });
