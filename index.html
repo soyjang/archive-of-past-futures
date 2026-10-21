@@ -223,6 +223,11 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
 .cb-ex dd strong { font-weight: 700; }
 .cb-ex dt.grp { grid-column: 1 / -1; margin-top: 12px; }
 .cb-ex dt.grp:first-child { margin-top: 0; }
+.cb-ex dt.grp.sub { margin-top: 6px; padding-left: 14px; }
+.cb-ex dt.grp.sub span { background: transparent; border: 1px solid var(--accent); }
+.cb-ex dt.grp + dt.grp.sub { margin-top: 2px; }
+.cb-toc a.sub { padding-left: 12px; }
+.cb-body section.cb-sub h3 { border-top-style: dashed; }
 .cb-ex dt.grp span { font: 500 11px var(--font-mono); text-transform: uppercase; letter-spacing: .06em; background: var(--accent-soft); color: var(--accent); border-radius: 4px; padding: 2px 8px; }
 @media (max-width: 760px) { .cb { grid-template-columns: minmax(0, 1fr); } .cb-toc { position: static; display: flex; flex-wrap: wrap; gap: 6px 14px; border-left: 0; padding-left: 0; } .cb-dl { grid-template-columns: minmax(0, 1fr); gap: 2px; } .cb-dl dd { margin-bottom: 8px; } }
 .fill.abs { background: transparent !important; box-shadow: inset 0 0 0 2px var(--accent); border-radius: 0 999px 999px 0; }
@@ -297,7 +302,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     <div class="pagehead"><h2>Codebook</h2><p class="small">How each claim is selected and coded. Version 0.1, provisional: written by one coder from the pilot sample, to be revised after double-coding.</p></div>
     <div class="cb">
       <nav class="cb-toc" aria-label="Codebook contents">
-        <a href="#cb-unit">Unit of analysis</a><a href="#cb-attr">Attributes</a><a href="#cb-tetrad">1 · Tetrad</a><a href="#cb-distance">2 · Speculative distance</a><a href="#cb-construal">3 · Construal level</a><a href="#cb-example">Worked example</a><a href="#cb-rel">Reliability</a><a href="#cb-refs">References</a>
+        <a href="#cb-unit">Unit of analysis</a><a href="#cb-attr">Attributes</a><a href="#cb-codes">Codes</a><a class="sub" href="#cb-tetrad">1 · Tetrad</a><a class="sub" href="#cb-distance">2 · Speculative distance</a><a class="sub" href="#cb-construal">3 · Construal level</a><a href="#cb-example">Worked example</a><a href="#cb-rel">Reliability</a><a href="#cb-refs">References</a>
       </nav>
       <div class="cb-body">
         <section id="cb-unit"><h3>Unit of analysis</h3>
@@ -307,7 +312,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
           <li><strong>Text.</strong> Quote the passage that carries the speculation. Where none does, as with an image or a whole novel, write a one-sentence description, shown in italics and never in quotation marks.</li>
           <li>The archive records <strong>predictions only</strong>. What each medium went on to do is read against the claims in the written analysis, not coded here.</li></ul></section>
 
-        <section id="cb-attr"><h3>Attributes</h3><p>Descriptive facts about the claim, recorded rather than interpreted.</p>
+        <section id="cb-attr"><h3>Attributes</h3><p>Descriptive facts about the speculation, recorded rather than interpreted.</p>
           <dl class="cb-dl"><dt>Year</dt><dd>When the speculation was made or first published.</dd>
           <dt>Medium</dt><dd>The medium the speculation promotes or imagines, from a fixed list: stereograph · film · radio · television · teaching machine (mechanical or robot teachers) · computer · virtual reality · online learning · AI · direct transmission to the brain. The source’s own wording is kept as a detail (television: <q>parlour walls</q>; computer: <q>learning pods</q>). New media are added to the list as they appear. For colour and filtering only, media are shown in six families: image and film · broadcast · machines and computers · online learning · AI · immersion.</dd>
           <dt>Format</dt><dd>The form in which the speculation was first made, not where it was found (an Edison interview quoted by Cuban is <em>press</em>): <em>Press or magazine</em> · <em>Talk or broadcast</em> (speech, lecture, keynote, broadcast interview, statement in a legislature) · <em>Book</em> · <em>Academic paper</em> · <em>Report</em> (policy, technical or corporate) · <em>Novel or story</em> · <em>Film or television</em> · <em>Image</em> (illustration, postcard, poster) · <em>Design project</em> (artefact, prototype, bot). Format is descriptive. Whether a work functions as speculative design is a question for the analysis, not a code: a novel or a policy scenario can do the work of speculative design as much as a designed artefact.</dd>
@@ -315,7 +320,9 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
           <dt>Source</dt><dd>Full citation of the original; where quoted via a compilation, cite both. “N/A” when none is known.</dd>
           <dt>To verify</dt><dd>Flag when the wording or venue comes only from a secondary source.</dd></dl></section>
 
-        <section id="cb-tetrad"><h3>1 · Tetrad <span class="cb-src">McLuhan &amp; McLuhan 1988</span></h3>
+        <section id="cb-codes" class="cb-part"><h3>Codes</h3><p>Interpretive judgements, applied with the rules below and checked by a second coder. Each speculation is coded on three: the Tetrad, speculative distance and construal level.</p></section>
+
+        <section id="cb-tetrad" class="cb-sub"><h3>1 · Tetrad <span class="cb-src">McLuhan &amp; McLuhan 1988</span></h3>
           <p>What the claim says the new medium will do, read through McLuhan’s four laws of media. Code every law the claim states or clearly implies; most claims carry one or two.</p>
           <dl class="cb-dl"><dt>Enhances</dt><dd>Extends or intensifies an existing capacity. <q>Television can extend the influence of the most talented teachers.</q> (RCA, 1959)</dd>
           <dt>Obsolesces</dt><dd>Pushes an existing medium or practice out of use. <q>Textbooks as the principal medium of teaching will be as obsolete as the horse and carriage.</q> (Edison, 1925)</dd>
@@ -323,7 +330,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
           <dt>Reverses</dt><dd>Pushed to its limit, flips into its opposite. In the pilot sample it appears in fiction and scenarios, not in interviews or talks: in Asimov’s story, individual machine teaching turns into isolation and longing for the old school.</dd></dl>
           <p class="cb-rule"><strong>Rule.</strong> Code what is promised, not what the coder thinks would follow. A denial (“would not replace teachers”) is not coded as obsolescence.</p></section>
 
-        <section id="cb-distance"><h3>2 · Speculative distance</h3>
+        <section id="cb-distance" class="cb-sub"><h3>2 · Speculative distance</h3>
           <p>How far the claim departs from its own present, coded on five dimensions. Four are the dimensions of psychological distance in construal-level theory (Trope &amp; Liberman 2010), coded as the claim marks them in its text, since psychological distance proper is a person’s sense of distance and cannot be read from a document. The fifth, scope of change, is the dimension the theory lacks: how much of the world the claim alters. <strong>Scope</strong> and <strong>temporal distance</strong> are primary: they are the two settings of the wheel’s rings; the other three are reported descriptively.</p>
 
           <h4>2a · Scope of change</h4>
@@ -352,7 +359,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
           <dt>Depicted</dt><dd>Shown as already real within an imagined world, as in fiction, illustration or a scenario vignette.</dd></dl>
           <p class="cb-rule"><strong>Rule.</strong> Code the main verb of the predictive clause; hedges in surrounding text do not change it.</p></section>
 
-        <section id="cb-construal"><h3>3 · Construal level <span class="cb-src">Trope &amp; Liberman 2010</span></h3>
+        <section id="cb-construal" class="cb-sub"><h3>3 · Construal level <span class="cb-src">Trope &amp; Liberman 2010</span></h3>
           <p>The kind of description, coded as what distance is expected to produce, so the archive can test whether far claims were written abstractly. Shown on the wheel as filled (concrete) or hollow (abstract) dots.</p>
           <dl class="cb-dl"><dt>Concrete</dt><dd>How and with what: objects, procedures, settings. <q>With a large-screen receiver in every room…</q> (Hennock, 1955)</dd>
           <dt>Abstract</dt><dd>Why and what for: values, ends, transformations. <q>…the biggest positive transformation that education has ever seen.</q> (Khan, 2023)</dd></dl>
@@ -372,15 +379,16 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
             <dt>Speaker</dt><dd><strong>Inventor.</strong> Edison speaks as the promoter of a medium he helped create, not as an educator.</dd>
             <dt>Source</dt><dd><strong>Hugh Weir, “The Story of the Motion Picture”, <em>McClure’s</em> 54, November 1922, p. 85; quoted in Cuban (1986).</strong> The original is cited first, then the compilation where it was found.</dd>
             <dt>To verify</dt><dd><strong>Yes.</strong> The full wording comes from secondary sources and is checked against <em>McClure’s</em> before the code is final.</dd>
-            <dt class="grp"><span>1 · Tetrad</span></dt>
+            <dt class="grp"><span>Codes</span></dt>
+            <dt class="grp sub"><span>1 · Tetrad</span></dt>
             <dt>Laws</dt><dd><strong>Enhances, Obsolesces.</strong> “Revolutionize our educational system” promises enhancement; “supplant … the use of textbooks” names what becomes obsolete. Nothing is said about what film would bring back or turn into, so retrieval and reversal are not coded, however tempting they are in hindsight.</dd>
-            <dt class="grp"><span>2 · Speculative distance</span></dt>
+            <dt class="grp sub"><span>2 · Speculative distance</span></dt>
             <dt>Scope</dt><dd><strong>Replaces the medium.</strong> The textbook is displaced; the school is not. “Revolutionize our educational system” is rhetoric about the system, but the change asserted is to its medium. Rule: code the largest change the claim asserts, not its most dramatic word.</dd>
             <dt>Temporal</dt><dd><strong>Imminent</strong> (“in a few years”). An explicit horizon of up to about five years.</dd>
             <dt>Spatial</dt><dd><strong>This country.</strong> “Our educational system”: the national school system of the speaker.</dd>
             <dt>Social</dt><dd><strong>Our children.</strong> The pupils of “our” system; no other group is singled out.</dd>
             <dt>Hypothetical</dt><dd><strong>Will.</strong> “Is destined to” and “will supplant” state certainty. “I believe” frames the claim but does not hedge the main verb.</dd>
-            <dt class="grp"><span>3 · Construal level</span></dt>
+            <dt class="grp sub"><span>3 · Construal level</span></dt>
             <dt>Level</dt><dd><strong>Abstract.</strong> The claim names an end (a revolution, the textbook’s disappearance) and no means: no projectors, rooms, teachers or costs.</dd>
           </dl></section>
 
