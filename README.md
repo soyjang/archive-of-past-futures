@@ -14,6 +14,7 @@ The archive collects claims that a new medium would transform or replace the boo
 | Hypotheticality | construal-level theory | will, should, could, depicted |
 | Construal level | construal-level theory (outcome) | concrete or abstract language |
 | Format | | press or magazine, talk or broadcast, book, academic paper, report, novel or story, film or television, image, design project |
+| Direction | | forward (a future), backward (a counterfactual past), sideways (a parallel present) |
 | Medium | | stereograph, film, radio, television, teaching machine, computer, virtual reality, internet, AI, direct transmission to the brain (source wording kept as a detail) |
 | Medium status | | whether the medium, as described in its educational use, existed at the date: existing (in use beyond its makers), emerging (only its makers' prototype, trial or demonstration), imagined (no working version, even if its parts existed) |
 | Scale | | local, national or regional, global (recorded as an attribute, not as distance) |
