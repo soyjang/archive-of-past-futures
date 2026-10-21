@@ -24,7 +24,7 @@
   --era2: #23786a;        /* broadcast */
   --era3: #5a3fb0;        /* machines and computers */
   --era4: #c0346a;        /* AI */
-  --fam5: #2f6db3;        /* online learning */
+  --fam5: #2f6db3;        /* internet */
   --fam6: #55606e;        /* immersion */
   --font-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
   --font-body: "Atkinson Hyperlegible", "Helvetica Neue", Arial, sans-serif;
@@ -100,7 +100,6 @@ button:focus-visible, [tabindex]:focus-visible, input:focus-visible { outline: 2
 @keyframes flip { from { transform: perspective(1200px) rotateY(-90deg); opacity: .4; } to { transform: none; opacity: 1; } }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .panel.depth2 { --panel:#2b2b2b; --ink:#f4f4f4; --muted:#b5b5b5; --rule:#3d3d3d; --accent:#ffffff; --accent-soft:#3a3a3a; border-color:#2b2b2b; } }
 :root[data-theme="dark"] .panel.depth2 { --panel:#2b2b2b; --ink:#f4f4f4; --muted:#b5b5b5; --rule:#3d3d3d; --accent:#ffffff; --accent-soft:#3a3a3a; border-color:#2b2b2b; }
-.tet-cap { margin: -8px 0 0; }
 .ov-block { display: grid; gap: 8px; border-top: 1px solid var(--rule); padding-top: 14px; }
 .ov-block h3 { margin: 0; }
 .ov-key { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 16px; font-size: 13px; }
@@ -308,7 +307,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
     <div class="figure">
       <div id="wheel-wrap"></div>
       <div class="legend" id="legend" style="margin-top:28px"></div>
-      <p class="small archive-note">The coding scheme is set out in the <a href="#codebook">Codebook</a>. To see how the archive becomes design fictions, see <a href="#counterfactual">Counterfactual obsolescence</a>.</p>
+      <p class="small archive-note">A speculation can code for several laws. The coding scheme is set out in the <a href="#codebook">Codebook</a>. To see how the archive becomes design fictions, see <a href="#counterfactual">Counterfactual obsolescence</a>.</p>
     </div>
     <aside class="panel" id="panel" aria-live="polite"></aside>
   </div>
@@ -353,7 +352,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
 
         <section id="cb-attr"><h3>Attributes</h3><p>Descriptive facts about the speculation, recorded rather than interpreted.</p>
           <dl class="cb-dl"><dt>Year</dt><dd>When the speculation was made or first published.</dd>
-          <dt>Medium</dt><dd>The medium the speculation promotes or imagines, from a fixed list: stereograph · film · radio · television · teaching machine (mechanical or robot teachers) · computer · virtual reality · online learning · AI · direct transmission to the brain. The source’s own wording is kept as a detail (television: <q>parlour walls</q>; computer: <q>learning pods</q>). New media are added to the list as they appear. For colour and filtering only, media are shown in six families: image and film · broadcast · machines and computers · online learning · AI · immersion.</dd>
+          <dt>Medium</dt><dd>The medium the speculation promotes or imagines, from a fixed list: stereograph · film · radio · television · teaching machine (mechanical or robot teachers) · computer · virtual reality · internet (online courses, platforms) · AI · direct transmission to the brain. The source’s own wording is kept as a detail (television: <q>parlour walls</q>; computer: <q>learning pods</q>). New media are added to the list as they appear. For colour and filtering only, media are shown in six families: image and film · broadcast · machines and computers · online learning · AI · immersion.</dd>
           <dt>Format</dt><dd>The form in which the speculation was first made, not where it was found (an Edison interview quoted by Cuban is <em>press</em>): <em>Press or magazine</em> · <em>Talk or broadcast</em> (speech, lecture, keynote, broadcast interview, statement in a legislature) · <em>Book</em> · <em>Academic paper</em> · <em>Report</em> (policy, technical or corporate) · <em>Novel or story</em> · <em>Film or television</em> · <em>Image</em> (illustration, postcard, poster) · <em>Design project</em> (artefact, prototype, bot). Format is descriptive. Whether a work functions as speculative design is a question for the analysis, not a code: a novel or a policy scenario can do the work of speculative design as much as a designed artefact.</dd>
           <dt>Speaker</dt><dd><em>Inventor</em> (promotes a medium they created) · <em>Company</em> (speaks for a firm with a stake in it) · <em>Policymaker</em> (government or regulator) · <em>Educator</em> (teacher, administrator, school broadcaster) · <em>Researcher</em> (academic or laboratory) · <em>Speculative designer</em> · <em>Writer or artist</em>. Code the role in which the person spoke, not their best-known role.</dd>
           <dt>Source</dt><dd>Full citation of the original; where quoted via a compilation, cite both. “N/A” when none is known.</dd>
@@ -468,7 +467,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
     { id: "image", label: "Image and film", media: ["stereograph", "film"], v: "--era1" },
     { id: "broadcast", label: "Broadcast", media: ["radio", "tv"], v: "--era2" },
     { id: "machines", label: "Machines and computers", media: ["machine", "computer"], v: "--era3" },
-    { id: "online", label: "Online learning", media: ["online"], v: "--fam5" },
+    { id: "online", label: "Internet", media: ["online"], v: "--fam5" },
     { id: "ai", label: "AI", media: ["ai"], v: "--era4" },
     { id: "immersion", label: "Immersion", media: ["vr", "brain"], v: "--fam6" }
   ];
@@ -542,7 +541,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
   const SPEAKERS = ["Inventor", "Company", "Policymaker", "Educator", "Researcher", "Speculative designer", "Writer or artist"];
   // Format: the form in which the speculation was first made (not where it was found)
   // Medium: the medium each speculation promotes or imagines, from a fixed list; the original wording is kept as a detail
-  const SUCC = { stereograph: "Stereograph", film: "Film", radio: "Radio", tv: "Television", machine: "Teaching machine", computer: "Computer", vr: "Virtual reality", online: "Online learning", ai: "AI", brain: "Direct transmission to the brain" };
+  const SUCC = { stereograph: "Stereograph", film: "Film", radio: "Radio", tv: "Television", machine: "Teaching machine", computer: "Computer", vr: "Virtual reality", online: "Internet", ai: "AI", brain: "Direct transmission to the brain" };
   const SUCC_OF = { 1: "stereograph", 2: "film", 3: "film", 4: "film", 5: "film", 6: "radio", 7: "tv", 8: "machine", 9: "tv", 10: "tv", 11: "computer", 12: "computer", 13: "vr", 14: "online", 15: "online", 16: "ai", 17: "ai", 18: "ai",
     19: "brain", 20: "machine", 21: "tv", 22: "computer", 23: "ai", 24: "ai", 25: "online", 26: "online", 27: "machine", 28: "ai", 29: "brain", 30: "computer", 31: "computer" };
   const GENRES = { press: "Press or magazine", talk: "Talk or broadcast", book: "Book", paper: "Academic paper", report: "Report", story: "Novel or story", film: "Film or television", image: "Image", design: "Design project", unknown: "Format unknown" };
@@ -681,12 +680,6 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
     }
     return `<svg class="tetrad" viewBox="${-2 * h - 2} ${-2 * h - 2} ${4 * h + 4} ${4 * h + 4}" role="img" aria-label="Tetrad: ${LAW_ORDER.map(l => `${LAWS[l].label} ${n(l)}`).join(", ")} of ${claims.length} speculations">${g}</svg>`;
   }
-  // Caption under the Tetrad figure, built from the visible data
-  function tetradCaption(claims) {
-    if (!claims.length) return "";
-    const n = (l) => claims.filter(x => x.laws.includes(l)).length;
-    return `<p class="small tet-cap">A speculation can code for several laws. ${n("enhance")} promise enhancement and ${n("obsolesce")} obsolescence, against ${n("retrieve")} retrieval and ${n("reverse")} reversal.</p>`;
-  }
   // Descriptive counts the wheel cannot show: media, stated horizon, speaker
   function overviewStats(claims) {
     const N = claims.length || 1;
@@ -741,7 +734,6 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
     const g = gaps();
     p.innerHTML = `<div><h3>Overview</h3></div>
       ${tetradSVG(claims)}
-      ${tetradCaption(claims)}
       ${overviewStats(claims)}`;
   }
 
