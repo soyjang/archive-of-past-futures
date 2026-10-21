@@ -27,9 +27,9 @@ Temporal distance is coded from the horizon a claim *states*, not a year, becaus
   - *Tetrad wheel*: four sectors for the Tetrad laws, rings for scope of change. Dots are filled for concrete language and hollow for abstract. Hatched cells are gaps: combinations no claim imagined. The overview counts claims per Tetrad law.
   - *Timeline*: each claim placed by the year it was made, in a band for the horizon it states (imminent, near, distant, unstated). The overview counts claims per horizon, split by concrete and abstract language.
   - A decade slider ("Play decades") and era filters apply to both views.
+- **Codebook** — the full coding scheme (v0.1): unit of analysis, attributes, each dimension with definitions, decision rules and examples from the archive, the definition of a gap, and the reliability plan. The table below summarises it.
 - **Sources** — every claim with its speaker, full citation and verification status, linking back to its place on the wheel.
 - **Gaps for speculative design** — every gap on scope of change, each opening a design-fiction prompt with a multiplane animation sketch.
-- **Codebook** — the full coding scheme (v0.1): unit of analysis, attributes, each dimension with definitions, decision rules and examples from the archive, the definition of a gap, and the reliability plan. The table below summarises it.
 
 ## Status of the data
 
