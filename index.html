@@ -80,7 +80,8 @@ button:focus-visible, [tabindex]:focus-visible, input:focus-visible { outline: 2
 .cell { fill: transparent; stroke: var(--rule); stroke-width: 1; }
 .cell.filled { fill: var(--accent-soft); }
 .cell.gap { fill: url(#hatch); stroke: var(--accent); stroke-dasharray: 4 4; cursor: pointer; }
-.cell.gap:hover, .cell.gap:focus-visible { stroke-width: 2.5; outline: none; }
+.cell.gap:hover, .cell.gap:focus-visible, .cell.gap.sel { stroke-width: 2.5; outline: none; }
+.cell.gap.sel { fill: var(--accent-soft); }
 .axis-label { font-family: var(--font-display); font-weight: 700; font-size: 20px; fill: var(--ink); }
 .axis-sub { font-family: var(--font-mono); font-size: 11px; fill: var(--muted); letter-spacing: .04em; }
 .ring-label { font-family: var(--font-mono); font-size: 10.5px; fill: var(--muted); }
@@ -210,7 +211,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
       <a href="#sources" data-page="sources">Sources</a>
       <a href="#ideas" data-page="ideas">Ideas for speculative design</a>
     </nav>
-    <p class="lede">Speculations that a new medium would transform or replace the book in education, from the stereograph and Edison’s films to AI tutors, in press interviews, talks, novels, films, images, papers, reports and design projects. Each speculation sits in the Tetrad sector it promised (enhance, obsolesce, retrieve, reverse) at its speculative distance from its own present. Hatched cells are gaps: no claim imagined them. Open a gap to see the design fiction it calls for.</p>
+    <p class="lede">Speculations that a new medium would transform or replace the book in education, from the stereograph and Edison’s films to AI tutors, in press interviews, talks, novels, films, images, papers, reports and design projects. Each speculation sits in the Tetrad sector it promised (enhance, obsolesce, retrieve, reverse) at its speculative distance from its own present. Hatched cells are empty: no speculation in the archive codes for them.</p>
     <p class="notice"><strong>Pilot sample.</strong> 31 documented speculations, from press interviews and talks to novels, films, images, academic papers, reports and a design project, quoted or described from primary sources or reputable compilations. Codes are provisional (one coder, <a href="#codebook">codebook</a> v0.1), and claims marked “to verify” still need checking against the original page.</p>
   </header>
 
@@ -429,39 +430,11 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   const SPEAKER = { 1: 3, 2: 0, 3: 0, 4: 0, 5: 0, 6: 3, 7: 2, 8: 4, 9: 1, 10: 2, 11: 4, 12: 4, 13: 4, 14: 1, 15: 4, 16: 1, 17: 1, 18: 1, 19: 6, 20: 6, 21: 6, 22: 4, 23: 6, 24: 4, 25: 4, 26: 2, 27: 6, 28: 1, 29: 6, 30: 6, 31: 1 };
   CLAIMS.forEach(c => { c.documented = true; c.genre = FORMAT[c.id]; c.short = c.who.split(/[,(]/)[0].trim(); [c.spatial, c.social, c.hyp] = CODES[c.id]; [c.temporal, c.when] = WHEN[c.id]; c.speaker = SPEAKERS[SPEAKER[c.id]]; });
 
-  const FICTIONS = {
-    "reverse-4": {
-      title: "The headset school, reversed",
-      world: "Virtual reality replaced the school in 1996. It is now 2026.",
-      beats: [
-        "Each child learns alone at home inside a headset, standing in a virtual Roman forum.",
-        "A new headset generation ships. Last year's models stack up at the kerb.",
-        "In a park, three children sit around one battered paper book and read aloud.",
-        "The camera pulls back past the pile of headsets to the empty school building behind."
-      ],
-      note: "Reversal: total immersion flips into isolation, and the book returns as a shared object.",
-      scene: "pile"
-    },
-    "retrieve-1": {
-      title: "The stereoscope comes back",
-      world: "VR arrives in classrooms in 2016 as a virtual field-trip kit.",
-      beats: [
-        "A class passes headsets around for a five-minute trip to the Moon.",
-        "A cupboard opens on a 1906 box of stereographs: travel the world from your desk.",
-        "Split frame: a pupil in 1906 and a pupil in 2026 raise a viewer to their eyes with the same gesture.",
-        "Caption: the same promise, a century apart."
-      ],
-      note: "Retrieval: VR revives the classroom stereoscope's promise of virtual travel.",
-      scene: "stereo"
-    }
-  };
-
   const $ = (s) => document.querySelector(s);
   const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
   const eraOf = (y) => ERAS.find(e => y >= e.from && y <= e.to) || ERAS[ERAS.length - 1];
 
-  const state = { view: "wheel", dim: "scope", decade: 2030, eras: new Set(ERAS.map(e => e.id)), selected: null };
-  const fictionFor = (key) => (state.dim === "scope" ? FICTIONS[key] : null);
+  const state = { view: "wheel", dim: "scope", decade: 2030, eras: new Set(ERAS.map(e => e.id)), selected: null, gap: null };
   const lawsOf = (c) => c.laws;
 
   function visibleClaims() {
@@ -494,8 +467,8 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
       for (const R of RS) {
         const key = `${law}-${R.k}`;
         const filled = !!cells[key];
-        const cls = filled ? "cell filled" : "cell gap";
-        const attrs = filled ? "" : ` tabindex="0" role="button" data-gap="${key}" aria-label="Gap: ${L.label}, ${R.label}. Open design fiction."`;
+        const cls = filled ? "cell filled" : `cell gap${state.gap === key ? " sel" : ""}`;
+        const attrs = filled ? "" : ` tabindex="0" role="button" data-gap="${key}" aria-label="Gap: ${L.label}, ${R.label}. No speculation codes here."`;
         s += `<path class="${cls}" d="${sector(R.r0, R.r1, L.a0, L.a1)}"${attrs}></path>`;
       }
     }
@@ -587,6 +560,17 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   }
   function renderPanel() {
     const p = $("#panel");
+    if (state.gap && state.view === "wheel") {
+      const [law, ring] = state.gap.split("-"), L = LAWS[law], R = rings()[+ring - 1];
+      const near = CLAIMS.filter(c => c.laws.includes(law)).length;
+      p.innerHTML = `<button type="button" class="back" id="back">← Overview</button>
+        <div><h3>Empty cell</h3></div>
+        <h2>${L.label} · ${R.label}</h2>
+        <p style="margin:0">No speculation in the archive imagines a medium that would ${L.verb} at the scale of “${R.label.toLowerCase()}”. ${near} speculation${near === 1 ? "" : "s"} ${near === 1 ? "codes" : "code"} for ${L.label.toLowerCase()} at other scales.</p>
+        <p class="small">An empty cell describes the archive; it is not an instruction for what to design, and it may reflect what the archive happened to collect. For ways of turning the archive into design fictions, see <a href="#ideas">Ideas for speculative design</a>.</p>`;
+      $("#back").addEventListener("click", () => { state.gap = null; render(); });
+      return;
+    }
     if (state.selected) {
       const c = CLAIMS.find(x => x.id === state.selected);
       const era = eraOf(c.year);
@@ -632,7 +616,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
       <h2>${(() => { const n = (l) => claims.filter(c => c.laws.includes(l)).length;
         return `Most speculations promise to enhance and to replace; ${n("retrieve")} imagine retrieval, ${n("reverse")} reversal.`; })()}</h2>
       <div class="bars">${counts.map(([l, n]) => `<div class="bar"><span>${LAWS[l].label}</span><span class="track"><span class="fill" style="display:block;width:${(n / max) * 100}%"></span></span><span class="n">${n}</span></div>`).join("")}</div>
-      <p class="small">${g.length} hatched cells: combinations no speculation codes for. For ways of turning the archive into design fictions, see <a href="#ideas">Ideas for speculative design</a>. Select a dot for its coding.</p>`;
+      <p class="small">${g.length} hatched cells: combinations no speculation codes for. Select one for a note. For ways of turning the archive into design fictions, see <a href="#ideas">Ideas for speculative design</a>. Select a dot for its coding.</p>`;
   }
 
   function legend() {
@@ -648,28 +632,10 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     renderPanel();
   }
 
-  function select(id) { state.selected = id; render(); }
+  function select(id) { state.selected = id; state.gap = null; render(); }
 
   // ---------- fiction modal + multiplane sketch ----------
   let raf = null, lastFocus = null;
-  function openFiction(key) {
-    if (key.includes(":")) key = key.split(":")[1];
-    const [law, ring] = key.split("-");
-    const L = LAWS[law], R = rings()[+ring - 1];
-    const f = fictionFor(key) || {
-      title: `${L.label} · ${R.label}`,
-      world: `No claim in the archive imagines a medium that would ${L.verb}, at “${R.label.toLowerCase()}” on ${DIMS[state.dim].label.toLowerCase()}.`,
-      beats: [
-        "Choose a predicted replacement from the archive and its juncture.",
-        `Stage a world where it ${L.verb === "enhance" ? "enhances" : L.verb === "make obsolete" ? "makes something obsolete" : L.verb.replace(/^(\w+)/, "$1s")}, at this distance.`,
-        "Find one object or gesture that carries the change.",
-        "End on a return to the present."
-      ],
-      note: "Prompt template. No storyboard yet.",
-      scene: "generic"
-    };
-    showFiction(f, `Gap · ${L.label} · ${R.label}`);
-  }
   function showFiction(f, eyebrow) {
     $("#m-title").textContent = f.title;
     $("#m-eyebrow").textContent = eyebrow;
@@ -776,7 +742,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
 
   function activate(target) {
     const gap = target.closest("[data-gap]");
-    if (gap) { openFiction(gap.dataset.gap); return true; }
+    if (gap) { state.gap = state.gap === gap.dataset.gap ? null : gap.dataset.gap; state.selected = null; render(); return true; }
     const d = target.closest("[data-id]");
     if (d) { select(+d.dataset.id); return true; }
     return false;
@@ -807,6 +773,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     { id: "word", title: "Take it at its word", logic: "Choose a documented speculation of replacement, assume it came true, and play it forward to the law it did not imagine: what did the new medium retrieve, and what did it reverse into?", why: "Counterfactual obsolescence itself: failed predictions become grounded counterfactuals, and remediation (Bolter & Grusin 1999) becomes the turn of the plot.",
       prompts: [
         { title: "Edison was right", from: [4], world: "Edison’s 1922 prediction came true: by 1932 textbooks have gone from American schools, and every lesson is a film.", beats: ["1932. A classroom in darkness; the teacher threads a reel; no pupil holds anything.", "A pupil asks to see yesterday’s film again. The projector is booked until Thursday.", "Teachers begin writing summaries on the blackboard and handing out mimeographed notes.", "1940. The notes are bound and handed out: the textbook returns under another name."], note: "Film obsolesces the textbook only to rebuild it as notes: remediation as the turn of the plot." },
+        { title: "The headset school, reversed", from: [12, 13], scene: "pile", world: "Papert’s computer blew up the school, and Winn’s virtual reality took its place: VR replaced the school in 1996. It is now 2026.", beats: ["Each child learns alone at home inside a headset, standing in a virtual Roman forum.", "A new headset generation ships. Last year’s models stack up at the kerb.", "In a park, three children sit around one battered paper book and read aloud.", "The camera pulls back past the pile of headsets to the empty school building behind."], note: "Reversal: total immersion flips into isolation, and the book returns as a shared object." },
         { title: "The television classroom, 1965", from: [7, 10], world: "Muskie was overruled. By 1965 a large-screen receiver stands in every classroom, and the book has been withdrawn from schools.", beats: ["A master teacher broadcasts the morning lesson to ten thousand rooms at once.", "In one room the reception fails; the class waits in front of a grey screen.", "Pupils copy the broadcast into exercise books by hand, word for word.", "The exercise books are the only books in the school, and the most precious thing in it."], note: "The anchoring counterfactual. People rebuild something book-like inside the world without books." }
       ] },
     { id: "distance", title: "Change the distance", logic: "Move a speculation along speculative distance. Bring a distant, abstract claim near and make it concrete, or push a near, concrete claim far and let it turn abstract.", why: "Construal-level theory (Trope & Liberman 2010): near views surface means and costs, far views surface values. Rehearses the oscillation Study 2 tests.",
@@ -817,6 +784,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     { id: "returning", title: "The returning promise", logic: "Follow a promise that recurs across eras and media, and make the fiction about the cycle itself: what each version retrieved, and why the promise keeps returning.", why: "Past futures (Koselleck 2004) read in series: the repetition, not any single claim, is the object of speculation.",
       prompts: [
         { title: "The tutor that keeps coming back", from: [11, 23, 16, 17], world: "A personal tutor for every child is promised in 1966, imagined as a book in 1995, and promised again in 2023.", beats: ["Alexander and Aristotle, the royal prerogative Suppes invokes.", "1966: a teletype terminal answers a child, slowly.", "1995: Nell reads her Primer, voiced by a stranger far away.", "2023: a chatbot greets a pupil by name. The same promise, four times."], note: "Retrieval in series: each new tutor retrieves the old one." },
+        { title: "The stereoscope comes back", from: [1, 13], scene: "stereo", world: "Virtual reality arrives in classrooms as a field-trip kit, promising travel from the desk, as the stereograph did in 1906.", beats: ["A class passes headsets around for a five-minute trip to the Moon.", "A cupboard opens on a 1906 box of stereographs: travel the world from your desk.", "Split frame: a pupil in 1906 and a pupil in 2026 raise a viewer to their eyes with the same gesture.", "Caption: the same promise, a century apart."], note: "Retrieval: VR revives the classroom stereoscope’s promise of virtual travel." },
         { title: "The finest teacher, broadcast", from: [6, 7, 9, 16], world: "From radio in 1929 to AI in 2023, each new medium promises to bring the best teacher to every child.", beats: ["1929: a voice on the radio, ‘the flame of living genius’.", "1955: the nation’s finest teacher on a large-screen receiver.", "2023: an AI tutor modelled on great teachers.", "A local teacher, in each era, switches the device off and starts the lesson."], note: "The promise to replace the local teacher with the best one, and what it leaves out." }
       ] },
     { id: "answer", title: "Let fiction answer forecasts", logic: "Pair a forecast with a fiction that already imagined its other side, and retell the forecast in the fiction’s mode.", why: "In the pilot sample, retrieval and reversal appear mostly in fiction and scenarios. Fiction becomes a resource for completing the Tetrad of a forecast.",

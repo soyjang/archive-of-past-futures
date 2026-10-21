@@ -25,12 +25,12 @@ Temporal distance is coded from the horizon a claim *states*, not a year, becaus
 ## Pages
 
 - **Archive** — two views of the claims.
-  - *Tetrad wheel*: four sectors for the Tetrad laws, rings for scope of change. Dots are filled for concrete language and hollow for abstract. Hatched cells are gaps: combinations no claim imagined. The overview counts claims per Tetrad law.
+  - *Tetrad wheel*: four sectors for the Tetrad laws, rings for scope of change. Dots are filled for concrete language and hollow for abstract. Hatched cells are empty: combinations no speculation codes for. Selecting one shows a short note; it does not open a design fiction. The overview counts claims per Tetrad law.
   - *Timeline*: each claim placed by the year it was made, in a band for the horizon it states (imminent, near, distant, unstated). The overview counts claims per horizon, split by concrete and abstract language.
   - A decade slider ("Play decades") and era filters apply to both views.
 - **Codebook** — the full coding scheme (v0.1): unit of analysis, attributes, each dimension with definitions, decision rules and examples from the archive, the definition of a gap, and the reliability plan. The table below summarises it.
 - **Sources** — every claim with its speaker, full citation and verification status.
-- **Ideas for speculative design** — five approaches for turning the archive into design fictions, each with prompts written from documented speculations: *take it at its word* (play a replacement claim forward to what it did not imagine), *change the distance* (bring a far claim near, or push a near one far), *the returning promise* (follow a promise across eras), *let fiction answer forecasts*, and *anachronistic conversations* (speculations from different eras in dialogue). Each prompt opens a storyboard sketch. Hatched cells on the wheel remain as a descriptive view of what no speculation codes for.
+- **Ideas for speculative design** — five approaches for turning the archive into design fictions, each with prompts written from documented speculations: *take it at its word* (play a replacement claim forward to what it did not imagine), *change the distance* (bring a far claim near, or push a near one far), *the returning promise* (follow a promise across eras), *let fiction answer forecasts*, and *anachronistic conversations* (speculations from different eras in dialogue). Each prompt opens a storyboard sketch, including the two storyboards first drafted for wheel cells (*The headset school, reversed*; *The stereoscope comes back*). Hatched cells on the wheel remain as a descriptive view of what no speculation codes for.
 
 ## Status of the data
 
