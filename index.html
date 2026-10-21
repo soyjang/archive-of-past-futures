@@ -11,13 +11,13 @@
 <style>
 /* Layout: a mimeographed classroom handout — the Tetrad wheel as the main figure, a reading panel beside it, stacking on phones. */
 :root {
-  --paper: #f6f5f9;
+  --paper: #f4f4f4;
   --panel: #ffffff;
-  --ink: #221c31;
-  --muted: #625a77;
-  --rule: #d9d3e6;
-  --accent: #5a3fb0;      /* spirit-duplicator violet */
-  --accent-soft: #ebe5fa;
+  --ink: #161616;
+  --muted: #5e5e5e;
+  --rule: #d4d4d4;
+  --accent: #1a1a1a;      /* grayscale interface; colour is kept for the media families only */
+  --accent-soft: #e8e8e8;
   --era1: #8a6a14;        /* image and film */
   --era2: #23786a;        /* broadcast */
   --era3: #5a3fb0;        /* machines and computers */
@@ -30,15 +30,15 @@
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --paper: #14111c; --panel: #1c1827; --ink: #ece8f6; --muted: #a59dba; --rule: #2f2942;
-    --accent: #a58ff2; --accent-soft: #2a2343;
+    --paper: #121212; --panel: #1b1b1b; --ink: #ededed; --muted: #a3a3a3; --rule: #2f2f2f;
+    --accent: #f0f0f0; --accent-soft: #2b2b2b;
     --era1: #d6b45a; --era2: #5fc6ad; --era3: #a58ff2; --era4: #f17ba6; --fam5: #79aef0; --fam6: #b8c1cf;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --paper: #14111c; --panel: #1c1827; --ink: #ece8f6; --muted: #a59dba; --rule: #2f2942;
-  --accent: #a58ff2; --accent-soft: #2a2343;
+  --paper: #121212; --panel: #1b1b1b; --ink: #ededed; --muted: #a3a3a3; --rule: #2f2f2f;
+  --accent: #f0f0f0; --accent-soft: #2b2b2b;
   --era1: #d6b45a; --era2: #5fc6ad; --era3: #a58ff2; --era4: #f17ba6; --fam5: #79aef0; --fam6: #b8c1cf;
   color-scheme: dark;
 }
