@@ -18,10 +18,12 @@
   --rule: #d9d3e6;
   --accent: #5a3fb0;      /* spirit-duplicator violet */
   --accent-soft: #ebe5fa;
-  --era1: #8a6a14;        /* stereoscope & film */
-  --era2: #23786a;        /* radio, TV, teaching machines */
-  --era3: #5a3fb0;        /* computers & VR */
-  --era4: #c0346a;        /* online & AI */
+  --era1: #8a6a14;        /* image and film */
+  --era2: #23786a;        /* broadcast */
+  --era3: #5a3fb0;        /* machines and computers */
+  --era4: #c0346a;        /* AI */
+  --fam5: #2f6db3;        /* online learning */
+  --fam6: #55606e;        /* immersion */
   --font-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
   --font-body: "Atkinson Hyperlegible", "Helvetica Neue", Arial, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
@@ -30,14 +32,14 @@
   :root:not([data-theme="light"]) {
     --paper: #14111c; --panel: #1c1827; --ink: #ece8f6; --muted: #a59dba; --rule: #2f2942;
     --accent: #a58ff2; --accent-soft: #2a2343;
-    --era1: #d6b45a; --era2: #5fc6ad; --era3: #a58ff2; --era4: #f17ba6;
+    --era1: #d6b45a; --era2: #5fc6ad; --era3: #a58ff2; --era4: #f17ba6; --fam5: #79aef0; --fam6: #b8c1cf;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --paper: #14111c; --panel: #1c1827; --ink: #ece8f6; --muted: #a59dba; --rule: #2f2942;
   --accent: #a58ff2; --accent-soft: #2a2343;
-  --era1: #d6b45a; --era2: #5fc6ad; --era3: #a58ff2; --era4: #f17ba6;
+  --era1: #d6b45a; --era2: #5fc6ad; --era3: #a58ff2; --era4: #f17ba6; --fam5: #79aef0; --fam6: #b8c1cf;
   color-scheme: dark;
 }
 body {
@@ -238,7 +240,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
       <output id="decade-out" for="decade">2039</output>
       <button type="button" class="play" id="play">Play decades</button>
     </div>
-    <div class="chips" id="eras" role="group" aria-label="Filter by era"></div>
+    <div class="chips" id="eras" role="group" aria-label="Filter by media family"></div>
   </div>
 
   <div class="main">
@@ -284,8 +286,8 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
           <li>The archive records <strong>predictions only</strong>. What each medium went on to do is read against the claims in the written analysis, not coded here.</li></ul></section>
 
         <section id="cb-attr"><h3>Attributes</h3><p>Descriptive facts about the claim, recorded rather than interpreted.</p>
-          <dl class="cb-dl"><dt>Year</dt><dd>When the speculation was made or first published. Era (1900–1929, 1930–1969, 1970–1999, 2000 onwards) follows from the year and records time only.</dd>
-          <dt>Medium</dt><dd>The medium the speculation promotes or imagines, from a fixed list: stereograph · film · radio · television · teaching machine (mechanical or robot teachers) · computer · virtual reality · online learning · AI · direct transmission to the brain. The source’s own wording is kept as a detail (television: <q>parlour walls</q>; computer: <q>learning pods</q>). New media are added to the list as they appear.</dd>
+          <dl class="cb-dl"><dt>Year</dt><dd>When the speculation was made or first published.</dd>
+          <dt>Medium</dt><dd>The medium the speculation promotes or imagines, from a fixed list: stereograph · film · radio · television · teaching machine (mechanical or robot teachers) · computer · virtual reality · online learning · AI · direct transmission to the brain. The source’s own wording is kept as a detail (television: <q>parlour walls</q>; computer: <q>learning pods</q>). New media are added to the list as they appear. For colour and filtering only, media are shown in six families: image and film · broadcast · machines and computers · online learning · AI · immersion.</dd>
           <dt>Format</dt><dd>The form in which the speculation was first made, not where it was found (an Edison interview quoted by Cuban is <em>press</em>): <em>Press or magazine</em> · <em>Talk or broadcast</em> (speech, lecture, keynote, broadcast interview, statement in a legislature) · <em>Book</em> · <em>Academic paper</em> · <em>Report</em> (policy, technical or corporate) · <em>Novel or story</em> · <em>Film or television</em> · <em>Image</em> (illustration, postcard, poster) · <em>Design project</em> (artefact, prototype, bot). Format is descriptive. Whether a work functions as speculative design is a question for the analysis, not a code: a novel or a policy scenario can do the work of speculative design as much as a designed artefact.</dd>
           <dt>Speaker</dt><dd><em>Inventor</em> (promotes a medium they created) · <em>Company</em> (speaks for a firm with a stake in it) · <em>Policymaker</em> (government or regulator) · <em>Educator</em> (teacher, administrator, school broadcaster) · <em>Researcher</em> (academic or laboratory) · <em>Speculative designer</em> · <em>Writer or artist</em>. Code the role in which the person spoke, not their best-known role.</dd>
           <dt>Source</dt><dd>Full citation of the original; where quoted via a compilation, cite both. “N/A” when none is known.</dd>
@@ -368,11 +370,14 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
 
 <script>
 (function () {
-  const ERAS = [
-    { id: "e1", label: "1900–1929", from: 1900, to: 1929, v: "--era1" },
-    { id: "e2", label: "1930–1969", from: 1930, to: 1969, v: "--era2" },
-    { id: "e3", label: "1970–1999", from: 1970, to: 1999, v: "--era3" },
-    { id: "e4", label: "2000 onwards", from: 2000, to: 2039, v: "--era4" }
+  // Media families: used only for colour and filtering; the coded field is the medium itself
+  const FAMS = [
+    { id: "image", label: "Image and film", media: ["stereograph", "film"], v: "--era1" },
+    { id: "broadcast", label: "Broadcast", media: ["radio", "tv"], v: "--era2" },
+    { id: "machines", label: "Machines and computers", media: ["machine", "computer"], v: "--era3" },
+    { id: "online", label: "Online learning", media: ["online"], v: "--fam5" },
+    { id: "ai", label: "AI", media: ["ai"], v: "--era4" },
+    { id: "immersion", label: "Immersion", media: ["vr", "brain"], v: "--fam6" }
   ];
   const LAWS = {
     enhance:   { label: "Enhances",   a0: 90,  a1: 180, verb: "enhance" },
@@ -455,13 +460,13 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
 
   const $ = (s) => document.querySelector(s);
   const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
-  const eraOf = (y) => ERAS.find(e => y >= e.from && y <= e.to) || ERAS[ERAS.length - 1];
+  const famOf = (c) => FAMS.find(f => f.media.includes(c.succ));
 
-  const state = { view: "wheel", dim: "scope", decade: 2030, eras: new Set(ERAS.map(e => e.id)), selected: null, gap: null };
+  const state = { view: "wheel", dim: "scope", decade: 2030, fams: new Set(FAMS.map(f => f.id)), selected: null, gap: null };
   const lawsOf = (c) => c.laws;
 
   function visibleClaims() {
-    return CLAIMS.filter(c => c.year <= state.decade + 9 && state.eras.has(eraOf(c.year).id));
+    return CLAIMS.filter(c => c.year <= state.decade + 9 && state.fams.has(famOf(c).id));
   }
 
   // ---------- geometry ----------
@@ -515,7 +520,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
         const a = L.a0 + (90 * (i + 1)) / (list.length + 1);
         const r = (R.r0 + R.r1) / 2 + (i % 2 ? 9 : -9) * (list.length > 2 ? 1 : 0);
         const [x, y] = pt(r, a);
-        const col = `var(${eraOf(c.year).v})`;
+        const col = `var(${famOf(c).v})`;
         const abstract = c.lang === "abstract";
         const sel = state.selected === c.id ? " sel" : state.selected ? " dim" : "";
         if (state.selected === c.id) selPts.push([+x.toFixed(1), +y.toFixed(1), col]);
@@ -560,7 +565,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
         <text class="tl-band-label" x="${x0 - 26}" y="${y + h / 2 + 4}" text-anchor="end">${b.label}</text>`;
       claims.filter(c => c.temporal === b.k).forEach(c => {
         const cy = y + pad + c._sub * subH + subH / 2, cx = X(c.year);
-        const col = `var(${eraOf(c.year).v})`, abstract = c.lang === "abstract";
+        const col = `var(${famOf(c).v})`, abstract = c.lang === "abstract";
         const sel = state.selected === c.id ? " sel" : "";
         s += `<g class="tl-row${sel}" tabindex="0" role="button" data-id="${c.id}" aria-label="${c.year}, ${b.label.toLowerCase()} horizon${c.when ? ` (${c.when})` : ""}, ${c.medium}: ${c.text}">
           ${mark(c, cx, cy, 8, `dot${abstract ? " hollow" : ""}${sel}`, abstract ? `stroke:${col}` : `fill:${col}`)}
@@ -596,7 +601,6 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     }
     if (state.selected) {
       const c = CLAIMS.find(x => x.id === state.selected);
-      const era = eraOf(c.year);
       p.innerHTML = `<button type="button" class="back" id="back">← Overview</button>
         <div><h3>${c.year} · ${c.medium}</h3></div>
         <p class="quote">${c.desc ? `<em>${c.text}</em>` : "“" + c.text + "”"}</p>
@@ -604,8 +608,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
         <p class="small">— ${c.who}, ${c.year}</p>
         <div><span class="tag">${GENRES[c.genre]}</span>${c.verify ? ` <span class="tag ill">To verify</span>` : ""}</div>
         <dl class="meta">
-          <dt>Era</dt><dd><span class="swatch" style="background:var(${era.v})"></span> ${era.label}</dd>
-          <dt>Medium</dt><dd>${c.medium}${c.detail.toLowerCase() !== c.medium.toLowerCase() ? ` <span class="small">(${c.detail.charAt(0).toLowerCase() + c.detail.slice(1)})</span>` : ""}</dd>
+          <dt>Medium</dt><dd><span class="swatch" style="background:var(${famOf(c).v})"></span> ${c.medium}${c.detail.toLowerCase() !== c.medium.toLowerCase() ? ` <span class="small">(${c.detail.charAt(0).toLowerCase() + c.detail.slice(1)})</span>` : ""}</dd>
           <dt>Format</dt><dd>${GENRES[c.genre]}</dd>
           <dt>Speaker</dt><dd>${c.speaker}</dd>
           <dt>Tetrad</dt><dd>${c.laws.map(l => `<span class="tag">${LAWS[l].label}</span>`).join("")}</dd>
@@ -734,12 +737,12 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   }
 
   // ---------- controls ----------
-  $("#eras").innerHTML = ERAS.map(e => `<button type="button" class="chip" aria-pressed="true" data-era="${e.id}"><span class="swatch" style="background:var(${e.v})"></span>${e.label}</button>`).join("");
+  $("#eras").innerHTML = FAMS.map(f => `<button type="button" class="chip" aria-pressed="true" data-fam="${f.id}"><span class="swatch" style="background:var(${f.v})"></span>${f.label}</button>`).join("");
   $("#eras").addEventListener("click", (ev) => {
-    const b = ev.target.closest("[data-era]"); if (!b) return;
-    const id = b.dataset.era;
-    if (state.eras.has(id) && state.eras.size > 1) state.eras.delete(id); else state.eras.add(id);
-    b.setAttribute("aria-pressed", state.eras.has(id));
+    const b = ev.target.closest("[data-fam]"); if (!b) return;
+    const id = b.dataset.fam;
+    if (state.fams.has(id) && state.fams.size > 1) state.fams.delete(id); else state.fams.add(id);
+    b.setAttribute("aria-pressed", state.fams.has(id));
     render();
   });
   $("#decade").addEventListener("input", (e) => { state.decade = +e.target.value; render(); });
@@ -782,7 +785,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   // ---------- sources page ----------
   function renderSources() {
     $("#srclist").innerHTML = CLAIMS.slice().sort((a, b) => a.year - b.year || a.id - b.id).map(c => `
-      <li><div class="yr"><i style="background:var(${eraOf(c.year).v})"></i>${c.year}</div>
+      <li><div class="yr"><i style="background:var(${famOf(c).v})"></i>${c.year}</div>
         <div class="body">
           <p class="q">${c.desc ? `<em>${c.text}</em>` : `“${c.text}”`}</p>
           ${c.note ? `<p class="meta">${c.note}</p>` : ""}
