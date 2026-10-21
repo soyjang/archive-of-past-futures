@@ -158,9 +158,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
 .src-work { display: grid; gap: 12px; }
 .src-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
 .src-tools input { font: 400 15px var(--font-body); padding: 7px 12px; border: 1px solid var(--rule); border-radius: 8px; background: var(--panel); color: var(--ink); min-width: min(100%, 320px); }
-.strip-wrap svg { width: 100%; min-width: 700px; touch-action: none; user-select: none; }
-.brush-area { fill: transparent; cursor: crosshair; }
-.brush { fill: var(--accent-soft); stroke: var(--accent); stroke-dasharray: 3 3; pointer-events: none; }
+.strip-wrap svg { width: 100%; min-width: 700px; }
 .srclist.src-pane { height: min(60vh, 560px); overflow-y: auto; border: 1px solid var(--rule); border-radius: 10px; background: var(--panel); padding: 0 16px; position: relative; scroll-behavior: auto; }
 .srclist.src-pane::after { content: ""; display: block; height: calc(min(60vh, 560px) - 140px); }
 .srclist.src-pane li { cursor: pointer; border-top: 1px solid var(--rule); padding: 14px 8px; margin: 0 -8px; border-radius: 6px; }
@@ -269,7 +267,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   </section>
 
   <section id="pg-sources" class="page" hidden>
-    <div class="pagehead"><h2>Sources</h2><p class="small">Every speculation by the year it was made. Hover a dot for a summary and select it to find its source in the list. Drag across the timeline to zoom into a period; search to filter.</p></div>
+    <div class="pagehead"><h2>Sources</h2><p class="small">Every speculation by the year it was made. Hover a dot for a summary and select it to find its source in the list. Search to filter both.</p></div>
     <div class="src-work">
       <div class="src-tools"><input type="search" id="src-q" placeholder="Search speculations, people, media…" aria-label="Search sources"><span class="small" id="src-count"></span></div>
       <div class="strip-wrap"><div id="strip-svg"></div>
@@ -784,7 +782,6 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
         </div>`;
   const SW = 1100, SX0 = 24, SX1 = 1076;
   const sX = (y) => SX0 + (y - src.range[0]) / Math.max(1, src.range[1] - src.range[0]) * (SX1 - SX0);
-  const sYear = (x) => src.range[0] + (x - SX0) / (SX1 - SX0) * (src.range[1] - src.range[0]);
   function renderStrip() {
     const list = shownSrc(), n = list.length;
     const r = n > 80 ? 5 : n > 40 ? 7 : 9, step = r * 2 + 4, base = 260, cols = [];
@@ -799,11 +796,10 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
       if (sel) dots += `<circle class="halo" cx="${x.toFixed(1)}" cy="${y}" r="${r}" style="stroke:${col}"></circle>`;
     });
     const span = src.range[1] - src.range[0], tick = span > 80 ? 20 : span > 30 ? 10 : span > 12 ? 5 : 1;
-    let axis = `<rect class="brush-area" x="${SX0 - 10}" y="${top}" width="${SX1 - SX0 + 20}" height="${base + 40 - top}"></rect><line class="tl-axis" x1="${SX0}" x2="${SX1}" y1="${base + 18}" y2="${base + 18}"></line>`;
+    let axis = `<line class="tl-axis" x1="${SX0}" x2="${SX1}" y1="${base + 18}" y2="${base + 18}"></line>`;
     for (let t = Math.ceil(src.range[0] / tick) * tick; t <= src.range[1]; t += tick) axis += `<line class="tl-axis" x1="${sX(t)}" x2="${sX(t)}" y1="${base + 14}" y2="${base + 22}"></line><text class="tl-tick" x="${sX(t)}" y="${base + 38}" text-anchor="middle">${t}</text>`;
-    $("#strip-svg").innerHTML = `<svg viewBox="0 ${top} ${SW} ${base + 46 - top}" role="img" aria-label="Speculations by year; drag across the axis to zoom">${axis}${dots}<rect class="brush" id="brush" x="0" y="${top}" width="0" height="${base + 40 - top}"></rect></svg>`;
-    const zoomed = src.range[0] !== FULL[0] || src.range[1] !== FULL[1];
-    $("#src-count").innerHTML = `${n} of ${CLAIMS.length} speculations · ${src.range[0]}–${Math.min(src.range[1], 2025)}${zoomed || src.q ? ` <button type="button" class="linkbtn" id="src-reset">Show all</button>` : ""}`;
+    $("#strip-svg").innerHTML = `<svg viewBox="0 ${top} ${SW} ${base + 46 - top}" role="img" aria-label="Speculations by year">${axis}${dots}</svg>`;
+    $("#src-count").innerHTML = `${n} of ${CLAIMS.length} speculations${src.q ? ` <button type="button" class="linkbtn" id="src-reset">Clear search</button>` : ""}`;
   }
   function renderSrcList() {
     const list = shownSrc();
@@ -843,25 +839,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   strip.addEventListener("focusin", (e) => { const d = e.target.closest("[data-jump]"); if (d) showTip(d); });
   strip.addEventListener("focusout", hideTip);
   strip.addEventListener("keydown", (e) => { const d = e.target.closest("[data-jump]"); if (d && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); srcSelect(+d.dataset.jump); } });
-  // click a dot, or drag across the timeline to zoom
-  let drag = null;
-  const svgX = (ev) => { const svg = strip.querySelector("svg"), pt = svg.createSVGPoint(); pt.x = ev.clientX; pt.y = ev.clientY; return pt.matrixTransform(svg.getScreenCTM().inverse()).x; };
-  strip.addEventListener("pointerdown", (e) => {
-    if (e.target.closest("[data-jump]") || e.button !== 0) return;
-    drag = { x0: svgX(e) }; strip.setPointerCapture(e.pointerId);
-  });
-  strip.addEventListener("pointermove", (e) => {
-    if (!drag) return;
-    const x = svgX(e), b = $("#brush");
-    b.setAttribute("x", Math.min(drag.x0, x)); b.setAttribute("width", Math.abs(x - drag.x0));
-  });
-  strip.addEventListener("pointerup", (e) => {
-    if (!drag) { const d = e.target.closest("[data-jump]"); if (d) { hideTip(); srcSelect(+d.dataset.jump); } return; }
-    const x = svgX(e), a = Math.min(drag.x0, x), b = Math.max(drag.x0, x); drag = null;
-    if (b - a < 10) { $("#brush").setAttribute("width", 0); return; }
-    const y0 = Math.max(FULL[0], Math.floor(sYear(Math.max(SX0, a)))), y1 = Math.min(FULL[1], Math.ceil(sYear(Math.min(SX1, b))));
-    if (y1 - y0 >= 2) { src.range = [y0, y1]; renderSources(); $("#srclist").scrollTop = 0; }
-  });
+  strip.addEventListener("click", (e) => { const d = e.target.closest("[data-jump]"); if (d) { hideTip(); srcSelect(+d.dataset.jump); } });
   $("#src-count").addEventListener("click", (e) => { if (e.target.id === "src-reset") { src.range = FULL.slice(); src.q = ""; $("#src-q").value = ""; renderSources(); } });
   $("#src-q").addEventListener("input", (e) => { src.q = e.target.value.trim().toLowerCase(); renderSources(); $("#srclist").scrollTop = 0; });
   $("#srclist").addEventListener("click", (e) => { const li = e.target.closest("[data-pick]"); if (li && !window.getSelection().toString()) srcSelect(+li.dataset.pick, false); });
