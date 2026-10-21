@@ -25,13 +25,10 @@ Temporal distance is coded from the horizon a claim *states*, not a year, becaus
 
 ## Pages
 
-- **Archive** — two views of the claims.
-  - *Tetrad wheel*: four sectors for the Tetrad laws, rings for scope of change. Dots are filled for concrete language and hollow for abstract. Hatched cells are empty: combinations no speculation codes for. Selecting one shows a short note; it does not open a design fiction. The overview counts claims per Tetrad law.
-  - *Timeline*: each claim placed by the year it was made, in a band for the horizon it states (imminent, near, distant, unstated). The overview counts claims per horizon, split by concrete and abstract language.
-  - Dots are coloured by media family (image and film, broadcast, machines and computers, online learning, AI, immersion), which also serve as filters; a decade slider ("Play decades") handles time. Both apply to both views.
+- **Archive** — the Tetrad wheel: four sectors for the Tetrad laws, with rings switchable between **scope of change** and **temporal distance** (imminent, near, distant, unstated). Dots are coloured by media family and filled for concrete language or hollow for abstract. Selecting a speculation that spans several laws links and pulses all its copies. Hatched cells are empty: combinations no speculation codes for; selecting one shows a short note. The overview counts claims per Tetrad law (and, on the temporal rings, per horizon by construal). Media-family chips filter; a decade slider ("Play decades") handles time.
 - **Counterfactual obsolescence** — taking past futures at their word. Eligible: every speculation, in any format, whose scope of change is at least “replaces the medium”. One is selected per medium: the speculation with the most unimagined Tetrad laws, ties to the earliest. Each counterfactual assumes it came true and supplies what it left unimagined, in a near, concrete version and a far, abstract one, with a storyboard sketch. Current set: Edison 1925 (film), Asimov 1951 (teaching machine), Bradbury 1953 (television), Papert 1984 (computer), Stephenson 1995 (AI), *The Matrix* 1999 (direct transmission to the brain), Thrun 2012 (online learning).
 - **Codebook** — the full coding scheme (v0.1): unit of analysis, attributes, each dimension with definitions, decision rules and examples from the archive, the definition of a gap, and the reliability plan. The table below summarises it.
-- **Sources** — every claim with its speaker, full citation and verification status.
+- **Sources** — a strip of every speculation by the year it was made (select a dot to jump to its entry), then every speculation with its speaker, full citation and verification status.
 
 ## Status of the data
 

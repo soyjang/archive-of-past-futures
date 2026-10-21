@@ -154,6 +154,10 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
 .page { display: grid; gap: 22px; }
 .pagehead { display: grid; gap: 6px; max-width: 80ch; }
 .pagehead h2 { font-family: var(--font-display); font-size: 28px; margin: 0; }
+.strip-wrap { overflow-x: auto; display: grid; gap: 8px; }
+.strip-wrap svg { min-width: 640px; width: 100%; }
+.srclist li.flash { animation: flash 1.6s ease-out; }
+@keyframes flash { from { background: var(--accent-soft); } to { background: transparent; } }
 .srclist { list-style: none; margin: 0; padding: 0; display: grid; }
 .srclist li { display: grid; grid-template-columns: 7ch minmax(0, 1fr); gap: 4px 18px; padding: 16px 0; border-top: 1px solid var(--rule); }
 .srclist .yr { font: 500 15px var(--font-mono); color: var(--ink); }
@@ -230,9 +234,9 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
 
   <section id="pg-archive" class="page">
   <div class="controls" role="group" aria-label="View controls">
-    <div class="seg" role="group" aria-label="View">
-      <button type="button" id="v-wheel" aria-pressed="true">Tetrad wheel</button>
-      <button type="button" id="v-time" aria-pressed="false">Timeline</button>
+    <div class="seg" role="group" aria-label="Rings show">
+      <button type="button" id="d-scope" aria-pressed="true">Scope of change</button>
+      <button type="button" id="d-temporal" aria-pressed="false">Temporal distance</button>
     </div>
     <div class="slider">
       <label for="decade">Claims up to</label>
@@ -246,7 +250,6 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   <div class="main">
     <div class="figure">
       <div id="wheel-wrap"></div>
-      <div id="time-wrap" class="timeline-scroll" hidden></div>
       <div class="legend" id="legend" style="margin-top:10px"></div>
     </div>
     <aside class="panel" id="panel" aria-live="polite"></aside>
@@ -254,7 +257,8 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   </section>
 
   <section id="pg-sources" class="page" hidden>
-    <div class="pagehead"><h2>Sources</h2><p class="small">Every claim in the archive, in order of the year it was made.</p></div>
+    <div class="pagehead"><h2>Sources</h2><p class="small">Every speculation in the archive, in order of the year it was made. Select a dot to jump to its entry.</p></div>
+    <div class="strip-wrap" id="strip"></div>
     <ol class="srclist" id="srclist"></ol>
   </section>
 
@@ -542,40 +546,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   }
 
   // ---------- timeline ----------
-  function renderTimeline() {
-    // Bands by stated horizon; x = the year the claim was made. Dots pack into sub-rows so labels never overlap.
-    const claims = visibleClaims().slice().sort((a, b) => a.year - b.year);
-    const x0 = 96, x1 = 560, top = 34, subH = 30, pad = 12;
-    const X = (y) => x0 + (y - 1900) / 140 * (x1 - x0);
-    const bands = DIMS.temporal.levels.map((label, k) => {
-      const rows = [];
-      claims.filter(c => c.temporal === k + 1).forEach(c => {
-        const xa = X(c.year) - 9, xb = X(c.year) + 14 + c.short.length * 7.4;
-        let r = rows.findIndex(end => end < xa);
-        if (r < 0) { r = rows.length; rows.push(0); }
-        rows[r] = xb; c._sub = r;
-      });
-      return { label, k: k + 1, n: Math.max(1, rows.length) };
-    });
-    let y = top, s = "";
-    for (let t = 1900; t <= 2040; t += 20) s += `<text class="tl-tick" x="${X(t)}" y="${top - 14}" text-anchor="middle">${t}</text>`;
-    bands.forEach((b, bi) => {
-      const h = b.n * subH + pad * 2;
-      s += `<rect x="${x0 - 16}" y="${y}" width="${700 - x0 + 14}" height="${h}" class="${bi % 2 ? "tl-band alt" : "tl-band"}"></rect>
-        <text class="tl-band-label" x="${x0 - 26}" y="${y + h / 2 + 4}" text-anchor="end">${b.label}</text>`;
-      claims.filter(c => c.temporal === b.k).forEach(c => {
-        const cy = y + pad + c._sub * subH + subH / 2, cx = X(c.year);
-        const col = `var(${famOf(c).v})`, abstract = c.lang === "abstract";
-        const sel = state.selected === c.id ? " sel" : "";
-        s += `<g class="tl-row${sel}" tabindex="0" role="button" data-id="${c.id}" aria-label="${c.year}, ${b.label.toLowerCase()} horizon${c.when ? ` (${c.when})` : ""}, ${c.medium}: ${c.text}">
-          ${mark(c, cx, cy, 8, `dot${abstract ? " hollow" : ""}${sel}`, abstract ? `stroke:${col}` : `fill:${col}`)}
-          <text class="tl-label" x="${cx + 13}" y="${cy + 4}">${c.short}</text></g>`;
-      });
-      y += h + 4;
-    });
-    for (let t = 1900; t <= 2040; t += 20) s = `<line class="tl-axis" x1="${X(t)}" x2="${X(t)}" y1="${top - 6}" y2="${y - 4}"></line>` + s;
-    $("#time-wrap").innerHTML = `<svg viewBox="0 0 700 ${y + 8}" role="img" aria-label="Timeline: claims by the year they were made, in bands by the horizon they state">${s}</svg>`;
-  }
+
 
   // ---------- panel ----------
   function gaps() {
@@ -588,13 +559,13 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   }
   function renderPanel() {
     const p = $("#panel");
-    if (state.gap && state.view === "wheel") {
+    if (state.gap) {
       const [law, ring] = state.gap.split("-"), L = LAWS[law], R = rings()[+ring - 1];
       const near = CLAIMS.filter(c => c.laws.includes(law)).length;
       p.innerHTML = `<button type="button" class="back" id="back">← Overview</button>
         <div><h3>Empty cell</h3></div>
         <h2>${L.label} · ${R.label}</h2>
-        <p style="margin:0">No speculation in the archive imagines a medium that would ${L.verb} at the scale of “${R.label.toLowerCase()}”. ${near} speculation${near === 1 ? "" : "s"} ${near === 1 ? "codes" : "code"} for ${L.label.toLowerCase()} at other scales.</p>
+        <p style="margin:0">No speculation in the archive imagines a medium that would ${L.verb} ${state.dim === "scope" ? `at the scale of “${R.label.toLowerCase()}”` : +ring === 4 ? "without stating a horizon" : `on ${R.label === "Imminent" ? "an imminent" : `a ${R.label.toLowerCase()}`} horizon`}. ${near} speculation${near === 1 ? "" : "s"} ${near === 1 ? "codes" : "code"} for ${L.label.toLowerCase()} ${state.dim === "scope" ? "at other scales" : "on other horizons"}.</p>
         <p class="small">An empty cell describes the archive; it is not an instruction for what to design, and it may reflect what the archive happened to collect. For how the archive becomes design fictions, see <a href="#counterfactual">Counterfactual obsolescence</a>.</p>`;
       $("#back").addEventListener("click", () => { state.gap = null; render(); });
       return;
@@ -624,7 +595,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
       return;
     }
     const claims = visibleClaims();
-    if (state.view === "time") {
+    if (state.dim === "temporal") {
       const rows = DIMS.temporal.levels.map((label, k) => {
         const inBand = claims.filter(c => c.temporal === k + 1);
         return [label, inBand.filter(c => c.lang === "concrete").length, inBand.filter(c => c.lang === "abstract").length];
@@ -633,7 +604,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
       p.innerHTML = `<div><h3>Overview · ${claims.length} speculations</h3></div>
         <h2>How far ahead past futures look, and in what language.</h2>
         <div class="bars">${rows.map(([l, c, a]) => `<div class="bar"><span>${l}</span><span class="track" style="display:flex"><span class="fill" style="display:block;width:${(c / mx) * 100}%"></span><span class="fill abs" style="display:block;width:${(a / mx) * 100}%"></span></span><span class="n">${c + a}</span></div>`).join("")}</div>
-        <p class="small"><span class="key"></span> concrete <span class="key abs"></span> abstract. Select a dot for its coding.</p>`;
+        <p class="small"><span class="key"></span> concrete <span class="key abs"></span> abstract. Use “Play decades” to watch the horizons fill over time. Select a dot or a hatched cell.</p>`;
       return;
     }
     const counts = LAW_ORDER.map(l => [l, claims.filter(c => lawsOf(c).includes(l)).length]);
@@ -647,15 +618,13 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   }
 
   function legend() {
-    $("#legend").innerHTML = state.view === "wheel"
-      ? `<span><i class="lg-dot"></i>Concrete language</span><span><i class="lg-dot hollow"></i>Abstract language</span><span><i class="lg-hatch"></i>Gap: no claim imagined this</span>`
-      : `<span><i class="lg-dot"></i>Concrete language</span><span><i class="lg-dot hollow"></i>Abstract language</span><span>Bands: the horizon each claim states</span>`;
+    $("#legend").innerHTML = `<span><i class="lg-dot"></i>Concrete language</span><span><i class="lg-dot hollow"></i>Abstract language</span><span><i class="lg-hatch"></i>Empty: no speculation codes for this</span>`;
   }
 
   function render() {
     legend();
     $("#decade-out").textContent = state.decade >= 2030 ? "2039" : `${state.decade + 9}`;
-    if (state.view === "wheel") renderWheel(); else renderTimeline();
+    renderWheel();
     renderPanel();
   }
 
@@ -756,16 +725,14 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
       state.decade += 10; $("#decade").value = state.decade; render();
     }, 900);
   });
-  function setView(v) {
-    state.view = v;
-    $("#v-wheel").setAttribute("aria-pressed", v === "wheel");
-    $("#v-time").setAttribute("aria-pressed", v === "time");
-    $("#wheel-wrap").hidden = v !== "wheel";
-    $("#time-wrap").hidden = v !== "time";
+  function setDim(d) {
+    state.dim = d; state.gap = null;
+    $("#d-scope").setAttribute("aria-pressed", d === "scope");
+    $("#d-temporal").setAttribute("aria-pressed", d === "temporal");
     render();
   }
-  $("#v-wheel").addEventListener("click", () => setView("wheel"));
-  $("#v-time").addEventListener("click", () => setView("time"));
+  $("#d-scope").addEventListener("click", () => setDim("scope"));
+  $("#d-temporal").addEventListener("click", () => setDim("temporal"));
 
   function activate(target) {
     const gap = target.closest("[data-gap]");
@@ -783,9 +750,32 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("#overlay").hidden) closeFiction(); });
 
   // ---------- sources page ----------
+  function renderStrip() {
+    const x0 = 30, x1 = 870, X = (y) => x0 + (y - 1900) / 130 * (x1 - x0), cols = [];
+    let dots = "";
+    CLAIMS.slice().sort((a, b) => a.year - b.year || a.id - b.id).forEach(c => {
+      const x = X(c.year); let k = 0;
+      while (cols.some(([cx, ck]) => ck === k && Math.abs(cx - x) < 17)) k++;
+      cols.push([x, k]);
+      const col = `var(${famOf(c).v})`, abstract = c.lang === "abstract";
+      dots += `<circle class="dot${abstract ? " hollow" : ""}" cx="${x.toFixed(1)}" cy="${118 - k * 18}" r="7" style="${abstract ? `stroke:${col}` : `fill:${col}`}" tabindex="0" role="button" data-jump="${c.id}" aria-label="${c.year}, ${c.short}: ${c.text}"><title>${c.year} · ${c.short}</title></circle>`;
+    });
+    let axis = `<line class="tl-axis" x1="${x0}" x2="${x1}" y1="132" y2="132"></line>`;
+    for (let t = 1900; t <= 2030; t += 10) axis += `<line class="tl-axis" x1="${X(t)}" x2="${X(t)}" y1="128" y2="136"></line>${t % 20 === 0 ? `<text class="tl-tick" x="${X(t)}" y="152" text-anchor="middle">${t}</text>` : ""}`;
+    $("#strip").innerHTML = `<svg viewBox="0 ${Math.min(...cols.map(c => 118 - c[1] * 18)) - 14} 900 ${166 - Math.min(...cols.map(c => 118 - c[1] * 18))}" role="img" aria-label="All speculations by year">${axis}${dots}</svg>
+      <div class="legend">${FAMS.map(f => `<span><span class="swatch" style="background:var(${f.v})"></span>${f.label}</span>`).join("")}<span><i class="lg-dot hollow"></i>Abstract language</span></div>`;
+  }
+  function jumpTo(id) {
+    const li = document.getElementById(`src-${id}`); if (!li) return;
+    li.scrollIntoView({ behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center" });
+    li.classList.remove("flash"); void li.offsetWidth; li.classList.add("flash");
+  }
+  $("#strip").addEventListener("click", (e) => { const d = e.target.closest("[data-jump]"); if (d) jumpTo(+d.dataset.jump); });
+  $("#strip").addEventListener("keydown", (e) => { const d = e.target.closest("[data-jump]"); if (d && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); jumpTo(+d.dataset.jump); } });
   function renderSources() {
+    renderStrip();
     $("#srclist").innerHTML = CLAIMS.slice().sort((a, b) => a.year - b.year || a.id - b.id).map(c => `
-      <li><div class="yr"><i style="background:var(${famOf(c).v})"></i>${c.year}</div>
+      <li id="src-${c.id}"><div class="yr"><i style="background:var(${famOf(c).v})"></i>${c.year}</div>
         <div class="body">
           <p class="q">${c.desc ? `<em>${c.text}</em>` : `“${c.text}”`}</p>
           ${c.note ? `<p class="meta">${c.note}</p>` : ""}
