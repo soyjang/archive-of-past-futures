@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>Archive of Past Futures</title>
+<meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -91,6 +92,15 @@ button:focus-visible, [tabindex]:focus-visible, input:focus-visible { outline: 2
 .tet-mid-n { font: 700 26px var(--font-display); fill: var(--ink); }
 .tet-mid-l { font: 500 12px var(--font-mono); fill: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
 .horizons { display: grid; gap: 6px; }
+.ov-block { display: grid; gap: 8px; border-top: 1px solid var(--rule); padding-top: 14px; }
+.ov-block h3 { margin: 0; }
+.ov-key { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 4px 16px; font-size: 13px; }
+.ov-key li { display: flex; align-items: center; gap: 6px; }
+.ov-key b { margin-left: auto; font: 500 12px var(--font-mono); color: var(--muted); }
+.hkey { width: 10px; height: 10px; border-radius: 2px; background: var(--ink); display: inline-block; }
+.hkey.h2 { opacity: .7; } .hkey.h3 { opacity: .45; } .hkey.h4 { background: transparent; box-shadow: inset 0 0 0 1.25px var(--ink); }
+.bars.sm .bar { grid-template-columns: 15ch 1fr 3ch; font-size: 13px; }
+.bars.sm .track { height: 6px; }
 .horizons h3 { margin: 0; }
 .hbar { display: flex; height: 10px; border-radius: 999px; overflow: hidden; gap: 2px; }
 .hseg { display: block; background: var(--ink); }
@@ -662,6 +672,23 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
     }
     return `<svg class="tetrad" viewBox="${-2 * h - 2} ${-2 * h - 2} ${4 * h + 4} ${4 * h + 4}" role="img" aria-label="Tetrad: ${LAW_ORDER.map(l => `${LAWS[l].label} ${n(l)}`).join(", ")} of ${claims.length} speculations">${g}</svg>`;
   }
+  // Descriptive counts the wheel cannot show: media, stated horizon, speaker
+  function overviewStats(claims) {
+    const N = claims.length || 1;
+    const fam = FAMS.map(f => [f, claims.filter(c => famOf(c).id === f.id).length]).filter(x => x[1]);
+    const media = `<section class="ov-block"><h3>Media</h3>
+      <div class="hbar">${fam.map(([f, v]) => `<span class="hseg" style="flex:${v};background:var(${f.v})" title="${f.label}: ${v}"></span>`).join("")}</div>
+      <ul class="ov-key">${fam.map(([f, v]) => `<li><span class="swatch" style="background:var(${f.v})"></span>${f.label}<b>${v}</b></li>`).join("")}</ul></section>`;
+    const hz = DIMS.temporal.levels.map((l, k) => [l, k + 1, claims.filter(c => c.temporal === k + 1).length]);
+    const horizon = `<section class="ov-block"><h3>Stated horizon</h3>
+      <div class="hbar">${hz.map(([l, k, v]) => v ? `<span class="hseg h${k}" style="flex:${v}" title="${l}: ${v}"></span>` : "").join("")}</div>
+      <ul class="ov-key">${hz.map(([l, k, v]) => `<li><span class="hkey h${k}"></span>${l}<b>${v}</b></li>`).join("")}</ul></section>`;
+    const sp = SPEAKERS.map(l => [l, claims.filter(c => c.speaker === l).length]).filter(x => x[1]).sort((a, b) => b[1] - a[1]);
+    const mx = Math.max(1, ...sp.map(x => x[1]));
+    const speaker = `<section class="ov-block"><h3>Speaker</h3>
+      <div class="bars sm">${sp.map(([l, v]) => `<div class="bar"><span>${l}</span><span class="track"><span class="fill" style="display:block;width:${(v / mx) * 100}%"></span></span><span class="n">${v}</span></div>`).join("")}</div></section>`;
+    return media + horizon + speaker;
+  }
   function gapNote() {
     const [law, ring] = state.gap.split("-"), L = LAWS[law], R = rings()[+ring - 1];
     const near = CLAIMS.filter(c => c.laws.includes(law)).length;
@@ -688,7 +715,8 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
     const max = Math.max(1, ...counts.map(x => x[1]));
     const g = gaps();
     p.innerHTML = `<div><h3>Overview</h3></div>
-      ${tetradSVG(claims)}`;
+      ${tetradSVG(claims)}
+      ${overviewStats(claims)}`;
   }
 
   function legend() {
@@ -984,5 +1012,3 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
   route();
 })();
 </script>
-</body>
-</html>
