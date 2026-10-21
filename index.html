@@ -119,6 +119,7 @@ button:focus-visible, [tabindex]:focus-visible, input:focus-visible { outline: 2
 .lg-dot.hollow { background: transparent; border: 3px solid var(--muted); }
 .lg-dot.dash { background: transparent; border: 2px dashed var(--muted); }
 .lg-hatch { width: 16px; height: 12px; border: 1px dashed var(--accent); background: repeating-linear-gradient(45deg, var(--accent-soft) 0 3px, transparent 3px 6px); display: inline-block; }
+[hidden] { display: none !important; }
 .back { justify-self: start; font: 500 13px var(--font-mono); background: transparent; border: 0; color: var(--accent); cursor: pointer; padding: 0; }
 
 .overlay { position: fixed; inset: 0; background: color-mix(in srgb, var(--ink) 45%, transparent); display: grid; place-items: center; padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); z-index: 20; }
@@ -131,6 +132,11 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
 .beats li { display: grid; grid-template-columns: 4ch 1fr; gap: 8px; font-size: 15px; }
 .beats li::before { counter-increment: k; content: "K0" counter(k); font-family: var(--font-mono); font-size: 12px; color: var(--accent); padding-top: 3px; }
 .small { font-size: 13px; color: var(--muted); margin: 0; }
+.matrix { display: grid; grid-template-columns: 9ch repeat(3, 1fr); gap: 4px; font-size: 13px; }
+.matrix .hd { color: var(--muted); align-self: end; text-align: center; padding-bottom: 2px; }
+.matrix .rh { color: var(--muted); align-self: center; }
+.matrix .mc { border: 1px solid var(--rule); border-radius: 6px; padding: 8px 4px; text-align: center; font: 500 15px var(--font-mono); position: relative; }
+.matrix .mc.diag { border-color: var(--accent); border-style: dashed; }
 footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 14px; max-width: 90ch; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
@@ -168,17 +174,12 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     <div class="figure">
       <div id="wheel-wrap"></div>
       <div id="time-wrap" class="timeline-scroll" hidden></div>
-      <div class="legend" style="margin-top:10px">
-        <span><i class="lg-dot"></i>Absorbed into practice</span>
-        <span><i class="lg-dot hollow"></i>Not realised</span>
-        <span><i class="lg-dot dash"></i>Still open</span>
-        <span><i class="lg-hatch"></i>Gap: no claim imagined this</span>
-      </div>
+      <div class="legend" id="legend" style="margin-top:10px"></div>
     </div>
     <aside class="panel" id="panel" aria-live="polite"></aside>
   </div>
 
-  <footer>Coding scheme: Tetrad laws after McLuhan &amp; McLuhan (1988). Each claim also records who is speaking. Speculative distance on construal-level theory's four dimensions of psychological distance (Trope &amp; Liberman 2010): temporal, spatial, social and hypotheticality. Temporal distance is coded from the horizon a claim states (imminent, near, distant), since most give no year; “unstated” is a value in its own right. Construal level (concrete or abstract language) is coded as the kind of thinking distance is expected to produce. Scope of change (supplement, transform practice, replace the medium, replace the institution) is a dimension specific to obsolescence. The wheel's rings show the two main dimensions, scope of change and temporal distance; the others are reported descriptively. On the timeline, line length shows the stated horizon (imminent, near, distant), dotted where none is stated. Design-fiction storyboards are placeholders for AI-assisted animations.</footer>
+  <footer>Coding scheme: Tetrad laws after McLuhan &amp; McLuhan (1988). Each claim also records who is speaking. Speculative distance on construal-level theory's four dimensions of psychological distance (Trope &amp; Liberman 2010): temporal, spatial, social and hypotheticality. Temporal distance is coded from the horizon a claim states (imminent, near, distant), since most give no year; “unstated” is a value in its own right. Construal level (concrete or abstract language) is coded as the kind of thinking distance is expected to produce; on the wheel, filled dots are concrete and hollow dots abstract. Scope of change (supplement, transform practice, replace the medium, replace the institution) is a dimension specific to obsolescence. The wheel's rings show the two main dimensions, scope of change and temporal distance; the others are reported descriptively. On the timeline, line length shows the stated horizon (imminent, near, distant), dotted where none is stated. Design-fiction storyboards are placeholders for AI-assisted animations.</footer>
 </div>
 
 <div class="overlay" id="overlay" hidden>
@@ -342,12 +343,10 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
         const r = (R.r0 + R.r1) / 2 + (i % 2 ? 9 : -9) * (list.length > 2 ? 1 : 0);
         const [x, y] = pt(r, a);
         const col = `var(${eraOf(c.year).v})`;
-        const shape = c.outcome === "unrealised" ? " hollow" : "";
-        const dash = c.outcome === "open" ? ' stroke-dasharray="3 2"' : "";
+        const abstract = c.lang === "abstract";
         const sel = state.selected === c.id ? " sel" : "";
-        const style = c.outcome === "unrealised" ? `stroke:${col}` : `fill:${col}`;
-        const ostyle = c.outcome === "open" ? `fill:${col};stroke:var(--ink)` : style;
-        s += `<circle class="dot${shape}${sel}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="9" style="${ostyle}"${dash} tabindex="0" role="button" data-id="${c.id}" aria-label="${c.year}, ${c.medium}: ${c.text}"></circle>`;
+        const style = abstract ? `stroke:${col}` : `fill:${col}`;
+        s += `<circle class="dot${abstract ? " hollow" : ""}${sel}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="9" style="${style}" tabindex="0" role="button" data-id="${c.id}" aria-label="${c.year}, ${c.medium}, ${abstract ? "abstract" : "concrete"} language: ${c.text}"></circle>`;
       });
     }
     s += `</svg>`;
@@ -424,13 +423,35 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     p.innerHTML = `<div><h3>Overview · ${claims.length} claims</h3></div>
       <h2>Past futures promise to enhance and to replace. They rarely imagine retrieval, and never reversal.</h2>
       <div class="bars">${counts.map(([l, n]) => `<div class="bar"><span>${LAWS[l].label}</span><span class="track"><span class="fill" style="display:block;width:${(n / max) * 100}%"></span></span><span class="n">${n}</span></div>`).join("")}</div>
+      ${matrix(claims)}
       <div style="display:grid;gap:8px"><h3>${g.length} gaps to design for</h3>
         <div class="gaplist">${g.map(k => { const [l, r] = k.split("-"); const star = fictionFor(k) ? " ★" : ""; return `<button type="button" class="gapbtn" data-gap="${k}">${LAWS[l].label} · ${rings()[+r - 1].label}${star}</button>`; }).join("")}</div>
         <p class="small">★ has a storyboard sketched. Select a dot or a row for its coding.</p>
       </div>`;
   }
 
+  function matrix(claims) {
+    const n = (h, lang) => claims.filter(c => c.hyp === h && c.lang === lang).length;
+    const row = (lang, label) => `<span class="rh">${label}</span>` + [1, 2, 3].map(h => {
+      const v = n(h, lang), diag = (h === 1 && lang === "concrete") || (h === 3 && lang === "abstract");
+      return `<span class="mc${diag ? " diag" : ""}" aria-label="${DIMS.hyp.levels[h - 1]}, ${label}: ${v}">${v}</span>`;
+    }).join("");
+    return `<div style="display:grid;gap:8px"><h3>Certainty and construal</h3>
+      <div class="matrix" role="table" aria-label="Claims by hypotheticality and construal level">
+        <span></span>${DIMS.hyp.levels.map(l => `<span class="hd">“${l.toLowerCase()}”</span>`).join("")}
+        ${row("concrete", "Concrete")}${row("abstract", "Abstract")}
+      </div>
+      <p class="small">Construal-level theory expects the dashed cells: certain claims described concretely, possible ones abstractly. Certain but abstract (“will”, abstract) is the confident prophecy.</p></div>`;
+  }
+
+  function legend() {
+    $("#legend").innerHTML = state.view === "wheel"
+      ? `<span><i class="lg-dot"></i>Concrete language</span><span><i class="lg-dot hollow"></i>Abstract language</span><span><i class="lg-hatch"></i>Gap: no claim imagined this</span>`
+      : `<span>Line ends: ■ absorbed into practice · ✕ not realised · ○ still open</span><span>Dotted line: no horizon stated</span>`;
+  }
+
   function render() {
+    legend();
     $("#decade-out").textContent = state.decade >= 2030 ? "2039" : `${state.decade + 9}`;
     if (state.view === "wheel") renderWheel(); else renderTimeline();
     renderPanel();
