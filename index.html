@@ -120,8 +120,6 @@ button:focus-visible, [tabindex]:focus-visible, input:focus-visible { outline: 2
 .legend span { display: inline-flex; align-items: center; gap: 6px; }
 .lg-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--muted); display: inline-block; }
 .lg-dot.hollow { background: transparent; border: 3px solid var(--muted); }
-.shape { width: 10px; height: 10px; border-radius: 50%; border: 2px solid var(--muted); display: inline-block; }
-.shape.dia { border-radius: 1px; transform: rotate(45deg); width: 9px; height: 9px; }
 .lg-dot.dash { background: transparent; border: 2px dashed var(--muted); }
 .lg-hatch { width: 16px; height: 12px; border: 1px dashed var(--accent); background: repeating-linear-gradient(45deg, var(--accent-soft) 0 3px, transparent 3px 6px); display: inline-block; }
 [hidden] { display: none !important; }
@@ -454,11 +452,9 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     return `M${x1.toFixed(1)} ${y1.toFixed(1)} A${r1} ${r1} 0 0 0 ${x2.toFixed(1)} ${y2.toFixed(1)} L${x3.toFixed(1)} ${y3.toFixed(1)} A${r0} ${r0} 0 0 1 ${x4.toFixed(1)} ${y4.toFixed(1)}Z`;
   }
 
-  // A forecast is a circle; fiction, scenarios and speculative design are diamonds
+  // Every speculation is drawn the same way
   function mark(c, x, y, r, cls, style, attrs = "") {
-    if (c.genre === "forecast") return `<circle class="${cls}" cx="${x}" cy="${y}" r="${r}" style="${style}"${attrs}></circle>`;
-    const d = r * 1.25;
-    return `<path class="${cls}" d="M${x} ${y - d} L${x + d} ${y} L${x} ${+y + d} L${x - d} ${y}Z" style="${style}"${attrs}></path>`;
+    return `<circle class="${cls}" cx="${x}" cy="${y}" r="${r}" style="${style}"${attrs}></circle>`;
   }
 
   // ---------- wheel ----------
@@ -597,16 +593,16 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     const max = Math.max(1, ...counts.map(x => x[1]));
     const g = gaps();
     p.innerHTML = `<div><h3>Overview · ${claims.length} claims</h3></div>
-      <h2>${(() => { const f = claims.filter(c => c.genre === "forecast"), o = claims.filter(c => c.genre !== "forecast"), rr = (xs) => xs.filter(c => c.laws.includes("retrieve") || c.laws.includes("reverse")).length;
-        return `${rr(f)} of ${f.length} forecasts imagine retrieval or reversal; ${rr(o)} of ${o.length} fictions, scenarios and designs do.`; })()}</h2>
+      <h2>${(() => { const n = (l) => claims.filter(c => c.laws.includes(l)).length;
+        return `Most speculations promise to enhance and to replace; ${n("retrieve")} imagine retrieval, ${n("reverse")} reversal.`; })()}</h2>
       <div class="bars">${counts.map(([l, n]) => `<div class="bar"><span>${LAWS[l].label}</span><span class="track"><span class="fill" style="display:block;width:${(n / max) * 100}%"></span></span><span class="n">${n}</span></div>`).join("")}</div>
       <p class="small">${g.length} gaps: the hatched cells. Open one on the wheel, or see them all under <a href="#gaps">Gaps for speculative design</a>. Select a dot for its coding.</p>`;
   }
 
   function legend() {
     $("#legend").innerHTML = state.view === "wheel"
-      ? `<span><i class="lg-dot"></i>Concrete language</span><span><i class="lg-dot hollow"></i>Abstract language</span><span><i class="shape"></i>Forecast</span><span><i class="shape dia"></i>Fiction, scenario or design</span><span><i class="lg-hatch"></i>Gap: no claim imagined this</span>`
-      : `<span><i class="lg-dot"></i>Concrete language</span><span><i class="lg-dot hollow"></i>Abstract language</span><span><i class="shape"></i>Forecast</span><span><i class="shape dia"></i>Fiction, scenario or design</span><span>Bands: the horizon each claim states</span>`;
+      ? `<span><i class="lg-dot"></i>Concrete language</span><span><i class="lg-dot hollow"></i>Abstract language</span><span><i class="lg-hatch"></i>Gap: no claim imagined this</span>`
+      : `<span><i class="lg-dot"></i>Concrete language</span><span><i class="lg-dot hollow"></i>Abstract language</span><span>Bands: the horizon each claim states</span>`;
   }
 
   function render() {
@@ -717,7 +713,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     b.setAttribute("aria-pressed", state.eras.has(id));
     render();
   });
-  $("#genres").innerHTML = Object.entries(GENRES).map(([k, l]) => `<button type="button" class="chip" aria-pressed="true" data-genre="${k}"><span class="shape ${k === "forecast" ? "" : "dia"}"></span>${l}</button>`).join("");
+  $("#genres").innerHTML = Object.entries(GENRES).map(([k, l]) => `<button type="button" class="chip" aria-pressed="true" data-genre="${k}">${l}</button>`).join("");
   $("#genres").addEventListener("click", (ev) => {
     const b = ev.target.closest("[data-genre]"); if (!b) return;
     const id = b.dataset.genre;
