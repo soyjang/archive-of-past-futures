@@ -63,6 +63,7 @@ h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 
 .slider input { width: min(260px, 50vw); accent-color: var(--accent); }
 .slider output { color: var(--ink); min-width: 9ch; font-variant-numeric: tabular-nums; }
 .play { font: 500 13px var(--font-mono); border: 1px solid var(--rule); background: var(--panel); color: var(--ink); border-radius: 6px; padding: 5px 10px; cursor: pointer; }
+.dimsel { font: 500 14px var(--font-body); border: 1px solid var(--rule); background: var(--panel); color: var(--ink); border-radius: 6px; padding: 5px 8px; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }
 .chip { font: 400 13px var(--font-body); display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--rule); background: var(--panel); color: var(--ink); border-radius: 999px; padding: 4px 10px; cursor: pointer; }
 .chip[aria-pressed="false"] { opacity: .45; }
@@ -134,8 +135,6 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
 </style>
 
-</head>
-<body>
 <div class="wrap">
   <header>
     <div class="eyebrow">Study 1 · prototype view</div>
@@ -148,6 +147,16 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     <div class="seg" role="group" aria-label="View">
       <button type="button" id="v-wheel" aria-pressed="true">Tetrad wheel</button>
       <button type="button" id="v-time" aria-pressed="false">Timeline</button>
+    </div>
+    <div class="slider">
+      <label for="dim">Rings show</label>
+      <select id="dim" class="dimsel">
+        <option value="scope">Scope of change</option>
+        <option value="temporal">Temporal distance</option>
+        <option value="spatial">Spatial distance</option>
+        <option value="social">Social distance</option>
+        <option value="hyp">Hypotheticality</option>
+      </select>
     </div>
     <div class="slider">
       <label for="decade">Claims up to</label>
@@ -172,7 +181,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     <aside class="panel" id="panel" aria-live="polite"></aside>
   </div>
 
-  <footer>Coding scheme: Tetrad laws after McLuhan &amp; McLuhan (1988); speculative distance as scope of change (supplement, transform, replace the medium, replace the institution), with time horizon and concrete or abstract language recorded per claim, drawing on construal-level theory (Trope &amp; Liberman 2010). Design-fiction storyboards are placeholders for AI-assisted animations.</footer>
+  <footer>Coding scheme: Tetrad laws after McLuhan &amp; McLuhan (1988). Speculative distance on construal-level theory's four dimensions of psychological distance (Trope &amp; Liberman 2010): temporal, spatial, social and hypotheticality. Construal level (concrete or abstract language) is coded as the kind of thinking distance is expected to produce. Scope of change (supplement, transform practice, replace the medium, replace the institution) is a dimension specific to obsolescence. Design-fiction storyboards are placeholders for AI-assisted animations.</footer>
 </div>
 
 <div class="overlay" id="overlay" hidden>
@@ -206,12 +215,18 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     obsolesce: { label: "Obsolesces", a0: 270, a1: 360, verb: "make obsolete" }
   };
   const LAW_ORDER = ["enhance", "obsolesce", "retrieve", "reverse"];
-  const RINGS = [
-    { k: 1, label: "Supplements", r0: 44, r1: 108 },
-    { k: 2, label: "Transforms practice", r0: 108, r1: 172 },
-    { k: 3, label: "Replaces the medium", r0: 172, r1: 236 },
-    { k: 4, label: "Replaces the institution", r0: 236, r1: 296 }
-  ];
+  const DIMS = {
+    scope:    { label: "Scope of change", levels: ["Supplements", "Transforms practice", "Replaces the medium", "Replaces the institution"], get: c => c.ring },
+    temporal: { label: "Temporal distance", levels: ["Up to 5 years", "6–15 years", "16–30 years", "Over 30 years"], get: c => { const d = c.horizon - c.year; return d <= 5 ? 1 : d <= 15 ? 2 : d <= 30 ? 3 : 4; } },
+    spatial:  { label: "Spatial distance", levels: ["This classroom", "This country", "Elsewhere", "Worldwide"], get: c => c.spatial },
+    social:   { label: "Social distance", levels: ["Our children", "Other groups", "Everyone"], get: c => c.social },
+    hyp:      { label: "Hypotheticality", levels: ["Will", "Should", "Could"], get: c => c.hyp }
+  };
+  function rings() {
+    const D = DIMS[state.dim], n = D.levels.length, r0 = 44, r1 = 296, step = (r1 - r0) / n;
+    return D.levels.map((label, i) => ({ k: i + 1, label, r0: r0 + i * step, r1: r0 + (i + 1) * step }));
+  }
+  const levelOf = (c) => DIMS[state.dim].get(c);
   const OUTCOME = { absorbed: "Absorbed into practice", unrealised: "Not realised", open: "Still open" };
 
   // Illustrative entries. Only #2 is a documented claim (verify against source).
@@ -230,8 +245,13 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     { id: 12, year: 2016, horizon: 2020, medium: "VR headsets", text: "Virtual field trips for every classroom, anywhere in the world.", ring: 1, laws: ["enhance"], lang: "concrete", outcome: "absorbed", documented: false },
     { id: 13, year: 2023, horizon: 2030, medium: "AI tutor", text: "Every student will have a personal AI tutor.", ring: 3, laws: ["enhance", "obsolesce"], lang: "abstract", outcome: "open", documented: false },
     { id: 14, year: 2024, horizon: 2030, medium: "Generative AI", text: "AI will make the textbook obsolete.", ring: 3, laws: ["obsolesce"], lang: "abstract", outcome: "open", documented: false },
-    { id: 15, year: 2025, horizon: 2040, medium: "Generative AI", text: "Schools as we know them will disappear.", ring: 4, laws: ["obsolesce"], lang: "abstract", outcome: "open", documented: false }
+    { id: 15, year: 2025, horizon: 2040, medium: "Generative AI", text: "Schools as we know them will disappear.", ring: 4, laws: ["obsolesce"], lang: "abstract", outcome: "open", documented: false },
+    { id: 16, year: 2005, horizon: 2015, medium: "Low-cost laptops", text: "Laptops will transform learning for children in developing countries.", ring: 2, laws: ["enhance"], lang: "abstract", outcome: "unrealised", documented: false }
   ];
+  // Illustrative distance codes per claim: [spatial 1–4, social 1–3, hypotheticality 1–3 (will, should, could)]
+  const CODES = { 1: [1, 1, 1], 2: [2, 1, 1], 3: [2, 1, 1], 4: [2, 1, 2], 5: [2, 1, 1], 6: [1, 1, 3], 7: [1, 1, 1], 8: [4, 3, 1],
+    9: [1, 1, 3], 10: [4, 3, 1], 11: [4, 3, 1], 12: [1, 1, 2], 13: [4, 3, 1], 14: [2, 1, 1], 15: [4, 3, 1], 16: [3, 2, 1] };
+  CLAIMS.forEach(c => { [c.spatial, c.social, c.hyp] = CODES[c.id]; });
 
   const FICTIONS = {
     "reverse-4": {
@@ -264,7 +284,8 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
   const eraOf = (y) => ERAS.find(e => y >= e.from && y <= e.to) || ERAS[ERAS.length - 1];
 
-  const state = { view: "wheel", decade: 2030, eras: new Set(ERAS.map(e => e.id)), selected: null };
+  const state = { view: "wheel", dim: "scope", decade: 2030, eras: new Set(ERAS.map(e => e.id)), selected: null };
+  const fictionFor = (key) => (state.dim === "scope" ? FICTIONS[key] : null);
 
   function visibleClaims() {
     return CLAIMS.filter(c => c.year <= state.decade + 9 && state.eras.has(eraOf(c.year).id));
@@ -281,13 +302,14 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   // ---------- wheel ----------
   function renderWheel() {
     const claims = visibleClaims();
+    const RS = rings();
     const cells = {};
-    claims.forEach(c => c.laws.forEach(l => { (cells[`${l}-${c.ring}`] ||= []).push(c); }));
+    claims.forEach(c => c.laws.forEach(l => { (cells[`${l}-${levelOf(c)}`] ||= []).push(c); }));
     let s = `<svg viewBox="-345 -345 690 690" role="img" aria-label="Tetrad wheel: claims placed by Tetrad law and speculative distance">
       <defs><pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line class="hatch-line" x1="0" y1="0" x2="0" y2="8"></line></pattern></defs>`;
     for (const law of LAW_ORDER) {
       const L = LAWS[law];
-      for (const R of RINGS) {
+      for (const R of RS) {
         const key = `${law}-${R.k}`;
         const filled = !!cells[key];
         const cls = filled ? "cell filled" : "cell gap";
@@ -298,7 +320,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     s += `<circle r="44" fill="var(--panel)" stroke="var(--rule)"></circle>
       <text class="center-label" text-anchor="middle" y="-3">the claim's</text>
       <text class="center-label" text-anchor="middle" y="11">own present</text>`;
-    RINGS.forEach(R => { s += `<text class="ring-label" x="5" y="${-(R.r0 + R.r1) / 2 + 4}">${R.label}</text>`; });
+    RS.forEach(R => { s += `<text class="ring-label" x="5" y="${-(R.r0 + R.r1) / 2 + 4}">${R.label}</text>`; });
     const corner = { enhance: [-330, -318, "start"], reverse: [330, -318, "end"], retrieve: [-330, 322, "start"], obsolesce: [330, 322, "end"] };
     for (const law of LAW_ORDER) {
       const [x, y, anchor] = corner[law];
@@ -308,7 +330,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     }
     for (const [key, list] of Object.entries(cells)) {
       const [law, ring] = key.split("-");
-      const L = LAWS[law], R = RINGS[+ring - 1];
+      const L = LAWS[law], R = RS[+ring - 1];
       list.sort((a, b) => a.year - b.year).forEach((c, i) => {
         const a = L.a0 + (90 * (i + 1)) / (list.length + 1);
         const r = (R.r0 + R.r1) / 2 + (i % 2 ? 9 : -9) * (list.length > 2 ? 1 : 0);
@@ -359,8 +381,8 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   function gaps() {
     const claims = visibleClaims();
     const out = [];
-    for (const law of LAW_ORDER) for (const R of RINGS) {
-      if (!claims.some(c => c.ring === R.k && c.laws.includes(law))) out.push(`${law}-${R.k}`);
+    for (const law of LAW_ORDER) for (const R of rings()) {
+      if (!claims.some(c => levelOf(c) === R.k && c.laws.includes(law))) out.push(`${law}-${R.k}`);
     }
     return out;
   }
@@ -376,9 +398,12 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
         <dl class="meta">
           <dt>Era</dt><dd><span class="swatch" style="background:var(${era.v})"></span> ${era.label}</dd>
           <dt>Tetrad</dt><dd>${c.laws.map(l => `<span class="tag">${LAWS[l].label}</span>`).join("")}</dd>
-          <dt>Distance</dt><dd>${RINGS[c.ring - 1].label}</dd>
-          <dt>Horizon</dt><dd>${c.horizon} (${c.horizon - c.year} years ahead)</dd>
-          <dt>Language</dt><dd>${c.lang === "abstract" ? "Abstract" : "Concrete"}</dd>
+          <dt>Scope</dt><dd>${DIMS.scope.levels[c.ring - 1]}</dd>
+          <dt>Temporal</dt><dd>${c.horizon} (${c.horizon - c.year} years ahead)</dd>
+          <dt>Spatial</dt><dd>${DIMS.spatial.levels[c.spatial - 1]}</dd>
+          <dt>Social</dt><dd>${DIMS.social.levels[c.social - 1]}</dd>
+          <dt>Hypothetical</dt><dd>${DIMS.hyp.levels[c.hyp - 1]}</dd>
+          <dt>Construal</dt><dd>${c.lang === "abstract" ? "Abstract language" : "Concrete language"}</dd>
           <dt>Outcome</dt><dd>${OUTCOME[c.outcome]}</dd>
           ${c.source ? `<dt>Source</dt><dd>${c.source}</dd>` : ""}
         </dl>`;
@@ -393,7 +418,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
       <h2>Past futures promise to enhance and to replace. They rarely imagine retrieval, and never reversal.</h2>
       <div class="bars">${counts.map(([l, n]) => `<div class="bar"><span>${LAWS[l].label}</span><span class="track"><span class="fill" style="display:block;width:${(n / max) * 100}%"></span></span><span class="n">${n}</span></div>`).join("")}</div>
       <div style="display:grid;gap:8px"><h3>${g.length} gaps to design for</h3>
-        <div class="gaplist">${g.map(k => { const [l, r] = k.split("-"); const star = FICTIONS[k] ? " ★" : ""; return `<button type="button" class="gapbtn" data-gap="${k}">${LAWS[l].label} · ${RINGS[+r - 1].label}${star}</button>`; }).join("")}</div>
+        <div class="gaplist">${g.map(k => { const [l, r] = k.split("-"); const star = fictionFor(k) ? " ★" : ""; return `<button type="button" class="gapbtn" data-gap="${k}">${LAWS[l].label} · ${rings()[+r - 1].label}${star}</button>`; }).join("")}</div>
         <p class="small">★ has a storyboard sketched. Select a dot or a row for its coding.</p>
       </div>`;
   }
@@ -410,10 +435,10 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
   let raf = null, lastFocus = null;
   function openFiction(key) {
     const [law, ring] = key.split("-");
-    const L = LAWS[law], R = RINGS[+ring - 1];
-    const f = FICTIONS[key] || {
+    const L = LAWS[law], R = rings()[+ring - 1];
+    const f = fictionFor(key) || {
       title: `${L.label} · ${R.label}`,
-      world: `No claim in the archive imagines a medium that would ${L.verb}, at the scale of “${R.label.toLowerCase()}”.`,
+      world: `No claim in the archive imagines a medium that would ${L.verb}, at “${R.label.toLowerCase()}” on ${DIMS[state.dim].label.toLowerCase()}.`,
       beats: [
         "Choose a predicted replacement from the archive and its juncture.",
         `Stage a world where it ${L.verb === "enhance" ? "enhances" : L.verb === "make obsolete" ? "makes something obsolete" : L.verb.replace(/^(\w+)/, "$1s")}, at this distance.`,
@@ -505,6 +530,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     render();
   });
   $("#decade").addEventListener("input", (e) => { state.decade = +e.target.value; render(); });
+  $("#dim").addEventListener("change", (e) => { state.dim = e.target.value; render(); });
   let timer = null;
   $("#play").addEventListener("click", () => {
     if (timer) { clearInterval(timer); timer = null; $("#play").textContent = "Play decades"; return; }
