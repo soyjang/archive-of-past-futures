@@ -153,9 +153,6 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
       <select id="dim" class="dimsel">
         <option value="scope">Scope of change</option>
         <option value="temporal">Temporal distance</option>
-        <option value="spatial">Spatial distance</option>
-        <option value="social">Social distance</option>
-        <option value="hyp">Hypotheticality</option>
       </select>
     </div>
     <div class="slider">
@@ -181,7 +178,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     <aside class="panel" id="panel" aria-live="polite"></aside>
   </div>
 
-  <footer>Coding scheme: Tetrad laws after McLuhan &amp; McLuhan (1988). Each claim also records who is speaking. Speculative distance on construal-level theory's four dimensions of psychological distance (Trope &amp; Liberman 2010): temporal, spatial, social and hypotheticality. Temporal distance is coded from the horizon a claim states (imminent, near, distant), since most give no year; “unstated” is a value in its own right. Construal level (concrete or abstract language) is coded as the kind of thinking distance is expected to produce. Scope of change (supplement, transform practice, replace the medium, replace the institution) is a dimension specific to obsolescence. Design-fiction storyboards are placeholders for AI-assisted animations.</footer>
+  <footer>Coding scheme: Tetrad laws after McLuhan &amp; McLuhan (1988). Each claim also records who is speaking. Speculative distance on construal-level theory's four dimensions of psychological distance (Trope &amp; Liberman 2010): temporal, spatial, social and hypotheticality. Temporal distance is coded from the horizon a claim states (imminent, near, distant), since most give no year; “unstated” is a value in its own right. Construal level (concrete or abstract language) is coded as the kind of thinking distance is expected to produce. Scope of change (supplement, transform practice, replace the medium, replace the institution) is a dimension specific to obsolescence. The wheel's rings show the two main dimensions, scope of change and temporal distance; the others are reported descriptively. On the timeline, line length shows the stated horizon (imminent, near, distant), dotted where none is stated. Design-fiction storyboards are placeholders for AI-assisted animations.</footer>
 </div>
 
 <div class="overlay" id="overlay" hidden>
@@ -231,22 +228,22 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
 
   // Illustrative entries. Only #2 is a documented claim (verify against source).
   const CLAIMS = [
-    { id: 1, year: 1906, horizon: 1915, medium: "Classroom stereoscope", text: "Sets of stereographs will let every pupil travel the world from their desk.", ring: 1, laws: ["enhance"], lang: "concrete", outcome: "absorbed", documented: false },
-    { id: 2, year: 1913, horizon: 1923, medium: "Motion picture", text: "Books will soon be obsolete in the public schools.", ring: 3, laws: ["obsolesce", "enhance"], lang: "abstract", outcome: "unrealised", documented: true, source: "Thomas Edison, 1913; commonly cited via Cuban (1986). Verify." },
-    { id: 3, year: 1924, horizon: 1935, medium: "Educational film", text: "Film will become the main way children learn about the world.", ring: 2, laws: ["enhance", "obsolesce"], lang: "abstract", outcome: "unrealised", documented: false },
-    { id: 4, year: 1932, horizon: 1940, medium: "School radio", text: "Radio broadcasts will become a textbook of the air for every school.", ring: 2, laws: ["enhance"], lang: "abstract", outcome: "absorbed", documented: false },
-    { id: 5, year: 1957, horizon: 1970, medium: "Educational television", text: "Television will put a master teacher in every classroom.", ring: 3, laws: ["enhance", "obsolesce"], lang: "abstract", outcome: "unrealised", documented: false },
-    { id: 6, year: 1958, horizon: 1968, medium: "Teaching machine", text: "Machines will teach more in less time and free teachers from drill.", ring: 2, laws: ["enhance", "obsolesce"], lang: "concrete", outcome: "absorbed", documented: false },
-    { id: 7, year: 1984, horizon: 1995, medium: "Classroom computer", text: "A computer in every classroom will transform how children learn.", ring: 2, laws: ["enhance"], lang: "abstract", outcome: "absorbed", documented: false },
-    { id: 8, year: 1993, horizon: 2005, medium: "Virtual reality", text: "Students will learn by entering worlds rather than reading about them.", ring: 3, laws: ["enhance", "obsolesce"], lang: "abstract", outcome: "unrealised", documented: false },
-    { id: 9, year: 1995, horizon: 2010, medium: "Virtual reality", text: "VR brings back learning by doing, as in an apprenticeship.", ring: 2, laws: ["retrieve"], lang: "concrete", outcome: "unrealised", documented: false },
-    { id: 10, year: 1996, horizon: 2016, medium: "Virtual classroom", text: "Virtual classrooms will replace the schoolhouse.", ring: 4, laws: ["obsolesce"], lang: "abstract", outcome: "unrealised", documented: false },
-    { id: 11, year: 2012, horizon: 2025, medium: "Online courses (MOOCs)", text: "Online courses will make the campus obsolete.", ring: 4, laws: ["obsolesce"], lang: "abstract", outcome: "unrealised", documented: false },
-    { id: 12, year: 2016, horizon: 2020, medium: "VR headsets", text: "Virtual field trips for every classroom, anywhere in the world.", ring: 1, laws: ["enhance"], lang: "concrete", outcome: "absorbed", documented: false },
-    { id: 13, year: 2023, horizon: 2030, medium: "AI tutor", text: "Every student will have a personal AI tutor.", ring: 3, laws: ["enhance", "obsolesce"], lang: "abstract", outcome: "open", documented: false },
-    { id: 14, year: 2024, horizon: 2030, medium: "Generative AI", text: "AI will make the textbook obsolete.", ring: 3, laws: ["obsolesce"], lang: "abstract", outcome: "open", documented: false },
-    { id: 15, year: 2025, horizon: 2040, medium: "Generative AI", text: "Schools as we know them will disappear.", ring: 4, laws: ["obsolesce"], lang: "abstract", outcome: "open", documented: false },
-    { id: 16, year: 2005, horizon: 2015, medium: "Low-cost laptops", text: "Laptops will transform learning for children in developing countries.", ring: 2, laws: ["enhance"], lang: "abstract", outcome: "unrealised", documented: false }
+    { id: 1, year: 1906, medium: "Classroom stereoscope", text: "Sets of stereographs will let every pupil travel the world from their desk.", ring: 1, laws: ["enhance"], lang: "concrete", outcome: "absorbed", documented: false },
+    { id: 2, year: 1913, medium: "Motion picture", text: "Books will soon be obsolete in the public schools.", ring: 3, laws: ["obsolesce", "enhance"], lang: "abstract", outcome: "unrealised", documented: true, source: "Thomas Edison, 1913; commonly cited via Cuban (1986). Verify." },
+    { id: 3, year: 1924, medium: "Educational film", text: "Film will become the main way children learn about the world.", ring: 2, laws: ["enhance", "obsolesce"], lang: "abstract", outcome: "unrealised", documented: false },
+    { id: 4, year: 1932, medium: "School radio", text: "Radio broadcasts will become a textbook of the air for every school.", ring: 2, laws: ["enhance"], lang: "abstract", outcome: "absorbed", documented: false },
+    { id: 5, year: 1957, medium: "Educational television", text: "Television will put a master teacher in every classroom.", ring: 3, laws: ["enhance", "obsolesce"], lang: "abstract", outcome: "unrealised", documented: false },
+    { id: 6, year: 1958, medium: "Teaching machine", text: "Machines will teach more in less time and free teachers from drill.", ring: 2, laws: ["enhance", "obsolesce"], lang: "concrete", outcome: "absorbed", documented: false },
+    { id: 7, year: 1984, medium: "Classroom computer", text: "A computer in every classroom will transform how children learn.", ring: 2, laws: ["enhance"], lang: "abstract", outcome: "absorbed", documented: false },
+    { id: 8, year: 1993, medium: "Virtual reality", text: "Students will learn by entering worlds rather than reading about them.", ring: 3, laws: ["enhance", "obsolesce"], lang: "abstract", outcome: "unrealised", documented: false },
+    { id: 9, year: 1995, medium: "Virtual reality", text: "VR brings back learning by doing, as in an apprenticeship.", ring: 2, laws: ["retrieve"], lang: "concrete", outcome: "unrealised", documented: false },
+    { id: 10, year: 1996, medium: "Virtual classroom", text: "Virtual classrooms will replace the schoolhouse.", ring: 4, laws: ["obsolesce"], lang: "abstract", outcome: "unrealised", documented: false },
+    { id: 11, year: 2012, medium: "Online courses (MOOCs)", text: "Online courses will make the campus obsolete.", ring: 4, laws: ["obsolesce"], lang: "abstract", outcome: "unrealised", documented: false },
+    { id: 12, year: 2016, medium: "VR headsets", text: "Virtual field trips for every classroom, anywhere in the world.", ring: 1, laws: ["enhance"], lang: "concrete", outcome: "absorbed", documented: false },
+    { id: 13, year: 2023, medium: "AI tutor", text: "Every student will have a personal AI tutor.", ring: 3, laws: ["enhance", "obsolesce"], lang: "abstract", outcome: "open", documented: false },
+    { id: 14, year: 2024, medium: "Generative AI", text: "AI will make the textbook obsolete.", ring: 3, laws: ["obsolesce"], lang: "abstract", outcome: "open", documented: false },
+    { id: 15, year: 2025, medium: "Generative AI", text: "Schools as we know them will disappear.", ring: 4, laws: ["obsolesce"], lang: "abstract", outcome: "open", documented: false },
+    { id: 16, year: 2005, medium: "Low-cost laptops", text: "Laptops will transform learning for children in developing countries.", ring: 2, laws: ["enhance"], lang: "abstract", outcome: "unrealised", documented: false }
   ];
   // Illustrative distance codes per claim: [spatial 1–4, social 1–3, hypotheticality 1–3 (will, should, could)]
   const CODES = { 1: [1, 1, 1], 2: [2, 1, 1], 3: [2, 1, 1], 4: [2, 1, 2], 5: [2, 1, 1], 6: [1, 1, 3], 7: [1, 1, 1], 8: [4, 3, 1],
@@ -257,7 +254,9 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     13: [1, "in a few years"], 14: [2, "in the near future"], 15: [3, "eventually"], 16: [4, ""] };
   const SPEAKERS = ["Inventor", "Company", "Policymaker", "Educator", "Researcher", "Speculative designer"];
   const SPEAKER = { 1: 1, 2: 0, 3: 3, 4: 1, 5: 2, 6: 4, 7: 1, 8: 4, 9: 4, 10: 1, 11: 1, 12: 1, 13: 1, 14: 1, 15: 5, 16: 0 };
-  CLAIMS.forEach(c => { [c.spatial, c.social, c.hyp] = CODES[c.id]; [c.temporal, c.when] = WHEN[c.id]; c.speaker = SPEAKERS[SPEAKER[c.id]]; });
+  CLAIMS.forEach(c => { [c.spatial, c.social, c.hyp] = CODES[c.id]; [c.temporal, c.when] = WHEN[c.id]; c.speaker = SPEAKERS[SPEAKER[c.id]];
+    // The timeline draws each claim's line to a nominal end set by its stated horizon, not to a predicted year
+    c.horizon = Math.min(2040, c.year + [5, 15, 30, 30][c.temporal - 1]); });
 
   const FICTIONS = {
     "reverse-4": {
@@ -374,10 +373,10 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
       if (c.outcome === "absorbed") end = `<rect x="${X(c.horizon) - 5}" y="${y - 5}" width="10" height="10" style="fill:${col}"></rect>`;
       else if (c.outcome === "unrealised") end = `<path d="M${X(c.horizon) - 5} ${y - 5} l10 10 M${X(c.horizon) + 5} ${y - 5} l-10 10" style="stroke:${col};stroke-width:2.5"></path>`;
       else end = `<circle cx="${X(c.horizon)}" cy="${y}" r="5" style="fill:var(--panel);stroke:${col};stroke-width:2.5" stroke-dasharray="3 2"></circle>`;
-      s += `<g class="tl-row${sel}" tabindex="0" role="button" data-id="${c.id}" aria-label="${c.year} to ${c.horizon}, ${c.medium}: ${c.text}">
+      s += `<g class="tl-row${sel}" tabindex="0" role="button" data-id="${c.id}" aria-label="${c.year}, ${DIMS.temporal.levels[c.temporal - 1].toLowerCase()} horizon, ${c.medium}: ${c.text}">
         <rect x="0" y="${y - 13}" width="900" height="${rowH - 2}" fill="transparent"></rect>
         <text class="tl-label" x="${x0 - 14}" y="${y + 4}" text-anchor="end">${c.year} · ${c.medium}</text>
-        <line x1="${X(c.year)}" x2="${X(c.horizon)}" y1="${y}" y2="${y}" style="stroke:${col};stroke-width:${w}" stroke-linecap="round"></line>
+        <line x1="${X(c.year)}" x2="${X(c.horizon)}" y1="${y}" y2="${y}" style="stroke:${col};stroke-width:${w}" stroke-linecap="round"${c.temporal === 4 ? ' stroke-dasharray="2 6"' : ""}></line>
         <circle cx="${X(c.year)}" cy="${y}" r="4" style="fill:${col}"></circle>${end}</g>`;
     });
     s += `</svg>`;
@@ -408,13 +407,12 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
           <dt>Tetrad</dt><dd>${c.laws.map(l => `<span class="tag">${LAWS[l].label}</span>`).join("")}</dd>
           <dt>Scope</dt><dd>${DIMS.scope.levels[c.ring - 1]}</dd>
           <dt>Temporal</dt><dd>${DIMS.temporal.levels[c.temporal - 1]}${c.when ? ` (“${c.when}”)` : ""}</dd>
-          <dt>Plotted to</dt><dd>${c.horizon} (coder's estimate, for the timeline)</dd>
           <dt>Spatial</dt><dd>${DIMS.spatial.levels[c.spatial - 1]}</dd>
           <dt>Social</dt><dd>${DIMS.social.levels[c.social - 1]}</dd>
           <dt>Hypothetical</dt><dd>${DIMS.hyp.levels[c.hyp - 1]}</dd>
           <dt>Construal</dt><dd>${c.lang === "abstract" ? "Abstract language" : "Concrete language"}</dd>
           <dt>Outcome</dt><dd>${OUTCOME[c.outcome]}</dd>
-          ${c.source ? `<dt>Source</dt><dd>${c.source}</dd>` : ""}
+          <dt>Source</dt><dd>${c.source || "N/A"}</dd>
         </dl>`;
       $("#back").addEventListener("click", () => select(null));
       return;

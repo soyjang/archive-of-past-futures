@@ -23,13 +23,13 @@ Temporal distance is coded from the horizon a claim *states*, not a year, becaus
 
 ## Views
 
-- **Tetrad wheel** — four sectors for the Tetrad laws, rings for one distance dimension at a time (choose scope, temporal, spatial, social or hypotheticality). Hatched cells are *gaps*: combinations no claim imagined. Opening a gap shows the design fiction it calls for, with a multiplane animation sketch.
-- **Timeline** — each claim drawn from the year it was made to the year it predicted, ending by outcome (absorbed, not realised, still open).
+- **Tetrad wheel** — four sectors for the Tetrad laws, rings for one of the two main dimensions, scope of change or temporal distance. Spatial distance, social distance, hypotheticality and construal level are shown per claim and reported descriptively. Hatched cells are *gaps*: combinations no claim imagined. Opening a gap shows the design fiction it calls for, with a multiplane animation sketch.
+- **Timeline** — each claim drawn from the year it was made, its length set by the stated horizon (imminent, near, distant; dotted where unstated), ending by outcome (absorbed, not realised, still open).
 - A decade slider ("Play decades") and era filters.
 
 ## Status of the data
 
-**Mock-up.** All entries are illustrative paraphrases, except Edison's 1913 statement ("Books will soon be obsolete in the public schools"), which is a documented claim still to be verified against its source (commonly cited via Cuban 1986). Distance and speaker codes (`CODES`, `WHEN`, `SPEAKER`) are likewise illustrative, and each claim's end year is a coder's estimate used only to draw the timeline. Replace these arrays in `index.html` with sourced entries as the archive is collected.
+**Mock-up.** All entries are illustrative paraphrases, except Edison's 1913 statement ("Books will soon be obsolete in the public schools"), which is a documented claim still to be verified against its source (commonly cited via Cuban 1986). Distance and speaker codes (`CODES`, `WHEN`, `SPEAKER`) are likewise illustrative, Replace these arrays in `index.html` with sourced entries as the archive is collected.
 
 ## Running it
 
