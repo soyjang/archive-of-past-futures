@@ -19,7 +19,7 @@
   --rule: #e0e0e0;
   --accent: #1a1a1a;      /* grayscale interface; colour is kept for the media families only */
   --accent-soft: #f3f3f3;
-  --cell-sel: #fff0a3;
+  --cell-sel: #161616;
   --era1: #8a6a14;        /* image and film */
   --era2: #23786a;        /* broadcast */
   --era3: #5a3fb0;        /* machines and computers */
@@ -33,14 +33,14 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --paper: #121212; --panel: #1b1b1b; --ink: #ededed; --muted: #a3a3a3; --rule: #2f2f2f;
-    --accent: #f0f0f0; --accent-soft: #2b2b2b; --cell-sel: #5c4d12;
+    --accent: #f0f0f0; --accent-soft: #2b2b2b; --cell-sel: #f2f2f2;
     --era1: #d6b45a; --era2: #5fc6ad; --era3: #a58ff2; --era4: #f17ba6; --fam5: #79aef0; --fam6: #b8c1cf;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --paper: #121212; --panel: #1b1b1b; --ink: #ededed; --muted: #a3a3a3; --rule: #2f2f2f;
-  --accent: #f0f0f0; --accent-soft: #2b2b2b; --cell-sel: #5c4d12;
+  --accent: #f0f0f0; --accent-soft: #2b2b2b; --cell-sel: #f2f2f2;
   --era1: #d6b45a; --era2: #5fc6ad; --era3: #a58ff2; --era4: #f17ba6; --fam5: #79aef0; --fam6: #b8c1cf;
   color-scheme: dark;
 }
@@ -119,6 +119,7 @@ button:focus-visible, [tabindex]:focus-visible, input:focus-visible { outline: 2
 #wheel-wrap svg { -webkit-tap-highlight-color: transparent; user-select: none; }
 .cell.gap.sel { fill: url(#hatch-sel); }
 .hatch-hl { fill: var(--cell-sel); }
+.hatch-line.hatch-line-sel { stroke: var(--paper); opacity: .45; }
 .gapnote { display: grid; gap: 10px; border-top: 1px solid var(--rule); padding-top: 16px; }
 .gapnote-head { display: flex; justify-content: space-between; align-items: baseline; }
 .gapnote-head h3 { margin: 0; }
@@ -583,7 +584,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
     const cells = {};
     claims.forEach(c => lawsOf(c).forEach(l => { (cells[`${l}-${levelOf(c)}`] ||= []).push(c); }));
     let s = `<svg viewBox="-345 -345 690 690" role="img" aria-label="Tetrad wheel: claims placed by Tetrad law and speculative distance">
-      <defs><pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line class="hatch-line" x1="0" y1="0" x2="0" y2="8"></line></pattern><pattern id="hatch-sel" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect class="hatch-hl" width="8" height="8"></rect><line class="hatch-line" x1="0" y1="0" x2="0" y2="8"></line></pattern></defs>`;
+      <defs><pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line class="hatch-line" x1="0" y1="0" x2="0" y2="8"></line></pattern><pattern id="hatch-sel" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect class="hatch-hl" width="8" height="8"></rect><line class="hatch-line hatch-line-sel" x1="0" y1="0" x2="0" y2="8"></line></pattern></defs>`;
     for (const law of LAW_ORDER) {
       const L = LAWS[law];
       for (const R of RS) {
