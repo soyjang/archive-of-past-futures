@@ -103,6 +103,8 @@ button:focus-visible, [tabindex]:focus-visible, input:focus-visible { outline: 2
 :root[data-theme="dark"] .panel.depth2 { --panel:#2b2b2b; --ink:#f4f4f4; --muted:#b5b5b5; --rule:#3d3d3d; --accent:#ffffff; --accent-soft:#3a3a3a; border-color:#2b2b2b; }
 .cb-steps { margin: 6px 0; padding-left: 20px; display: grid; gap: 4px; }
 .intro { display: grid; gap: 30px; max-width: 80ch; }
+.corpus-def { max-width: 80ch; font-size: 14px; background: var(--accent-soft); border-radius: 8px; padding: 10px 14px; }
+.corpus-def p { margin: 0; line-height: 1.55; }
 .intro .rd-refs h3, #pg-readings .rd-refs h3, #pg-climate .rd-refs h3 { padding-top: 14px; border-top: 1px solid var(--rule); }
 .approaches { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; max-width: 980px; }
 .approach { display: grid; gap: 6px; align-content: start; padding: 16px 18px; border: 1px solid var(--rule); border-radius: 10px; background: var(--panel); color: var(--ink); text-decoration: none; }
@@ -402,6 +404,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
   </section>
 
   <section id="pg-sources" class="page" hidden>
+    <div class="corpus-def"><p><strong>Corpus.</strong> Speculations that a medium will transform or replace the book, reading, teaching or the school; speculations about media with no bearing on learning or reading are excluded. <strong>Media:</strong> stereograph · film · radio · television · teaching machine · computer · virtual reality · internet · AI · direct transmission to the brain, shown in seven families for colour.</p></div>
     <div class="pagehead"><p class="small">Every speculation by the year it was made. Hover a dot for a summary and select it to find its source in the list. Search to filter both.</p></div>
     <div class="src-work">
       <div class="src-tools"><input type="search" id="src-q" placeholder="Search speculations, people, media…" aria-label="Search sources"><span class="small" id="src-count"></span></div>
@@ -429,6 +432,8 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
           <tr><th>Reports</th><td>Intergovernmental, governmental and corporate scenarios, from the 1970s to the present</td><td>about 20</td></tr>
           <tr><th>Design projects</th><td>Exhibited or published speculative design projects outside the ACM corpus</td><td>about 20</td></tr>
         </tbody></table>
+        <p><strong>Include</strong> speculations that a medium will cause, prevent, slow or adapt to climate change, or that imagine a world reshaped by it. <strong>Media</strong>, to be fixed from the corpus; candidate families: energy · carbon removal and geoengineering · transport · food and land · buildings and cities · computing and data · policy instruments and markets · ways of living. Most climate speculation is global in scale, so the speaker’s place and the setting are recorded for every speculation: whose place is imagined, and by whom.</p>
+        <p><strong>Open.</strong> Speculations with no medium, such as catastrophe alone, give the Tetrad nothing to read. To decide: exclude them and report how many, or code the catastrophe as what the world’s existing media reverse into.</p>
         <p class="small">Readings for Project 2 will appear here once the corpus is coded, reported separately from Project 1’s.</p></section>
       <section class="rd rd-refs"><h3>References</h3><ul class="cb-refs">
         <li>Mark Blythe. 2023. Artificial Design Fiction: Using AI as a Material for Pastiche Scenarios. In <em>Proceedings of the 26th International Academic Mindtrek Conference (Mindtrek ’23)</em>. ACM, 195–206. https://doi.org/10.1145/3616961.3616987</li>
@@ -460,14 +465,14 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
   </section>
 
   <section id="pg-codebook" class="page" hidden>
-    <div class="pagehead"><h2>Codebook</h2><p class="small">How each speculation is selected and coded. A shared core applies to both cases; an annex for each case sets its inclusion criteria, its list of media and its examples. Version 0.2, provisional: written by one coder, to be revised after double-coding.</p></div>
+    <div class="pagehead"><h2>Codebook</h2><p class="small">How each speculation is selected and coded, for both cases. What each case collects, and its list of media, is set out with its corpus. Version 0.2, provisional: written by one coder, to be revised after double-coding.</p></div>
     <div class="cb">
       <nav class="cb-toc" aria-label="Codebook contents">
-        <a href="#cb-unit">Unit of analysis</a><a href="#cb-attr">Attributes</a><a href="#cb-codes">Codes</a><a class="sub" href="#cb-tetrad">1. Tetrad</a><a class="sub" href="#cb-distance">2. Speculative distance</a><a class="sub" href="#cb-construal">3. Construal level</a><a href="#cb-annex">Annexes</a><a class="sub" href="#cb-annex1">Case 1 · Book</a><a class="sub" href="#cb-annex2">Case 2 · Climate</a><a href="#cb-example">Worked example</a><a href="#cb-rel">Reliability</a><a href="#cb-refs">References</a>
+        <a href="#cb-unit">Unit of analysis</a><a href="#cb-attr">Attributes</a><a href="#cb-codes">Codes</a><a class="sub" href="#cb-tetrad">1. Tetrad</a><a class="sub" href="#cb-distance">2. Speculative distance</a><a class="sub" href="#cb-construal">3. Construal level</a><a href="#cb-example">Worked example</a><a href="#cb-rel">Reliability</a><a href="#cb-refs">References</a>
       </nav>
       <div class="cb-body">
         <section id="cb-unit"><h3>Unit of analysis</h3>
-          <p>A <strong>speculation</strong> is a documented statement or work, made at a datable moment, that imagines a medium changing the world. It may be a prediction or an imagined world, in any format. A source may yield several speculations; each is coded separately. What counts as relevant to each case is set in its annex.</p>
+          <p>A <strong>speculation</strong> is a documented statement or work, made at a datable moment, that imagines a medium changing the world. It may be a prediction or an imagined world, in any format. A source may yield several speculations; each is coded separately. What counts as relevant to each case is set out with its corpus.</p>
           <ul><li><strong>Include</strong> when the speculation is forward-looking or set in a future, attributable to a named person, organisation or work, dated, and meets the case’s criteria.</li>
           <li><strong>Exclude</strong> descriptions of what a medium already does, and unattributed paraphrases.</li>
           <li><strong>Text.</strong> Quote the passage that carries the speculation. Where none does, as with an image or a whole novel, write a one-sentence description, shown in italics and never in quotation marks.</li>
@@ -475,11 +480,11 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
 
         <section id="cb-attr"><h3>Attributes</h3><p>Descriptive facts about the speculation, recorded rather than interpreted.</p>
           <dl class="cb-dl"><dt>Year</dt><dd>When the speculation was made or first published.</dd>
-          <dt>Medium</dt><dd>The medium the speculation promotes or imagines. Medium is meant in McLuhan’s broad sense: any extension of human capacities, from a device or infrastructure to a practice, a style or a policy. Each case has a fixed list (see its annex); the source’s own wording is kept as a detail.</dd>
+          <dt>Medium</dt><dd>The medium the speculation promotes or imagines. Medium is meant in McLuhan’s broad sense: any extension of human capacities, from a device or infrastructure to a practice, a style or a policy. Each case has a fixed list, set out with its corpus; the source’s own wording is kept as a detail (television: <q>parlour walls</q>).</dd>
           <dt>Medium status</dt><dd>Whether the medium, as the speculation describes it being used, existed at the date of the speculation. The judgement is about the described use, not the component technology. Decide in two steps:
             <ol class="cb-steps"><li>Did a working version that does what the speculation describes, for the use it describes, exist at the date? If not, <em>Imagined</em>, even if its parts existed.</li>
             <li>If so, was it in use beyond its makers: sold, broadcast, adopted by institutions or the public? If yes, <em>Existing</em>; if it ran only as its makers’ prototype, trial, pilot or demonstration, <em>Emerging</em>.</li></ol>
-            Status separates speculation about an existing medium from speculation that is itself a speculative medium. Examples are in each annex.</dd>
+            Examples: Keystone stereographs sold to schools (1906) are <em>existing</em>; Skinner’s machines in his own Harvard trials (1958) are <em>emerging</em>; Bradbury’s parlour walls (1953) are <em>imagined</em>, although broadcast television existed. Status separates speculation about an existing medium from speculation that is itself a speculative medium.</dd>
           <dt>Scale</dt><dd>How large a part of the world the speculation addresses: <em>Local</em> (a room, a building, a community) · <em>National or regional</em> (a country’s or region’s system) · <em>Global</em> (the world as a whole). Scale is recorded, not coded as distance: a speculation about the speaker’s own country is national in scale but near in space.</dd>
           <dt>Place</dt><dd>Two places, each recorded as a country or region: the <em>speaker’s place</em> (where the person or organisation speaks from) and the <em>setting</em> (where the speculation takes place, or “unplaced”). Spatial distance is read from the relation between them. Recorded so that the archive can ask whose place is imagined, and by whom.</dd>
           <dt>Format</dt><dd>The form in which the speculation was first made, not where it was found (an Edison interview quoted by Cuban is <em>press</em>): <em>Press or magazine</em> · <em>Talk or broadcast</em> (speech, lecture, keynote, broadcast interview, statement in a legislature) · <em>Book</em> · <em>Academic paper</em> · <em>Report</em> (policy, technical, corporate or intergovernmental) · <em>Novel or story</em> · <em>Film or television</em> · <em>Image</em> (illustration, postcard, poster) · <em>Game</em> · <em>Design project</em> (artefact, prototype, bot, exhibition or installation). Format is descriptive. Whether a work functions as speculative design is a question for the analysis, not a code.</dd>
@@ -518,9 +523,10 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
           <h4>2c. Spatial distance</h4>
           <p>How far the setting lies from the speaker’s own place, read from the two places recorded under Place. Not scale: a nation-wide claim about the speaker’s own country is near.</p>
           <dl class="cb-dl"><dt>Here</dt><dd>The speaker’s own place, at any scale: their school, city or country (<q>our educational system</q>).</dd><dt>Elsewhere</dt><dd>A place that is not the speaker’s own: another country or region, another planet.</dd><dt>Everywhere</dt><dd>No particular place, or all places at once (<q>in the whole world</q>).</dd></dl>
+          <p class="cb-rule"><strong>Rule.</strong> Fiction is read from its author’s place: an American story set in a future American home is <em>here</em>; a school on Vulcan is <em>elsewhere</em>.</p>
 
           <h4>2d. Social distance</h4>
-          <dl class="cb-dl"><dt>Us</dt><dd>The speaker’s or audience’s own community (<q>your children</q>, <q>our pupils</q>).</dd><dt>Others</dt><dd>A group unlike the speaker and audience: a named group (<q>children who might otherwise fail</q>), future generations, or non-humans.</dd><dt>Everyone</dt><dd>People in general, without distinction (<q>millions of schoolchildren</q>, <q>humanity</q>).</dd></dl>
+          <dl class="cb-dl"><dt>Us</dt><dd>The speaker’s or audience’s own community (<q>your children</q>, <q>our pupils</q>).</dd><dt>Others</dt><dd>A group unlike the speaker and audience: a named group (<q>children who might otherwise fail</q>), future generations, or non-humans, with the group named in the notes.</dd><dt>Everyone</dt><dd>People in general, without distinction (<q>millions of schoolchildren</q>, <q>humanity</q>).</dd></dl>
 
           <h4>2e. Hypotheticality</h4>
           <dl class="cb-dl"><dt>Will</dt><dd>Stated as fact or certainty: <q>will</q>, <q>is destined to</q>, present-tense assertion.</dd><dt>Should</dt><dd>Stated as a goal or obligation: <q>should</q>, <q>must</q>, <q>ought to</q>.</dd><dt>Could</dt><dd>Stated as possibility: <q>can</q>, <q>could</q>, <q>may</q>, conditional <q>would</q>. Scenarios offered as one possibility among several also code here.</dd>
@@ -532,23 +538,6 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
           <dl class="cb-dl"><dt>Concrete</dt><dd>How and with what: objects, procedures, settings. <q>With a large-screen receiver in every room…</q> (Hennock, 1955)</dd>
           <dt>Abstract</dt><dd>Why and what for: values, ends, transformations. <q>…the biggest positive transformation that education has ever seen.</q> (Khan, 2023)</dd></dl>
           <p class="cb-rule"><strong>Rule.</strong> Code the dominant register of the quoted passage. A planned check: score wording against published concreteness norms (Brysbaert et al. 2014).</p></section>
-
-        <section id="cb-annex" class="cb-part"><h3>Annexes</h3><p>What each case adds to the core: what counts as relevant, which media it lists, and how its own speculations are coded where the core leaves a choice.</p></section>
-
-        <section id="cb-annex1" class="cb-sub"><h3>Case 1 · Past futures of the book</h3>
-          <dl class="cb-dl"><dt>Include</dt><dd>Speculations that a medium will transform or replace the book, reading, teaching or the school.</dd>
-          <dt>Exclude</dt><dd>Speculations about media with no bearing on learning or reading.</dd>
-          <dt>Media</dt><dd>stereograph · film · radio · television · teaching machine (mechanical or robot teachers) · computer · virtual reality · internet (online courses, platforms) · AI · direct transmission to the brain. The source’s wording is kept as a detail (television: <q>parlour walls</q>; computer: <q>learning pods</q>). For colour and filtering, media are shown in seven families: stereograph and film · radio and television · teaching machines · computers · internet · AI · VR and direct transmission.</dd>
-          <dt>Medium status</dt><dd>Keystone stereographs sold to schools (1906) are <em>existing</em>; Skinner’s machines in his own Harvard trials (1958) and the Teacherbot in Bayne’s own MOOC (2015) are <em>emerging</em>; Bradbury’s parlour walls (1953) are <em>imagined</em>, although broadcast television existed. Computers existed in 1971, but not one that matched learners by shared interests, so Illich’s networks are imagined.</dd>
-          <dt>Scope</dt><dd><em>Replaces a medium</em>: the book or another medium of teaching. <em>Replaces an institution</em>: the school or university.</dd>
-          <dt>Place</dt><dd>Fiction is read from its author’s place: an American story set in a future American home is <em>here</em>; a Vulcan school is <em>elsewhere</em>.</dd></dl></section>
-
-        <section id="cb-annex2" class="cb-sub"><h3>Case 2 · Climate futures</h3>
-          <dl class="cb-dl"><dt>Include</dt><dd>Speculations that a medium will cause, prevent, slow or adapt to climate change, or that imagine a world reshaped by it.</dd>
-          <dt>Media</dt><dd>To be fixed from the corpus. Candidate families: energy · carbon removal and geoengineering · transport · food and land · buildings and cities · computing and data · policy instruments and markets · ways of living.</dd>
-          <dt>Place</dt><dd>Climate speculation is mostly global in scale, so the place codes carry the analysis: who speaks from where, and whose place is imagined. Record the speaker’s place and the setting for every speculation.</dd>
-          <dt>Social distance</dt><dd>Future generations and non-humans are coded as <em>Others</em>, with the group named in the notes.</dd>
-          <dt>Open</dt><dd>Speculations with no medium, such as catastrophe alone, have nothing for the Tetrad to read. To decide: exclude them and report how many, or code the catastrophe as what the world’s existing media reverse into.</dd></dl></section>
 
         <section id="cb-example"><h3>Worked example</h3>
           <p>One speculation from Case 1 coded on every dimension, with the reasoning for each decision. A worked example from Case 2 will follow.</p>

@@ -77,4 +77,4 @@ Because the site loads these files, open it through a web server rather than as 
 
 ## Codebook v0.2
 
-A shared core plus an annex per case. Labels were generalised for both cases (scope: replaces a medium / an institution; social: us, others, everyone). Spatial distance now follows construal-level theory strictly, as distance from the speaker (here, elsewhere, everywhere); scale and place are recorded as attributes. `data/book.json` was migrated to these labels (v0.2); Star Trek (2009) was recoded as elsewhere.
+One codebook for both cases; what each case collects, and its media list, sits with its corpus (Project 1 › Sources; Project 2). Labels were generalised for both cases (scope: replaces a medium / an institution; social: us, others, everyone). Spatial distance now follows construal-level theory strictly, as distance from the speaker (here, elsewhere, everywhere); scale and place are recorded as attributes. `data/book.json` was migrated to these labels (v0.2); Star Trek (2009) was recoded as elsewhere.
