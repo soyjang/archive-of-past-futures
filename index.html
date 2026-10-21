@@ -82,6 +82,7 @@ button:focus-visible, [tabindex]:focus-visible, input:focus-visible { outline: 2
 
 .cell { fill: transparent; stroke: var(--rule); stroke-width: 1; }
 .cell.filled { fill: var(--accent-soft); }
+.cell.filled.hl { fill: var(--cell-sel); }
 .cell.gap { fill: url(#hatch); stroke: var(--accent); stroke-dasharray: 4 4; cursor: pointer; }
 .cell.gap:focus, .cell.gap:active { outline: none; }
 .cell.gap { -webkit-tap-highlight-color: transparent; }
@@ -560,7 +561,8 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
       for (const R of RS) {
         const key = `${law}-${R.k}`;
         const filled = !!cells[key];
-        const cls = filled ? "cell filled" : `cell gap${state.gap === key ? " sel" : ""}`;
+        const hl = filled && state.selected && cells[key].some(c => c.id === state.selected);
+        const cls = filled ? `cell filled${hl ? " hl" : ""}` : `cell gap${state.gap === key ? " sel" : ""}`;
         const attrs = filled ? "" : ` tabindex="0" role="button" data-gap="${key}" aria-label="Gap: ${L.label}, ${R.label}. No speculation codes here."`;
         s += `<path class="${cls}" d="${sector(R.r0, R.r1, L.a0, L.a1)}"${attrs}></path>`;
       }
