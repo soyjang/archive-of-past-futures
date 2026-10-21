@@ -13,7 +13,7 @@ The archive collects claims that a new medium would transform or replace the boo
 | Social distance | construal-level theory | our children, other groups, everyone |
 | Hypotheticality | construal-level theory | will, should, could, depicted |
 | Construal level | construal-level theory (outcome) | concrete or abstract language |
-| Genre | | forecast or promotion, fiction, academic or policy scenario, speculative design |
+| Format | | press or magazine, talk or broadcast, book, academic paper, report, novel or story, film or television, image, design project |
 | Speaker | | inventor, company, policymaker, educator, researcher, speculative designer, writer or artist |
 
 *Speculative distance* (how far a claim departs from its own present) is coded on five dimensions: the four dimensions of psychological distance in construal-level theory (Trope & Liberman 2010), as marked in the claim's text, plus scope of change, which the theory lacks because it studies everyday events rather than imagined changes to the world. Psychological distance proper is a person's sense of distance and cannot be read from a document, hence the separate term. Construal level is coded as what distance is expected to produce, so the archive can test whether far claims were in fact written abstractly. Scope of change and temporal distance are the primary dimensions: the wheel shows scope (and locates the gaps), the timeline shows temporal distance. The others are reported descriptively.
@@ -34,16 +34,13 @@ Temporal distance is coded from the horizon a claim *states*, not a year, becaus
 
 ## Status of the data
 
-**Pilot sample of 26 documented speculations** (1906–2025), in four genres:
+**Pilot sample of 26 documented speculations** (1906–2025): Edison (1911, 1913, 1922, 1925), the Keystone teachers' guide (1906), Villemard's *En l'an 2000* school card (c.1910), the Ohio School of the Air (1929), Asimov's "The Fun They Had" (1951), Bradbury's *Fahrenheit 451* (1953), FCC Commissioner Frieda Hennock (1955), Skinner (1958), RCA's *Electronic Age* (1959), Senator Muskie (1961), Suppes (1966), Illich's *Deschooling Society* (1971), Papert (1984), Winn (1993), Stephenson's *The Diamond Age* (1995), Thrun (2012), Christensen (2013), Bayne's Teacherbot (2015), Selwyn et al.'s "school of 2030" (2020), the OECD's "Learn-as-you-go" scenario (2020), Sal Khan (2023) and Bill Gates (2023, 2025).
 
-- **Forecasts and promotions (18):** Edison (1911, 1913, 1922, 1925), the Keystone teachers' guide (1906), the Ohio School of the Air (1929), FCC Commissioner Frieda Hennock (1955), Skinner (1958), RCA's *Electronic Age* (1959), Senator Muskie (1961), Suppes (1966), Papert (1984), Winn (1993), Thrun (2012), Christensen (2013), Sal Khan (2023) and Bill Gates (2023, 2025).
-- **Fiction (4):** Villemard's *En l'an 2000* school card (c.1910), Asimov's "The Fun They Had" (1951), Bradbury's *Fahrenheit 451* (1953) and Stephenson's *The Diamond Age* (1995).
-- **Academic and policy scenarios (3):** Illich's *Deschooling Society* (1971), Selwyn et al.'s "What might the school of 2030 be like?" (2020) and the OECD's "Learn-as-you-go" scenario (2020).
-- **Speculative design (1):** Bayne's Teacherbot (2015).
+Each records its **format**, the form in which it was first made: press or magazine, talk or broadcast, book, academic paper, report, novel or story, film or television, image, or design project. Format is descriptive; whether a work functions as speculative design is a question for the analysis, not a code.
 
 Codes are provisional (one coder, codebook v0.1). Entries marked *to verify* need checking against the original page, edition or venue. Still missing: a documented 1960s claim that television would replace the book, 1990s claims that VR would replace the classroom, and more speculative design projects.
 
-The data lives in the `CLAIMS`, `CODES`, `WHEN` and `SPEAKER` arrays (genre is a field on each entry) in `index.html`.
+The data lives in the `CLAIMS`, `CODES`, `WHEN` and `SPEAKER` arrays (plus `FORMAT`) in `index.html`.
 
 ## Running it
 
