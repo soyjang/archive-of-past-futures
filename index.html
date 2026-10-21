@@ -391,7 +391,7 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
     if (state.selected) {
       const c = CLAIMS.find(x => x.id === state.selected);
       const era = eraOf(c.year);
-      p.innerHTML = `<button type="button" class="back" id="back">← Gaps</button>
+      p.innerHTML = `<button type="button" class="back" id="back">← Overview</button>
         <div><h3>${c.year} · ${c.medium}</h3></div>
         <p class="quote">${c.documented ? "“" + c.text + "”" : c.text}</p>
         <div>${c.documented ? `<span class="tag">Documented claim</span>` : `<span class="tag ill">Illustrative paraphrase</span>`}</div>
@@ -412,8 +412,12 @@ footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule)
       return;
     }
     const claims = visibleClaims();
+    const counts = LAW_ORDER.map(l => [l, claims.filter(c => lawsOf(c).includes(l)).length]);
+    const max = Math.max(1, ...counts.map(x => x[1]));
     const g = gaps();
-    p.innerHTML = `<div><h3>${claims.length} claims</h3></div>
+    p.innerHTML = `<div><h3>Overview · ${claims.length} claims</h3></div>
+      <h2>Past futures promise to enhance and to replace. They rarely imagine retrieval, and never reversal.</h2>
+      <div class="bars">${counts.map(([l, n]) => `<div class="bar"><span>${LAWS[l].label}</span><span class="track"><span class="fill" style="display:block;width:${(n / max) * 100}%"></span></span><span class="n">${n}</span></div>`).join("")}</div>
       <div style="display:grid;gap:8px"><h3>${g.length} gaps to design for</h3>
         <div class="gaplist">${g.map(k => { const [l, r] = k.split("-"); const star = fictionFor(k) ? " ★" : ""; return `<button type="button" class="gapbtn" data-gap="${k}">${LAWS[l].label} · ${rings()[+r - 1].label}${star}</button>`; }).join("")}</div>
         <p class="small">★ has a storyboard sketched. Select a dot or a row for its coding.</p>
