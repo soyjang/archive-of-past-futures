@@ -295,7 +295,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
   <section id="pg-archive" class="page">
   <div class="controls" role="group" aria-label="View controls">
     <div class="slider">
-      <label for="decade">Claims up to</label>
+      <label for="decade">Speculations up to</label>
       <input type="range" id="decade" min="1900" max="2030" step="10" value="2030">
       <output id="decade-out" for="decade">2039</output>
       <button type="button" class="play" id="play">Play decades</button>
@@ -604,7 +604,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
       const [x, y, anchor] = corner[law];
       const n = claims.filter(c => lawsOf(c).includes(law)).length;
       s += `<text class="axis-label" x="${x}" y="${y}" text-anchor="${anchor}">${LAWS[law].label}</text>
-            <text class="axis-sub" x="${x}" y="${y + 16}" text-anchor="${anchor}">${n} claim${n === 1 ? "" : "s"}</text>`;
+            <text class="axis-sub" x="${x}" y="${y + 16}" text-anchor="${anchor}">${n} speculation${n === 1 ? "" : "s"}</text>`;
     }
     let ds = "";
     const selPts = [];
@@ -673,7 +673,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
     const h = 58, n = (l) => claims.filter(c => c.laws.includes(l)).length;
     const dia = (cx, cy) => `M${cx} ${cy - h} L${cx + h} ${cy} L${cx} ${cy + h} L${cx - h} ${cy}Z`;
     const pos = { enhance: [-h, -h], reverse: [h, -h], retrieve: [-h, h], obsolesce: [h, h] };
-    let g = `<path class="tet-mid" d="${dia(0, 0)}"></path><text class="tet-mid-n" text-anchor="middle" y="2">${claims.length}</text><text class="tet-l" text-anchor="middle" y="16">Medium</text>`;
+    let g = `<path class="tet-mid" d="${dia(0, 0)}"></path><text class="tet-mid-n" text-anchor="middle" y="2">${claims.length}</text><text class="tet-l" text-anchor="middle" y="16" style="font-size:10px">Speculations</text>`;
     for (const law of LAW_ORDER) {
       const [x, y] = pos[law];
       g += `<path class="tet-cell" d="${dia(x, y)}"></path><text class="tet-n" x="${x}" y="${y + 2}" text-anchor="middle">${n(law)}</text><text class="tet-l" x="${x}" y="${y + 16}" text-anchor="middle">${LAWS[law].label}</text>`;
