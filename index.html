@@ -1,0 +1,548 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Archive of Past Futures</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a mimeographed classroom handout — the Tetrad wheel as the main figure, a reading panel beside it, stacking on phones. */
+:root {
+  --paper: #f6f5f9;
+  --panel: #ffffff;
+  --ink: #221c31;
+  --muted: #625a77;
+  --rule: #d9d3e6;
+  --accent: #5a3fb0;      /* spirit-duplicator violet */
+  --accent-soft: #ebe5fa;
+  --era1: #8a6a14;        /* stereoscope & film */
+  --era2: #23786a;        /* radio, TV, teaching machines */
+  --era3: #5a3fb0;        /* computers & VR */
+  --era4: #c0346a;        /* online & AI */
+  --font-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+  --font-body: "Atkinson Hyperlegible", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #14111c; --panel: #1c1827; --ink: #ece8f6; --muted: #a59dba; --rule: #2f2942;
+    --accent: #a58ff2; --accent-soft: #2a2343;
+    --era1: #d6b45a; --era2: #5fc6ad; --era3: #a58ff2; --era4: #f17ba6;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #14111c; --panel: #1c1827; --ink: #ece8f6; --muted: #a59dba; --rule: #2f2942;
+  --accent: #a58ff2; --accent-soft: #2a2343;
+  --era1: #d6b45a; --era2: #5fc6ad; --era3: #a58ff2; --era4: #f17ba6;
+  color-scheme: dark;
+}
+body {
+  background: var(--paper); color: var(--ink);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.5;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 28px 48px;
+}
+.wrap { max-width: 1180px; margin: 0 auto; display: grid; gap: 22px; }
+header { display: grid; gap: 10px; }
+.eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 5vw, 48px); line-height: 1.05; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
+.lede { max-width: 66ch; color: var(--muted); margin: 0; }
+.notice { font-size: 14px; border: 1px dashed var(--accent); background: var(--accent-soft); color: var(--ink); padding: 10px 14px; border-radius: 6px; max-width: 80ch; }
+.notice strong { color: var(--accent); }
+
+.controls { display: flex; flex-wrap: wrap; gap: 14px 22px; align-items: center; border-block: 1px solid var(--rule); padding-block: 12px; }
+.seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 999px; overflow: hidden; }
+.seg button { font: 500 14px var(--font-body); background: transparent; color: var(--ink); border: 0; padding: 6px 14px; cursor: pointer; }
+.seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
+.slider { display: flex; align-items: center; gap: 10px; font-family: var(--font-mono); font-size: 13px; color: var(--muted); }
+.slider input { width: min(260px, 50vw); accent-color: var(--accent); }
+.slider output { color: var(--ink); min-width: 9ch; font-variant-numeric: tabular-nums; }
+.play { font: 500 13px var(--font-mono); border: 1px solid var(--rule); background: var(--panel); color: var(--ink); border-radius: 6px; padding: 5px 10px; cursor: pointer; }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip { font: 400 13px var(--font-body); display: inline-flex; align-items: center; gap: 6px; border: 1px solid var(--rule); background: var(--panel); color: var(--ink); border-radius: 999px; padding: 4px 10px; cursor: pointer; }
+.chip[aria-pressed="false"] { opacity: .45; }
+.swatch { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+button:focus-visible, [tabindex]:focus-visible, input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
+.main { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr); gap: 26px; align-items: start; }
+@media (max-width: 900px) { .main { grid-template-columns: minmax(0, 1fr); } }
+.figure { min-width: 0; }
+.figure svg { width: 100%; height: auto; display: block; }
+.timeline-scroll { overflow-x: auto; }
+.timeline-scroll svg { min-width: 680px; }
+
+.cell { fill: transparent; stroke: var(--rule); stroke-width: 1; }
+.cell.filled { fill: var(--accent-soft); }
+.cell.gap { fill: url(#hatch); stroke: var(--accent); stroke-dasharray: 4 4; cursor: pointer; }
+.cell.gap:hover, .cell.gap:focus-visible { stroke-width: 2.5; outline: none; }
+.axis-label { font-family: var(--font-display); font-weight: 700; font-size: 20px; fill: var(--ink); }
+.axis-sub { font-family: var(--font-mono); font-size: 11px; fill: var(--muted); letter-spacing: .04em; }
+.ring-label { font-family: var(--font-mono); font-size: 10.5px; fill: var(--muted); }
+.center-label { font-family: var(--font-mono); font-size: 10.5px; fill: var(--ink); }
+.hatch-line { stroke: var(--accent); stroke-width: 1.2; opacity: .55; }
+.dot { cursor: pointer; stroke: var(--panel); stroke-width: 2; }
+.dot.hollow { fill: var(--panel) !important; stroke-width: 3; }
+.dot:hover, .dot:focus-visible, .dot.sel { stroke: var(--ink); outline: none; }
+.dot.hollow:hover, .dot.hollow.sel { stroke-width: 4; }
+.tl-axis { stroke: var(--rule); }
+.tl-tick { font-family: var(--font-mono); font-size: 11px; fill: var(--muted); }
+.tl-label { font-family: var(--font-body); font-size: 12.5px; fill: var(--ink); }
+.tl-row { cursor: pointer; }
+.tl-row:hover .tl-label, .tl-row.sel .tl-label { fill: var(--accent); }
+
+.panel { background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: 20px; display: grid; gap: 16px; min-width: 0; }
+.panel h2 { font-family: var(--font-display); font-size: 22px; line-height: 1.15; margin: 0; text-wrap: balance; }
+.panel h3 { font: 500 12px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0; }
+.quote { font-size: 18px; line-height: 1.4; margin: 0; border-left: 3px solid var(--accent); padding-left: 12px; }
+.meta { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; font-size: 14px; margin: 0; }
+.meta dt { font-family: var(--font-mono); font-size: 12px; color: var(--muted); padding-top: 2px; }
+.meta dd { margin: 0; }
+.tag { display: inline-block; font: 500 12px var(--font-mono); border-radius: 4px; padding: 1px 6px; margin: 0 4px 4px 0; background: var(--accent-soft); color: var(--ink); }
+.tag.ill { background: transparent; border: 1px dashed var(--muted); color: var(--muted); }
+.bars { display: grid; gap: 8px; }
+.bar { display: grid; grid-template-columns: 9.5ch 1fr 3ch; gap: 10px; align-items: center; font-size: 14px; }
+.bar .track { height: 10px; background: var(--accent-soft); border-radius: 5px; overflow: hidden; }
+.bar .fill { height: 100%; background: var(--accent); border-radius: 5px; }
+.bar .n { font-family: var(--font-mono); font-variant-numeric: tabular-nums; text-align: right; color: var(--muted); }
+.gaplist { display: flex; flex-wrap: wrap; gap: 6px; }
+.gapbtn { font: 400 13px var(--font-body); border: 1px dashed var(--accent); color: var(--ink); background: transparent; border-radius: 6px; padding: 5px 9px; cursor: pointer; text-align: left; }
+.gapbtn:hover { background: var(--accent-soft); }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 18px; font-size: 13px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.lg-dot { width: 12px; height: 12px; border-radius: 50%; background: var(--muted); display: inline-block; }
+.lg-dot.hollow { background: transparent; border: 3px solid var(--muted); }
+.lg-dot.dash { background: transparent; border: 2px dashed var(--muted); }
+.lg-hatch { width: 16px; height: 12px; border: 1px dashed var(--accent); background: repeating-linear-gradient(45deg, var(--accent-soft) 0 3px, transparent 3px 6px); display: inline-block; }
+.back { justify-self: start; font: 500 13px var(--font-mono); background: transparent; border: 0; color: var(--accent); cursor: pointer; padding: 0; }
+
+.overlay { position: fixed; inset: 0; background: color-mix(in srgb, var(--ink) 45%, transparent); display: grid; place-items: center; padding: max(16px, env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) max(16px, env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); z-index: 20; }
+.modal { background: var(--panel); color: var(--ink); border-radius: 12px; max-width: 760px; width: 100%; max-height: 100%; overflow: auto; padding: 22px; display: grid; gap: 14px; border: 1px solid var(--rule); }
+.modal header { display: flex; justify-content: space-between; align-items: start; gap: 12px; }
+.modal h2 { font-family: var(--font-display); font-size: 24px; margin: 0; line-height: 1.15; }
+.close { font: 500 13px var(--font-mono); border: 1px solid var(--rule); background: transparent; color: var(--ink); border-radius: 6px; padding: 5px 10px; cursor: pointer; flex: none; }
+canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px; display: block; border: 1px solid var(--rule); }
+.beats { margin: 0; padding-left: 0; list-style: none; display: grid; gap: 8px; counter-reset: k; }
+.beats li { display: grid; grid-template-columns: 4ch 1fr; gap: 8px; font-size: 15px; }
+.beats li::before { counter-increment: k; content: "K0" counter(k); font-family: var(--font-mono); font-size: 12px; color: var(--accent); padding-top: 3px; }
+.small { font-size: 13px; color: var(--muted); margin: 0; }
+footer { font-size: 13px; color: var(--muted); border-top: 1px solid var(--rule); padding-top: 14px; max-width: 90ch; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Study 1 · prototype view</div>
+    <h1>An Archive of Past Futures</h1>
+    <p class="lede">Claims that a new medium would transform or replace the book in education, from the classroom stereoscope to AI tutors. Each claim sits in the Tetrad sector it promised (enhance, obsolesce, retrieve, reverse) at its speculative distance from its own present. Hatched cells are gaps: no claim imagined them. Open a gap to see the design fiction it calls for.</p>
+    <p class="notice"><strong>Mock-up.</strong> Entries are illustrative placeholders, paraphrased to show how the archive will work. Only Edison's 1913 statement is a documented claim, and it still needs verifying against its source. Replace these with sourced entries as the archive is collected.</p>
+  </header>
+
+  <div class="controls" role="group" aria-label="View controls">
+    <div class="seg" role="group" aria-label="View">
+      <button type="button" id="v-wheel" aria-pressed="true">Tetrad wheel</button>
+      <button type="button" id="v-time" aria-pressed="false">Timeline</button>
+    </div>
+    <div class="slider">
+      <label for="decade">Claims up to</label>
+      <input type="range" id="decade" min="1900" max="2030" step="10" value="2030">
+      <output id="decade-out" for="decade">2039</output>
+      <button type="button" class="play" id="play">Play decades</button>
+    </div>
+    <div class="chips" id="eras" role="group" aria-label="Filter by era"></div>
+  </div>
+
+  <div class="main">
+    <div class="figure">
+      <div id="wheel-wrap"></div>
+      <div id="time-wrap" class="timeline-scroll" hidden></div>
+      <div class="legend" style="margin-top:10px">
+        <span><i class="lg-dot"></i>Absorbed into practice</span>
+        <span><i class="lg-dot hollow"></i>Not realised</span>
+        <span><i class="lg-dot dash"></i>Still open</span>
+        <span><i class="lg-hatch"></i>Gap: no claim imagined this</span>
+      </div>
+    </div>
+    <aside class="panel" id="panel" aria-live="polite"></aside>
+  </div>
+
+  <footer>Coding scheme: Tetrad laws after McLuhan &amp; McLuhan (1988); speculative distance as scope of change (supplement, transform, replace the medium, replace the institution), with time horizon and concrete or abstract language recorded per claim, drawing on construal-level theory (Trope &amp; Liberman 2010). Design-fiction storyboards are placeholders for AI-assisted animations.</footer>
+</div>
+
+<div class="overlay" id="overlay" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="m-title">
+    <header>
+      <div style="display:grid;gap:4px">
+        <div class="eyebrow" id="m-eyebrow">Design fiction for a gap</div>
+        <h2 id="m-title"></h2>
+      </div>
+      <button type="button" class="close" id="m-close">Close</button>
+    </header>
+    <canvas id="stage" width="1280" height="560" aria-label="Multiplane animation sketch"></canvas>
+    <p id="m-world" style="margin:0;font-size:16px"></p>
+    <ol class="beats" id="m-beats"></ol>
+    <p class="small" id="m-note"></p>
+  </div>
+</div>
+
+<script>
+(function () {
+  const ERAS = [
+    { id: "e1", label: "Stereoscope & film", from: 1900, to: 1929, v: "--era1" },
+    { id: "e2", label: "Radio, TV & teaching machines", from: 1930, to: 1969, v: "--era2" },
+    { id: "e3", label: "Computers & VR", from: 1970, to: 1999, v: "--era3" },
+    { id: "e4", label: "Online learning & AI", from: 2000, to: 2039, v: "--era4" }
+  ];
+  const LAWS = {
+    enhance:   { label: "Enhances",   a0: 90,  a1: 180, verb: "enhance" },
+    reverse:   { label: "Reverses",   a0: 0,   a1: 90,  verb: "reverse into its opposite" },
+    retrieve:  { label: "Retrieves",  a0: 180, a1: 270, verb: "retrieve something older" },
+    obsolesce: { label: "Obsolesces", a0: 270, a1: 360, verb: "make obsolete" }
+  };
+  const LAW_ORDER = ["enhance", "obsolesce", "retrieve", "reverse"];
+  const RINGS = [
+    { k: 1, label: "Supplements", r0: 44, r1: 108 },
+    { k: 2, label: "Transforms practice", r0: 108, r1: 172 },
+    { k: 3, label: "Replaces the medium", r0: 172, r1: 236 },
+    { k: 4, label: "Replaces the institution", r0: 236, r1: 296 }
+  ];
+  const OUTCOME = { absorbed: "Absorbed into practice", unrealised: "Not realised", open: "Still open" };
+
+  // Illustrative entries. Only #2 is a documented claim (verify against source).
+  const CLAIMS = [
+    { id: 1, year: 1906, horizon: 1915, medium: "Classroom stereoscope", text: "Sets of stereographs will let every pupil travel the world from their desk.", ring: 1, laws: ["enhance"], lang: "concrete", outcome: "absorbed", documented: false },
+    { id: 2, year: 1913, horizon: 1923, medium: "Motion picture", text: "Books will soon be obsolete in the public schools.", ring: 3, laws: ["obsolesce", "enhance"], lang: "abstract", outcome: "unrealised", documented: true, source: "Thomas Edison, 1913; commonly cited via Cuban (1986). Verify." },
+    { id: 3, year: 1924, horizon: 1935, medium: "Educational film", text: "Film will become the main way children learn about the world.", ring: 2, laws: ["enhance", "obsolesce"], lang: "abstract", outcome: "unrealised", documented: false },
+    { id: 4, year: 1932, horizon: 1940, medium: "School radio", text: "Radio broadcasts will become a textbook of the air for every school.", ring: 2, laws: ["enhance"], lang: "abstract", outcome: "absorbed", documented: false },
+    { id: 5, year: 1957, horizon: 1970, medium: "Educational television", text: "Television will put a master teacher in every classroom.", ring: 3, laws: ["enhance", "obsolesce"], lang: "abstract", outcome: "unrealised", documented: false },
+    { id: 6, year: 1958, horizon: 1968, medium: "Teaching machine", text: "Machines will teach more in less time and free teachers from drill.", ring: 2, laws: ["enhance", "obsolesce"], lang: "concrete", outcome: "absorbed", documented: false },
+    { id: 7, year: 1984, horizon: 1995, medium: "Classroom computer", text: "A computer in every classroom will transform how children learn.", ring: 2, laws: ["enhance"], lang: "abstract", outcome: "absorbed", documented: false },
+    { id: 8, year: 1993, horizon: 2005, medium: "Virtual reality", text: "Students will learn by entering worlds rather than reading about them.", ring: 3, laws: ["enhance", "obsolesce"], lang: "abstract", outcome: "unrealised", documented: false },
+    { id: 9, year: 1995, horizon: 2010, medium: "Virtual reality", text: "VR brings back learning by doing, as in an apprenticeship.", ring: 2, laws: ["retrieve"], lang: "concrete", outcome: "unrealised", documented: false },
+    { id: 10, year: 1996, horizon: 2016, medium: "Virtual classroom", text: "Virtual classrooms will replace the schoolhouse.", ring: 4, laws: ["obsolesce"], lang: "abstract", outcome: "unrealised", documented: false },
+    { id: 11, year: 2012, horizon: 2025, medium: "Online courses (MOOCs)", text: "Online courses will make the campus obsolete.", ring: 4, laws: ["obsolesce"], lang: "abstract", outcome: "unrealised", documented: false },
+    { id: 12, year: 2016, horizon: 2020, medium: "VR headsets", text: "Virtual field trips for every classroom, anywhere in the world.", ring: 1, laws: ["enhance"], lang: "concrete", outcome: "absorbed", documented: false },
+    { id: 13, year: 2023, horizon: 2030, medium: "AI tutor", text: "Every student will have a personal AI tutor.", ring: 3, laws: ["enhance", "obsolesce"], lang: "abstract", outcome: "open", documented: false },
+    { id: 14, year: 2024, horizon: 2030, medium: "Generative AI", text: "AI will make the textbook obsolete.", ring: 3, laws: ["obsolesce"], lang: "abstract", outcome: "open", documented: false },
+    { id: 15, year: 2025, horizon: 2040, medium: "Generative AI", text: "Schools as we know them will disappear.", ring: 4, laws: ["obsolesce"], lang: "abstract", outcome: "open", documented: false }
+  ];
+
+  const FICTIONS = {
+    "reverse-4": {
+      title: "The headset school, reversed",
+      world: "Virtual reality replaced the school in 1996. It is now 2026.",
+      beats: [
+        "Each child learns alone at home inside a headset, standing in a virtual Roman forum.",
+        "A new headset generation ships. Last year's models stack up at the kerb.",
+        "In a park, three children sit around one battered paper book and read aloud.",
+        "The camera pulls back past the pile of headsets to the empty school building behind."
+      ],
+      note: "Reversal: total immersion flips into isolation, and the book returns as a shared object.",
+      scene: "pile"
+    },
+    "retrieve-1": {
+      title: "The stereoscope comes back",
+      world: "VR arrives in classrooms in 2016 as a virtual field-trip kit.",
+      beats: [
+        "A class passes headsets around for a five-minute trip to the Moon.",
+        "A cupboard opens on a 1906 box of stereographs: travel the world from your desk.",
+        "Split frame: a pupil in 1906 and a pupil in 2026 raise a viewer to their eyes with the same gesture.",
+        "Caption: the same promise, a century apart."
+      ],
+      note: "Retrieval: VR revives the classroom stereoscope's promise of virtual travel.",
+      scene: "stereo"
+    }
+  };
+
+  const $ = (s) => document.querySelector(s);
+  const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
+  const eraOf = (y) => ERAS.find(e => y >= e.from && y <= e.to) || ERAS[ERAS.length - 1];
+
+  const state = { view: "wheel", decade: 2030, eras: new Set(ERAS.map(e => e.id)), selected: null };
+
+  function visibleClaims() {
+    return CLAIMS.filter(c => c.year <= state.decade + 9 && state.eras.has(eraOf(c.year).id));
+  }
+
+  // ---------- geometry ----------
+  const rad = (a) => a * Math.PI / 180;
+  const pt = (r, a) => [r * Math.cos(rad(a)), -r * Math.sin(rad(a))];
+  function sector(r0, r1, a0, a1) {
+    const [x1, y1] = pt(r1, a0), [x2, y2] = pt(r1, a1), [x3, y3] = pt(r0, a1), [x4, y4] = pt(r0, a0);
+    return `M${x1.toFixed(1)} ${y1.toFixed(1)} A${r1} ${r1} 0 0 0 ${x2.toFixed(1)} ${y2.toFixed(1)} L${x3.toFixed(1)} ${y3.toFixed(1)} A${r0} ${r0} 0 0 1 ${x4.toFixed(1)} ${y4.toFixed(1)}Z`;
+  }
+
+  // ---------- wheel ----------
+  function renderWheel() {
+    const claims = visibleClaims();
+    const cells = {};
+    claims.forEach(c => c.laws.forEach(l => { (cells[`${l}-${c.ring}`] ||= []).push(c); }));
+    let s = `<svg viewBox="-345 -345 690 690" role="img" aria-label="Tetrad wheel: claims placed by Tetrad law and speculative distance">
+      <defs><pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line class="hatch-line" x1="0" y1="0" x2="0" y2="8"></line></pattern></defs>`;
+    for (const law of LAW_ORDER) {
+      const L = LAWS[law];
+      for (const R of RINGS) {
+        const key = `${law}-${R.k}`;
+        const filled = !!cells[key];
+        const cls = filled ? "cell filled" : "cell gap";
+        const attrs = filled ? "" : ` tabindex="0" role="button" data-gap="${key}" aria-label="Gap: ${L.label}, ${R.label}. Open design fiction."`;
+        s += `<path class="${cls}" d="${sector(R.r0, R.r1, L.a0, L.a1)}"${attrs}></path>`;
+      }
+    }
+    s += `<circle r="44" fill="var(--panel)" stroke="var(--rule)"></circle>
+      <text class="center-label" text-anchor="middle" y="-3">the claim's</text>
+      <text class="center-label" text-anchor="middle" y="11">own present</text>`;
+    RINGS.forEach(R => { s += `<text class="ring-label" x="5" y="${-(R.r0 + R.r1) / 2 + 4}">${R.label}</text>`; });
+    const corner = { enhance: [-330, -318, "start"], reverse: [330, -318, "end"], retrieve: [-330, 322, "start"], obsolesce: [330, 322, "end"] };
+    for (const law of LAW_ORDER) {
+      const [x, y, anchor] = corner[law];
+      const n = claims.filter(c => c.laws.includes(law)).length;
+      s += `<text class="axis-label" x="${x}" y="${y}" text-anchor="${anchor}">${LAWS[law].label}</text>
+            <text class="axis-sub" x="${x}" y="${y + 16}" text-anchor="${anchor}">${n} claim${n === 1 ? "" : "s"}</text>`;
+    }
+    for (const [key, list] of Object.entries(cells)) {
+      const [law, ring] = key.split("-");
+      const L = LAWS[law], R = RINGS[+ring - 1];
+      list.sort((a, b) => a.year - b.year).forEach((c, i) => {
+        const a = L.a0 + (90 * (i + 1)) / (list.length + 1);
+        const r = (R.r0 + R.r1) / 2 + (i % 2 ? 9 : -9) * (list.length > 2 ? 1 : 0);
+        const [x, y] = pt(r, a);
+        const col = `var(${eraOf(c.year).v})`;
+        const shape = c.outcome === "unrealised" ? " hollow" : "";
+        const dash = c.outcome === "open" ? ' stroke-dasharray="3 2"' : "";
+        const sel = state.selected === c.id ? " sel" : "";
+        const style = c.outcome === "unrealised" ? `stroke:${col}` : `fill:${col}`;
+        const ostyle = c.outcome === "open" ? `fill:${col};stroke:var(--ink)` : style;
+        s += `<circle class="dot${shape}${sel}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="9" style="${ostyle}"${dash} tabindex="0" role="button" data-id="${c.id}" aria-label="${c.year}, ${c.medium}: ${c.text}"></circle>`;
+      });
+    }
+    s += `</svg>`;
+    $("#wheel-wrap").innerHTML = s;
+  }
+
+  // ---------- timeline ----------
+  function renderTimeline() {
+    const claims = visibleClaims().slice().sort((a, b) => a.year - b.year);
+    const x0 = 230, x1 = 880, y0 = 40, rowH = 30;
+    const X = (y) => x0 + (y - 1900) / 140 * (x1 - x0);
+    const H = y0 + claims.length * rowH + 30;
+    let s = `<svg viewBox="0 0 900 ${H}" role="img" aria-label="Timeline: each claim drawn from the year it was made to the year it predicted">`;
+    for (let y = 1900; y <= 2040; y += 20) {
+      s += `<line class="tl-axis" x1="${X(y)}" x2="${X(y)}" y1="${y0 - 14}" y2="${H - 20}"></line><text class="tl-tick" x="${X(y)}" y="${y0 - 20}" text-anchor="middle">${y}</text>`;
+    }
+    claims.forEach((c, i) => {
+      const y = y0 + i * rowH + 12;
+      const col = `var(${eraOf(c.year).v})`;
+      const sel = state.selected === c.id ? " sel" : "";
+      const w = 1.5 + c.ring * 1.2;
+      let end;
+      if (c.outcome === "absorbed") end = `<rect x="${X(c.horizon) - 5}" y="${y - 5}" width="10" height="10" style="fill:${col}"></rect>`;
+      else if (c.outcome === "unrealised") end = `<path d="M${X(c.horizon) - 5} ${y - 5} l10 10 M${X(c.horizon) + 5} ${y - 5} l-10 10" style="stroke:${col};stroke-width:2.5"></path>`;
+      else end = `<circle cx="${X(c.horizon)}" cy="${y}" r="5" style="fill:var(--panel);stroke:${col};stroke-width:2.5" stroke-dasharray="3 2"></circle>`;
+      s += `<g class="tl-row${sel}" tabindex="0" role="button" data-id="${c.id}" aria-label="${c.year} to ${c.horizon}, ${c.medium}: ${c.text}">
+        <rect x="0" y="${y - 13}" width="900" height="${rowH - 2}" fill="transparent"></rect>
+        <text class="tl-label" x="${x0 - 14}" y="${y + 4}" text-anchor="end">${c.year} · ${c.medium}</text>
+        <line x1="${X(c.year)}" x2="${X(c.horizon)}" y1="${y}" y2="${y}" style="stroke:${col};stroke-width:${w}" stroke-linecap="round"></line>
+        <circle cx="${X(c.year)}" cy="${y}" r="4" style="fill:${col}"></circle>${end}</g>`;
+    });
+    s += `</svg>`;
+    $("#time-wrap").innerHTML = s;
+  }
+
+  // ---------- panel ----------
+  function gaps() {
+    const claims = visibleClaims();
+    const out = [];
+    for (const law of LAW_ORDER) for (const R of RINGS) {
+      if (!claims.some(c => c.ring === R.k && c.laws.includes(law))) out.push(`${law}-${R.k}`);
+    }
+    return out;
+  }
+  function renderPanel() {
+    const p = $("#panel");
+    if (state.selected) {
+      const c = CLAIMS.find(x => x.id === state.selected);
+      const era = eraOf(c.year);
+      p.innerHTML = `<button type="button" class="back" id="back">← Overview</button>
+        <div><h3>${c.year} · ${c.medium}</h3></div>
+        <p class="quote">${c.documented ? "“" + c.text + "”" : c.text}</p>
+        <div>${c.documented ? `<span class="tag">Documented claim</span>` : `<span class="tag ill">Illustrative paraphrase</span>`}</div>
+        <dl class="meta">
+          <dt>Era</dt><dd><span class="swatch" style="background:var(${era.v})"></span> ${era.label}</dd>
+          <dt>Tetrad</dt><dd>${c.laws.map(l => `<span class="tag">${LAWS[l].label}</span>`).join("")}</dd>
+          <dt>Distance</dt><dd>${RINGS[c.ring - 1].label}</dd>
+          <dt>Horizon</dt><dd>${c.horizon} (${c.horizon - c.year} years ahead)</dd>
+          <dt>Language</dt><dd>${c.lang === "abstract" ? "Abstract" : "Concrete"}</dd>
+          <dt>Outcome</dt><dd>${OUTCOME[c.outcome]}</dd>
+          ${c.source ? `<dt>Source</dt><dd>${c.source}</dd>` : ""}
+        </dl>`;
+      $("#back").addEventListener("click", () => select(null));
+      return;
+    }
+    const claims = visibleClaims();
+    const counts = LAW_ORDER.map(l => [l, claims.filter(c => c.laws.includes(l)).length]);
+    const max = Math.max(1, ...counts.map(x => x[1]));
+    const g = gaps();
+    p.innerHTML = `<div><h3>Overview · ${claims.length} claims</h3></div>
+      <h2>Past futures promise to enhance and to replace. They rarely imagine retrieval, and never reversal.</h2>
+      <div class="bars">${counts.map(([l, n]) => `<div class="bar"><span>${LAWS[l].label}</span><span class="track"><span class="fill" style="display:block;width:${(n / max) * 100}%"></span></span><span class="n">${n}</span></div>`).join("")}</div>
+      <div style="display:grid;gap:8px"><h3>${g.length} gaps to design for</h3>
+        <div class="gaplist">${g.map(k => { const [l, r] = k.split("-"); const star = FICTIONS[k] ? " ★" : ""; return `<button type="button" class="gapbtn" data-gap="${k}">${LAWS[l].label} · ${RINGS[+r - 1].label}${star}</button>`; }).join("")}</div>
+        <p class="small">★ has a storyboard sketched. Select a dot or a row for its coding.</p>
+      </div>`;
+  }
+
+  function render() {
+    $("#decade-out").textContent = state.decade >= 2030 ? "2039" : `${state.decade + 9}`;
+    if (state.view === "wheel") renderWheel(); else renderTimeline();
+    renderPanel();
+  }
+
+  function select(id) { state.selected = id; render(); }
+
+  // ---------- fiction modal + multiplane sketch ----------
+  let raf = null, lastFocus = null;
+  function openFiction(key) {
+    const [law, ring] = key.split("-");
+    const L = LAWS[law], R = RINGS[+ring - 1];
+    const f = FICTIONS[key] || {
+      title: `${L.label} · ${R.label}`,
+      world: `No claim in the archive imagines a medium that would ${L.verb}, at the scale of “${R.label.toLowerCase()}”.`,
+      beats: [
+        "Choose a predicted replacement from the archive and its juncture.",
+        `Stage a world where it ${L.verb === "enhance" ? "enhances" : L.verb === "make obsolete" ? "makes something obsolete" : L.verb.replace(/^(\w+)/, "$1s")}, at this distance.`,
+        "Find one object or gesture that carries the change.",
+        "End on a return to the present."
+      ],
+      note: "Prompt template. No storyboard yet.",
+      scene: "generic"
+    };
+    $("#m-title").textContent = f.title;
+    $("#m-eyebrow").textContent = `Gap · ${L.label} · ${R.label}`;
+    $("#m-world").textContent = f.world;
+    $("#m-beats").innerHTML = f.beats.map(b => `<li>${b}</li>`).join("");
+    $("#m-note").textContent = f.note;
+    lastFocus = document.activeElement;
+    $("#overlay").hidden = false;
+    $("#m-close").focus();
+    animate(f.scene);
+  }
+  function closeFiction() {
+    $("#overlay").hidden = true;
+    if (raf) cancelAnimationFrame(raf);
+    raf = null;
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+  }
+
+  function animate(scene) {
+    const cv = $("#stage"), ctx = cv.getContext("2d");
+    const W = cv.width, H = cv.height;
+    const col = { paper: css("--paper"), panel: css("--panel"), ink: css("--ink"), muted: css("--muted"), rule: css("--rule"), accent: css("--accent"), soft: css("--accent-soft"), e1: css("--era1"), e3: css("--era3"), e4: css("--era4") };
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const rr = (x, y, w, h, r) => { ctx.beginPath(); ctx.roundRect ? ctx.roundRect(x, y, w, h, r) : ctx.rect(x, y, w, h); ctx.fill(); };
+    function figure(x, y, s, headset, tint) {
+      ctx.fillStyle = tint; ctx.beginPath(); ctx.arc(x, y - 52 * s, 16 * s, 0, Math.PI * 2); ctx.fill();
+      rr(x - 15 * s, y - 34 * s, 30 * s, 44 * s, 10 * s);
+      if (headset) { ctx.fillStyle = col.ink; rr(x - 17 * s, y - 60 * s, 34 * s, 12 * s, 4 * s); }
+    }
+    function frame(t) {
+      const cam = reduce ? 0 : Math.sin(t / 2400) * 60;
+      const push = reduce ? 1 : 1 + 0.04 * Math.sin(t / 3100);
+      ctx.setTransform(1, 0, 0, 1, 0, 0);
+      const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, col.soft); g.addColorStop(1, col.panel);
+      ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
+      ctx.setTransform(push, 0, 0, push, (1 - push) * W / 2, (1 - push) * H / 2);
+      // PLANE 5: distant skyline
+      ctx.save(); ctx.translate(cam * 0.15, 0); ctx.fillStyle = col.rule;
+      for (let i = -2; i < 16; i++) { const h = 60 + ((i * 37) % 90); rr(i * 95, H * 0.55 - h, 70, h + 40, 4); }
+      if (scene === "pile") { ctx.fillStyle = col.muted; rr(W * 0.66, H * 0.55 - 150, 190, 190, 6); ctx.fillStyle = col.soft; for (let k = 0; k < 6; k++) rr(W * 0.66 + 20 + (k % 3) * 55, H * 0.55 - 130 + Math.floor(k / 3) * 60, 34, 40, 3); }
+      ctx.restore();
+      // ground
+      ctx.fillStyle = col.paper; ctx.fillRect(-200, H * 0.62, W + 400, H);
+      // PLANE 3–4: midground figures
+      ctx.save(); ctx.translate(cam * 0.45, 0);
+      if (scene === "pile") {
+        for (let i = 0; i < 5; i++) figure(120 + i * 170, H * 0.74, 0.9, true, col.e3);
+        ctx.fillStyle = col.e1; ctx.beginPath(); ctx.arc(W * 0.5, H * 0.8, 70, Math.PI, 0); ctx.fill();
+      } else if (scene === "stereo") {
+        figure(W * 0.28, H * 0.78, 1.1, false, col.e1); ctx.fillStyle = col.ink; rr(W * 0.28 - 20, H * 0.78 - 64, 40, 14, 3);
+        figure(W * 0.68, H * 0.78, 1.1, true, col.e4);
+        ctx.strokeStyle = col.accent; ctx.lineWidth = 3; ctx.setLineDash([10, 8]); ctx.beginPath(); ctx.moveTo(W * 0.48, H * 0.3); ctx.lineTo(W * 0.48, H * 0.95); ctx.stroke(); ctx.setLineDash([]);
+        ctx.fillStyle = col.muted; ctx.font = "600 26px " + getComputedStyle(document.body).fontFamily; ctx.fillText("1906", W * 0.2, H * 0.32); ctx.fillText("2026", W * 0.62, H * 0.32);
+      } else {
+        for (let i = 0; i < 4; i++) figure(180 + i * 230, H * 0.76, 1, i % 2 === 0, i % 2 ? col.e1 : col.e3);
+      }
+      ctx.restore();
+      // PLANE 1: foreground, moves most
+      ctx.save(); ctx.translate(cam * 1.1, 0);
+      if (scene === "pile") {
+        for (let k = 0; k < 14; k++) { ctx.fillStyle = k % 2 ? col.ink : col.muted; rr(-40 + (k % 7) * 52 + Math.floor(k / 7) * 26, H - 70 - Math.floor(k / 7) * 34, 60, 28, 8); }
+      } else if (scene === "stereo") {
+        ctx.fillStyle = col.e1; rr(W * 0.05, H - 90, 170, 80, 6); ctx.fillStyle = col.panel; rr(W * 0.05 + 18, H - 74, 60, 40, 4); rr(W * 0.05 + 92, H - 74, 60, 40, 4);
+      } else {
+        ctx.fillStyle = col.muted; rr(-30, H - 60, 260, 70, 10); rr(W - 200, H - 80, 260, 90, 10);
+      }
+      ctx.restore();
+      if (!reduce) raf = requestAnimationFrame(frame);
+    }
+    if (raf) cancelAnimationFrame(raf);
+    frame(0);
+  }
+
+  // ---------- controls ----------
+  $("#eras").innerHTML = ERAS.map(e => `<button type="button" class="chip" aria-pressed="true" data-era="${e.id}"><span class="swatch" style="background:var(${e.v})"></span>${e.label}</button>`).join("");
+  $("#eras").addEventListener("click", (ev) => {
+    const b = ev.target.closest("[data-era]"); if (!b) return;
+    const id = b.dataset.era;
+    if (state.eras.has(id) && state.eras.size > 1) state.eras.delete(id); else state.eras.add(id);
+    b.setAttribute("aria-pressed", state.eras.has(id));
+    render();
+  });
+  $("#decade").addEventListener("input", (e) => { state.decade = +e.target.value; render(); });
+  let timer = null;
+  $("#play").addEventListener("click", () => {
+    if (timer) { clearInterval(timer); timer = null; $("#play").textContent = "Play decades"; return; }
+    state.decade = 1900; $("#decade").value = 1900; render();
+    $("#play").textContent = "Stop";
+    timer = setInterval(() => {
+      if (state.decade >= 2030) { clearInterval(timer); timer = null; $("#play").textContent = "Play decades"; return; }
+      state.decade += 10; $("#decade").value = state.decade; render();
+    }, 900);
+  });
+  function setView(v) {
+    state.view = v;
+    $("#v-wheel").setAttribute("aria-pressed", v === "wheel");
+    $("#v-time").setAttribute("aria-pressed", v === "time");
+    $("#wheel-wrap").hidden = v !== "wheel";
+    $("#time-wrap").hidden = v !== "time";
+    render();
+  }
+  $("#v-wheel").addEventListener("click", () => setView("wheel"));
+  $("#v-time").addEventListener("click", () => setView("time"));
+
+  function activate(target) {
+    const gap = target.closest("[data-gap]");
+    if (gap) { openFiction(gap.dataset.gap); return true; }
+    const d = target.closest("[data-id]");
+    if (d) { select(+d.dataset.id); return true; }
+    return false;
+  }
+  document.querySelector(".main").addEventListener("click", (e) => activate(e.target));
+  document.querySelector(".main").addEventListener("keydown", (e) => {
+    if ((e.key === "Enter" || e.key === " ") && activate(e.target)) e.preventDefault();
+  });
+  $("#m-close").addEventListener("click", closeFiction);
+  $("#overlay").addEventListener("click", (e) => { if (e.target.id === "overlay") closeFiction(); });
+  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("#overlay").hidden) closeFiction(); });
+
+  render();
+})();
+</script>
+</body>
+</html>
