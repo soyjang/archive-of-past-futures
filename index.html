@@ -469,7 +469,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
     <div class="pagehead"><h2>Codebook</h2><p class="small">How each speculation is selected and coded, for both cases. What each case collects, and its list of media, is set out with its corpus. Version 0.2, provisional: written by one coder, to be revised after double-coding.</p></div>
     <div class="cb">
       <nav class="cb-toc" aria-label="Codebook contents">
-        <a href="#cb-unit">Unit of analysis</a><a href="#cb-attr">Attributes</a><a href="#cb-codes">Codes</a><a class="sub" href="#cb-tetrad">1. Tetrad</a><a class="sub" href="#cb-distance">2. Speculative distance</a><a class="sub" href="#cb-construal">3. Construal level</a><a class="sub" href="#cb-status">4. Medium status</a><a href="#cb-example">Worked example</a><a href="#cb-rel">Reliability</a><a href="#cb-refs">References</a>
+        <a href="#cb-unit">Unit of analysis</a><a href="#cb-attr">Attributes</a><a href="#cb-codes">Codes</a><a class="sub" href="#cb-tetrad">1. Tetrad</a><a class="sub" href="#cb-distance">2. Speculative distance</a><a class="sub" href="#cb-construal">3. Construal level</a><a href="#cb-example">Worked example</a><a href="#cb-rel">Reliability</a><a href="#cb-refs">References</a>
       </nav>
       <div class="cb-body">
         <section id="cb-unit"><h3>Unit of analysis</h3>
@@ -478,7 +478,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
           <li><strong>Exclude</strong> descriptions of what a medium already does, and unattributed paraphrases.</li>
           <li>The archive records <strong>what speculations imagine</strong>, not what happened. What each medium went on to do is read against them in the written analysis, not coded here.</li></ul></section>
 
-        <section id="cb-attr"><h3>Attributes</h3><p>Descriptive facts about the speculation, recorded rather than interpreted.</p>
+        <section id="cb-attr"><h3>Attributes</h3><p>Descriptive facts about the speculation and what it imagines, recorded rather than interpreted. Two need a decision rule, medium status and scale, and are included in the reliability check.</p>
           <h4>The record</h4>
           <dl class="cb-dl"><dt>Year</dt><dd>When the speculation was made or first published.</dd>
           <dt>Attribution</dt><dd>The named person, organisation or work the speculation comes from (<q>Thomas Edison</q>; <q>Corning, A Day Made of Glass 2</q>).</dd>
@@ -490,9 +490,13 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
           <h4>What it imagines</h4>
           <dl class="cb-dl"><dt>Direction</dt><dd><em>Forward</em> (a future) · <em>Backward</em> (a counterfactual past: what if something had happened otherwise) · <em>Sideways</em> (a parallel present). Most speculations look forward; counterfactual and alternate-history work, in fiction and in speculative design, looks back (Forlano &amp; Halpern 2023).</dd>
           <dt>Medium</dt><dd>The medium the speculation promotes or imagines. Medium is meant in McLuhan’s broad sense: any extension of human capacities, from a device or infrastructure to a practice, a style or a policy. Each case has a fixed list, set out with its corpus; the source’s own wording is kept as a detail (television: <q>parlour walls</q>). If a speculation involves several media, code the one it centres on and name the others in the notes.</dd>
+          <dt>Medium status</dt><dd>Whether the medium, as the speculation describes it being used, existed at the date of the speculation. The judgement is about the described use, not the component technology. Decide in two steps:
+            <ol class="cb-steps"><li>Did a working version that does what the speculation describes, for the use it describes, exist at the date? If not, <em>Imagined</em>, even if its parts existed.</li>
+            <li>If so, was it in use beyond its makers: sold, broadcast, adopted by institutions or the public? If yes, <em>Existing</em>; if it ran only as its makers’ prototype, trial, pilot or demonstration, <em>Emerging</em>.</li></ol>
+            Examples: Keystone stereographs sold to schools (1906) are <em>existing</em>; Skinner’s machines in his own Harvard trials (1958) are <em>emerging</em>; Bradbury’s parlour walls (1953) are <em>imagined</em>, although broadcast television existed. For backward speculation, judge status at the point where history diverges: television existed in 1960, so a speculation asking what if it had replaced the book that year concerns an existing medium. Status separates speculation about an existing medium from speculation that is itself a speculative medium.</dd>
           <dt>Scale</dt><dd>How large a part of the world the speculation addresses: <em>Local</em> (a room, a building, a community) · <em>National or regional</em> (a country’s or region’s system) · <em>Global</em> (the world as a whole). Scale is recorded, not coded as distance: a speculation about the speaker’s own country is national in scale but near in space.</dd></dl></section>
 
-        <section id="cb-codes" class="cb-part"><h3>Codes</h3><p>Interpretive judgements, applied with the rules below and checked by a second coder. Each speculation is coded on four: the Tetrad, speculative distance, construal level and medium status.</p></section>
+        <section id="cb-codes" class="cb-part"><h3>Codes</h3><p>Interpretive judgements, applied with the rules below and checked by a second coder. Each speculation is coded on three: the Tetrad, speculative distance and construal level.</p></section>
 
         <section id="cb-tetrad" class="cb-sub"><h3>1. Tetrad <span class="cb-src">McLuhan &amp; McLuhan 1988</span></h3>
           <p>What the speculation says the medium will do, read through McLuhan’s four laws of media. Code every law the speculation states or clearly implies; most carry one or two. Examples are from Case 1 until Case 2 is coded.</p>
@@ -539,12 +543,6 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
           <dt>Abstract</dt><dd>Why and what for: values, ends, transformations. <q>…the biggest positive transformation that education has ever seen.</q> (Khan, 2023)</dd></dl>
           <p class="cb-rule"><strong>Rule.</strong> Code the dominant register of the quoted passage. A planned check: score wording against published concreteness norms (Brysbaert et al. 2014).</p></section>
 
-        <section id="cb-status" class="cb-sub"><h3>4. Medium status</h3>
-          <div class="cb-text">Whether the medium, as the speculation describes it being used, existed at the date of the speculation. The judgement is about the described use, not the component technology. Decide in two steps:
-            <ol class="cb-steps"><li>Did a working version that does what the speculation describes, for the use it describes, exist at the date? If not, <em>Imagined</em>, even if its parts existed.</li>
-            <li>If so, was it in use beyond its makers: sold, broadcast, adopted by institutions or the public? If yes, <em>Existing</em>; if it ran only as its makers’ prototype, trial, pilot or demonstration, <em>Emerging</em>.</li></ol>
-            Examples: Keystone stereographs sold to schools (1906) are <em>existing</em>; Skinner’s machines in his own Harvard trials (1958) are <em>emerging</em>; Bradbury’s parlour walls (1953) are <em>imagined</em>, although broadcast television existed. For backward speculation, judge status at the point where history diverges: television existed in 1960, so a speculation asking what if it had replaced the book that year concerns an existing medium. Status separates speculation about an existing medium from speculation that is itself a speculative medium.</div></section>
-
         <section id="cb-example"><h3>Worked example</h3>
           <p>One speculation from Case 1 coded on every dimension, with the reasoning for each decision. A worked example from Case 2 will follow.</p>
           <p class="quote">“I believe that the motion picture is destined to revolutionize our educational system and that in a few years it will supplant largely, if not entirely, the use of textbooks.”</p>
@@ -561,6 +559,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
             <dt>Source</dt><dd><strong>Hugh Weir, “The Story of the Motion Picture”, <em>McClure’s</em> 54, November 1922, p. 85; quoted in Cuban (1986).</strong> The original is cited first, then the compilation where it was found. <em>To verify:</em> the full wording comes from secondary sources and is checked against <em>McClure’s</em> before the code is final.</dd>
             <dt>Direction</dt><dd><strong>Forward.</strong> A claim about what film will do.</dd>
             <dt>Medium</dt><dd><strong>Film.</strong> “The motion picture”.</dd>
+            <dt>Medium status</dt><dd><strong>Existing.</strong> Films had been made and screened for more than two decades by 1922, and some schools already used them. Edison speculates about what an existing medium will do, not about an invented one.</dd>
             <dt>Scale</dt><dd><strong>National or regional.</strong> “Our educational system”: a national school system, not one classroom or the world.</dd>
             <dt class="grp"><span>Codes</span></dt>
             <dt class="grp sub"><span>1. Tetrad</span></dt>
@@ -573,8 +572,6 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
             <dt>Hypothetical</dt><dd><strong>Will.</strong> “Is destined to” and “will supplant” state certainty. “I believe” frames the claim but does not hedge the main verb.</dd>
             <dt class="grp sub"><span>3. Construal level</span></dt>
             <dt>Level</dt><dd><strong>Abstract.</strong> The speculation names an end (a revolution, the textbook’s disappearance) and no means: no projectors, rooms, teachers or costs.</dd>
-            <dt class="grp sub"><span>4. Medium status</span></dt>
-            <dt>Status</dt><dd><strong>Existing.</strong> Films had been made and screened for more than two decades by 1922, and some schools already used them. Edison speculates about what an existing medium will do, not about an invented one.</dd>
           </dl></section>
 
         <section id="cb-rel"><h3>Reliability</h3><p>All codes in this version are by one coder. Planned: a second coder codes a 20% sample of each case after training on this codebook, for the codes the readings rest on: the Tetrad, construal level, medium status and scale. Agreement is reported per dimension (Cohen’s κ), and the codebook is revised where disagreement clusters.</p></section>
