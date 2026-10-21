@@ -7,15 +7,17 @@ The archive collects claims that a new medium would transform or replace the boo
 | Code | Source | Values |
 |---|---|---|
 | Tetrad law(s) | McLuhan & McLuhan 1988 | enhance, obsolesce, retrieve, reverse |
-| Scope of change | specific to obsolescence | supplements, transforms practice, replaces the medium, replaces the institution |
+| Scope of change | specific to obsolescence | supplements, transforms practice, replaces a medium, replaces an institution |
 | Temporal distance | construal-level theory | stated horizon: imminent, near, distant, unstated |
-| Spatial distance | construal-level theory | this classroom, this country, elsewhere, worldwide |
-| Social distance | construal-level theory | our children, other groups, everyone |
+| Spatial distance | construal-level theory | distance of the setting from the speaker: here, elsewhere, everywhere |
+| Social distance | construal-level theory | us, others (incl. future generations and non-humans), everyone |
 | Hypotheticality | construal-level theory | will, should, could, depicted |
 | Construal level | construal-level theory (outcome) | concrete or abstract language |
 | Format | | press or magazine, talk or broadcast, book, academic paper, report, novel or story, film or television, image, design project |
 | Medium | | stereograph, film, radio, television, teaching machine, computer, virtual reality, internet, AI, direct transmission to the brain (source wording kept as a detail) |
 | Medium status | | whether the medium, as described in its educational use, existed at the date: existing (in use beyond its makers), emerging (only its makers' prototype, trial or demonstration), imagined (no working version, even if its parts existed) |
+| Scale | | local, national or regional, global (recorded as an attribute, not as distance) |
+| Place | | speaker's place and setting, each a country or region |
 | Speaker | | inventor, company, policymaker, educator, researcher, speculative designer, writer or artist |
 
 *Speculative distance* (how far a claim departs from its own present) is coded on five dimensions: the four dimensions of psychological distance in construal-level theory (Trope & Liberman 2010), as marked in the claim's text, plus scope of change, which the theory lacks because it studies everyday events rather than imagined changes to the world. Psychological distance proper is a person's sense of distance and cannot be read from a document, hence the separate term. Construal level is coded as what distance is expected to produce, so the archive can test whether far claims were in fact written abstractly. Scope of change is the primary dimension: crossed with the Tetrad, it forms the wheel. The others, including temporal distance, are reported descriptively; a horizon belongs to a claim as a whole rather than to any one law, and most claims state none.
@@ -31,7 +33,7 @@ The site opens on an Introduction: what historicising means here (after Soden et
 - **Archive** — the Tetrad wheel: four sectors for the Tetrad laws, with rings for **scope of change**. Hover a dot for a summary; select it and the overview card flips to a grey depth-2 card with its full coding ("← Overview" or selecting again flips back). Dots are coloured by media family and filled for concrete language or hollow for abstract. Selecting a speculation that spans several laws links and pulses all its copies. Hatched cells are empty: combinations no speculation codes for; selecting one shows a short note. The overview shows the counts as a Tetrad figure, with the four laws around the number of speculations. Below it, counts the wheel cannot show: media family, medium status, stated horizon (imminent, near, distant, unstated) and speaker. Media-family chips (stereograph and film, radio and television, teaching machines, computers, internet, AI, VR and direct transmission) select what to show (all media by default; click a family to show only it, click it again to return to all media); a decade slider ("Play decades") handles time.
 - **Codebook** — the full coding scheme (v0.1): unit of analysis, attributes (recorded), codes (interpreted: Tetrad, speculative distance, construal level) with definitions, decision rules and examples from the archive, a worked example (Edison 1922 coded on every dimension, with reasoning), and the reliability plan. The table below summarises it.
 - **Sources** — one fixed workspace: a timeline of every speculation by year above a list pane that scrolls on its own. Hover a dot for a summary; select it to bring its source to the top of the list (the page itself does not move). Search filters both. Dots shrink and stack as the archive grows.
-- **Readings** — patterns found by reading the codes against each other, with counts computed live: construal follows the medium's existence rather than its horizon; construal follows space; retrieval and reversal live in imagined media; fiction holds several laws at once; recent speculations are dated and close. Ends with an affirmative and a critical signature (after Dunne & Raby 2013), for reading claims and for making and evaluating critical speculative design, and a references list. Provisional (31 speculations, one coder).
+- **Readings** — patterns found by reading the codes against each other, with counts computed live: construal follows the medium's existence rather than its horizon; construal follows scale; retrieval and reversal live in imagined media; fiction holds several laws at once; recent speculations are dated and close. Ends with an affirmative and a critical signature (after Dunne & Raby 2013), for reading claims and for making and evaluating critical speculative design, and a references list. Provisional (31 speculations, one coder).
 - **Counterfactual obsolescence** — taking past futures at their word. Eligible: every speculation, in any format, whose scope of change is at least “replaces the medium”. One is selected per medium: the speculation with the most unimagined Tetrad laws, ties to the earliest. Each counterfactual assumes it came true and supplies what it left unimagined, in a near, concrete version and a far, abstract one, with a storyboard sketch. Current set: Edison 1925 (film), Asimov 1951 (teaching machine), Bradbury 1953 (television), Papert 1984 (computer), Stephenson 1995 (AI), *The Matrix* 1999 (direct transmission to the brain), Thrun 2012 (online learning).
 
 ## Status of the data
@@ -71,3 +73,8 @@ Each case lives in its own file, separate from the site's code, so the cases can
 Every record uses the codebook's own labels (for example `"scope": "Replaces the medium"`, `"medium_status": "Imagined"`), and the file lists the allowed values at the top. The site turns the labels into the codes the views use and warns in the browser console about any label it does not recognise. To add or recode a speculation, edit the JSON; the wheel, overview, sources and readings update from it.
 
 Because the site loads these files, open it through a web server rather than as a local file, e.g. `python3 -m http.server` in this folder, then visit `http://localhost:8000`.
+
+
+## Codebook v0.2
+
+A shared core plus an annex per case. Labels were generalised for both cases (scope: replaces a medium / an institution; social: us, others, everyone). Spatial distance now follows construal-level theory strictly, as distance from the speaker (here, elsewhere, everywhere); scale and place are recorded as attributes. `data/book.json` was migrated to these labels (v0.2); Star Trek (2009) was recoded as elsewhere.
