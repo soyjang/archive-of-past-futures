@@ -103,6 +103,14 @@ button:focus-visible, [tabindex]:focus-visible, input:focus-visible { outline: 2
 :root[data-theme="dark"] .panel.depth2 { --panel:#2b2b2b; --ink:#f4f4f4; --muted:#b5b5b5; --rule:#3d3d3d; --accent:#ffffff; --accent-soft:#3a3a3a; border-color:#2b2b2b; }
 .cb-steps { margin: 6px 0; padding-left: 20px; display: grid; gap: 4px; }
 .intro { display: grid; gap: 30px; max-width: 80ch; }
+.approaches { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; max-width: 980px; }
+.approach { display: grid; gap: 6px; align-content: start; padding: 16px 18px; border: 1px solid var(--rule); border-radius: 10px; background: var(--panel); color: var(--ink); text-decoration: none; }
+a.approach:hover { border-color: var(--muted); }
+.approach strong { font-family: var(--font-display); font-size: 19px; }
+.approach > span:nth-child(3) { font-size: 14px; line-height: 1.5; color: var(--muted); }
+.approach .from { font: 500 11.5px var(--font-mono); color: var(--muted); border-top: 1px dashed var(--rule); padding-top: 8px; margin-top: 4px; }
+.cf-h { font-family: var(--font-display); font-size: 22px; margin: 18px 0 0; padding-top: 20px; border-top: 1px solid var(--rule); scroll-margin-top: 16px; }
+@media (max-width: 640px) { .approaches { grid-template-columns: minmax(0, 1fr); } }
 .ov-findings { margin: 0; padding-left: 18px; display: grid; gap: 8px; line-height: 1.5; }
 .intro a { color: var(--accent); }
 .cases { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
@@ -271,7 +279,6 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
 .cf-body p { margin: 0; line-height: 1.5; }
 .cf-label { font: 500 12px var(--font-mono); color: var(--accent); text-transform: uppercase; letter-spacing: .05em; }
 .gapcard .from { font: 400 12px var(--font-mono); color: var(--accent); }
-.approach { display: grid; gap: 14px; padding: 22px 0; border-top: 1px solid var(--rule); }
 .ap-head { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 14px; max-width: 86ch; }
 .ap-head h3 { font-family: var(--font-display); font-size: 21px; margin: 0 0 4px; }
 .ap-head p { margin: 0 0 6px; line-height: 1.5; }
@@ -324,7 +331,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
       <a href="#codebook" data-page="codebook">Codebook</a>
       <a href="#book" data-page="book">1 · Past futures of the book</a>
       <a href="#climate" data-page="climate">2 · Climate futures</a>
-      <a href="#counterfactual" data-page="counterfactual">Counterfactual obsolescence</a>
+      <a href="#design" data-page="counterfactual">From readings to design</a>
     </nav>
   </header>
 
@@ -428,7 +435,15 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
   </section>
 
   <section id="pg-counterfactual" class="page" hidden>
-    <div class="pagehead"><h2>Counterfactual obsolescence</h2><p>Taking past futures at their word: design fictions in which a documented prediction of replacement came true, completed with what it failed to imagine.</p></div>
+    <div class="pagehead"><h2>From readings to design</h2><p>The readings become material for design through play: game mechanics that let people act on what past speculation imagined and what it left out. Each approach comes from a reading.</p></div>
+    <div class="approaches">
+      <a class="approach" href="#cf-full"><span class="case-k">1 · Worked out below</span><strong>Counterfactual obsolescence</strong><span>Take a documented prediction of replacement at its word, assume it came true, and complete its Tetrad with what it failed to imagine.</span><span class="from">From: the gaps in what promoters imagined</span></a>
+      <div class="approach"><span class="case-k">2 · In development</span><strong>Oscillation</strong><span>Players move between a near, concrete version of a counterfactual and a far, abstract one, setting their own speculative distance, to see whether moving between them prompts both critique and concrete reasoning.</span><span class="from">From: speculative distance and construal</span></div>
+      <div class="approach"><span class="case-k">3 · In development</span><strong>Four voices</strong><span>Each Tetrad law speaks as a different character in the world: someone who gains, someone who loses, someone who recovers something old, someone undone by the medium’s excess. The world holds several laws at once, and they disagree.</span><span class="from">From: fiction holds several laws at once</span></div>
+      <div class="approach"><span class="case-k">4 · In development</span><strong>Scaling down</strong><span>A worldwide promise is moved into one classroom, where it has to be shown working, and where retrieval and reversal become visible.</span><span class="from">From: construal follows space</span></div>
+    </div>
+    <h3 class="cf-h" id="cf-full">1 · Counterfactual obsolescence</h3>
+    <p>Taking past futures at their word: design fictions in which a documented prediction of replacement came true, completed with what it failed to imagine.</p>
     <ol class="cf-steps">
       <li><strong>Select</strong> one speculation per medium, by a rule applied to the coding.</li>
       <li><strong>Complete the Tetrad.</strong> The claim supplies what it promised; the fiction supplies what it left out: what the new medium retrieves and what it reverses into.</li>
@@ -1178,7 +1193,8 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
   const SECTIONS = { overview: ["overview"], book: ["bookhead", "archive", "sources", "readings"], codebook: ["codebook"], climate: ["climate"], counterfactual: ["counterfactual"] };
   function route() {
     let h = location.hash.slice(1);
-    if (h === "gaps" || h === "ideas") h = "counterfactual";
+    if (h === "gaps" || h === "ideas" || h === "design") h = "counterfactual";
+    const anchor = h === "cf-full" ? h : null; if (anchor) h = "counterfactual";
     if (h.startsWith("cb-")) { const t = document.getElementById(h); if (t && !$("#pg-codebook").hidden) { t.scrollIntoView(); return; } }
     const sub = h === "book" || h === "archive" ? "archive" : ["sources", "readings"].includes(h) ? h : null;
     const page = sub ? "book" : PAGES.includes(h) ? h : "overview";
@@ -1194,6 +1210,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
     if (page === "counterfactual") renderCF();
     if (page === "overview") renderOverview();
     if (h.startsWith("cb-")) document.getElementById(h)?.scrollIntoView();
+    else if (anchor) document.getElementById(anchor)?.scrollIntoView();
     else window.scrollTo(0, 0);
   }
   window.addEventListener("hashchange", route);
