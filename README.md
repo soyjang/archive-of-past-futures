@@ -29,6 +29,7 @@ Temporal distance is coded from the horizon a claim *states*, not a year, becaus
   - A decade slider ("Play decades") and era filters apply to both views.
 - **Sources** — every claim with its speaker, full citation and verification status, linking back to its place on the wheel.
 - **Gaps for speculative design** — every gap on scope of change, each opening a design-fiction prompt with a multiplane animation sketch.
+- **Codebook** — the full coding scheme (v0.1): unit of analysis, attributes, each dimension with definitions, decision rules and examples from the archive, the definition of a gap, and the reliability plan. The table below summarises it.
 
 ## Status of the data
 
