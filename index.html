@@ -111,7 +111,9 @@ a.approach:hover { border-color: var(--muted); }
 .approach strong { font-family: var(--font-display); font-size: 19px; }
 .approach > span:nth-child(3) { font-size: 14px; line-height: 1.5; color: var(--muted); }
 .approach .from { font: 500 11.5px var(--font-mono); color: var(--muted); border-top: 1px dashed var(--rule); padding-top: 8px; margin-top: 4px; }
-.cf-h { font-family: var(--font-display); font-size: 22px; margin: 18px 0 0; padding-top: 20px; border-top: 1px solid var(--rule); scroll-margin-top: 16px; }
+.cf-h { font-family: var(--font-display); font-size: 22px; margin: 6px 0 0; padding-top: 20px; border-top: 1px solid var(--rule); scroll-margin-top: 16px; }
+#cf-full-wrap { display: grid; gap: 22px; }
+#cf-full-wrap[hidden] { display: none; }
 @media (max-width: 640px) { .approaches { grid-template-columns: minmax(0, 1fr); } }
 .ov-findings { margin: 0; padding-left: 18px; display: grid; gap: 8px; line-height: 1.5; }
 .intro a { color: var(--accent); }
@@ -346,7 +348,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
         <p><strong>The method.</strong> To answer, I build a <a href="#codebook">codebook</a>, read the two cases through it, and turn what it reveals into design. The cases are bounded corpora, so the patterns they show are claims about these cases, to be tested elsewhere.</p></section>
       <section class="rd"><h3>Approach</h3>
         <p>Each speculation is read in two ways. McLuhan’s Tetrad asks what it imagines a new artefact will enhance, obsolesce, retrieve and reverse. <strong>Speculative distance</strong> asks how far it departs from its own present: the scope of change it claims, plus the four dimensions of psychological distance in construal-level theory (Trope &amp; Liberman 2010). Construal level is coded separately, to test the theory’s prediction that distant futures are construed abstractly.</p>
-        <p>This is historicising in Soden et al.’s (2021a) sense: every speculation, speculative design included, is read as a document of its own present. Edison’s 1913 claim is measured from 1913, not from today. The readings then become material for design. For example, <a href="#counterfactual">counterfactual obsolescence</a> takes a past prediction at its word and completes it with what it failed to imagine.</p></section>
+        <p>This is historicising in Soden et al.’s (2021a) sense: every speculation, speculative design included, is read as a document of its own present. Edison’s 1913 claim is measured from 1913, not from today. The readings then become material for design through play and games. For example, <a href="#counterfactual">counterfactual obsolescence</a> takes a past prediction at its word and completes it with what it failed to imagine.</p></section>
       <section class="rd"><h3>Two cases</h3>
         <p>Equal in weight, read separately, then compared.</p>
         <div class="cases">
@@ -439,11 +441,12 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
   <section id="pg-counterfactual" class="page" hidden>
     <div class="pagehead"><h2>From readings to design</h2><p>The readings become material for design through play: game mechanics that let people act on what past speculation imagined and what it left out. Each approach comes from a reading.</p></div>
     <div class="approaches">
-      <a class="approach active" href="#cf-full" aria-current="true"><span class="case-k">1 · Worked out below</span><strong>Counterfactual obsolescence</strong><span>Take a documented prediction of replacement at its word, assume it came true, and complete its Tetrad with what it failed to imagine.</span><span class="from">From: the gaps in what promoters imagined</span></a>
+      <a class="approach" href="#cf-full" id="cf-toggle" aria-expanded="false" aria-controls="cf-full-wrap"><span class="case-k">1 · Worked out</span><strong>Counterfactual obsolescence</strong><span>Take a documented prediction of replacement at its word, assume it came true, and complete its Tetrad with what it failed to imagine.</span><span class="from">From: the gaps in what promoters imagined</span></a>
       <div class="approach"><span class="case-k">2 · In development</span><strong>Oscillation</strong><span>Players move between a near, concrete version of a counterfactual and a far, abstract one, setting their own speculative distance, to see whether moving between them prompts both critique and concrete reasoning.</span><span class="from">From: speculative distance and construal</span></div>
       <div class="approach"><span class="case-k">3 · In development</span><strong>Four voices</strong><span>Each Tetrad law speaks as a different character in the world: someone who gains, someone who loses, someone who recovers something old, someone undone by the medium’s excess. The world holds several laws at once, and they disagree.</span><span class="from">From: fiction holds several laws at once</span></div>
       <div class="approach"><span class="case-k">4 · In development</span><strong>Scaling down</strong><span>A worldwide promise is moved into one classroom, where it has to be shown working, and where retrieval and reversal become visible.</span><span class="from">From: construal follows space</span></div>
     </div>
+    <div id="cf-full-wrap" hidden>
     <h3 class="cf-h" id="cf-full">1 · Counterfactual obsolescence</h3>
     <p>Taking past futures at their word: design fictions in which a documented prediction of replacement came true, completed with what it failed to imagine.</p>
     <ol class="cf-steps">
@@ -455,6 +458,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
     <p class="cb-rule" id="cf-rule"></p>
     <div class="cfgrid" id="cf-cards"></div>
     <p class="small">The tie-break could equally favour the most recent speculation, giving each medium its present future (for AI, Gates 2025 rather than Stephenson 1995). From the analysis, not the method: promises recur across eras (the personal tutor in 1966, 1995 and 2023), and fiction already imagines many of the retrievals and reversals that forecasts miss. Anachronistic staging, such as Edison and Gates on one panel, remains an option for presenting the fictions. Storyboards are drafts; animations will be made with an AI-assisted multiplane tool.</p>
+    </div>
   </section>
 
   <section id="pg-codebook" class="page" hidden>
@@ -1197,6 +1201,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
     let h = location.hash.slice(1);
     if (h === "gaps" || h === "ideas" || h === "design") h = "counterfactual";
     const anchor = h === "cf-full" ? h : null; if (anchor) h = "counterfactual";
+    if (anchor) setCF(true);
     if (h.startsWith("cb-")) { const t = document.getElementById(h); if (t && !$("#pg-codebook").hidden) { t.scrollIntoView(); return; } }
     const sub = h === "book" || h === "archive" ? "archive" : ["sources", "readings"].includes(h) ? h : null;
     const page = sub ? "book" : PAGES.includes(h) ? h : "overview";
@@ -1215,6 +1220,16 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
     else if (anchor) document.getElementById(anchor)?.scrollIntoView();
     else window.scrollTo(0, 0);
   }
+  // From readings to design: the counterfactual card opens and closes its full write-up below the cards
+  function setCF(open) {
+    const t = $("#cf-toggle"), w = $("#cf-full-wrap"); if (!t || !w) return;
+    w.hidden = !open; t.classList.toggle("active", open); t.setAttribute("aria-expanded", String(open));
+  }
+  $("#cf-toggle").addEventListener("click", (e) => {
+    e.preventDefault();
+    const open = $("#cf-full-wrap").hidden; setCF(open);
+    if (open) $("#cf-full").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
+  });
   window.addEventListener("hashchange", route);
   fetch(DATA.book).then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
     .then(d => { ingest(d, DATA.book); route(); })
