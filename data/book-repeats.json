@@ -25,7 +25,10 @@
       "hypotheticality": "Will",
       "construal": "Abstract",
       "source": "Frank Parker Hulette, interview with Thomas Edison, Moving Picture World, 22 July 1911, pp. 104–105. Compiled in “Thomas Edison’s Education Predictions”, muninn.net.",
-      "repeat_of": 3
+      "repeat_of": 3,
+      "tetrad_detail": {
+        "enhance": "printing, which moving pictures will “largely supplement”"
+      }
     },
     {
       "id": 4,
@@ -51,7 +54,11 @@
       "construal": "Abstract",
       "source": "Hugh Weir, “The Story of the Motion Picture”, McClure’s 54, November 1922, p. 85; quoted in Cuban (1986).",
       "verify": "Full wording taken from secondary sources; check against McClure’s.",
-      "repeat_of": 3
+      "repeat_of": 3,
+      "tetrad_detail": {
+        "enhance": "the educational system, revolutionised by the motion picture",
+        "obsolesce": "textbooks"
+      }
     },
     {
       "id": 5,
@@ -75,7 +82,10 @@
       "hypotheticality": "Will",
       "construal": "Abstract",
       "source": "Hugh Weir, “What Edison Would Like to Do with the Movies”, Collier’s 75, 21 February 1925, pp. 20–21. Compiled in muninn.net (as above).",
-      "repeat_of": 3
+      "repeat_of": 3,
+      "tetrad_detail": {
+        "obsolesce": "textbooks as the principal medium of teaching"
+      }
     },
     {
       "id": 17,
@@ -99,7 +109,10 @@
       "hypotheticality": "Will",
       "construal": "Concrete",
       "source": "Bill Gates, ASU+GSV Summit, San Diego, April 2023; reported in CNBC, 22 April 2023.",
-      "repeat_of": 18
+      "repeat_of": 18,
+      "tetrad_detail": {
+        "enhance": "feedback on writing, and tutoring as good as any human’s"
+      }
     }
   ]
 }

@@ -116,7 +116,10 @@
       "hypotheticality": "Could",
       "construal": "Concrete",
       "source": "Charles W. Eliot, General Introduction, in Keystone View Company, Visual Education: Teachers’ Guide to Keystone “600 Set” (Meadville, PA: Keystone View Company, 1906; digitised edition c.1922). Internet Archive.",
-      "verify": "Guide copyrighted 1906–1922; confirm which edition carries this introduction."
+      "verify": "Guide copyrighted 1906–1922; confirm which edition carries this introduction.",
+      "tetrad_detail": {
+        "enhance": "teaching, with or without the textbook"
+      }
     },
     {
       "id": 3,
@@ -141,7 +144,11 @@
       "hypotheticality": "Will",
       "construal": "Abstract",
       "source": "Frederick James Smith, “The Evolution of the Motion Picture VI”, New York Dramatic Mirror 70, 9 July 1913, p. 24; cited in Cuban (1986).",
-      "verify": "Second sentence confirmed in the compilation; check the first against the original page."
+      "verify": "Second sentence confirmed in the compilation; check the first against the original page.",
+      "tetrad_detail": {
+        "obsolesce": "books in the public schools",
+        "enhance": "the school system, to be “completely changed”"
+      }
     },
     {
       "id": 6,
@@ -164,7 +171,10 @@
       "social": "Us",
       "hypotheticality": "Will",
       "construal": "Abstract",
-      "source": "Benjamin H. Darrow, first Ohio School of the Air conference, November 1929; quoted in Ohio History Connection, “‘The Flame of Living Genius’: The Ohio School of the Air”, Ohio Memory."
+      "source": "Benjamin H. Darrow, first Ohio School of the Air conference, November 1929; quoted in Ohio History Connection, “‘The Flame of Living Genius’: The Ohio School of the Air”, Ohio Memory.",
+      "tetrad_detail": {
+        "enhance": "children’s contact with “living genius”"
+      }
     },
     {
       "id": 7,
@@ -187,7 +197,10 @@
       "social": "Us",
       "hypotheticality": "Will",
       "construal": "Concrete",
-      "source": "“Federal Communications Commissioner Predicts Educational TV Will Become the Schoolhouse of the Air”, TV Guide, 18 June 1955. Media History Digital Library (Lantern)."
+      "source": "“Federal Communications Commissioner Predicts Educational TV Will Become the Schoolhouse of the Air”, TV Guide, 18 June 1955. Media History Digital Library (Lantern).",
+      "tetrad_detail": {
+        "enhance": "programmes fitted to each child, and the reach of the nation’s finest teachers"
+      }
     },
     {
       "id": 8,
@@ -211,7 +224,11 @@
       "social": "Us",
       "hypotheticality": "Will",
       "construal": "Concrete",
-      "source": "B. F. Skinner, “Teaching Machines”, Science 128(3330), 24 October 1958, pp. 969–977."
+      "source": "B. F. Skinner, “Teaching Machines”, Science 128(3330), 24 October 1958, pp. 969–977.",
+      "tetrad_detail": {
+        "enhance": "instruction, by machine",
+        "obsolesce": "several traditional practices, and the teacher’s role as it was"
+      }
     },
     {
       "id": 9,
@@ -234,7 +251,10 @@
       "social": "Us",
       "hypotheticality": "Could",
       "construal": "Abstract",
-      "source": "“Television and the Crisis in Our Classrooms”, Electronic Age (RCA), Autumn 1959, pp. 3–5. World Radio History archive."
+      "source": "“Television and the Crisis in Our Classrooms”, Electronic Age (RCA), Autumn 1959, pp. 3–5. World Radio History archive.",
+      "tetrad_detail": {
+        "enhance": "the influence of the most talented teachers"
+      }
     },
     {
       "id": 10,
@@ -257,7 +277,10 @@
       "social": "Us",
       "hypotheticality": "Could",
       "construal": "Abstract",
-      "source": "Edmund S. Muskie, Congressional Record – Senate, 12 September 1961. Muskie Archives, Bates College."
+      "source": "Edmund S. Muskie, Congressional Record – Senate, 12 September 1961. Muskie Archives, Bates College.",
+      "tetrad_detail": {
+        "enhance": "teachers’ power to teach"
+      }
     },
     {
       "id": 11,
@@ -281,7 +304,11 @@
       "social": "Unspecified",
       "hypotheticality": "Will",
       "construal": "Abstract",
-      "source": "Patrick Suppes, “The Uses of Computers in Education”, Scientific American 215(3), September 1966, pp. 206–220."
+      "source": "Patrick Suppes, “The Uses of Computers in Education”, Scientific American 215(3), September 1966, pp. 206–220.",
+      "tetrad_detail": {
+        "enhance": "access to a personal tutor",
+        "retrieve": "Aristotle’s tutoring of Alexander, once a royal prerogative"
+      }
     },
     {
       "id": 12,
@@ -305,7 +332,10 @@
       "hypotheticality": "Will",
       "construal": "Abstract",
       "source": "Seymour Papert, 1984; quoted in Cuban (1986).",
-      "verify": "Original 1984 venue not yet identified."
+      "verify": "Original 1984 venue not yet identified.",
+      "tetrad_detail": {
+        "obsolesce": "the school"
+      }
     },
     {
       "id": 13,
@@ -328,7 +358,10 @@
       "social": "Others",
       "hypotheticality": "Will",
       "construal": "Abstract",
-      "source": "William Winn, “A Conceptual Basis for Educational Applications of Virtual Reality”, Technical Report R-93-9, Human Interface Technology Laboratory, University of Washington, August 1993."
+      "source": "William Winn, “A Conceptual Basis for Educational Applications of Virtual Reality”, Technical Report R-93-9, Human Interface Technology Laboratory, University of Washington, August 1993.",
+      "tetrad_detail": {
+        "enhance": "success for children who might otherwise fail"
+      }
     },
     {
       "id": 14,
@@ -352,7 +385,10 @@
       "hypotheticality": "Will",
       "construal": "Abstract",
       "source": "Steven Leckart, “The Stanford Education Experiment Could Change Higher Learning Forever”, Wired, March 2012.",
-      "verify": "Wording via secondary sources; check against the Wired article."
+      "verify": "Wording via secondary sources; check against the Wired article.",
+      "tetrad_detail": {
+        "obsolesce": "all but ten institutions of higher education"
+      }
     },
     {
       "id": 15,
@@ -375,7 +411,10 @@
       "social": "Others",
       "hypotheticality": "Will",
       "construal": "Abstract",
-      "source": "“Clayton Christensen: Bottom 25 Percent of Colleges Will Disappear”, EdSurge, 5 November 2013."
+      "source": "“Clayton Christensen: Bottom 25 Percent of Colleges Will Disappear”, EdSurge, 5 November 2013.",
+      "tetrad_detail": {
+        "obsolesce": "struggling colleges and universities"
+      }
     },
     {
       "id": 16,
@@ -398,7 +437,10 @@
       "social": "Unspecified",
       "hypotheticality": "Will",
       "construal": "Abstract",
-      "source": "Sal Khan, “How AI Could Save (Not Destroy) Education”, TED, 2023; Khan Academy blog, 1 May 2023."
+      "source": "Sal Khan, “How AI Could Save (Not Destroy) Education”, TED, 2023; Khan Academy blog, 1 May 2023.",
+      "tetrad_detail": {
+        "enhance": "education, in “the biggest positive transformation”"
+      }
     },
     {
       "id": 18,
@@ -422,7 +464,11 @@
       "social": "Unspecified",
       "hypotheticality": "Will",
       "construal": "Abstract",
-      "source": "Bill Gates, The Tonight Show Starring Jimmy Fallon, NBC, February 2025; reported by NBC/CNBC."
+      "source": "Bill Gates, The Tonight Show Starring Jimmy Fallon, NBC, February 2025; reported by NBC/CNBC.",
+      "tetrad_detail": {
+        "enhance": "great tutoring, made free and commonplace",
+        "obsolesce": "tutoring as a scarce, costly service"
+      }
     },
     {
       "id": 19,
@@ -448,7 +494,11 @@
       "hypotheticality": "Is (depicted)",
       "construal": "Concrete",
       "source": "Villemard, “En l’an 2000” (school scene), French illustrated card, c.1910. Reproduced in Postcrossing Blog, “En l’an 2000”, 17 October 2013.",
-      "verify": "Series dated c.1899–1910 in secondary sources; confirm the card’s date."
+      "verify": "Series dated c.1899–1910 in secondary sources; confirm the card’s date.",
+      "tetrad_detail": {
+        "enhance": "the transfer of books’ contents into pupils’ heads",
+        "obsolesce": "reading"
+      }
     },
     {
       "id": 20,
@@ -474,7 +524,12 @@
       "social": "Us",
       "hypotheticality": "Is (depicted)",
       "construal": "Concrete",
-      "source": "Isaac Asimov, “The Fun They Had”, Boys and Girls Page (newspaper supplement), 1 December 1951; collected in Earth Is Room Enough (1957)."
+      "source": "Isaac Asimov, “The Fun They Had”, Boys and Girls Page (newspaper supplement), 1 December 1951; collected in Earth Is Room Enough (1957).",
+      "tetrad_detail": {
+        "obsolesce": "the printed book and the school",
+        "retrieve": "the real book, found in an attic",
+        "reverse": "solitary machine teaching, leaving children longing for “the fun they had”"
+      }
     },
     {
       "id": 21,
@@ -500,7 +555,11 @@
       "hypotheticality": "Is (depicted)",
       "construal": "Abstract",
       "source": "Ray Bradbury, Fahrenheit 451 (New York: Ballantine, 1953).",
-      "verify": "Page reference varies by edition."
+      "verify": "Page reference varies by edition.",
+      "tetrad_detail": {
+        "obsolesce": "books, banned and burned",
+        "reverse": "televisors that could carry detail and awareness, used for distraction instead"
+      }
     },
     {
       "id": 22,
@@ -526,7 +585,11 @@
       "hypotheticality": "Could",
       "construal": "Concrete",
       "source": "Ivan Illich, Deschooling Society (New York: Harper & Row, 1971).",
-      "verify": "First edition year (1971) and publisher to confirm."
+      "verify": "First edition year (1971) and publisher to confirm.",
+      "tetrad_detail": {
+        "obsolesce": "the school",
+        "enhance": "finding others who share an interest, through computer matching"
+      }
     },
     {
       "id": 23,
@@ -552,7 +615,11 @@
       "social": "Others",
       "hypotheticality": "Is (depicted)",
       "construal": "Concrete",
-      "source": "Neal Stephenson, The Diamond Age: Or, a Young Lady’s Illustrated Primer (New York: Bantam Spectra, 1995)."
+      "source": "Neal Stephenson, The Diamond Age: Or, a Young Lady’s Illustrated Primer (New York: Bantam Spectra, 1995).",
+      "tetrad_detail": {
+        "enhance": "a book that raises and educates a child",
+        "retrieve": "the storyteller’s human voice"
+      }
     },
     {
       "id": 24,
@@ -576,7 +643,10 @@
       "social": "Us",
       "hypotheticality": "Could",
       "construal": "Abstract",
-      "source": "Siân Bayne, “Teacherbot: Interventions in Automated Teaching”, Teaching in Higher Education, 2015. doi:10.1080/13562517.2015.1020783"
+      "source": "Siân Bayne, “Teacherbot: Interventions in Automated Teaching”, Teaching in Higher Education, 2015. doi:10.1080/13562517.2015.1020783",
+      "tetrad_detail": {
+        "enhance": "teacher presence, alongside automation"
+      }
     },
     {
       "id": 25,
@@ -602,7 +672,11 @@
       "social": "Us",
       "hypotheticality": "Is (depicted)",
       "construal": "Concrete",
-      "source": "Neil Selwyn, Luci Pangrazio, Selena Nemorin and Carlo Perrotta, “What Might the School of 2030 Be Like? An Exercise in Social Science Fiction”, Learning, Media and Technology 45(1), 2020, pp. 90–106. doi:10.1080/17439884.2020.1694944"
+      "source": "Neil Selwyn, Luci Pangrazio, Selena Nemorin and Carlo Perrotta, “What Might the School of 2030 Be Like? An Exercise in Social Science Fiction”, Learning, Media and Technology 45(1), 2020, pp. 90–106. doi:10.1080/17439884.2020.1694944",
+      "tetrad_detail": {
+        "reverse": "data-driven platforms into dataveillance and the deskilling of teachers",
+        "obsolesce": "the school as a single place"
+      }
     },
     {
       "id": 26,
@@ -626,7 +700,10 @@
       "social": "Unspecified",
       "hypotheticality": "Could",
       "construal": "Abstract",
-      "source": "OECD, Back to the Future of Education: Four OECD Scenarios for Schooling (Paris: OECD Publishing, 2020)."
+      "source": "OECD, Back to the Future of Education: Four OECD Scenarios for Schooling (Paris: OECD Publishing, 2020).",
+      "tetrad_detail": {
+        "obsolesce": "school-based learning and schooling as an institution"
+      }
     },
     {
       "id": 27,
@@ -653,7 +730,11 @@
       "hypotheticality": "Is (depicted)",
       "construal": "Concrete",
       "source": "The Jetsons, “Elroy’s Mob”, ABC (Hanna-Barbera), first aired 17 March 1963; described in Matt Novak, “The Jetsons Get Schooled: Robot Teachers in the 21st Century Classroom”, Smithsonian Magazine (Paleofuture), 29 March 2013.",
-      "verify": "Setting year (commonly given as 2062) not confirmed in the source used."
+      "verify": "Setting year (commonly given as 2062) not confirmed in the source used.",
+      "tetrad_detail": {
+        "obsolesce": "the human teacher",
+        "reverse": "the robot teacher malfunctions and praises a nonsense answer"
+      }
     },
     {
       "id": 28,
@@ -678,7 +759,10 @@
       "social": "Us",
       "hypotheticality": "Is (depicted)",
       "construal": "Concrete",
-      "source": "Apple Computer, Knowledge Navigator (concept video, 1987; produced by The Kenwood Group). Internet Archive."
+      "source": "Apple Computer, Knowledge Navigator (concept video, 1987; produced by The Kenwood Group). Internet Archive.",
+      "tetrad_detail": {
+        "enhance": "a professor’s lecture preparation: articles, data and a colleague by video"
+      }
     },
     {
       "id": 29,
@@ -703,7 +787,11 @@
       "social": "Us",
       "hypotheticality": "Is (depicted)",
       "construal": "Concrete",
-      "source": "Lana and Lilly Wachowski (dirs), The Matrix (Warner Bros., 1999)."
+      "source": "Lana and Lilly Wachowski (dirs), The Matrix (Warner Bros., 1999).",
+      "tetrad_detail": {
+        "obsolesce": "training, school and study",
+        "enhance": "learning, downloaded straight into the brain"
+      }
     },
     {
       "id": 30,
@@ -729,7 +817,11 @@
       "hypotheticality": "Is (depicted)",
       "construal": "Concrete",
       "source": "J. J. Abrams (dir.), Star Trek (Paramount, 2009).",
-      "verify": "Scene described from secondary sources; check against the film."
+      "verify": "Scene described from secondary sources; check against the film.",
+      "tetrad_detail": {
+        "enhance": "rapid, individual drilling by computer",
+        "obsolesce": "the teacher and the shared classroom"
+      }
     },
     {
       "id": 31,
@@ -754,7 +846,10 @@
       "social": "Us",
       "hypotheticality": "Is (depicted)",
       "construal": "Concrete",
-      "source": "Corning Incorporated, A Day Made of Glass 2 (concept video, February 2012); reported in IndustryWeek, 21 March 2012."
+      "source": "Corning Incorporated, A Day Made of Glass 2 (concept video, February 2012); reported in IndustryWeek, 21 March 2012.",
+      "tetrad_detail": {
+        "enhance": "the blackboard, as an interactive glass display"
+      }
     },
     {
       "id": 32,
@@ -780,7 +875,11 @@
       "construal": "Concrete",
       "note": "One of about 18 speculative concept cards used as provocations with 21 stakeholders in Pakistan; card text transcribed from Figure 1. Spatial and social: remote regions and rural children, not the authors' own setting. Status Existing: the concept was made in 2020 (sessions July–September), and Vodafone Foundation's Instant Classroom, a 'school in a box' with laptop, projector, speaker and 3G modem, had been in refugee-camp schools since 2015.",
       "source": "Awais Hameed Khan, Neelam Ejaz, Sarah Matthews, Stephen Snow and Ben Matthews, “Speculative Design for Education: Using Participatory Methods to Map Design Challenges and Opportunities in Pakistan”, Proceedings of the 2021 ACM Designing Interactive Systems Conference (DIS ’21), 1748–1764. doi:10.1145/3461778.3462117",
-      "paper": "P003"
+      "paper": "P003",
+      "tetrad_detail": {
+        "enhance": "the reach of classes into remote locations",
+        "obsolesce": "the school building where none is viable"
+      }
     },
     {
       "id": 33,
@@ -806,7 +905,11 @@
       "construal": "Concrete",
       "note": "Designed for Pakistan's many languages and the equation of English fluency with literacy. Retrieve: recitation and oral learning through a popular form. Status Existing: in 2020 Google's Bolo (Read Along), a speech-recognition reading tutor that listens to children read aloud, was available in Pakistan with Urdu stories; the kiosk form is a detail.",
       "source": "Awais Hameed Khan, Neelam Ejaz, Sarah Matthews, Stephen Snow and Ben Matthews, “Speculative Design for Education: Using Participatory Methods to Map Design Challenges and Opportunities in Pakistan”, Proceedings of the 2021 ACM Designing Interactive Systems Conference (DIS ’21), 1748–1764. doi:10.1145/3461778.3462117",
-      "paper": "P003"
+      "paper": "P003",
+      "tetrad_detail": {
+        "enhance": "learning to spell and read by speaking",
+        "retrieve": "learning by recitation, in the form of karaoke"
+      }
     },
     {
       "id": 34,
@@ -832,7 +935,11 @@
       "construal": "Concrete",
       "note": "Designed for regions where children travel long distances to school. Hologram coded as virtual reality, the nearest medium in the list.",
       "source": "Awais Hameed Khan, Neelam Ejaz, Sarah Matthews, Stephen Snow and Ben Matthews, “Speculative Design for Education: Using Participatory Methods to Map Design Challenges and Opportunities in Pakistan”, Proceedings of the 2021 ACM Designing Interactive Systems Conference (DIS ’21), 1748–1764. doi:10.1145/3461778.3462117",
-      "paper": "P003"
+      "paper": "P003",
+      "tetrad_detail": {
+        "enhance": "the reach of classes to distant communities",
+        "obsolesce": "the long journey to school"
+      }
     },
     {
       "id": 35,
@@ -858,7 +965,10 @@
       "construal": "Concrete",
       "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Prototype with a comic.",
       "source": "Nicolas Ruiz, Cara Wilson, Michael S. Gallagher and Jen Ross, “Unsettling ‘More Tech’ Rhetorics in Educational Technology Research: A Case Study on Participatory Speculative Design in Rural Colombian Schools”, Extended Abstracts of the CHI Conference on Human Factors in Computing Systems (CHI EA ’25), article 697. doi:10.1145/3706599.3706699",
-      "paper": "P004"
+      "paper": "P004",
+      "tetrad_detail": {
+        "enhance": "seeing and learning about small animals, and access to the metaverse"
+      }
     },
     {
       "id": 36,
@@ -884,7 +994,10 @@
       "construal": "Concrete",
       "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. The authors note the imagined classroom differs little from today's; the chalkboard returns.",
       "source": "Nicolas Ruiz, Cara Wilson, Michael S. Gallagher and Jen Ross, “Unsettling ‘More Tech’ Rhetorics in Educational Technology Research: A Case Study on Participatory Speculative Design in Rural Colombian Schools”, Extended Abstracts of the CHI Conference on Human Factors in Computing Systems (CHI EA ’25), article 697. doi:10.1145/3706599.3706699",
-      "paper": "P004"
+      "paper": "P004",
+      "tetrad_detail": {
+        "retrieve": "the chalkboard, a garden and crops at school"
+      }
     },
     {
       "id": 37,
@@ -909,7 +1022,10 @@
       "construal": "Concrete",
       "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Spoken in the workshop and first documented in the paper, so Academic paper. Said after scaffolding with a design-fiction video and technology demonstrations. Hypotheticality Should: a wish, not a prediction.",
       "source": "Priyanka Sebastian, Sumita Sharma, Netta Iivari, Marianne Kinnula, Aakash Gautam, Sanna Pitkänen and Charu Monga, “A Tale of Many Futures: Children in Finland and India Envision the Future of Education”, Proceedings of the 2026 CHI Conference on Human Factors in Computing Systems (CHI ’26), article 527. doi:10.1145/3772318.3793808",
-      "paper": "P009"
+      "paper": "P009",
+      "tetrad_detail": {
+        "obsolesce": "homework"
+      }
     },
     {
       "id": 38,
@@ -935,7 +1051,11 @@
       "construal": "Concrete",
       "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Spoken, so Academic paper. Obsolesces physical attendance; spatial Unspecified because the point is 'anywhere'.",
       "source": "Priyanka Sebastian, Sumita Sharma, Netta Iivari, Marianne Kinnula, Aakash Gautam, Sanna Pitkänen and Charu Monga, “A Tale of Many Futures: Children in Finland and India Envision the Future of Education”, Proceedings of the 2026 CHI Conference on Human Factors in Computing Systems (CHI ’26), article 527. doi:10.1145/3772318.3793808",
-      "paper": "P009"
+      "paper": "P009",
+      "tetrad_detail": {
+        "enhance": "attending class from anywhere",
+        "obsolesce": "being in the classroom"
+      }
     },
     {
       "id": 39,
@@ -960,7 +1080,10 @@
       "construal": "Concrete",
       "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Spoken, so Academic paper. Group G3, New Delhi; the same students also say 'Robots cannot teach as well as teachers'. Same Indian workshops as P011.",
       "source": "Priyanka Sebastian, Sumita Sharma, Netta Iivari, Marianne Kinnula, Aakash Gautam, Sanna Pitkänen and Charu Monga, “A Tale of Many Futures: Children in Finland and India Envision the Future of Education”, Proceedings of the 2026 CHI Conference on Human Factors in Computing Systems (CHI ’26), article 527. doi:10.1145/3772318.3793808",
-      "paper": "P009"
+      "paper": "P009",
+      "tetrad_detail": {
+        "enhance": "patience with repeated questions"
+      }
     },
     {
       "id": 40,
@@ -985,7 +1108,10 @@
       "construal": "Abstract",
       "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Spoken, so Academic paper. Group G6. Said in the school's VR laboratory; NCERT publishes India's official school textbooks, so this is the archive's claim in its plainest form: VR will make the textbook useless.",
       "source": "Priyanka Sebastian, Sumita Sharma, Netta Iivari, Marianne Kinnula, Aakash Gautam, Charu Monga, Deepanshu Verma, Chinmay Pade and Chandni Tandon, “‘Robots should not be used for household chores because that would make us lazy’: How Scaffolding Shapes Children’s Capacity to Imagine Educational Futures”, Proceedings of the 25th ACM Interaction Design and Children Conference (IDC ’26), 656–671. doi:10.1145/3773077.3806133",
-      "paper": "P011"
+      "paper": "P011",
+      "tetrad_detail": {
+        "obsolesce": "the official NCERT textbooks"
+      }
     },
     {
       "id": 41,
@@ -1010,7 +1136,10 @@
       "construal": "Abstract",
       "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Spoken, so Academic paper. Group G3, the same group as record 39. Students reimagined lessons where they could 'see calculations in 360 degrees'.",
       "source": "Priyanka Sebastian, Sumita Sharma, Netta Iivari, Marianne Kinnula, Aakash Gautam, Charu Monga, Deepanshu Verma, Chinmay Pade and Chandni Tandon, “‘Robots should not be used for household chores because that would make us lazy’: How Scaffolding Shapes Children’s Capacity to Imagine Educational Futures”, Proceedings of the 25th ACM Interaction Design and Children Conference (IDC ’26), 656–671. doi:10.1145/3773077.3806133",
-      "paper": "P011"
+      "paper": "P011",
+      "tetrad_detail": {
+        "enhance": "concentration and confidence in studies"
+      }
     },
     {
       "id": 42,
@@ -1036,7 +1165,11 @@
       "construal": "Concrete",
       "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Made because 'the culture of reading was dying': retrieves the physical book rather than replacing it.",
       "source": "Zaidat Ibrahim and Pedro Reynolds-Cuéllar, “Robots For Everyday Life: Children’s Visions on Roles of Robots”, Proceedings of the 25th ACM Interaction Design and Children Conference (IDC ’26), 938–943. doi:10.1145/3773077.3812161",
-      "paper": "P013"
+      "paper": "P013",
+      "tetrad_detail": {
+        "retrieve": "the physical book and a culture of reading",
+        "enhance": "access to reading, through Braille and reading aloud"
+      }
     },
     {
       "id": 43,
@@ -1062,7 +1195,11 @@
       "construal": "Concrete",
       "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Obsolesces searching the shelves. Status Existing: robotic book-lending machines that retrieve a chosen title and dispense it through a chute were in use before 2026, e.g. Taipei Public Library's FastBook.",
       "source": "Zaidat Ibrahim and Pedro Reynolds-Cuéllar, “Robots For Everyday Life: Children’s Visions on Roles of Robots”, Proceedings of the 25th ACM Interaction Design and Children Conference (IDC ’26), 938–943. doi:10.1145/3773077.3812161",
-      "paper": "P013"
+      "paper": "P013",
+      "tetrad_detail": {
+        "enhance": "access to the library’s books",
+        "obsolesce": "searching the shelves"
+      }
     },
     {
       "id": 44,
@@ -1088,7 +1225,11 @@
       "construal": "Concrete",
       "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Eight experts wrote dated design-fiction news stories in a world-building workshop. Coded Internet on the authors' own reading: 'our 2030 projection further suggests that digital disruption acts as a catalyst for institutional decentralization'.",
       "source": "Mehmed Nihad Özkaya and Gökçe Elif Baykal, “Sustainable School Setting Futures: WorldBuilding and Mandala to Co-Speculate on Student Motivation in 2035”, Proceedings of the 25th ACM Interaction Design and Children Conference (IDC ’26), 896–901. doi:10.1145/3773077.3812164",
-      "paper": "P014"
+      "paper": "P014",
+      "tetrad_detail": {
+        "obsolesce": "the single school building",
+        "enhance": "learning across a network of institutions"
+      }
     },
     {
       "id": 45,
@@ -1114,7 +1255,11 @@
       "construal": "Concrete",
       "note": "Workshop participants: eight experts writing a dated design-fiction news story. The authors read AI as a layer beneath the skill trees (an 'environmental layer that supports student agency').",
       "source": "Mehmed Nihad Özkaya and Gökçe Elif Baykal, “Sustainable School Setting Futures: WorldBuilding and Mandala to Co-Speculate on Student Motivation in 2035”, Proceedings of the 25th ACM Interaction Design and Children Conference (IDC ’26), 896–901. doi:10.1145/3773077.3812164",
-      "paper": "P014"
+      "paper": "P014",
+      "tetrad_detail": {
+        "obsolesce": "standard classes and single programmes",
+        "enhance": "learners’ choice of their own learning paths"
+      }
     },
     {
       "id": 46,
@@ -1139,7 +1284,10 @@
       "construal": "Abstract",
       "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. From speculative-design interviews with eight instructors; spoken, so Academic paper. They insist AI 'supplements rather than replace critical thinking' (a denial, not coded as obsolescence).",
       "source": "Rodrigo Borela, Meryem Yilmaz Soylu, Jeonghyun Lee and Nimisha Roy, “What Computing Faculty Want: Designing AI Tools for High-Enrollment Courses Beyond CS1”, Proceedings of the 2025 ACM Conference on International Computing Education Research V.2 (ICER ’25), 32–33. doi:10.1145/3702653.3744327",
-      "paper": "P026"
+      "paper": "P026",
+      "tetrad_detail": {
+        "enhance": "instructors’ ability to spot struggling students"
+      }
     }
   ]
 }

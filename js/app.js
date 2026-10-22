@@ -49,7 +49,7 @@
     META.book = { title: data.title, version: data.version, updated: data.updated, coder: data.coder };
     data.speculations.forEach(r => {
       const c = { id: r.id, year: r.year, who: r.who, text: r.text, desc: !!r.description, note: r.note, verify: r.verify, source: r.source,
-        laws: r.tetrad, lang: (r.construal || "").toLowerCase(), documented: true, speaker: r.speaker, medium: r.medium, detail: r.medium_wording || r.medium };
+        laws: r.tetrad, lawDetail: r.tetrad_detail || {}, lang: (r.construal || "").toLowerCase(), documented: true, speaker: r.speaker, medium: r.medium, detail: r.medium_wording || r.medium };
       c.ring = idx(DIMS.scope.levels, r.scope, "scope of change", r.id);
       c.temporal = idx(DIMS.temporal.levels, r.horizon, "horizon", r.id); c.when = r.horizon_phrase || "";
       c.spatial = idx(DIMS.spatial.levels, r.spatial, "spatial distance", r.id);
@@ -173,7 +173,7 @@
           <dt>Status</dt><dd>${STATUS[c.status - 1]}</dd>
           <dt>Format</dt><dd>${GENRES[c.genre]}</dd>
           <dt>Speaker</dt><dd>${c.speaker}</dd>
-          <dt>Tetrad</dt><dd>${c.laws.map(l => `<span class="tag">${LAWS[l].label}</span>`).join("")}</dd>
+          <dt>Tetrad</dt><dd class="tetrad-dd">${c.laws.map(l => `<div><span class="tag">${LAWS[l].label}</span>${c.lawDetail[l] ? ` ${c.lawDetail[l]}` : ""}</div>`).join("")}</dd>
           <dt>Scope</dt><dd>${DIMS.scope.levels[c.ring - 1]}</dd>
           <dt>Temporal</dt><dd>${DIMS.temporal.levels[c.temporal - 1]}${c.when ? ` (“${c.when}”)` : ""}</dd>
           <dt>Spatial</dt><dd>${DIMS.spatial.levels[c.spatial - 1]}</dd>
