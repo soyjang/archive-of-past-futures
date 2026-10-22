@@ -1,7 +1,7 @@
 {
   "case": "book",
   "title": "Repeat speculations by the same speaker",
-  "note": "One speculation per speaker counts in the archive: the one with the widest scope of change, ties to the earliest. The others are kept here, out of every count and reading.",
+  "note": "One speculation per speaker per work: when a speaker has speculations in several works, the one with the widest scope of change counts, ties to the earliest. The others are kept here, out of every count and reading. Distinct speculations within one work (scenarios, concept cards, a workshop's statements) all count.",
   "speculations": [
     {
       "id": 2,
@@ -100,113 +100,6 @@
       "construal": "Concrete",
       "source": "Bill Gates, ASU+GSV Summit, San Diego, April 2023; reported in CNBC, 22 April 2023.",
       "repeat_of": 18
-    },
-    {
-      "id": 33,
-      "year": 2021,
-      "who": "Khan et al. (concept card “Language Karaoke”)",
-      "text": "A freestanding karaoke-style machine that lets kids use a mic to speak into to learn how words are spelt and pulled together.",
-      "direction": "Forward",
-      "medium": "Computer",
-      "medium_wording": "Language Karaoke: speech-driven spelling machine",
-      "medium_status": "Existing",
-      "format": "Design project",
-      "speaker": "Designer",
-      "tetrad": [
-        "enhance",
-        "retrieve"
-      ],
-      "scope": "Supplements",
-      "horizon": "Unstated",
-      "horizon_phrase": "",
-      "spatial": "Here",
-      "social": "Us",
-      "hypotheticality": "Is (depicted)",
-      "construal": "Concrete",
-      "note": "Designed for Pakistan's many languages and the equation of English fluency with literacy. Retrieve: recitation and oral learning through a popular form. Status Existing: in 2020 Google's Bolo (Read Along), a speech-recognition reading tutor that listens to children read aloud, was available in Pakistan with Urdu stories; the kiosk form is a detail. First-pass coding by Claude from the ACM extension, to check.",
-      "source": "Awais Hameed Khan, Neelam Ejaz, Sarah Matthews, Stephen Snow and Ben Matthews, “Speculative Design for Education: Using Participatory Methods to Map Design Challenges and Opportunities in Pakistan”, Proceedings of the 2021 ACM Designing Interactive Systems Conference (DIS ’21), 1748–1764. doi:10.1145/3461778.3462117",
-      "paper": "P003",
-      "repeat_of": 32
-    },
-    {
-      "id": 34,
-      "year": 2021,
-      "who": "Khan et al. (concept card “Drone Projections”)",
-      "text": "A drone based teaching delivery system that uses holographic projections of classes; flying to communities daily.",
-      "direction": "Forward",
-      "medium": "Virtual reality",
-      "medium_wording": "Drone Projections: holographic classes delivered by drone",
-      "medium_status": "Imagined",
-      "format": "Design project",
-      "speaker": "Designer",
-      "tetrad": [
-        "enhance",
-        "obsolesce"
-      ],
-      "scope": "Transforms practice",
-      "horizon": "Unstated",
-      "horizon_phrase": "",
-      "spatial": "Elsewhere",
-      "social": "Others",
-      "hypotheticality": "Is (depicted)",
-      "construal": "Concrete",
-      "note": "Designed for regions where children travel long distances to school. Hologram coded as virtual reality, the nearest medium in the list. First-pass coding by Claude from the ACM extension, to check.",
-      "source": "Awais Hameed Khan, Neelam Ejaz, Sarah Matthews, Stephen Snow and Ben Matthews, “Speculative Design for Education: Using Participatory Methods to Map Design Challenges and Opportunities in Pakistan”, Proceedings of the 2021 ACM Designing Interactive Systems Conference (DIS ’21), 1748–1764. doi:10.1145/3461778.3462117",
-      "paper": "P003",
-      "repeat_of": 32
-    },
-    {
-      "id": 41,
-      "year": 2026,
-      "who": "A student at an all-girls school in New Delhi (Sebastian et al.)",
-      "text": "Concentration in studies will increase... you gain confidence that you can do it.",
-      "direction": "Forward",
-      "medium": "Virtual reality",
-      "medium_wording": "VR lessons ('see calculations in 360 degrees')",
-      "medium_status": "Existing",
-      "format": "Academic paper",
-      "speaker": "Workshop participants",
-      "tetrad": [
-        "enhance"
-      ],
-      "scope": "Supplements",
-      "horizon": "Unstated",
-      "horizon_phrase": "",
-      "spatial": "Here",
-      "social": "Us",
-      "hypotheticality": "Will",
-      "construal": "Abstract",
-      "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Spoken, so Academic paper. Group G3, the same group as record 39. Students reimagined lessons where they could 'see calculations in 360 degrees'. First-pass coding by Claude from the ACM extension, to check.",
-      "source": "Priyanka Sebastian, Sumita Sharma, Netta Iivari, Marianne Kinnula, Aakash Gautam, Charu Monga, Deepanshu Verma, Chinmay Pade and Chandni Tandon, “‘Robots should not be used for household chores because that would make us lazy’: How Scaffolding Shapes Children’s Capacity to Imagine Educational Futures”, Proceedings of the 25th ACM Interaction Design and Children Conference (IDC ’26), 656–671. doi:10.1145/3773077.3806133",
-      "paper": "P011",
-      "repeat_of": 39
-    },
-    {
-      "id": 45,
-      "year": 2026,
-      "who": "Eight education and game-design experts (Özkaya & Baykal)",
-      "text": "By 2035, high school education in this vision is no longer organized around standard classes or single programs.",
-      "direction": "Forward",
-      "medium": "Game",
-      "medium_wording": "Game-like skill trees across a school network (2035 design-fiction news story)",
-      "medium_status": "Imagined",
-      "format": "Design project",
-      "speaker": "Workshop participants",
-      "tetrad": [
-        "obsolesce",
-        "enhance"
-      ],
-      "scope": "Replaces an institution",
-      "horizon": "Distant",
-      "horizon_phrase": "December 25, 2035",
-      "spatial": "Unspecified",
-      "social": "Unspecified",
-      "hypotheticality": "Is (depicted)",
-      "construal": "Concrete",
-      "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Learning follows 'a progression logic familiar from games'; coded Game. First-pass coding by Claude from the ACM extension, to check.",
-      "source": "Mehmed Nihad Özkaya and Gökçe Elif Baykal, “Sustainable School Setting Futures: WorldBuilding and Mandala to Co-Speculate on Student Motivation in 2035”, Proceedings of the 25th ACM Interaction Design and Children Conference (IDC ’26), 896–901. doi:10.1145/3773077.3812164",
-      "paper": "P014",
-      "repeat_of": 44
     }
   ]
 }
