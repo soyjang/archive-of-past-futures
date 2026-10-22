@@ -47,7 +47,7 @@
 
 <script>
   // Each page is a file in pages/. They are loaded in this order, then js/app.js runs.
-  const PAGE_FILES = ["intro", "book-header", "book-wheel", "book-corpus", "book-sources", "book-readings", "climate", "design", "codebook"];
+  const PAGE_FILES = ["intro", "book-header", "book-wheel", "book-corpus", "book-readings", "climate", "design", "codebook"];
   Promise.all(PAGE_FILES.map(p => fetch("pages/" + p + ".html").then(r => { if (!r.ok) throw new Error("pages/" + p + ".html"); return r.text(); })))
     .then(parts => {
       document.getElementById("pages").innerHTML = parts.join("\n");

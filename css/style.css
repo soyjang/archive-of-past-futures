@@ -235,6 +235,8 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
 .pagehead h2 { font-family: var(--font-display); font-size: 28px; margin: 0; }
 .strip-wrap { overflow-x: auto; display: grid; gap: 10px; background: var(--panel); border: 1px solid var(--rule); border-radius: 10px; padding: 12px; }
 .src-work { display: grid; gap: 12px; }
+#pg-bookcorpus { display: grid; gap: 34px; }
+#corpus-sources { max-width: none; }
 .src-tools { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; }
 .src-tools input { font: 400 15px var(--font-body); padding: 7px 12px; border: 1px solid var(--rule); border-radius: 8px; background: var(--panel); color: var(--ink); min-width: min(100%, 320px); }
 .strip-wrap svg { width: 100%; min-width: 700px; }
