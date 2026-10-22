@@ -17,8 +17,7 @@ The archive collects claims that a new medium would transform or replace the boo
 | Direction | | forward (a future), backward (a counterfactual past), sideways (a parallel present) |
 | Medium | | stereograph, film, radio, television, teaching machine, computer, virtual reality, internet, AI, direct transmission to the brain (source wording kept as a detail) |
 | Medium status | | whether the medium, as described in its educational use, existed at the date: existing (in use beyond its makers), emerging (only its makers' prototype, trial or demonstration), imagined (no working version, even if its parts existed) |
-| Reach | | local, national or regional, global: how widely the change extends (scope is how deep it goes); recorded as an attribute, not as distance |
-| Speaker | | inventor, company, policymaker, educator, researcher, speculative designer, writer or artist |
+| Speaker | | inventor, company, policymaker, educator, researcher, designer, writer or artist |
 
 *Speculative distance* (how far a claim departs from its own present) is coded on five dimensions: the four dimensions of psychological distance in construal-level theory (Trope & Liberman 2010), as marked in the claim's text, plus scope of change, which the theory lacks because it studies everyday events rather than imagined changes to the world. Psychological distance proper is a person's sense of distance and cannot be read from a document, hence the separate term. Construal level is coded as what distance is expected to produce, so the archive can test whether far claims were in fact written abstractly. Scope of change is the primary dimension: crossed with the Tetrad, it forms the wheel. The others, including temporal distance, are reported descriptively; a horizon belongs to a claim as a whole rather than to any one law, and most claims state none.
 
@@ -80,3 +79,9 @@ Because the site loads these files, open it through a web server rather than as 
 One codebook for both cases; what each case collects, and its media list, sits with its corpus (Project 1 › Sources; Project 2). Labels were generalised for both cases (scope: replaces a medium / an institution; social: us, others, everyone). Spatial distance now follows construal-level theory strictly, as distance from the speaker (here, elsewhere, everywhere); reach is recorded as an attribute. `data/book.json` was migrated to these labels (v0.2); Star Trek (2009) was recoded as elsewhere.
 
 Attributes are grouped as *the record* (year, attribution, speaker, format, text, source with a to-verify flag, notes) and *what it imagines* (direction, medium, medium status, reach); medium status and reach need decision rules and are in the reliability check. New rules: researcher vs speculative designer; the central medium when several are involved; medium status for backward speculation judged at the point of divergence.
+
+## Codebook v0.3 and corpora
+
+Reach was removed: it overlapped with spatial distance and matters little for climate, which is mostly global. Reading 2 is now "Futures set everywhere are abstract", read from spatial distance. "Speculative designer" is now "Designer", with rules separating designers, writers or artists and researchers. Construal is coded from the work itself, never from the archive's one-line description. Installations, games and live performances are excluded for now and reported as a limitation.
+
+Each project has a **Corpus** sub-tab beside the wheel stating scope and how the corpus was developed. Project 1's pilot was assembled purposively (with live counts by format and period); its CHI and DIS extension will state its search procedure. Project 2 takes the 28 project papers from Soden et al. (2021b): 40 of 171 ACM papers (2009–2021) had sustainability as the primary issue and speculative design or a related practice as the primary method; 28 of these are project papers.
