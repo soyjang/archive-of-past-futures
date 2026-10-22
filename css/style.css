@@ -15,6 +15,7 @@
   --fam5: #2f6db3;        /* internet */
   --fam6: #55606e;        /* VR and direct transmission */
   --fam7: #c4621a;        /* computers */
+  --fam8: #6b8e23;        /* games */
   --font-display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
   --font-body: "Atkinson Hyperlegible", "Helvetica Neue", Arial, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
@@ -23,14 +24,14 @@
   :root:not([data-theme="light"]) {
     --paper: #121212; --panel: #1b1b1b; --ink: #ededed; --muted: #a3a3a3; --rule: #2f2f2f;
     --accent: #f0f0f0; --accent-soft: #2b2b2b; --cell-sel: #2b2b2b;
-    --era1: #d6b45a; --era2: #5fc6ad; --era3: #a58ff2; --era4: #f17ba6; --fam5: #79aef0; --fam6: #b8c1cf; --fam7: #f0a061;
+    --era1: #d6b45a; --era2: #5fc6ad; --era3: #a58ff2; --era4: #f17ba6; --fam5: #79aef0; --fam6: #b8c1cf; --fam7: #f0a061; --fam8: #a9c46a;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --paper: #121212; --panel: #1b1b1b; --ink: #ededed; --muted: #a3a3a3; --rule: #2f2f2f;
   --accent: #f0f0f0; --accent-soft: #2b2b2b; --cell-sel: #2b2b2b;
-  --era1: #d6b45a; --era2: #5fc6ad; --era3: #a58ff2; --era4: #f17ba6; --fam5: #79aef0; --fam6: #b8c1cf; --fam7: #f0a061;
+  --era1: #d6b45a; --era2: #5fc6ad; --era3: #a58ff2; --era4: #f17ba6; --fam5: #79aef0; --fam6: #b8c1cf; --fam7: #f0a061; --fam8: #a9c46a;
   color-scheme: dark;
 }
 body {

@@ -6,8 +6,9 @@
     { id: "machines", label: "Teaching machines", media: ["machine"], v: "--era3" },
     { id: "computers", label: "Computers", media: ["computer"], v: "--fam7" },
     { id: "online", label: "Internet", media: ["online"], v: "--fam5" },
-    { id: "ai", label: "AI", media: ["ai"], v: "--era4" },
-    { id: "immersion", label: "VR and direct transmission", media: ["vr", "brain"], v: "--fam6" }
+    { id: "ai", label: "AI and robots", media: ["ai", "robot"], v: "--era4" },
+    { id: "immersion", label: "VR and direct transmission", media: ["vr", "brain"], v: "--fam6" },
+    { id: "games", label: "Games", media: ["game"], v: "--fam8" }
   ];
   const LAWS = {
     enhance:   { label: "Enhances",   a0: 90,  a1: 180, verb: "enhance" },
@@ -33,8 +34,8 @@
   // Documented claims, gathered from primary sources or reputable compilations. Codes are provisional (single coder).
   // verify: wording or original venue still to be checked against the primary source.
   // ---------- data: each case lives in its own file (data/book.json, data/climate.json) ----------
-  const SPEAKERS = ["Inventor", "Company", "Policymaker", "Intergovernmental body", "Activist or NGO", "Educator", "Researcher", "Designer", "Writer or artist"];
-  const SUCC = { stereograph: "Stereograph", film: "Film", radio: "Radio", tv: "Television", machine: "Teaching machine", computer: "Computer", vr: "Virtual reality", online: "Internet", ai: "AI", brain: "Direct transmission to the brain" };
+  const SPEAKERS = ["Inventor", "Company", "Policymaker", "Intergovernmental body", "Activist or NGO", "Educator", "Researcher", "Designer", "Writer or artist", "Workshop participants"];
+  const SUCC = { stereograph: "Stereograph", film: "Film", radio: "Radio", tv: "Television", machine: "Teaching machine", computer: "Computer", vr: "Virtual reality", online: "Internet", ai: "AI", robot: "Robot", game: "Game", brain: "Direct transmission to the brain" };
   const GENRES = { press: "Press or magazine", talk: "Talk or broadcast", book: "Book", paper: "Academic paper", report: "Report", story: "Novel or story", film: "Film or television", image: "Image", design: "Design project", unknown: "Format unknown" };
   const STATUS = ["Existing", "Emerging", "Imagined"];
   const CLAIMS = [];
