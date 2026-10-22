@@ -527,7 +527,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
 
           <dt>Obsolesces</dt><dd>Pushes an existing medium or practice out of use. <q>Textbooks as the principal medium of teaching will be as obsolete as the horse and carriage.</q> (Edison, 1925)</dd>
           <dt>Retrieves</dt><dd>Brings back something older that had been lost. <q>…what Philip of Macedon’s son Alexander enjoyed as a royal prerogative: the personal services of a tutor…</q> (Suppes, 1966)</dd>
-          <dt>Reverses</dt><dd>Pushed to its limit, flips into its opposite. In Asimov’s story, individual machine teaching turns into isolation and longing for the old school.</dd></dl>
+          <dt>Reverses</dt><dd>Pushed to its limit, flips into its opposite. <em>Individual teaching by machine turns into isolation and longing for the old school.</em> (Isaac Asimov, “The Fun They Had”, 1951)</dd></dl>
           <p class="cb-rule"><strong>Rule.</strong> Code what is promised, not what the coder thinks would follow. A denial is not coded as the law it denies: a speculation that a medium will <em>not</em> replace teachers, or will <em>not</em> end car travel, is not obsolescence.</p></section>
 
         <section id="cb-distance" class="cb-sub"><h3>2. Speculative distance</h3>
@@ -546,7 +546,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
           <dt>Near</dt><dd>About five to fifteen years. <q>inside of ten years</q>, <q>over the next decade</q>, <q>in the next 10 to 15 years</q>.</dd>
           <dt>Distant</dt><dd>Beyond about fifteen years. <q>fifty years from now</q>, <q>one day</q>, <q>by 2100</q>.</dd>
           <dt>Unstated</dt><dd>No horizon given, or only a vague one (<q>in the future</q>). A value in its own right: a vague horizon may itself mark abstract construal.</dd></dl>
-          <p class="cb-rule"><strong>Rules.</strong> If a year is given, map it by the thresholds. If two phrases conflict, code the more specific (Edison 1913: <q>soon</q> and <q>inside of ten years</q> → near). For fiction and scenarios, use the setting year if one is given (Asimov’s 2157 → distant). For backward speculation, measure from the speaker’s present back to the point where history diverges (a 2020 work asking what if television had replaced the book in 1960 → distant). For sideways speculation, code <em>Unstated</em> unless a time is marked. For backward speculation, read the levels as distances in either direction. Thresholds are provisional.</p>
+          <p class="cb-rule"><strong>Rules.</strong> If a year is given, map it by the thresholds. If two phrases conflict, code the more specific (Edison 1913: <q>soon</q> and <q>inside of ten years</q> → near). For fiction and scenarios, use the setting year if one is given (Asimov’s “The Fun They Had”, written in 1951 and set in 2157 → distant). For backward speculation, measure from the speaker’s present back to the point where history diverges (a 2020 work asking what if television had replaced the book in 1960 → distant). For sideways speculation, code <em>Unstated</em> unless a time is marked. For backward speculation, read the levels as distances in either direction. Thresholds are provisional.</p>
 
           <h4>2c. Spatial distance</h4>
           <p>How far the setting lies from the speaker’s own place.</p>
@@ -1211,7 +1211,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
         f: fig(byStatus, [["Retrieves or reverses", rr, "s1"], ["Neither", c => !rr(c), "s3"]]),
         i: "Counterfactual obsolescence completes an affirmative speculation with the laws only fiction has imagined." },
       { t: "Fiction holds several laws at once",
-        p: `${cnt(writers, multi) === writers.length ? "Every" : "Most"} speculation${cnt(writers, multi) === writers.length ? "" : "s"} by a writer or artist code${cnt(writers, multi) === writers.length ? "s" : ""} for more than one law (${cnt(writers, multi)} of ${writers.length}), against ${cnt(ex, multi)} of ${ex.length} about existing media. Asimov’s mechanical teacher enhances, obsolesces and reverses at once; promoters make single-law promises.`,
+        p: `${cnt(writers, multi) === writers.length ? "Every" : "Most"} speculation${cnt(writers, multi) === writers.length ? "" : "s"} by a writer or artist code${cnt(writers, multi) === writers.length ? "s" : ""} for more than one law (${cnt(writers, multi)} of ${writers.length}), against ${cnt(ex, multi)} of ${ex.length} about existing media. The mechanical teacher in Isaac Asimov’s “The Fun They Had” (1951) enhances, obsolesces and reverses at once; promoters make single-law promises.`,
         f: fig(byStatus, [["Several laws", multi, "s1"], ["One law", c => !multi(c), "s3"]]),
         i: "Holding more than one law can be coded and tested on any design; inventing a medium is one way to get there, not the goal." },
       { t: "Recent speculations are dated and close",
