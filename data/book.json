@@ -4,7 +4,7 @@
   "version": "0.5",
   "updated": "2026-10-22",
   "coder": "One coder (provisional); to be double-coded",
-  "note": "One record per speculation. Labels must match the codebook exactly; the site warns about any it does not recognise. v0.3: reach removed; spatial distance (Here, Elsewhere, Everywhere) is distance from the speaker; Speculative designer renamed Designer. v0.4: 15 speculations added from 7 papers in the ACM extension (ids 32–46), first-pass coding to check; each carries its paper ID from the screening sheet. v0.5: Robot and Game added as media; Workshop participants added as a speaker; one speculation per speaker per work (widest scope, ties to the earliest): repeats across works moved to book-repeats.json; distinct speculations within one work all count.",
+  "note": "One record per speculation. Labels must match the codebook exactly; the site warns about any it does not recognise. v0.3: reach removed; spatial distance (Here, Elsewhere, Everywhere) is distance from the speaker; Speculative designer renamed Designer. v0.4: 15 speculations added from 7 papers in the ACM extension (ids 32–46); each carries its paper ID from the screening sheet. v0.5: Robot and Game added as media; Workshop participants added as a speaker; one speculation per speaker per work (widest scope, ties to the earliest): repeats across works moved to book-repeats.json; distinct speculations within one work all count.",
   "values": {
     "direction": [
       "Forward",
@@ -778,7 +778,7 @@
       "social": "Others",
       "hypotheticality": "Is (depicted)",
       "construal": "Concrete",
-      "note": "One of about 18 speculative concept cards used as provocations with 21 stakeholders in Pakistan; card text transcribed from Figure 1. Spatial and social: remote regions and rural children, not the authors' own setting. Status Existing: the concept was made in 2020 (sessions July–September), and Vodafone Foundation's Instant Classroom, a 'school in a box' with laptop, projector, speaker and 3G modem, had been in refugee-camp schools since 2015. First-pass coding by Claude from the ACM extension, to check.",
+      "note": "One of about 18 speculative concept cards used as provocations with 21 stakeholders in Pakistan; card text transcribed from Figure 1. Spatial and social: remote regions and rural children, not the authors' own setting. Status Existing: the concept was made in 2020 (sessions July–September), and Vodafone Foundation's Instant Classroom, a 'school in a box' with laptop, projector, speaker and 3G modem, had been in refugee-camp schools since 2015.",
       "source": "Awais Hameed Khan, Neelam Ejaz, Sarah Matthews, Stephen Snow and Ben Matthews, “Speculative Design for Education: Using Participatory Methods to Map Design Challenges and Opportunities in Pakistan”, Proceedings of the 2021 ACM Designing Interactive Systems Conference (DIS ’21), 1748–1764. doi:10.1145/3461778.3462117",
       "paper": "P003"
     },
@@ -804,7 +804,7 @@
       "social": "Us",
       "hypotheticality": "Is (depicted)",
       "construal": "Concrete",
-      "note": "Designed for Pakistan's many languages and the equation of English fluency with literacy. Retrieve: recitation and oral learning through a popular form. Status Existing: in 2020 Google's Bolo (Read Along), a speech-recognition reading tutor that listens to children read aloud, was available in Pakistan with Urdu stories; the kiosk form is a detail. First-pass coding by Claude from the ACM extension, to check.",
+      "note": "Designed for Pakistan's many languages and the equation of English fluency with literacy. Retrieve: recitation and oral learning through a popular form. Status Existing: in 2020 Google's Bolo (Read Along), a speech-recognition reading tutor that listens to children read aloud, was available in Pakistan with Urdu stories; the kiosk form is a detail.",
       "source": "Awais Hameed Khan, Neelam Ejaz, Sarah Matthews, Stephen Snow and Ben Matthews, “Speculative Design for Education: Using Participatory Methods to Map Design Challenges and Opportunities in Pakistan”, Proceedings of the 2021 ACM Designing Interactive Systems Conference (DIS ’21), 1748–1764. doi:10.1145/3461778.3462117",
       "paper": "P003"
     },
@@ -830,7 +830,7 @@
       "social": "Others",
       "hypotheticality": "Is (depicted)",
       "construal": "Concrete",
-      "note": "Designed for regions where children travel long distances to school. Hologram coded as virtual reality, the nearest medium in the list. First-pass coding by Claude from the ACM extension, to check.",
+      "note": "Designed for regions where children travel long distances to school. Hologram coded as virtual reality, the nearest medium in the list.",
       "source": "Awais Hameed Khan, Neelam Ejaz, Sarah Matthews, Stephen Snow and Ben Matthews, “Speculative Design for Education: Using Participatory Methods to Map Design Challenges and Opportunities in Pakistan”, Proceedings of the 2021 ACM Designing Interactive Systems Conference (DIS ’21), 1748–1764. doi:10.1145/3461778.3462117",
       "paper": "P003"
     },
@@ -856,7 +856,7 @@
       "social": "Us",
       "hypotheticality": "Is (depicted)",
       "construal": "Concrete",
-      "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Prototype with a comic. First-pass coding by Claude from the ACM extension, to check.",
+      "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Prototype with a comic.",
       "source": "Nicolas Ruiz, Cara Wilson, Michael S. Gallagher and Jen Ross, “Unsettling ‘More Tech’ Rhetorics in Educational Technology Research: A Case Study on Participatory Speculative Design in Rural Colombian Schools”, Extended Abstracts of the CHI Conference on Human Factors in Computing Systems (CHI EA ’25), article 697. doi:10.1145/3706599.3706699",
       "paper": "P004"
     },
@@ -882,7 +882,7 @@
       "social": "Us",
       "hypotheticality": "Is (depicted)",
       "construal": "Concrete",
-      "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. The authors note the imagined classroom differs little from today's; the chalkboard returns. First-pass coding by Claude from the ACM extension, to check.",
+      "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. The authors note the imagined classroom differs little from today's; the chalkboard returns.",
       "source": "Nicolas Ruiz, Cara Wilson, Michael S. Gallagher and Jen Ross, “Unsettling ‘More Tech’ Rhetorics in Educational Technology Research: A Case Study on Participatory Speculative Design in Rural Colombian Schools”, Extended Abstracts of the CHI Conference on Human Factors in Computing Systems (CHI EA ’25), article 697. doi:10.1145/3706599.3706699",
       "paper": "P004"
     },
@@ -907,7 +907,7 @@
       "social": "Us",
       "hypotheticality": "Should",
       "construal": "Concrete",
-      "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Spoken in the workshop and first documented in the paper, so Academic paper. Said after scaffolding with a design-fiction video and technology demonstrations. Hypotheticality Should: a wish, not a prediction. First-pass coding by Claude from the ACM extension, to check.",
+      "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Spoken in the workshop and first documented in the paper, so Academic paper. Said after scaffolding with a design-fiction video and technology demonstrations. Hypotheticality Should: a wish, not a prediction.",
       "source": "Priyanka Sebastian, Sumita Sharma, Netta Iivari, Marianne Kinnula, Aakash Gautam, Sanna Pitkänen and Charu Monga, “A Tale of Many Futures: Children in Finland and India Envision the Future of Education”, Proceedings of the 2026 CHI Conference on Human Factors in Computing Systems (CHI ’26), article 527. doi:10.1145/3772318.3793808",
       "paper": "P009"
     },
@@ -933,7 +933,7 @@
       "social": "Us",
       "hypotheticality": "Could",
       "construal": "Concrete",
-      "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Spoken, so Academic paper. Obsolesces physical attendance; spatial Unspecified because the point is 'anywhere'. First-pass coding by Claude from the ACM extension, to check.",
+      "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Spoken, so Academic paper. Obsolesces physical attendance; spatial Unspecified because the point is 'anywhere'.",
       "source": "Priyanka Sebastian, Sumita Sharma, Netta Iivari, Marianne Kinnula, Aakash Gautam, Sanna Pitkänen and Charu Monga, “A Tale of Many Futures: Children in Finland and India Envision the Future of Education”, Proceedings of the 2026 CHI Conference on Human Factors in Computing Systems (CHI ’26), article 527. doi:10.1145/3772318.3793808",
       "paper": "P009"
     },
@@ -958,7 +958,7 @@
       "social": "Us",
       "hypotheticality": "Will",
       "construal": "Concrete",
-      "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Spoken, so Academic paper. Group G3, New Delhi; the same students also say 'Robots cannot teach as well as teachers'. Same Indian workshops as P011. First-pass coding by Claude from the ACM extension, to check.",
+      "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Spoken, so Academic paper. Group G3, New Delhi; the same students also say 'Robots cannot teach as well as teachers'. Same Indian workshops as P011.",
       "source": "Priyanka Sebastian, Sumita Sharma, Netta Iivari, Marianne Kinnula, Aakash Gautam, Sanna Pitkänen and Charu Monga, “A Tale of Many Futures: Children in Finland and India Envision the Future of Education”, Proceedings of the 2026 CHI Conference on Human Factors in Computing Systems (CHI ’26), article 527. doi:10.1145/3772318.3793808",
       "paper": "P009"
     },
@@ -983,7 +983,7 @@
       "social": "Us",
       "hypotheticality": "Will",
       "construal": "Abstract",
-      "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Spoken, so Academic paper. Group G6. Said in the school's VR laboratory; NCERT publishes India's official school textbooks, so this is the archive's claim in its plainest form: VR will make the textbook useless. First-pass coding by Claude from the ACM extension, to check.",
+      "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Spoken, so Academic paper. Group G6. Said in the school's VR laboratory; NCERT publishes India's official school textbooks, so this is the archive's claim in its plainest form: VR will make the textbook useless.",
       "source": "Priyanka Sebastian, Sumita Sharma, Netta Iivari, Marianne Kinnula, Aakash Gautam, Charu Monga, Deepanshu Verma, Chinmay Pade and Chandni Tandon, “‘Robots should not be used for household chores because that would make us lazy’: How Scaffolding Shapes Children’s Capacity to Imagine Educational Futures”, Proceedings of the 25th ACM Interaction Design and Children Conference (IDC ’26), 656–671. doi:10.1145/3773077.3806133",
       "paper": "P011"
     },
@@ -1008,7 +1008,7 @@
       "social": "Us",
       "hypotheticality": "Will",
       "construal": "Abstract",
-      "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Spoken, so Academic paper. Group G3, the same group as record 39. Students reimagined lessons where they could 'see calculations in 360 degrees'. First-pass coding by Claude from the ACM extension, to check.",
+      "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Spoken, so Academic paper. Group G3, the same group as record 39. Students reimagined lessons where they could 'see calculations in 360 degrees'.",
       "source": "Priyanka Sebastian, Sumita Sharma, Netta Iivari, Marianne Kinnula, Aakash Gautam, Charu Monga, Deepanshu Verma, Chinmay Pade and Chandni Tandon, “‘Robots should not be used for household chores because that would make us lazy’: How Scaffolding Shapes Children’s Capacity to Imagine Educational Futures”, Proceedings of the 25th ACM Interaction Design and Children Conference (IDC ’26), 656–671. doi:10.1145/3773077.3806133",
       "paper": "P011"
     },
@@ -1034,7 +1034,7 @@
       "social": "Us",
       "hypotheticality": "Could",
       "construal": "Concrete",
-      "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Made because 'the culture of reading was dying': retrieves the physical book rather than replacing it. First-pass coding by Claude from the ACM extension, to check.",
+      "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Made because 'the culture of reading was dying': retrieves the physical book rather than replacing it.",
       "source": "Zaidat Ibrahim and Pedro Reynolds-Cuéllar, “Robots For Everyday Life: Children’s Visions on Roles of Robots”, Proceedings of the 25th ACM Interaction Design and Children Conference (IDC ’26), 938–943. doi:10.1145/3773077.3812161",
       "paper": "P013"
     },
@@ -1060,7 +1060,7 @@
       "social": "Us",
       "hypotheticality": "Should",
       "construal": "Concrete",
-      "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Obsolesces searching the shelves. Status Existing: robotic book-lending machines that retrieve a chosen title and dispense it through a chute were in use before 2026, e.g. Taipei Public Library's FastBook. First-pass coding by Claude from the ACM extension, to check.",
+      "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Obsolesces searching the shelves. Status Existing: robotic book-lending machines that retrieve a chosen title and dispense it through a chute were in use before 2026, e.g. Taipei Public Library's FastBook.",
       "source": "Zaidat Ibrahim and Pedro Reynolds-Cuéllar, “Robots For Everyday Life: Children’s Visions on Roles of Robots”, Proceedings of the 25th ACM Interaction Design and Children Conference (IDC ’26), 938–943. doi:10.1145/3773077.3812161",
       "paper": "P013"
     },
@@ -1086,7 +1086,7 @@
       "social": "Unspecified",
       "hypotheticality": "Is (depicted)",
       "construal": "Concrete",
-      "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Eight experts wrote dated design-fiction news stories in a world-building workshop. Medium in the broad sense (a networked practice of schooling); coded Internet, the nearest medium in the list. First-pass coding by Claude from the ACM extension, to check.",
+      "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Eight experts wrote dated design-fiction news stories in a world-building workshop. Medium in the broad sense (a networked practice of schooling); coded Internet, the nearest medium in the list.",
       "source": "Mehmed Nihad Özkaya and Gökçe Elif Baykal, “Sustainable School Setting Futures: WorldBuilding and Mandala to Co-Speculate on Student Motivation in 2035”, Proceedings of the 25th ACM Interaction Design and Children Conference (IDC ’26), 896–901. doi:10.1145/3773077.3812164",
       "paper": "P014"
     },
@@ -1112,7 +1112,7 @@
       "social": "Unspecified",
       "hypotheticality": "Is (depicted)",
       "construal": "Concrete",
-      "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Learning follows 'a progression logic familiar from games'; coded Game. First-pass coding by Claude from the ACM extension, to check.",
+      "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Learning follows 'a progression logic familiar from games'; coded Game.",
       "source": "Mehmed Nihad Özkaya and Gökçe Elif Baykal, “Sustainable School Setting Futures: WorldBuilding and Mandala to Co-Speculate on Student Motivation in 2035”, Proceedings of the 25th ACM Interaction Design and Children Conference (IDC ’26), 896–901. doi:10.1145/3773077.3812164",
       "paper": "P014"
     },
@@ -1137,7 +1137,7 @@
       "social": "Us",
       "hypotheticality": "Could",
       "construal": "Abstract",
-      "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. From speculative-design interviews with eight instructors; spoken, so Academic paper. They insist AI 'supplements rather than replace critical thinking' (a denial, not coded as obsolescence). First-pass coding by Claude from the ACM extension, to check.",
+      "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. From speculative-design interviews with eight instructors; spoken, so Academic paper. They insist AI 'supplements rather than replace critical thinking' (a denial, not coded as obsolescence).",
       "source": "Rodrigo Borela, Meryem Yilmaz Soylu, Jeonghyun Lee and Nimisha Roy, “What Computing Faculty Want: Designing AI Tools for High-Enrollment Courses Beyond CS1”, Proceedings of the 2025 ACM Conference on International Computing Education Research V.2 (ICER ’25), 32–33. doi:10.1145/3702653.3744327",
       "paper": "P026"
     }
