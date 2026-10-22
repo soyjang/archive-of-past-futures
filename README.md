@@ -9,8 +9,8 @@ The archive collects claims that a new medium would transform or replace the boo
 | Tetrad law(s) | McLuhan & McLuhan 1988 | enhance, obsolesce, retrieve, reverse |
 | Scope of change | specific to obsolescence | supplements, transforms practice, replaces a medium, replaces an institution |
 | Temporal distance | construal-level theory | stated horizon: imminent, near, distant, unstated |
-| Spatial distance | construal-level theory | distance of the setting from the speaker: here, elsewhere, everywhere |
-| Social distance | construal-level theory | us, others (incl. future generations and non-humans), everyone |
+| Spatial distance | construal-level theory | distance of the setting from the speaker: here, elsewhere; unspecified kept off the scale |
+| Social distance | construal-level theory | us, others (incl. future generations and non-humans); unspecified kept off the scale |
 | Hypotheticality | construal-level theory | will, should, could, depicted |
 | Construal level | construal-level theory (outcome) | concrete or abstract language |
 | Format | | press or magazine, talk or broadcast, book, academic paper, report, novel or story, film or television, image, design project |

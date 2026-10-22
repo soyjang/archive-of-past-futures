@@ -72,12 +72,12 @@
     "spatial": [
       "Here",
       "Elsewhere",
-      "Everywhere"
+      "Unspecified"
     ],
     "social": [
       "Us",
       "Others",
-      "Everyone"
+      "Unspecified"
     ],
     "hypotheticality": [
       "Will",
@@ -132,8 +132,8 @@
       "scope": "Transforms practice",
       "horizon": "Unstated",
       "horizon_phrase": "",
-      "spatial": "Everywhere",
-      "social": "Everyone",
+      "spatial": "Unspecified",
+      "social": "Unspecified",
       "hypotheticality": "Will",
       "construal": "Abstract",
       "source": "Frank Parker Hulette, interview with Thomas Edison, Moving Picture World, 22 July 1911, pp. 104–105. Compiled in “Thomas Edison’s Education Predictions”, muninn.net."
@@ -205,8 +205,8 @@
       "scope": "Replaces a medium",
       "horizon": "Unstated",
       "horizon_phrase": "",
-      "spatial": "Everywhere",
-      "social": "Everyone",
+      "spatial": "Unspecified",
+      "social": "Unspecified",
       "hypotheticality": "Will",
       "construal": "Abstract",
       "source": "Hugh Weir, “What Edison Would Like to Do with the Movies”, Collier’s 75, 21 February 1925, pp. 20–21. Compiled in muninn.net (as above)."
@@ -346,7 +346,7 @@
       "horizon": "Imminent",
       "horizon_phrase": "in a few more years",
       "spatial": "Here",
-      "social": "Everyone",
+      "social": "Unspecified",
       "hypotheticality": "Will",
       "construal": "Abstract",
       "source": "Patrick Suppes, “The Uses of Computers in Education”, Scientific American 215(3), September 1966, pp. 206–220."
@@ -368,8 +368,8 @@
       "scope": "Replaces an institution",
       "horizon": "Unstated",
       "horizon_phrase": "in the future",
-      "spatial": "Everywhere",
-      "social": "Everyone",
+      "spatial": "Unspecified",
+      "social": "Unspecified",
       "hypotheticality": "Will",
       "construal": "Abstract",
       "source": "Seymour Papert, 1984; quoted in Cuban (1986).",
@@ -415,8 +415,8 @@
       "scope": "Replaces an institution",
       "horizon": "Distant",
       "horizon_phrase": "fifty years from now",
-      "spatial": "Everywhere",
-      "social": "Everyone",
+      "spatial": "Unspecified",
+      "social": "Unspecified",
       "hypotheticality": "Will",
       "construal": "Abstract",
       "source": "Steven Leckart, “The Stanford Education Experiment Could Change Higher Learning Forever”, Wired, March 2012.",
@@ -462,8 +462,8 @@
       "scope": "Transforms practice",
       "horizon": "Imminent",
       "horizon_phrase": "at the cusp",
-      "spatial": "Everywhere",
-      "social": "Everyone",
+      "spatial": "Unspecified",
+      "social": "Unspecified",
       "hypotheticality": "Will",
       "construal": "Abstract",
       "source": "Sal Khan, “How AI Could Save (Not Destroy) Education”, TED, 2023; Khan Academy blog, 1 May 2023."
@@ -485,8 +485,8 @@
       "scope": "Transforms practice",
       "horizon": "Imminent",
       "horizon_phrase": "the next 18 months",
-      "spatial": "Everywhere",
-      "social": "Everyone",
+      "spatial": "Unspecified",
+      "social": "Unspecified",
       "hypotheticality": "Will",
       "construal": "Concrete",
       "source": "Bill Gates, ASU+GSV Summit, San Diego, April 2023; reported in CNBC, 22 April 2023."
@@ -509,8 +509,8 @@
       "scope": "Replaces a medium",
       "horizon": "Near",
       "horizon_phrase": "over the next decade",
-      "spatial": "Everywhere",
-      "social": "Everyone",
+      "spatial": "Unspecified",
+      "social": "Unspecified",
       "hypotheticality": "Will",
       "construal": "Abstract",
       "source": "Bill Gates, The Tonight Show Starring Jimmy Fallon, NBC, February 2025; reported by NBC/CNBC."
@@ -587,7 +587,7 @@
       "horizon": "Unstated",
       "horizon_phrase": "",
       "spatial": "Here",
-      "social": "Everyone",
+      "social": "Unspecified",
       "hypotheticality": "Depicted",
       "construal": "Abstract",
       "source": "Ray Bradbury, Fahrenheit 451 (New York: Ballantine, 1953).",
@@ -613,7 +613,7 @@
       "horizon": "Unstated",
       "horizon_phrase": "",
       "spatial": "Here",
-      "social": "Everyone",
+      "social": "Unspecified",
       "hypotheticality": "Could",
       "construal": "Concrete",
       "source": "Ivan Illich, Deschooling Society (New York: Harper & Row, 1971).",
@@ -713,8 +713,8 @@
       "scope": "Replaces an institution",
       "horizon": "Distant",
       "horizon_phrase": "2040",
-      "spatial": "Everywhere",
-      "social": "Everyone",
+      "spatial": "Unspecified",
+      "social": "Unspecified",
       "hypotheticality": "Could",
       "construal": "Abstract",
       "source": "OECD, Back to the Future of Education: Four OECD Scenarios for Schooling (Paris: OECD Publishing, 2020)."
