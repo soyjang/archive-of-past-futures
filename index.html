@@ -1201,7 +1201,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
     const conc = [["Concrete", c => !abs(c), "s1"], ["Abstract", abs, "s3"]];
     const items = [
       { t: "Construal follows the medium’s existence, not its horizon",
-        p: `Speculations about an existing medium are mostly abstract (${cnt(ex, abs)} of ${ex.length}); speculations that imagine a medium are almost all concrete (${cnt(im, c => !abs(c))} of ${im.length}). Construal-level theory predicts that distant futures are construed abstractly (Trope &amp; Liberman 2010). Here the most distant media are described most concretely: those promoting a medium that exists promise outcomes; those inventing one have to show it working.`,
+        p: `Speculations about an existing medium are mostly abstract (${cnt(ex, abs)} of ${ex.length}); speculations that imagine a medium are almost all concrete (${cnt(im, c => !abs(c))} of ${im.length}). Construal-level theory predicts that distant futures are construed abstractly (Trope &amp; Liberman 2010). Here the most distant media are described most concretely: those promoting a medium that exists promise outcomes; those inventing one have to show it working. Certainty goes the same way: speculations that say a change <em>will</em> happen are abstract in ${cnt(C.filter(c => c.hyp === 1), abs)} of ${C.filter(c => c.hyp === 1).length}, where the theory would expect what is held certain, and so near, to be described concretely.`,
         f: fig(byStatus, conc),
         i: "Read an abstract promise about an existing medium as affirmative, and ask what it would look like in use." },
       { t: "Futures set everywhere are abstract",
