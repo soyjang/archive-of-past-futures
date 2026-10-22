@@ -656,7 +656,7 @@
       "medium_wording": "Teaching bot",
       "medium_status": "Emerging",
       "format": "Design project",
-      "speaker": "Researcher",
+      "speaker": "Designer",
       "tetrad": [
         "enhance"
       ],
@@ -675,6 +675,7 @@
       "who": "Selwyn, Pangrazio, Nemorin and Perrotta",
       "text": "Five vignettes of a fictional Australian high school, Lakeside, in 2030: growing dataveillance, digital deskilling of teachers, and the de-territorialisation of schooling.",
       "description": true,
+      "note": "The authors frame the vignettes as “social science fiction”, fiction used as a sociological research method, not as design fiction; coded Researcher accordingly.",
       "direction": "Forward",
       "medium": "Internet",
       "medium_wording": "Data-driven platforms",
