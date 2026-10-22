@@ -11,7 +11,7 @@ The archive collects claims that a new medium would transform or replace the boo
 | Temporal distance | construal-level theory | stated horizon: imminent, near, distant, unstated |
 | Spatial distance | construal-level theory | distance of the setting from the speaker: here, elsewhere; unspecified kept off the scale |
 | Social distance | construal-level theory | us, others (incl. future generations and non-humans); unspecified kept off the scale |
-| Hypotheticality | construal-level theory | will, should, could, depicted |
+| Hypotheticality | construal-level theory | will, should, could, is (depicted) |
 | Construal level | construal-level theory (outcome) | concrete or abstract language |
 | Format | | press or magazine, talk or broadcast, book, academic paper, report, novel or story, film or television, image, design project |
 | Direction | | forward (a future), backward (a counterfactual past), sideways (a parallel present) |
@@ -43,11 +43,33 @@ Each records its **format**, the form in which it was first made: press or magaz
 
 Codes are provisional (one coder, codebook v0.1). Entries marked *to verify* need checking against the original page, edition or venue. Still missing: a documented 1960s claim that television would replace the book, 1990s claims that VR would replace the classroom, and more speculative design projects.
 
-The data lives in the `CLAIMS`, `CODES`, `WHEN` and `SPEAKER` arrays (plus `FORMAT`) in `index.html`.
+The data lives in `data/book.json` and `data/climate.json` (see Data below).
+
+## Files
+
+Each page is its own file in `pages/`; `index.html` holds only the header and menu, and loads the pages in order.
+
+| Page | File |
+|---|---|
+| Introduction | `pages/intro.html` |
+| Codebook | `pages/codebook.html` |
+| Project 1 heading and sub-tabs | `pages/book-header.html` |
+| Project 1 · Tetrad wheel | `pages/book-wheel.html` |
+| Project 1 · Corpus | `pages/book-corpus.html` |
+| Project 1 · Sources | `pages/book-sources.html` |
+| Project 1 · Readings | `pages/book-readings.html` |
+| Project 2 · Climate futures | `pages/climate.html` |
+| From readings to design | `pages/design.html` |
+
+- `css/style.css`: all styling.
+- `js/app.js`: routing and everything drawn from the data. The wheel, overview, sources list and the text of the Readings are generated here (search `renderReadings`), so the Readings and Sources page files are mostly empty containers.
+- `data/`: the coded speculations.
+
+To add a page: create `pages/<name>.html` with a `<section id="pg-<name>" class="page" hidden>`, add its name to `PAGE_FILES` in `index.html`, and add it to `PAGES` and `SECTIONS` in `js/app.js`.
 
 ## Running it
 
-Open `index.html` in a browser. It is a single self-contained page; fonts load from Google Fonts.
+The site loads its pages and data, so serve the folder rather than opening `index.html` directly: run `python3 -m http.server` here and visit `http://localhost:8000` (or use VS Code's Live Server extension). Fonts load from Google Fonts.
 
 ## References
 
