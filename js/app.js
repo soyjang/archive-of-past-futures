@@ -411,8 +411,8 @@
 
   // ---------- pages ----------
 
-  const PAGES = ["overview", "codebook", "book", "climate"];
-  const SECTIONS = { overview: ["overview"], book: ["bookhead", "archive", "bookcorpus"], codebook: ["codebook"], climate: ["climate"] };
+  const PAGES = ["overview", "codebook", "book"];
+  const SECTIONS = { overview: ["overview"], book: ["bookhead", "archive", "bookcorpus"], codebook: ["codebook"] };
   function route() {
     let h = location.hash.slice(1);
     if (h === "intro") h = "overview";
