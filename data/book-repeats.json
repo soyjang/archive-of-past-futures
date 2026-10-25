@@ -88,6 +88,34 @@
       "repeat_of": 3
     },
     {
+      "id": 12,
+      "year": 1984,
+      "who": "Seymour Papert",
+      "text": "I think the computer will blow up the school. … There won’t be schools in the future.",
+      "direction": "Forward",
+      "medium": "Computer",
+      "medium_wording": "Personal computer",
+      "medium_status": "Existing",
+      "format": "Format unknown",
+      "speaker": "Researcher",
+      "scope": "Replaces an institution",
+      "horizon": "Unstated",
+      "horizon_phrase": "in the future",
+      "spatial": "Unspecified",
+      "social": "Unspecified",
+      "hypotheticality": "Will",
+      "construal": "Abstract",
+      "source": "Seymour Papert, 1984; quoted in Cuban (1986).",
+      "verify": "Original 1984 venue not yet identified.",
+      "tetrad": [
+        "obsolesce"
+      ],
+      "tetrad_detail": {
+        "obsolesce": "the school"
+      },
+      "repeat_of": 47
+    },
+    {
       "id": 17,
       "year": 2023,
       "who": "Bill Gates",
@@ -113,38 +141,6 @@
         "enhance": "feedback on writing, and tutoring as good as any human’s"
       },
       "repeat_of": 18
-    },
-    {
-      "id": 47,
-      "year": 1980,
-      "who": "Seymour Papert, Mindstorms",
-      "text": "I believe that the computer presence will enable us to so modify the learning environment outside the classrooms that much if not all the knowledge schools presently try to teach with such pain and expense and such limited success will be learned, as the child learns to talk, painlessly, successfully, and without organized instruction. This obviously implies that schools as we know them today will have no place in the future.",
-      "note": "Checked against the first edition. Papert leaves open whether schools “adapt by transforming themselves into something new or wither away and be replaced”. Status Emerging: in 1980 children’s learning with computers (LOGO) ran in his group’s trials, not yet in schools at large. Under the one-per-speaker rule (widest scope, ties to the earliest) this ties with 1984 on scope and is earlier, so it would become Papert’s counted speculation; kept as a repeat until that is decided.",
-      "direction": "Forward",
-      "medium": "Computer",
-      "medium_wording": "the computer presence",
-      "medium_status": "Emerging",
-      "format": "Book",
-      "speaker": "Researcher",
-      "scope": "Replaces an institution",
-      "horizon": "Unstated",
-      "horizon_phrase": "in the future",
-      "spatial": "Unspecified",
-      "social": "Unspecified",
-      "hypotheticality": "Will",
-      "construal": "Abstract",
-      "source": "Seymour Papert, Mindstorms: Children, Computers, and Powerful Ideas (New York: Basic Books, 1980), pp. 8–9.",
-      "tetrad": [
-        "enhance",
-        "obsolesce",
-        "retrieve"
-      ],
-      "tetrad_detail": {
-        "enhance": "learning outside the classroom, “painlessly, successfully”",
-        "obsolesce": "schools as we know them today",
-        "retrieve": "learning as a child learns to talk, without organised instruction"
-      },
-      "repeat_of": 12
     },
     {
       "id": 48,
@@ -173,7 +169,7 @@
       "tetrad_detail": {
         "obsolesce": "school, replaced by “a different kind of structure”"
       },
-      "repeat_of": 12
+      "repeat_of": 47
     },
     {
       "id": 49,
@@ -202,7 +198,7 @@
       "tetrad_detail": {
         "enhance": "education, in a “megachange” like medicine’s"
       },
-      "repeat_of": 12
+      "repeat_of": 47
     },
     {
       "id": 50,
@@ -231,7 +227,7 @@
       "tetrad_detail": {
         "obsolesce": "the curriculum"
       },
-      "repeat_of": 12
+      "repeat_of": 47
     }
   ]
 }
