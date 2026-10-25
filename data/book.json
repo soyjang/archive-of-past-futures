@@ -125,7 +125,7 @@
       "year": 1911,
       "who": "Thomas Edison",
       "text": "The moving picture art will largely supplement the art of printing.",
-      "note": "Edison’s counted speculation under the one-per-speaker rule: his earliest in the case. His 1913, 1922 and 1925 statements are kept as repeats, forming his thread.",
+      "note": "Edison’s counted speculation under the one-per-speaker-per-medium rule: his earliest on film in the case. His 1913, 1922 and 1925 statements are kept as repeats, forming his thread.",
       "direction": "Forward",
       "medium": "Film",
       "medium_wording": "Motion picture",
@@ -410,6 +410,33 @@
       ],
       "tetrad_detail": {
         "enhance": "education, in “the biggest positive transformation”"
+      }
+    },
+    {
+      "id": 17,
+      "year": 2023,
+      "who": "Bill Gates",
+      "text": "If you just took the next 18 months, the AIs will come in as a teacher’s aide and give feedback on writing. … The AIs will get to that ability, to be as good a tutor as any human ever could.",
+      "note": "Gates’s counted speculation on AI under the one-per-speaker-per-medium rule: his earliest on AI in the case. His 2025 statement is kept as a repeat. Part of Gates’s thread, which moves from the internet to AI.",
+      "direction": "Forward",
+      "medium": "AI",
+      "medium_wording": "Generative AI",
+      "medium_status": "Existing",
+      "format": "Talk or broadcast",
+      "speaker": "Company",
+      "scope": "Transforms practice",
+      "horizon": "Imminent",
+      "horizon_phrase": "the next 18 months",
+      "spatial": "Unspecified",
+      "social": "Unspecified",
+      "hypotheticality": "Certain",
+      "construal": "Concrete",
+      "source": "B. Gates, remarks at the ASU+GSV Summit, San Diego, CA, USA, Apr. 2023, as reported in CNBC, Apr. 22, 2023.",
+      "tetrad": [
+        "enhance"
+      ],
+      "tetrad_detail": {
+        "enhance": "feedback on writing, and tutoring as good as any human’s"
       }
     },
     {
@@ -1238,7 +1265,7 @@
       "year": 1980,
       "who": "Seymour Papert, Mindstorms",
       "text": "I believe that the computer presence will enable us to so modify the learning environment outside the classrooms that much if not all the knowledge schools presently try to teach with such pain and expense and such limited success will be learned, as the child learns to talk, painlessly, successfully, and without organized instruction. This obviously implies that schools as we know them today will have no place in the future.",
-      "note": "Checked against the first edition. Papert leaves open whether schools “adapt by transforming themselves into something new or wither away and be replaced”. Status Emerging: in 1980 children’s learning with computers (LOGO) ran in his group’s trials, not yet in schools at large. Papert’s counted speculation under the one-per-speaker rule: his earliest in the case. His 1984, 1996, 1997 and 2006 statements are kept as repeats, forming his thread.",
+      "note": "Checked against the first edition. Papert leaves open whether schools “adapt by transforming themselves into something new or wither away and be replaced”. Status Emerging: in 1980 children’s learning with computers (LOGO) ran in his group’s trials, not yet in schools at large. Papert’s counted speculation under the one-per-speaker-per-medium rule: his earliest on the computer in the case. His 1984, 1996, 1997 and 2006 statements are kept as repeats, forming his thread.",
       "direction": "Forward",
       "medium": "Computer",
       "medium_wording": "the computer presence",
@@ -1269,7 +1296,7 @@
       "year": 1995,
       "who": "Bill Gates, The Road Ahead",
       "text": "The information highway won’t replace or devalue any of the human education talent needed for the challenges ahead … However, technology will be pivotal in the future role of teachers.",
-      "note": "Gates answers “an often-expressed fear that technology will replace teachers”. The denial is not coded as obsolescence (codebook rule). Gates’s counted speculation under the one-per-speaker rule: his earliest in the case. His 2010, 2023 and 2025 statements are kept as repeats, forming his thread, which moves from the internet to AI.",
+      "note": "Gates answers “an often-expressed fear that technology will replace teachers”. The denial is not coded as obsolescence (codebook rule). Gates’s counted speculation on the internet under the one-per-speaker-per-medium rule: his earliest on it in the case. His 2010 statement is kept as a repeat; his AI statements count separately (2023, with 2025 as its repeat). Part of Gates’s thread, which moves from the internet to AI.",
       "direction": "Forward",
       "medium": "Internet",
       "medium_wording": "the information highway",
