@@ -44,6 +44,7 @@ body {
 .wrap { max-width: 1180px; margin: 0 auto; display: grid; grid-template-columns: minmax(0, 1fr); gap: 22px; }
 header { display: grid; gap: 10px; }
 .eyebrow { font-family: var(--font-mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--accent); }
+.site-sub { margin: -4px 0 0; font-size: 15px; color: var(--muted); }
 h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 5vw, 48px); line-height: 1.05; margin: 0; text-wrap: balance; letter-spacing: -0.01em; }
 .lede { max-width: 66ch; color: var(--muted); margin: 0; }
 .notice { font-size: 14px; border: 1px dashed var(--accent); background: var(--accent-soft); color: var(--ink); padding: 10px 14px; border-radius: 6px; max-width: 80ch; }
