@@ -21,7 +21,7 @@
       "social": "Unspecified",
       "hypotheticality": "Will",
       "construal": "Abstract",
-      "source": "Frank Parker Hulette, interview with Thomas Edison, Moving Picture World, 22 July 1911, pp. 104–105. Compiled in “Thomas Edison’s Education Predictions”, muninn.net.",
+      "source": "F. P. Hulette, “An interview with Thomas A. Edison,” Moving Picture World, pp. 104–105, Jul. 22, 1911. Compiled in “Thomas Edison’s education predictions,” muninn.net.",
       "tetrad": [
         "enhance"
       ],
@@ -48,7 +48,7 @@
       "social": "Us",
       "hypotheticality": "Will",
       "construal": "Abstract",
-      "source": "Hugh Weir, “The Story of the Motion Picture”, McClure’s 54, November 1922, p. 85; quoted in Cuban (1986).",
+      "source": "H. Weir, “The story of the motion picture,” McClure’s Magazine, vol. 54, p. 85, Nov. 1922, as cited in L. Cuban, Teachers and Machines: The Classroom Use of Technology Since 1920. New York, NY, USA: Teachers College Press, 1986.",
       "verify": "Full wording taken from secondary sources; check against McClure’s.",
       "tetrad": [
         "enhance",
@@ -78,7 +78,7 @@
       "social": "Unspecified",
       "hypotheticality": "Will",
       "construal": "Abstract",
-      "source": "Hugh Weir, “What Edison Would Like to Do with the Movies”, Collier’s 75, 21 February 1925, pp. 20–21. Compiled in muninn.net (as above).",
+      "source": "H. Weir, “What Edison would like to do with the movies,” Collier’s, vol. 75, pp. 20–21, Feb. 21, 1925. Compiled in “Thomas Edison’s education predictions,” muninn.net.",
       "tetrad": [
         "obsolesce"
       ],
@@ -105,7 +105,7 @@
       "social": "Unspecified",
       "hypotheticality": "Will",
       "construal": "Abstract",
-      "source": "Seymour Papert, 1984; quoted in Cuban (1986).",
+      "source": "S. Papert, 1984, as quoted in L. Cuban, Teachers and Machines: The Classroom Use of Technology Since 1920. New York, NY, USA: Teachers College Press, 1986.",
       "verify": "Original 1984 venue not yet identified.",
       "tetrad": [
         "obsolesce"
@@ -133,7 +133,7 @@
       "social": "Unspecified",
       "hypotheticality": "Will",
       "construal": "Concrete",
-      "source": "Bill Gates, ASU+GSV Summit, San Diego, April 2023; reported in CNBC, 22 April 2023.",
+      "source": "B. Gates, remarks at the ASU+GSV Summit, San Diego, CA, USA, Apr. 2023, as reported in CNBC, Apr. 22, 2023.",
       "tetrad": [
         "enhance"
       ],
@@ -160,7 +160,7 @@
       "social": "Unspecified",
       "hypotheticality": "Will",
       "construal": "Abstract",
-      "source": "Bill Gates, The Tonight Show Starring Jimmy Fallon, NBC, February 2025; reported by NBC/CNBC.",
+      "source": "B. Gates, interview, The Tonight Show Starring Jimmy Fallon, NBC, Feb. 2025, as reported by NBC and CNBC.",
       "tetrad": [
         "enhance",
         "obsolesce"
@@ -190,7 +190,7 @@
       "social": "Unspecified",
       "hypotheticality": "Will",
       "construal": "Abstract",
-      "source": "David S. Bennahum, “School’s Out?”, interview with Seymour Papert, MEME 2.13, 1996 (memex.org); republished on The Daily Papert.",
+      "source": "D. S. Bennahum, “School’s out? An interview with Seymour Papert,” MEME 2.13, 1996. [Online]. Republished on The Daily Papert.",
       "verify": "Original MEME issue and date to confirm; wording via The Daily Papert.",
       "tetrad": [
         "obsolesce"
@@ -219,7 +219,7 @@
       "social": "Unspecified",
       "hypotheticality": "Will",
       "construal": "Abstract",
-      "source": "Seymour Papert, “Why School Reform Is Impossible”, The Journal of the Learning Sciences 6(4), 1997, pp. 417–427.",
+      "source": "S. Papert, “Why school reform is impossible,” J. Learning Sciences, vol. 6, no. 4, pp. 417–427, 1997.",
       "verify": "Page of the quoted sentence to confirm against the journal.",
       "tetrad": [
         "enhance"
@@ -248,7 +248,7 @@
       "social": "Unspecified",
       "hypotheticality": "Will",
       "construal": "Abstract",
-      "source": "Seymour Papert, keynote at SqueakFest, 2006; transcript on The Daily Papert.",
+      "source": "S. Papert, keynote address, presented at SqueakFest, 2006. Transcript on The Daily Papert.",
       "verify": "Transcript is auto-generated; check wording, date and venue against a recording.",
       "tetrad": [
         "obsolesce"
@@ -277,7 +277,7 @@
       "social": "Unspecified",
       "hypotheticality": "Will",
       "construal": "Abstract",
-      "source": "Bill Gates, with Nathan Myhrvold and Peter Rinearson, The Road Ahead (New York: Viking, 1995), ch. 9, “Education: The Best Investment”, p. 185.",
+      "source": "B. Gates, N. Myhrvold, and P. Rinearson, The Road Ahead. New York, NY, USA: Viking, 1995, ch. 9, p. 185.",
       "verify": "Wording via the Imagining the Internet database (Elon University); check against the book, including the exact phrase “needed for the challenges ahead”.",
       "tetrad": [
         "enhance"
