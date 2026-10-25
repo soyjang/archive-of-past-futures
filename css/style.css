@@ -111,8 +111,6 @@ a.approach:hover { border-color: var(--muted); }
 .intro a { color: var(--accent); }
 .cases { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 .case { display: grid; gap: 6px; align-content: start; padding: 16px 18px; border: 1px solid var(--rule); border-radius: 10px; color: var(--ink) !important; text-decoration: none; background: var(--panel); }
-.case:hover { border-color: var(--muted); }
-.case-off { opacity: .55; border-style: dashed; } .case-off:hover { border-color: var(--rule); }
 .case strong { font-family: var(--font-display); font-size: 19px; }
 .case span:last-child { font-size: 14px; line-height: 1.5; color: var(--muted); }
 .case-k { font: 500 11px var(--font-mono); letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
