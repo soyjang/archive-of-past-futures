@@ -410,14 +410,7 @@
   });
 
   // ---------- pages ----------
-  // ---------- corpus: counts by format and by period, from the data ----------
-  function renderCorpus() {
-    const C = CLAIMS, row = (l, n) => `<tr><th>${l}</th><td>${n}</td></tr>`;
-    const fm = Object.entries(GENRES).map(([k, l]) => [l, C.filter(c => c.genre === k).length]).filter(x => x[1]);
-    const per = [["1900–1959", c => c.year < 1960], ["1960–1999", c => c.year >= 1960 && c.year < 2000], ["2000 on", c => c.year >= 2000]].map(([l, f]) => [l, C.filter(f).length]);
-    $("#corpus-counts").innerHTML = `<div class="cases" style="align-items:start"><table class="sig"><thead><tr><th>Format</th><th>n</th></tr></thead><tbody>${fm.map(x => row(...x)).join("")}</tbody></table>
-      <table class="sig"><thead><tr><th>Period</th><th>n</th></tr></thead><tbody>${per.map(x => row(...x)).join("")}${row("Total", C.length)}</tbody></table></div>`;
-  }
+
   const PAGES = ["overview", "codebook", "book", "climate"];
   const SECTIONS = { overview: ["overview"], book: ["bookhead", "archive", "bookcorpus"], codebook: ["codebook"], climate: ["climate"] };
   function route() {
@@ -433,7 +426,7 @@
     document.querySelectorAll(".sitenav a").forEach(a => { if (a.dataset.page === page) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
     document.querySelectorAll("#pg-bookhead .subnav a").forEach(a => a.setAttribute("aria-current", String(a.dataset.sub === sub)));
     if (sub === "archive") render();
-    if (sub === "bookcorpus") { renderCorpus(); renderSources(); }
+    if (sub === "bookcorpus") renderSources();
     if (h.startsWith("cb-")) document.getElementById(h)?.scrollIntoView();
     else window.scrollTo(0, 0);
   }
