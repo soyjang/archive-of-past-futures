@@ -140,7 +140,36 @@
       "tetrad_detail": {
         "enhance": "feedback on writing, and tutoring as good as any human’s"
       },
-      "repeat_of": 18
+      "repeat_of": 52
+    },
+    {
+      "id": 18,
+      "year": 2025,
+      "who": "Bill Gates",
+      "text": "With AI, over the next decade, that will become free, commonplace — great medical advice, great tutoring.",
+      "direction": "Forward",
+      "medium": "AI",
+      "medium_wording": "Generative AI",
+      "medium_status": "Existing",
+      "format": "Talk or broadcast",
+      "speaker": "Company",
+      "scope": "Replaces a medium",
+      "horizon": "Near",
+      "horizon_phrase": "over the next decade",
+      "spatial": "Unspecified",
+      "social": "Unspecified",
+      "hypotheticality": "Will",
+      "construal": "Abstract",
+      "source": "Bill Gates, The Tonight Show Starring Jimmy Fallon, NBC, February 2025; reported by NBC/CNBC.",
+      "tetrad": [
+        "enhance",
+        "obsolesce"
+      ],
+      "tetrad_detail": {
+        "enhance": "great tutoring, made free and commonplace",
+        "obsolesce": "tutoring as a scarce, costly service"
+      },
+      "repeat_of": 52
     },
     {
       "id": 48,
@@ -228,6 +257,35 @@
         "obsolesce": "the curriculum"
       },
       "repeat_of": 47
+    },
+    {
+      "id": 51,
+      "year": 1995,
+      "who": "Bill Gates, The Road Ahead",
+      "text": "The information highway won’t replace or devalue any of the human education talent needed for the challenges ahead … However, technology will be pivotal in the future role of teachers.",
+      "note": "Gates answers “an often-expressed fear that technology will replace teachers”. The denial is not coded as obsolescence (codebook rule). Part of Gates’s thread.",
+      "direction": "Forward",
+      "medium": "Internet",
+      "medium_wording": "the information highway",
+      "medium_status": "Existing",
+      "format": "Book",
+      "speaker": "Company",
+      "scope": "Transforms practice",
+      "horizon": "Unstated",
+      "horizon_phrase": "",
+      "spatial": "Unspecified",
+      "social": "Unspecified",
+      "hypotheticality": "Will",
+      "construal": "Abstract",
+      "source": "Bill Gates, with Nathan Myhrvold and Peter Rinearson, The Road Ahead (New York: Viking, 1995), ch. 9, “Education: The Best Investment”, p. 185.",
+      "verify": "Wording via the Imagining the Internet database (Elon University); check against the book, including the exact phrase “needed for the challenges ahead”.",
+      "tetrad": [
+        "enhance"
+      ],
+      "tetrad_detail": {
+        "enhance": "the future role of teachers"
+      },
+      "repeat_of": 52
     }
   ]
 }

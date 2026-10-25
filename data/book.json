@@ -416,34 +416,6 @@
       }
     },
     {
-      "id": 18,
-      "year": 2025,
-      "who": "Bill Gates",
-      "text": "With AI, over the next decade, that will become free, commonplace — great medical advice, great tutoring.",
-      "direction": "Forward",
-      "medium": "AI",
-      "medium_wording": "Generative AI",
-      "medium_status": "Existing",
-      "format": "Talk or broadcast",
-      "speaker": "Company",
-      "scope": "Replaces a medium",
-      "horizon": "Near",
-      "horizon_phrase": "over the next decade",
-      "spatial": "Unspecified",
-      "social": "Unspecified",
-      "hypotheticality": "Will",
-      "construal": "Abstract",
-      "source": "Bill Gates, The Tonight Show Starring Jimmy Fallon, NBC, February 2025; reported by NBC/CNBC.",
-      "tetrad": [
-        "enhance",
-        "obsolesce"
-      ],
-      "tetrad_detail": {
-        "enhance": "great tutoring, made free and commonplace",
-        "obsolesce": "tutoring as a scarce, costly service"
-      }
-    },
-    {
       "id": 19,
       "year": 1910,
       "who": "Villemard, En l’an 2000 postcard series",
@@ -1293,6 +1265,36 @@
         "enhance": "learning outside the classroom, “painlessly, successfully”",
         "obsolesce": "schools as we know them today",
         "retrieve": "learning as a child learns to talk, without organised instruction"
+      }
+    },
+    {
+      "id": 52,
+      "year": 2010,
+      "who": "Bill Gates, Techonomy conference",
+      "text": "Five years from now on the web for free you’ll be able to find the best lectures in the world. It will be better than any single university.",
+      "note": "Gates also said “College, except for the parties, needs to be less place-based.” Gates’s counted speculation under the one-per-speaker rule: it ties with 2025 on scope (replaces a medium) and is earlier. His 1995, 2023 and 2025 statements are kept as repeats, forming his thread, which moves from the internet to AI.",
+      "direction": "Forward",
+      "medium": "Internet",
+      "medium_wording": "the web",
+      "medium_status": "Existing",
+      "format": "Talk or broadcast",
+      "speaker": "Company",
+      "scope": "Replaces a medium",
+      "horizon": "Imminent",
+      "horizon_phrase": "five years from now",
+      "spatial": "Unspecified",
+      "social": "Unspecified",
+      "hypotheticality": "Will",
+      "construal": "Concrete",
+      "source": "Bill Gates, Techonomy conference, Lake Tahoe, CA, 6 August 2010; reported in TechCrunch, 6 August 2010, and Jeffrey R. Young, The Chronicle of Higher Education, 9 August 2010.",
+      "verify": "Wording via press reports; check against the conference video if available.",
+      "tetrad": [
+        "enhance",
+        "obsolesce"
+      ],
+      "tetrad_detail": {
+        "enhance": "access to the best lectures in the world, for free",
+        "obsolesce": "the university as the place to learn"
       }
     }
   ]
