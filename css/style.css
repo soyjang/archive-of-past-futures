@@ -225,6 +225,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
 .sitenav { display: flex; flex-wrap: wrap; gap: 4px 22px; border-bottom: 1px solid var(--rule); margin: 6px 0 4px; }
 .sitenav a { font: 500 15px var(--font-body); color: var(--muted); text-decoration: none; padding: 8px 0 9px; border-bottom: 2px solid transparent; margin-bottom: -1px; }
 .sitenav a:hover { color: var(--ink); }
+.sitenav .nav-off { font: 500 15px var(--font-body); color: var(--muted); opacity: .45; padding: 8px 0 9px; cursor: default; }
 .sitenav a[aria-current="page"] { color: var(--ink); border-bottom-color: var(--accent); }
 #pg-bookhead { gap: 14px; }
 .subnav { display: flex; flex-wrap: wrap; gap: 4px; }
