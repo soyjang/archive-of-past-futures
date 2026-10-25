@@ -1,34 +1,37 @@
 {
   "case": "book",
   "title": "Repeat speculations by the same speaker",
-  "note": "One speculation per speaker per work: when a speaker has speculations in several works, the one with the widest scope of change counts, ties to the earliest. The others are kept here, out of every count and reading. Distinct speculations within one work (scenarios, concept cards, a workshop's statements) all count.",
+  "note": "One speculation per speaker per work: when a speaker has speculations in several works, the earliest counts. The others are kept here, out of every count and reading. Distinct speculations within one work (scenarios, concept cards, a workshop's statements) all count.",
   "speculations": [
     {
-      "id": 2,
-      "year": 1911,
+      "id": 3,
+      "year": 1913,
       "who": "Thomas Edison",
-      "text": "The moving picture art will largely supplement the art of printing.",
+      "text": "Books will soon be obsolete in the public schools. … Our school system will be completely changed inside of ten years.",
       "direction": "Forward",
       "medium": "Film",
       "medium_wording": "Motion picture",
       "medium_status": "Existing",
       "format": "Press or magazine",
       "speaker": "Inventor",
-      "scope": "Transforms practice",
-      "horizon": "Unstated",
-      "horizon_phrase": "",
-      "spatial": "Unspecified",
-      "social": "Unspecified",
-      "hypotheticality": "Will",
+      "scope": "Replaces a medium",
+      "horizon": "Near",
+      "horizon_phrase": "soon … inside of ten years",
+      "spatial": "Here",
+      "social": "Us",
+      "hypotheticality": "Certain",
       "construal": "Abstract",
-      "source": "F. P. Hulette, “An interview with Thomas A. Edison,” Moving Picture World, pp. 104–105, Jul. 22, 1911. Compiled in “Thomas Edison’s education predictions,” muninn.net.",
+      "source": "F. J. Smith, “The evolution of the motion picture VI,” New York Dramatic Mirror, vol. 70, p. 24, Jul. 9, 1913, as cited in L. Cuban, Teachers and Machines: The Classroom Use of Technology Since 1920. New York, NY, USA: Teachers College Press, 1986.",
+      "verify": "Second sentence confirmed in the compilation; check the first against the original page.",
       "tetrad": [
-        "enhance"
+        "enhance",
+        "obsolesce"
       ],
       "tetrad_detail": {
-        "enhance": "printing, which moving pictures will “largely supplement”"
+        "enhance": "the school system, to be “completely changed”",
+        "obsolesce": "books in the public schools"
       },
-      "repeat_of": 3
+      "repeat_of": 2
     },
     {
       "id": 4,
@@ -46,7 +49,7 @@
       "horizon_phrase": "in a few years",
       "spatial": "Here",
       "social": "Us",
-      "hypotheticality": "Will",
+      "hypotheticality": "Certain",
       "construal": "Abstract",
       "source": "H. Weir, “The story of the motion picture,” McClure’s Magazine, vol. 54, p. 85, Nov. 1922, as cited in L. Cuban, Teachers and Machines: The Classroom Use of Technology Since 1920. New York, NY, USA: Teachers College Press, 1986.",
       "verify": "Full wording taken from secondary sources; check against McClure’s.",
@@ -58,7 +61,7 @@
         "enhance": "the educational system, revolutionised by the motion picture",
         "obsolesce": "textbooks"
       },
-      "repeat_of": 3
+      "repeat_of": 2
     },
     {
       "id": 5,
@@ -76,7 +79,7 @@
       "horizon_phrase": "",
       "spatial": "Unspecified",
       "social": "Unspecified",
-      "hypotheticality": "Will",
+      "hypotheticality": "Certain",
       "construal": "Abstract",
       "source": "H. Weir, “What Edison would like to do with the movies,” Collier’s, vol. 75, pp. 20–21, Feb. 21, 1925. Compiled in “Thomas Edison’s education predictions,” muninn.net.",
       "tetrad": [
@@ -85,7 +88,7 @@
       "tetrad_detail": {
         "obsolesce": "textbooks as the principal medium of teaching"
       },
-      "repeat_of": 3
+      "repeat_of": 2
     },
     {
       "id": 12,
@@ -103,7 +106,7 @@
       "horizon_phrase": "in the future",
       "spatial": "Unspecified",
       "social": "Unspecified",
-      "hypotheticality": "Will",
+      "hypotheticality": "Certain",
       "construal": "Abstract",
       "source": "S. Papert, 1984, as quoted in L. Cuban, Teachers and Machines: The Classroom Use of Technology Since 1920. New York, NY, USA: Teachers College Press, 1986.",
       "verify": "Original 1984 venue not yet identified.",
@@ -131,7 +134,7 @@
       "horizon_phrase": "the next 18 months",
       "spatial": "Unspecified",
       "social": "Unspecified",
-      "hypotheticality": "Will",
+      "hypotheticality": "Certain",
       "construal": "Concrete",
       "source": "B. Gates, remarks at the ASU+GSV Summit, San Diego, CA, USA, Apr. 2023, as reported in CNBC, Apr. 22, 2023.",
       "tetrad": [
@@ -140,7 +143,7 @@
       "tetrad_detail": {
         "enhance": "feedback on writing, and tutoring as good as any human’s"
       },
-      "repeat_of": 52
+      "repeat_of": 51
     },
     {
       "id": 18,
@@ -158,7 +161,7 @@
       "horizon_phrase": "over the next decade",
       "spatial": "Unspecified",
       "social": "Unspecified",
-      "hypotheticality": "Will",
+      "hypotheticality": "Certain",
       "construal": "Abstract",
       "source": "B. Gates, interview, The Tonight Show Starring Jimmy Fallon, NBC, Feb. 2025, as reported by NBC and CNBC.",
       "tetrad": [
@@ -169,7 +172,7 @@
         "enhance": "great tutoring, made free and commonplace",
         "obsolesce": "tutoring as a scarce, costly service"
       },
-      "repeat_of": 52
+      "repeat_of": 51
     },
     {
       "id": 48,
@@ -188,7 +191,7 @@
       "horizon_phrase": "",
       "spatial": "Unspecified",
       "social": "Unspecified",
-      "hypotheticality": "Will",
+      "hypotheticality": "Certain",
       "construal": "Abstract",
       "source": "D. S. Bennahum, “School’s out? An interview with Seymour Papert,” MEME 2.13, 1996. [Online]. Republished on The Daily Papert.",
       "verify": "Original MEME issue and date to confirm; wording via The Daily Papert.",
@@ -217,7 +220,7 @@
       "horizon_phrase": "",
       "spatial": "Unspecified",
       "social": "Unspecified",
-      "hypotheticality": "Will",
+      "hypotheticality": "Certain",
       "construal": "Abstract",
       "source": "S. Papert, “Why school reform is impossible,” J. Learning Sciences, vol. 6, no. 4, pp. 417–427, 1997.",
       "verify": "Page of the quoted sentence to confirm against the journal.",
@@ -246,7 +249,7 @@
       "horizon_phrase": "",
       "spatial": "Unspecified",
       "social": "Unspecified",
-      "hypotheticality": "Will",
+      "hypotheticality": "Certain",
       "construal": "Abstract",
       "source": "S. Papert, keynote address, presented at SqueakFest, 2006. Transcript on The Daily Papert.",
       "verify": "Transcript is auto-generated; check wording, date and venue against a recording.",
@@ -259,33 +262,35 @@
       "repeat_of": 47
     },
     {
-      "id": 51,
-      "year": 1995,
-      "who": "Bill Gates, The Road Ahead",
-      "text": "The information highway won’t replace or devalue any of the human education talent needed for the challenges ahead … However, technology will be pivotal in the future role of teachers.",
-      "note": "Gates answers “an often-expressed fear that technology will replace teachers”. The denial is not coded as obsolescence (codebook rule). Part of Gates’s thread.",
+      "id": 52,
+      "year": 2010,
+      "who": "Bill Gates, Techonomy conference",
+      "text": "Five years from now on the web for free you’ll be able to find the best lectures in the world. It will be better than any single university.",
+      "note": "Gates also said “College, except for the parties, needs to be less place-based.” Part of Gates’s thread.",
       "direction": "Forward",
       "medium": "Internet",
-      "medium_wording": "the information highway",
+      "medium_wording": "the web",
       "medium_status": "Existing",
-      "format": "Book",
+      "format": "Talk or broadcast",
       "speaker": "Company",
-      "scope": "Transforms practice",
-      "horizon": "Unstated",
-      "horizon_phrase": "",
+      "scope": "Replaces a medium",
+      "horizon": "Imminent",
+      "horizon_phrase": "five years from now",
       "spatial": "Unspecified",
       "social": "Unspecified",
-      "hypotheticality": "Will",
-      "construal": "Abstract",
-      "source": "B. Gates, N. Myhrvold, and P. Rinearson, The Road Ahead. New York, NY, USA: Viking, 1995, ch. 9, p. 185.",
-      "verify": "Wording via the Imagining the Internet database (Elon University); check against the book, including the exact phrase “needed for the challenges ahead”.",
+      "hypotheticality": "Certain",
+      "construal": "Concrete",
+      "source": "B. Gates, remarks at the Techonomy Conf., Lake Tahoe, CA, USA, Aug. 6, 2010, as reported in TechCrunch, Aug. 6, 2010, and J. R. Young, The Chronicle of Higher Education, Aug. 9, 2010.",
+      "verify": "Wording via press reports; check against the conference video if available.",
       "tetrad": [
-        "enhance"
+        "enhance",
+        "obsolesce"
       ],
       "tetrad_detail": {
-        "enhance": "the future role of teachers"
+        "enhance": "access to the best lectures in the world, for free",
+        "obsolesce": "the university as the place to learn"
       },
-      "repeat_of": 52
+      "repeat_of": 51
     }
   ]
 }

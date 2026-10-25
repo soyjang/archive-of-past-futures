@@ -121,32 +121,30 @@
       }
     },
     {
-      "id": 3,
-      "year": 1913,
+      "id": 2,
+      "year": 1911,
       "who": "Thomas Edison",
-      "text": "Books will soon be obsolete in the public schools. … Our school system will be completely changed inside of ten years.",
+      "text": "The moving picture art will largely supplement the art of printing.",
+      "note": "Edison’s counted speculation under the one-per-speaker rule: his earliest in the case. His 1913, 1922 and 1925 statements are kept as repeats, forming his thread.",
       "direction": "Forward",
       "medium": "Film",
       "medium_wording": "Motion picture",
       "medium_status": "Existing",
       "format": "Press or magazine",
       "speaker": "Inventor",
-      "scope": "Replaces a medium",
-      "horizon": "Near",
-      "horizon_phrase": "soon … inside of ten years",
-      "spatial": "Here",
-      "social": "Us",
+      "scope": "Transforms practice",
+      "horizon": "Unstated",
+      "horizon_phrase": "",
+      "spatial": "Unspecified",
+      "social": "Unspecified",
       "hypotheticality": "Certain",
       "construal": "Abstract",
-      "source": "F. J. Smith, “The evolution of the motion picture VI,” New York Dramatic Mirror, vol. 70, p. 24, Jul. 9, 1913, as cited in L. Cuban, Teachers and Machines: The Classroom Use of Technology Since 1920. New York, NY, USA: Teachers College Press, 1986.",
-      "verify": "Second sentence confirmed in the compilation; check the first against the original page.",
+      "source": "F. P. Hulette, “An interview with Thomas A. Edison,” Moving Picture World, pp. 104–105, Jul. 22, 1911. Compiled in “Thomas Edison’s education predictions,” muninn.net.",
       "tetrad": [
-        "enhance",
-        "obsolesce"
+        "enhance"
       ],
       "tetrad_detail": {
-        "enhance": "the school system, to be “completely changed”",
-        "obsolesce": "books in the public schools"
+        "enhance": "printing, which moving pictures will “largely supplement”"
       }
     },
     {
@@ -948,7 +946,7 @@
       "year": 2026,
       "who": "A seventh-grade student in Finland (Sebastian et al.)",
       "text": "I’d love a microchip in my brain because there would be no homework",
-      "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Spoken in the workshop and first documented in the paper, so Academic paper. Said after scaffolding with a design-fiction video and technology demonstrations. Hypotheticality Possible: a wish, coded by its conditional 'would' (Should removed from the codebook, 25 Oct 2026).",
+      "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Spoken in the workshop and first documented in the paper, so Academic paper. Said after scaffolding with a design-fiction video and technology demonstrations. Hypotheticality Should: a wish, not a prediction.",
       "direction": "Forward",
       "medium": "Direct transmission to the brain",
       "medium_wording": "Brain microchip",
@@ -1120,7 +1118,7 @@
       "year": 2026,
       "who": "Children in an afterschool STEM programme, Massachusetts (Ibrahim & Reynolds-Cuéllar)",
       "text": "I want to make a vending machine [robot] but for books. . . in the front of the library you can type a book you want and. . . it’ll fall. . . go through a chute and then you can grab the book.",
-      "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Obsolesces searching the shelves. Status Existing: robotic book-lending machines that retrieve a chosen title and dispense it through a chute were in use before 2026, e.g. Taipei Public Library's FastBook. Hypotheticality Possible: a proposal ('you can type… you can grab'); was Should before Should was removed from the codebook (25 Oct 2026).",
+      "note": "Made by participants in a workshop run by the authors; speaker Workshop participants. Obsolesces searching the shelves. Status Existing: robotic book-lending machines that retrieve a chosen title and dispense it through a chute were in use before 2026, e.g. Taipei Public Library's FastBook.",
       "direction": "Forward",
       "medium": "Robot",
       "medium_wording": "Book Vendor robot",
@@ -1240,7 +1238,7 @@
       "year": 1980,
       "who": "Seymour Papert, Mindstorms",
       "text": "I believe that the computer presence will enable us to so modify the learning environment outside the classrooms that much if not all the knowledge schools presently try to teach with such pain and expense and such limited success will be learned, as the child learns to talk, painlessly, successfully, and without organized instruction. This obviously implies that schools as we know them today will have no place in the future.",
-      "note": "Checked against the first edition. Papert leaves open whether schools “adapt by transforming themselves into something new or wither away and be replaced”. Status Emerging: in 1980 children’s learning with computers (LOGO) ran in his group’s trials, not yet in schools at large. Papert’s counted speculation under the one-per-speaker rule: it ties with 1984 on scope and is earlier. His 1984, 1996, 1997 and 2006 statements are kept as repeats, forming his thread.",
+      "note": "Checked against the first edition. Papert leaves open whether schools “adapt by transforming themselves into something new or wither away and be replaced”. Status Emerging: in 1980 children’s learning with computers (LOGO) ran in his group’s trials, not yet in schools at large. Papert’s counted speculation under the one-per-speaker rule: his earliest in the case. His 1984, 1996, 1997 and 2006 statements are kept as repeats, forming his thread.",
       "direction": "Forward",
       "medium": "Computer",
       "medium_wording": "the computer presence",
@@ -1267,33 +1265,31 @@
       }
     },
     {
-      "id": 52,
-      "year": 2010,
-      "who": "Bill Gates, Techonomy conference",
-      "text": "Five years from now on the web for free you’ll be able to find the best lectures in the world. It will be better than any single university.",
-      "note": "Gates also said “College, except for the parties, needs to be less place-based.” Gates’s counted speculation under the one-per-speaker rule: it ties with 2025 on scope (replaces a medium) and is earlier. His 1995, 2023 and 2025 statements are kept as repeats, forming his thread, which moves from the internet to AI.",
+      "id": 51,
+      "year": 1995,
+      "who": "Bill Gates, The Road Ahead",
+      "text": "The information highway won’t replace or devalue any of the human education talent needed for the challenges ahead … However, technology will be pivotal in the future role of teachers.",
+      "note": "Gates answers “an often-expressed fear that technology will replace teachers”. The denial is not coded as obsolescence (codebook rule). Gates’s counted speculation under the one-per-speaker rule: his earliest in the case. His 2010, 2023 and 2025 statements are kept as repeats, forming his thread, which moves from the internet to AI.",
       "direction": "Forward",
       "medium": "Internet",
-      "medium_wording": "the web",
+      "medium_wording": "the information highway",
       "medium_status": "Existing",
-      "format": "Talk or broadcast",
+      "format": "Book",
       "speaker": "Company",
-      "scope": "Replaces a medium",
-      "horizon": "Imminent",
-      "horizon_phrase": "five years from now",
+      "scope": "Transforms practice",
+      "horizon": "Unstated",
+      "horizon_phrase": "",
       "spatial": "Unspecified",
       "social": "Unspecified",
       "hypotheticality": "Certain",
-      "construal": "Concrete",
-      "source": "B. Gates, remarks at the Techonomy Conf., Lake Tahoe, CA, USA, Aug. 6, 2010, as reported in TechCrunch, Aug. 6, 2010, and J. R. Young, The Chronicle of Higher Education, Aug. 9, 2010.",
-      "verify": "Wording via press reports; check against the conference video if available.",
+      "construal": "Abstract",
+      "source": "B. Gates, N. Myhrvold, and P. Rinearson, The Road Ahead. New York, NY, USA: Viking, 1995, ch. 9, p. 185.",
+      "verify": "Wording via the Imagining the Internet database (Elon University); check against the book, including the exact phrase “needed for the challenges ahead”.",
       "tetrad": [
-        "enhance",
-        "obsolesce"
+        "enhance"
       ],
       "tetrad_detail": {
-        "enhance": "access to the best lectures in the world, for free",
-        "obsolesce": "the university as the place to learn"
+        "enhance": "the future role of teachers"
       }
     }
   ]
