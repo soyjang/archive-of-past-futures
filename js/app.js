@@ -22,7 +22,7 @@
     temporal: { label: "Temporal distance", levels: ["Imminent", "Near", "Distant", "Unstated"], get: c => c.temporal },
     spatial:  { label: "Spatial distance", levels: ["Here", "Elsewhere", "Unspecified"], get: c => c.spatial },
     social:   { label: "Social distance", levels: ["Us", "Others", "Unspecified"], get: c => c.social },
-    hyp:      { label: "Hypotheticality", levels: ["Certain", "Possible", "Imagined"], get: c => c.hyp }
+    hyp:      { label: "Hypotheticality", levels: ["Certain", "Possible", "Depicted"], get: c => c.hyp }
   };
   function rings() {
     const D = DIMS[state.dim], n = D.levels.length, r0 = 44, r1 = 296, step = (r1 - r0) / n;
