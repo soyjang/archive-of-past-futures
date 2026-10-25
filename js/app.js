@@ -402,7 +402,7 @@
   $("#src-q").addEventListener("input", (e) => { src.q = e.target.value.trim().toLowerCase(); renderSources(); $("#srclist").scrollTop = 0; });
   $("#srclist").addEventListener("click", (e) => { const li = e.target.closest("[data-pick]"); if (li && !window.getSelection().toString()) srcSelect(+li.dataset.pick, false); });
   document.addEventListener("keydown", (e) => {
-    if ($("#pg-bookcorpus").hidden || e.target.closest("input, select, textarea")) return;
+    if ($("#pg-bookcorpus").hidden || !e.target.closest("#pg-bookcorpus") || e.target.closest("input, select, textarea")) return;
     if (e.key === "ArrowRight" || e.key === "ArrowDown" && e.target.closest("#srclist")) { e.preventDefault(); srcStep(1); }
     if (e.key === "ArrowLeft" || e.key === "ArrowUp" && e.target.closest("#srclist")) { e.preventDefault(); srcStep(-1); }
   });
@@ -418,14 +418,13 @@
     const sub = h === "book" || h === "archive" ? "archive" : h === "book-corpus" || h === "sources" ? "bookcorpus" : null;
     const page = sub ? "book" : PAGES.includes(h) ? h : h.startsWith("cb-") ? "codebook" : "overview";
     Object.entries(SECTIONS).forEach(([pg, secs]) => secs.forEach(x => {
-      const show = pg === page && (pg !== "book" || x === "bookhead" || x === sub);
+      const show = pg === page;
       $(`#pg-${x}`).hidden = !show;
     }));
     document.querySelectorAll(".sitenav a").forEach(a => { if (a.dataset.page === page) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
-    document.querySelectorAll("#pg-bookhead .subnav a").forEach(a => a.setAttribute("aria-current", String(a.dataset.sub === sub)));
-    if (sub === "archive") render();
-    if (sub === "bookcorpus") renderSources();
+    if (sub) { render(); renderSources(); }
     if (h.startsWith("cb-")) document.getElementById(h)?.scrollIntoView();
+    else if (sub === "bookcorpus") $("#pg-bookcorpus").scrollIntoView();
     else window.scrollTo(0, 0);
   }
   window.addEventListener("hashchange", route);
