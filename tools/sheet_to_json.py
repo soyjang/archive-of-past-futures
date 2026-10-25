@@ -7,7 +7,7 @@ and run:  python3 tools/sheet_to_json.py path/to/case1.csv
 The sheet is the source of truth for the coding; this script only reshapes it.
 Header fields of the JSON files (title, note, value lists) are kept as they are.
 """
-import csv, json, sys, pathlib
+import csv, datetime, json, sys, pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 BOOK, REPEATS = ROOT / "data/book.json", ROOT / "data/book-repeats.json"
@@ -40,6 +40,7 @@ def main(path):
     book, reps = json.loads(BOOK.read_text()), json.loads(REPEATS.read_text())
     rows = [row for row in csv.DictReader(open(path, encoding="utf-8")) if row.get("ID", "").strip()]
     recs = [record(row, book["values"]) for row in rows]
+    book["updated"] = datetime.date.today().isoformat()
     book["speculations"] = [r for r in recs if "repeat_of" not in r]
     reps["speculations"] = [r for r in recs if "repeat_of" in r]
     for f, d in ((BOOK, book), (REPEATS, reps)):

@@ -2,7 +2,7 @@
   "case": "book",
   "title": "Past futures of the book",
   "version": "0.5",
-  "updated": "2026-10-22",
+  "updated": "2026-10-24",
   "coder": "One coder (provisional); to be double-coded",
   "note": "One record per speculation. Labels must match the codebook exactly; the site warns about any it does not recognise. v0.3: reach removed; spatial distance (Here, Elsewhere, Everywhere) is distance from the speaker; Speculative designer renamed Designer. v0.4: 15 speculations added from 7 papers in the ACM extension (ids 32–46); each carries its paper ID from the screening sheet. v0.5: Robot and Game added as media; Workshop participants added as a speaker; one speculation per speaker per work (widest scope, ties to the earliest): repeats across works moved to book-repeats.json; distinct speculations within one work all count.",
   "values": {

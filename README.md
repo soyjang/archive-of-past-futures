@@ -27,7 +27,7 @@ Temporal distance is coded from the horizon a claim *states*, not a year, becaus
 
 ## Pages
 
-The site opens on an Introduction: what historicising means here (after Soden et al. 2021, reading every speculation, speculative design included, as a document of its own present), what the project aims to do (code what speculations imagine and leave out, through the Tetrad and speculative distance) and what the two cases are for (Case 1, the book, for depth; Case 2, climate, for breadth). Then the Codebook. Project 1 (Past futures of the book) has three sub-tabs: Tetrad wheel, Corpus (which includes the sources) and Readings. On the wheel, hovering a speculation that codes for several laws previews the lines linking its copies; selecting it keeps them. Project 2 (Climate futures) sets out the corpus being collected; its readings will be reported separately. From readings to design (formerly Counterfactual obsolescence) turns the readings into play: four approaches, each from a reading. Counterfactual obsolescence is worked out in full; oscillation, four voices and scaling down are listed as in development.
+The site opens on an Introduction: what historicising means here (after Soden et al. 2021, reading every speculation, speculative design included, as a document of its own present), what the project aims to do (code what speculations imagine and leave out, through the Tetrad and speculative distance) and what the two cases are for (Case 1, the book, for depth; Case 2, climate, for breadth). Then the Codebook. Case 1 (Past futures of the book) has three sub-tabs: Tetrad wheel, Corpus (which includes the sources) and Readings. On the wheel, hovering a speculation that codes for several laws previews the lines linking its copies; selecting it keeps them. Case 2 (Climate futures) sets out the corpus being collected; its readings will be reported separately. From readings to design (formerly Counterfactual obsolescence) turns the readings into play: four approaches, each from a reading. Counterfactual obsolescence is worked out in full; oscillation, four voices and scaling down are listed as in development.
 
 - **Archive** — the Tetrad wheel: four sectors for the Tetrad laws, with rings for **scope of change**. Hover a dot for a summary; select it and the overview card flips to a grey depth-2 card with its full coding ("← Overview" or selecting again flips back). Dots are coloured by media family and filled for concrete language or hollow for abstract. Selecting a speculation that spans several laws links and pulses all its copies. Hatched cells are empty: combinations no speculation codes for; selecting one shows a short note. The overview shows the counts as a Tetrad figure, with the four laws around the number of speculations. Below it, counts the wheel cannot show: media family, medium status, stated horizon (imminent, near, distant, unstated) and speaker. Media-family chips (stereograph and film, radio and television, teaching machines, computers, internet, AI, VR and direct transmission) select what to show (all media by default; click a family to show only it, click it again to return to all media); a decade slider ("Play decades") handles time.
 - **Codebook** — the full coding scheme (v0.1): unit of analysis, attributes (recorded), codes (interpreted: Tetrad, speculative distance, construal level) with definitions, decision rules and examples from the archive, a worked example (Edison 1922 coded on every dimension, with reasoning), and the reliability plan. The table below summarises it.
@@ -53,11 +53,11 @@ Each page is its own file in `pages/`; `index.html` holds only the header and me
 |---|---|
 | Introduction | `pages/intro.html` |
 | Codebook | `pages/codebook.html` |
-| Project 1 heading and sub-tabs | `pages/book-header.html` |
-| Project 1 · Tetrad wheel | `pages/book-wheel.html` |
-| Project 1 · Corpus (scope, development, counts, then the sources timeline and list) | `pages/book-corpus.html` |
-| Project 1 · Readings | `pages/book-readings.html` |
-| Project 2 · Climate futures | `pages/climate.html` |
+| Case 1 heading and sub-tabs | `pages/book-header.html` |
+| Case 1 · Tetrad wheel | `pages/book-wheel.html` |
+| Case 1 · Corpus (scope, development, counts, then the sources timeline and list) | `pages/book-corpus.html` |
+| Case 1 · Readings | `pages/book-readings.html` |
+| Case 2 · Climate futures | `pages/climate.html` |
 | From readings to design | `pages/design.html` |
 
 - `css/style.css`: all styling.
@@ -79,9 +79,9 @@ The site loads its pages and data, so serve the folder rather than opening `inde
 - Yaacov Trope and Nira Liberman. 2010. Construal-level theory of psychological distance. *Psychological Review* 117, 2, 440–463.
 
 
-## Project 2 · Climate futures (being collected)
+## Case 2 · Climate futures (being collected)
 
-Breadth to Project 1's depth: speculation about climate change across genres, coded with the same codebook adapted from media to artefacts, technologies, policies and practices. Strands: academic speculative design (the 28 papers in Soden et al. 2021), historical climate fiction (Blythe 2023, 1880–1978, with the climate novels he discusses), about 20 films, about 20 reports and about 20 design projects, each with its own selection rule and each sampled across its own history (reports from the 1970s, films across decades, fiction from the 1880s), so that climate speculation is historicised as the book's is.
+Breadth to Case 1's depth: speculation about climate change across genres, coded with the same codebook adapted from media to artefacts, technologies, policies and practices. Strands: academic speculative design (the 28 papers in Soden et al. 2021), historical climate fiction (Blythe 2023, 1880–1978, with the climate novels he discusses), about 20 films, about 20 reports and about 20 design projects, each with its own selection rule and each sampled across its own history (reports from the 1970s, films across decades, fiction from the 1880s), so that climate speculation is historicised as the book's is.
 
 ## Data
 
@@ -102,7 +102,7 @@ Because the site loads these files, open it through a web server rather than as 
 
 ## Codebook v0.2
 
-One codebook for both cases; what each case collects, and its media list, sits with its corpus (Project 1 › Sources; Project 2). Labels were generalised for both cases (scope: replaces a medium / an institution; social: us, others, everyone). Spatial distance now follows construal-level theory strictly, as distance from the speaker (here, elsewhere, everywhere); reach is recorded as an attribute. `data/book.json` was migrated to these labels (v0.2); Star Trek (2009) was recoded as elsewhere.
+One codebook for both cases; what each case collects, and its media list, sits with its corpus (Case 1 › Sources; Case 2). Labels were generalised for both cases (scope: replaces a medium / an institution; social: us, others, everyone). Spatial distance now follows construal-level theory strictly, as distance from the speaker (here, elsewhere, everywhere); reach is recorded as an attribute. `data/book.json` was migrated to these labels (v0.2); Star Trek (2009) was recoded as elsewhere.
 
 Attributes are grouped as *the record* (year, attribution, speaker, format, text, source with a to-verify flag, notes) and *what it imagines* (direction, medium, medium status, reach); medium status and reach need decision rules and are in the reliability check. New rules: researcher vs speculative designer; the central medium when several are involved; medium status for backward speculation judged at the point of divergence.
 
@@ -110,7 +110,7 @@ Attributes are grouped as *the record* (year, attribution, speaker, format, text
 
 Reach was removed: it overlapped with spatial distance and matters little for climate, which is mostly global. Reading 2 is now "Futures set everywhere are abstract", read from spatial distance. "Speculative designer" is now "Designer", with rules separating designers, writers or artists and researchers. Construal is coded from the work itself, never from the archive's one-line description. Installations, games and live performances are excluded for now and reported as a limitation.
 
-Each project has a **Corpus** sub-tab beside the wheel stating scope and how the corpus was developed. Project 1's pilot was assembled purposively (with live counts by format and period); its CHI and DIS extension will state its search procedure. Project 2 takes the 28 project papers from Soden et al. (2021b): 40 of 171 ACM papers (2009–2021) had sustainability as the primary issue and speculative design or a related practice as the primary method; 28 of these are project papers.
+Each project has a **Corpus** sub-tab beside the wheel stating scope and how the corpus was developed. Case 1's pilot was assembled purposively (with live counts by format and period); its CHI and DIS extension will state its search procedure. Case 2 takes the 28 project papers from Soden et al. (2021b): 40 of 171 ACM papers (2009–2021) had sustainability as the primary issue and speculative design or a related practice as the primary method; 28 of these are project papers.
 
 ## Codebook v0.5 and the first extension
 
