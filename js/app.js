@@ -46,8 +46,6 @@
     const idx = (arr, v, field, id) => { const i = arr.indexOf(v); if (i < 0) warn(id, field, v); return i + 1; };
     const key = (obj, v, field, id) => { const k = Object.keys(obj).find(k => obj[k] === v); if (!k) warn(id, field, v); return k; };
     META.book = { title: data.title, version: data.version, updated: data.updated, coder: data.coder };
-    const dd = document.getElementById("data-date");
-    if (dd && data.updated) dd.textContent = ` · Case 1: ${data.speculations.length} speculations, data updated ${new Date(data.updated + "T12:00:00").toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" })}`;
     data.speculations.forEach(r => {
       const c = { id: r.id, year: r.year, who: r.who, text: r.text, desc: !!r.description, note: r.note, verify: r.verify, source: r.source,
         laws: r.tetrad, lawDetail: r.tetrad_detail || {}, lang: (r.construal || "").toLowerCase(), documented: true, speaker: r.speaker, medium: r.medium, detail: r.medium_wording || r.medium };
