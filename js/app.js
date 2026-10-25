@@ -29,7 +29,6 @@
     return D.levels.map((label, i) => ({ k: i + 1, label, r0: r0 + i * step, r1: r0 + (i + 1) * step }));
   }
   const levelOf = (c) => DIMS[state.dim].get(c);
-  const OUTCOME = { absorbed: "Absorbed into practice", unrealised: "Not realised", open: "Still open" };
 
   // Documented claims, gathered from primary sources or reputable compilations. Codes are provisional (single coder).
   // verify: wording or original venue still to be checked against the primary source.
@@ -271,81 +270,6 @@
 
   function select(id) { state.selected = state.selected === id ? null : id; state.gap = null; render(); }
 
-  // ---------- fiction modal + multiplane sketch ----------
-  let raf = null, lastFocus = null;
-  function showFiction(f, eyebrow) {
-    $("#m-title").textContent = f.title;
-    $("#m-eyebrow").textContent = eyebrow;
-    $("#m-world").textContent = f.world;
-    $("#m-beats").innerHTML = f.beats.map(b => `<li>${b}</li>`).join("");
-    $("#m-note").textContent = f.note;
-    lastFocus = document.activeElement;
-    $("#overlay").hidden = false;
-    $("#m-close").focus();
-    animate(f.scene);
-  }
-  function closeFiction() {
-    $("#overlay").hidden = true;
-    if (raf) cancelAnimationFrame(raf);
-    raf = null;
-    if (lastFocus && lastFocus.focus) lastFocus.focus();
-  }
-
-  function animate(scene) {
-    const cv = $("#stage"), ctx = cv.getContext("2d");
-    const W = cv.width, H = cv.height;
-    const col = { paper: css("--paper"), panel: css("--panel"), ink: css("--ink"), muted: css("--muted"), rule: css("--rule"), accent: css("--accent"), soft: css("--accent-soft"), e1: css("--era1"), e3: css("--era3"), e4: css("--era4") };
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    const rr = (x, y, w, h, r) => { ctx.beginPath(); ctx.roundRect ? ctx.roundRect(x, y, w, h, r) : ctx.rect(x, y, w, h); ctx.fill(); };
-    function figure(x, y, s, headset, tint) {
-      ctx.fillStyle = tint; ctx.beginPath(); ctx.arc(x, y - 52 * s, 16 * s, 0, Math.PI * 2); ctx.fill();
-      rr(x - 15 * s, y - 34 * s, 30 * s, 44 * s, 10 * s);
-      if (headset) { ctx.fillStyle = col.ink; rr(x - 17 * s, y - 60 * s, 34 * s, 12 * s, 4 * s); }
-    }
-    function frame(t) {
-      const cam = reduce ? 0 : Math.sin(t / 2400) * 60;
-      const push = reduce ? 1 : 1 + 0.04 * Math.sin(t / 3100);
-      ctx.setTransform(1, 0, 0, 1, 0, 0);
-      const g = ctx.createLinearGradient(0, 0, 0, H); g.addColorStop(0, col.soft); g.addColorStop(1, col.panel);
-      ctx.fillStyle = g; ctx.fillRect(0, 0, W, H);
-      ctx.setTransform(push, 0, 0, push, (1 - push) * W / 2, (1 - push) * H / 2);
-      // PLANE 5: distant skyline
-      ctx.save(); ctx.translate(cam * 0.15, 0); ctx.fillStyle = col.rule;
-      for (let i = -2; i < 16; i++) { const h = 60 + ((i * 37) % 90); rr(i * 95, H * 0.55 - h, 70, h + 40, 4); }
-      if (scene === "pile") { ctx.fillStyle = col.muted; rr(W * 0.66, H * 0.55 - 150, 190, 190, 6); ctx.fillStyle = col.soft; for (let k = 0; k < 6; k++) rr(W * 0.66 + 20 + (k % 3) * 55, H * 0.55 - 130 + Math.floor(k / 3) * 60, 34, 40, 3); }
-      ctx.restore();
-      // ground
-      ctx.fillStyle = col.paper; ctx.fillRect(-200, H * 0.62, W + 400, H);
-      // PLANE 3–4: midground figures
-      ctx.save(); ctx.translate(cam * 0.45, 0);
-      if (scene === "pile") {
-        for (let i = 0; i < 5; i++) figure(120 + i * 170, H * 0.74, 0.9, true, col.e3);
-        ctx.fillStyle = col.e1; ctx.beginPath(); ctx.arc(W * 0.5, H * 0.8, 70, Math.PI, 0); ctx.fill();
-      } else if (scene === "stereo") {
-        figure(W * 0.28, H * 0.78, 1.1, false, col.e1); ctx.fillStyle = col.ink; rr(W * 0.28 - 20, H * 0.78 - 64, 40, 14, 3);
-        figure(W * 0.68, H * 0.78, 1.1, true, col.e4);
-        ctx.strokeStyle = col.accent; ctx.lineWidth = 3; ctx.setLineDash([10, 8]); ctx.beginPath(); ctx.moveTo(W * 0.48, H * 0.3); ctx.lineTo(W * 0.48, H * 0.95); ctx.stroke(); ctx.setLineDash([]);
-        ctx.fillStyle = col.muted; ctx.font = "600 26px " + getComputedStyle(document.body).fontFamily; ctx.fillText("1906", W * 0.2, H * 0.32); ctx.fillText("2026", W * 0.62, H * 0.32);
-      } else {
-        for (let i = 0; i < 4; i++) figure(180 + i * 230, H * 0.76, 1, i % 2 === 0, i % 2 ? col.e1 : col.e3);
-      }
-      ctx.restore();
-      // PLANE 1: foreground, moves most
-      ctx.save(); ctx.translate(cam * 1.1, 0);
-      if (scene === "pile") {
-        for (let k = 0; k < 14; k++) { ctx.fillStyle = k % 2 ? col.ink : col.muted; rr(-40 + (k % 7) * 52 + Math.floor(k / 7) * 26, H - 70 - Math.floor(k / 7) * 34, 60, 28, 8); }
-      } else if (scene === "stereo") {
-        ctx.fillStyle = col.e1; rr(W * 0.05, H - 90, 170, 80, 6); ctx.fillStyle = col.panel; rr(W * 0.05 + 18, H - 74, 60, 40, 4); rr(W * 0.05 + 92, H - 74, 60, 40, 4);
-      } else {
-        ctx.fillStyle = col.muted; rr(-30, H - 60, 260, 70, 10); rr(W - 200, H - 80, 260, 90, 10);
-      }
-      ctx.restore();
-      if (!reduce) raf = requestAnimationFrame(frame);
-    }
-    if (raf) cancelAnimationFrame(raf);
-    frame(0);
-  }
-
   // ---------- controls ----------
   function renderChips() {
     $("#eras").innerHTML = `<button type="button" class="chip all" aria-pressed="${!state.fams.size}" data-fam="all">All media</button>` +
@@ -383,9 +307,6 @@
   document.querySelector(".main").addEventListener("keydown", (e) => {
     if ((e.key === "Enter" || e.key === " ") && activate(e.target)) e.preventDefault();
   });
-  $("#m-close").addEventListener("click", closeFiction);
-  $("#overlay").addEventListener("click", (e) => { if (e.target.id === "overlay") closeFiction(); });
-  document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("#overlay").hidden) closeFiction(); });
 
   // ---------- sources page ----------
   // ---------- sources page: timeline + scrolling list in one fixed workspace ----------
@@ -483,65 +404,9 @@
   $("#src-q").addEventListener("input", (e) => { src.q = e.target.value.trim().toLowerCase(); renderSources(); $("#srclist").scrollTop = 0; });
   $("#srclist").addEventListener("click", (e) => { const li = e.target.closest("[data-pick]"); if (li && !window.getSelection().toString()) srcSelect(+li.dataset.pick, false); });
   document.addEventListener("keydown", (e) => {
-    if ($("#pg-bookcorpus").hidden || !$("#overlay").hidden || e.target.closest("input, select, textarea")) return;
+    if ($("#pg-bookcorpus").hidden || e.target.closest("input, select, textarea")) return;
     if (e.key === "ArrowRight" || e.key === "ArrowDown" && e.target.closest("#srclist")) { e.preventDefault(); srcStep(1); }
     if (e.key === "ArrowLeft" || e.key === "ArrowUp" && e.target.closest("#srclist")) { e.preventDefault(); srcStep(-1); }
-  });
-
-  const cite = (id) => { const c = CLAIMS.find(x => x.id === id); return c ? `${c.short} ${c.year}` : ""; };
-  // ---------- counterfactual obsolescence page ----------
-  // Rule: eligible = scope at least "replaces the medium" (any format, any mood).
-  // One per medium: the speculation with the most unimagined Tetrad laws; ties go to the earliest.
-  const missingOf = (c) => LAW_ORDER.filter(l => !c.laws.includes(l));
-  function selectCF() {
-    const by = {};
-    CLAIMS.filter(c => c.ring >= 3).forEach(c => (by[c.succ] ||= []).push(c));
-    return Object.keys(SUCC).filter(k => by[k]).map(k => by[k].slice().sort((a, b) => missingOf(b).length - missingOf(a).length || a.year - b.year || a.id - b.id)[0]).sort((a, b) => a.year - b.year);
-  }
-  // Near and far versions, written for each selected speculation: one entry per unimagined law
-  const CFTEXT = {
-    5: { near: { label: "Near · one classroom, 1935", world: "1935. Ten years after Edison’s prediction, textbooks are as obsolete as the horse and carriage. Every lesson in Room 4 is a film.", beats: ["The teacher draws the blinds and threads a reel. No pupil holds anything.", "A pupil asks to see yesterday’s film again. The projector is booked until Thursday.", "The teacher writes a summary on the blackboard and hands out mimeographed notes.", "A pupil ties the term’s notes together with string and takes them home."], enhance: "the vivid example: pupils see a volcano erupt rather than read about it", retrieve: "the lecture: the teacher narrating over the film", reverse: "instant access flips into scheduling: one screening, booked in advance" },
-         far: { label: "Far · what schooling became", world: "Film replaced the textbook. By 1960, to read means to watch, and a library is a film archive.", beats: ["Libraries are rebuilt as viewing rooms with numbered seats.", "Literacy is tested by recall: pupils can quote a film but cannot annotate it.", "A market grows for printed ‘film notes’ that summarise each reel.", "The film notes are bound, indexed and assigned: the textbook, under another name."], enhance: "a shared visual culture across the nation’s schools", retrieve: "memorisation and recitation", reverse: "abundance produces a new scarcity: the annotatable page" } },
-    20: { near: { label: "Near · one home, 2157", world: "May 2157. Margie’s mechanical teacher works perfectly: it adjusts to her exact level every day.", beats: ["The teacher slows its geography to Margie’s pace; she scores well, alone.", "Tommy brings the real book over; they read the same page at the same time.", "The teacher logs the lost hour and lowers her level.", "Margie and Tommy keep reading anyway, each correcting the other."], enhance: "perfect pacing: each child taught exactly at her level" },
-          far: { label: "Far · a world of private schooling", world: "Every child in the world learns alone, at home, at exactly the right pace.", beats: ["There is no word for classmate.", "Children meet only through screens, and only to play.", "A black market grows in printed books, the only things two children can read together.", "Reading together becomes an act of friendship, then of protest."], enhance: "the end of being left behind: no child is ever too slow or too fast for the class" } },
-    21: { near: { label: "Near · one school, 1965", world: "Bradbury’s world has arrived: books are banned, and the parlour walls have moved into the classroom.", beats: ["Three walls of the classroom are screens; the lesson surrounds the pupils.", "A pupil asks a question; the wall answers with a family drama.", "The teacher, without books, tells the class a story from memory.", "The pupils repeat it to each other on the way home."], enhance: "immersion: the lesson fills the room", retrieve: "oral storytelling: the memorised book, as among the novel’s book people" },
-          far: { label: "Far · a society of walls", world: "A generation has grown up with wall television and no books.", beats: ["Families talk with the characters on their walls more than with each other.", "History is what the walls have shown.", "Outside the cities, people memorise books, one each.", "A child asks to hear a book, the way her grandmother asks for a song."], enhance: "company: no one is ever without voices", retrieve: "the bard: whole books carried in memory" } },
-    12: { near: { label: "Near · one house, 1995", world: "1995. Schools have gone. A ten-year-old learns at home with a personal computer while her parents are at work.", beats: ["She programs a turtle to draw a spiral, then a flower.", "Neighbourhood children start gathering at the one house with the fastest machine.", "A parent sets a time for the gatherings and stays to supervise.", "The gathering gets a timetable, a grown-up and a name: the computer club."], enhance: "learning by making: a child’s own projects, at her own pace", retrieve: "the school, reinvented as a club", reverse: "learning anywhere flips into learning where the machines are" },
-          far: { label: "Far · learning where the machines are", world: "Schools are gone; learning happens wherever a computer is.", beats: ["Maps of learning follow maps of ownership.", "Public libraries become computer halls with waiting lists.", "Districts without machines lose a generation of learners.", "Campaigners demand a public building where any child can learn: a school."], enhance: "self-directed learning, for those who own a machine", retrieve: "the public library as the people’s university", reverse: "liberation from the institution flips into dependence on ownership" } },
-    23: { near: { label: "Near · one classroom, 2030", world: "The Primer exists: every child receives an illustrated book that teaches her through stories about her own life.", beats: ["In class, thirty children read thirty different stories.", "The teacher cannot discuss a book no one else has read.", "The class becomes a quiet room of private tales.", "Two girls swap Primers for an afternoon, to see each other’s stories."], obsolesce: "the shared class text: the book everyone reads together", reverse: "a book written for one child flips into a book no one else can share" },
-          far: { label: "Far · a generation raised by books", world: "A generation has been raised by Primers, each shaped by a story only its reader knows.", beats: ["Adults recognise each other by the tales their Primers told them.", "Those who could not afford a Primer were raised by people.", "Primer children seek out the remote actors who voiced their books.", "The actors, not the books, turn out to be what they remember."], obsolesce: "the parent and teacher as the voice of stories", reverse: "the perfectly personal book flips into a world without common stories" } },
-    29: { near: { label: "Near · one afternoon, 2040", world: "Skills can be downloaded. A fourteen-year-old learns French in eleven seconds.", beats: ["She speaks French fluently, and has nothing to say in it.", "Her grandmother shows her a French novel she read slowly at school.", "The girl finds she can read every word and understand nothing.", "They read it together, a page an evening."], retrieve: "the slow read: understanding as time spent", reverse: "instant knowledge flips into knowledge without experience" },
-          far: { label: "Far · after learning", world: "Nothing has to be learned any more; everything can be loaded.", beats: ["Schools close; download centres open.", "Everyone knows the same things in the same way.", "A taste grows for doing things badly, by hand, slowly.", "Apprenticeships return, as a luxury of the patient."], retrieve: "apprenticeship: learning by doing beside someone", reverse: "universal knowledge flips into sameness" } },
-    14: { near: { label: "Near · one Tuesday, 2062", world: "2062. Thrun’s forecast has come true: ten institutions deliver all the world’s higher education.", beats: ["One seminar, forty thousand students, one professor’s face on every screen.", "A student waits nine days in a queue for five minutes of office hours.", "Students in one town start meeting in the shell of their old campus library.", "They hire a retired lecturer to talk with them. The campus is back, without a university."], enhance: "access: the best lecture, anywhere, for free", retrieve: "the study circle, meeting in the old campus library", reverse: "access for all flips into nine days in a queue for five minutes of attention" },
-          far: { label: "Far · ten universities for the world", world: "Ten institutions teach the world; every graduate shares the same ten syllabi.", beats: ["National universities become examination centres.", "Scholarship converges on ten reading lists.", "Local knowledge survives in unaccredited reading groups.", "The groups begin to issue their own certificates."], enhance: "a single global standard of teaching", retrieve: "the medieval university: scholars gathering around a few masters", reverse: "global reach flips into a monoculture of knowledge" } }
-  };
-  const cfState = {};
-  function renderCF() {
-    const sel = selectCF();
-    const none = Object.keys(SUCC).filter(k => !sel.some(c => c.succ === k));
-    $("#cf-rule").innerHTML = `<strong>Selection rule.</strong> Eligible: every speculation, in any format, whose scope of change is at least “replaces the medium”. Grouped by medium; within each, the speculation with the most unimagined Tetrad laws is taken, and ties go to the earliest. ${sel.length} media have an eligible speculation. None yet for: ${none.map(k => SUCC[k].toLowerCase()).join(", ")}.`;
-    $("#cf-cards").innerHTML = sel.map(c => {
-      const missing = missingOf(c), d = cfState[c.id] || "near", T = CFTEXT[c.id], v = T ? T[d] : null;
-      const claim = c.desc ? `<p class="quote"><em>${c.text}</em></p>` : `<p class="quote">“${c.text}”</p>`;
-      return `<article class="cfcard">
-        ${claim}<p class="small">— ${c.who}, ${c.year} · ${c.medium === "AI" ? "AI" : c.medium.toLowerCase()}</p>
-        <dl class="cf-tet"><dt>Promised</dt><dd>${c.laws.map(l => `<span class="tag">${LAWS[l].label}</span>`).join("")}</dd>
-          <dt>To imagine</dt><dd>${missing.map(l => `<span class="tag ill">${LAWS[l].label}</span>`).join("")}</dd></dl>
-        ${v ? `<div class="seg" role="group" aria-label="Distance"><button type="button" data-cf="${c.id}" data-d="near" aria-pressed="${d === "near"}">Near, concrete</button><button type="button" data-cf="${c.id}" data-d="far" aria-pressed="${d === "far"}">Far, abstract</button></div>
-        <div class="cf-body"><p class="cf-label">${v.label}</p><p>${v.world}</p>
-          <dl class="cf-tet">${missing.map(l => `<dt>${LAWS[l].label}</dt><dd>${v[l] || "<em>to write</em>"}</dd>`).join("")}</dl></div>
-        <button type="button" class="linkbtn" data-open="${c.id}">Open storyboard →</button>` : `<p class="small"><em>Near and far versions to write.</em></p>`}
-      </article>`;
-    }).join("");
-  }
-  $("#cf-cards").addEventListener("click", (e) => {
-    const t = e.target.closest("[data-cf]");
-    if (t) { cfState[+t.dataset.cf] = t.dataset.d; renderCF(); return; }
-    const o = e.target.closest("[data-open]");
-    if (o) {
-      const c = CLAIMS.find(k => k.id === +o.dataset.open), v = CFTEXT[c.id][cfState[c.id] || "near"];
-      showFiction({ title: `${c.short} was right`, world: v.world, beats: v.beats, note: `${missingOf(c).map(l => `${LAWS[l].label}: ${v[l] || "to write"}`).join(". ")}. Watch for remediation: where does something book-like return?`, scene: "generic" }, `Counterfactual obsolescence · ${v.label}`);
-    }
   });
 
   // ---------- pages ----------
@@ -553,63 +418,13 @@
     $("#corpus-counts").innerHTML = `<div class="cases" style="align-items:start"><table class="sig"><thead><tr><th>Format</th><th>n</th></tr></thead><tbody>${fm.map(x => row(...x)).join("")}</tbody></table>
       <table class="sig"><thead><tr><th>Period</th><th>n</th></tr></thead><tbody>${per.map(x => row(...x)).join("")}${row("Total", C.length)}</tbody></table></div>`;
   }
-  // ---------- readings ----------
-  function renderReadings() {
-    const C = CLAIMS, cnt = (a, f) => a.filter(f).length;
-    const abs = c => c.lang === "abstract", rr = c => c.laws.includes("retrieve") || c.laws.includes("reverse"), multi = c => c.laws.length > 1;
-    const byStatus = STATUS.map((l, i) => [l, C.filter(c => c.status === i + 1)]);
-    const bySpace = DIMS.spatial.levels.map((l, i) => [l, C.filter(c => c.spatial === i + 1)]).filter(x => x[1].length);
-    const byPeriod = [["Before 1960", c => c.year < 1960], ["1960–1999", c => c.year >= 1960 && c.year < 2000], ["2000 on", c => c.year >= 2000]].map(([l, f]) => [l, C.filter(f)]);
-    const ex = byStatus[0][1], im = byStatus[2][1], world = C.filter(c => c.spatial === 3), placed = C.filter(c => c.spatial !== 3);
-    const early = byPeriod[0][1], late = byPeriod[2][1];
-    const writers = C.filter(c => c.speaker === "Writer or artist");
-    const R = C.filter(c => c.laws.includes("retrieve")), V = C.filter(c => c.laws.includes("reverse"));
-    const isSD = c => c.speaker === "Designer" || c.speaker === "Workshop participants";
-    const SD = C.filter(isSD), PR = C.filter(c => !isSD(c) && c.speaker !== "Writer or artist");
-    const P = C.filter(c => ["Inventor", "Company", "Policymaker", "Intergovernmental body", "Educator"].includes(c.speaker)), RS = C.filter(c => c.speaker === "Researcher");
-    const imSD = im.filter(isSD), imW = im.filter(c => c.speaker === "Writer or artist"), imO = im.filter(c => !isSD(c) && c.speaker !== "Writer or artist");
-    const lateSD = late.filter(isSD), lateOther = late.filter(c => !isSD(c));
-    const stated = c => c.temporal < 4, nearH = c => c.temporal <= 2, will = c => c.hyp === 1, imag = c => c.status === 3, rev = c => c.laws.includes("reverse");
-    // rows of 100% bars: segs = [[label, filter, cls]]
-    const fig = (groups, segs) => `<div class="rd-fig">${groups.map(([g, a]) => `<div class="rd-row"><span class="rd-g">${g}</span><span class="hbar">${segs.map(([l, f, k]) => { const v = cnt(a, f); return v ? `<span class="hseg ${k}" style="flex:${v}" title="${l}: ${v}"></span>` : ""; }).join("")}</span><span class="rd-n">${segs.map(([l, f]) => cnt(a, f)).join(" · ")}</span></div>`).join("")}
-      <div class="rd-key">${segs.map(([l, , k]) => `<span><i class="hkey ${k}"></i>${l}</span>`).join("")}</div></div>`;
-    const TSEG = [["Reverses and retrieves", c => rev(c) && c.laws.includes("retrieve"), "s1"], ["Reverses only", c => rev(c) && !c.laws.includes("retrieve"), "h2"], ["Retrieves only", c => c.laws.includes("retrieve") && !rev(c), "h3"], ["Neither", c => !rr(c), "s3"]];
-    const conc = [["Concrete", c => !abs(c), "s1"], ["Abstract", abs, "s3"]];
-    const items = [
-      { t: "Promoters never imagine retrieval or reversal",
-        p: `Inventors, companies, policymakers and educators speak for a medium they want taken up, whether it already exists or, as in two company visions, is still imagined. None of their ${P.length} speculations imagines that medium bringing back something older or turning against its own promise. Researchers do so in ${cnt(RS, rr)} of ${RS.length}, speculative design in ${cnt(SD, rr)} of ${SD.length}, writers and artists in ${cnt(writers, rr)} of ${writers.length}. Speculative design leans critical on other dimensions, as it did against corporate concept videos (Jang &amp; Bolter 2026): set against promoters and researchers (${PR.length}), it uses concrete language more often (${cnt(SD, c => !abs(c))} against ${cnt(PR, c => !abs(c))}) and rarely says what <em>will</em> happen (${cnt(SD, will)} against ${cnt(PR, will)}). On the Tetrad it moves only partway: all ${cnt(SD, rr)} of its cases retrieve, and none reverses.`,
-        f: fig([["Promoters", P], ["Researchers", RS], ["Speculative design", SD], ["Writers and artists", writers]], TSEG),
-        i: "Ask of any promise what it would bring back, not only what it would improve, and push it until it turns into the opposite of its promise. A student in New Delhi wants a robot tutor because, unlike a teacher, it will never get angry at the same question asked again. That enhances patience and obsolesces the scolding teacher; it retrieves the private tutor once kept for the few; and, pushed far enough, it reverses into a classroom where no one is ever corrected and no one asks a person anything. The same works on a promise from the past. Had films replaced books, as Edison said in 1913 they soon would, schools might have got back the lecture and the lantern show, and then flipped into a class that watches but cannot stop, ask or reread." },
-      { t: "Among imagined media, only writers and artists reverse",
-        p: `It might be the medium’s status that matters: a medium that does not yet exist leaves more room to imagine what it brings back or turns into. Holding status constant suggests otherwise. Speculative design (including design fiction) and writers and artists (stories, films and television, and Villemard’s postcards of the year 2000) each imagine ${imSD.length === imW.length ? `${imSD.length}` : `${imSD.length} and ${imW.length}`} media. In speculative design, ${cnt(imSD, rr)} of these ${cnt(imSD, rr) === 1 ? "retrieves" : "retrieve"} and none reverses; among writers and artists, ${cnt(imW, rr)} retrieve or reverse, ${cnt(imW, rev)} of them reversing, as when the mechanical teacher in Isaac Asimov’s “The Fun They Had” (1951) enhances, obsolesces and reverses at once. The ${imO.length} media imagined by companies and researchers do neither. What separates these speculations is who makes them, not whether the medium exists.`,
-        f: fig([["Speculative design", imSD], ["Writers and artists", imW], ["Companies and researchers", imO]], TSEG),
-        i: "Make the medium the subject of a story, not a prop in it. The works that reverse follow someone living with the medium day after day: Margie in Asimov’s story sits at her mechanical teacher every school day and longs for the old schools where children learned together; Mildred in Bradbury’s novel lives inside her parlour-wall television. Where the medium appears in a single scene, as the downloaded skills in <em>The Matrix</em> or the learning pods in <em>Star Trek</em>, or in a single frame, as on Villemard’s postcards, it does not reverse. Design can borrow this: rather than present a medium in one image, follow one person using it long enough for its promise to turn." },
-      { t: "Construal follows the medium’s existence, not its horizon",
-        p: `Speculations about an existing medium are mostly abstract (${cnt(ex, abs)} of ${ex.length}); speculations that imagine a medium are almost all concrete (${cnt(im, c => !abs(c))} of ${im.length}). Construal-level theory predicts that distant futures are construed abstractly (Trope &amp; Liberman 2010). Here the most distant media are described most concretely: those promoting a medium that exists promise outcomes; those inventing one have to show it working. Certainty goes the same way: speculations that say a change <em>will</em> happen are abstract in ${cnt(C.filter(c => c.hyp === 1), abs)} of ${C.filter(c => c.hyp === 1).length}, where the theory would expect what is held certain, and so near, to be described concretely.`,
-        f: fig(byStatus, conc),
-        i: "Make the promise concrete, without needing to invent a medium. Where a speculation says only that an existing medium will transform learning (“the biggest positive transformation that education has ever seen”), design can show one student using it on one day: Mira, 14, gets instant feedback from the tutor on every essay; by spring she writes only what it marks well. Once it shows a particular student, it has to decide what actually happens to her, and side effects the promise never mentions come into view." }
-    ];
-    const sig = [["Medium", "Existing", "Imagined, or an existing one scaled down"], ["Mode", "Will", "Is (depicted)"], ["Language", "Abstract", "Concrete"], ["Tetrad", "One law, usually enhance or obsolesce", "Several laws, including retrieval or reversal"]];
-    $("#readings").innerHTML = items.map((r, k) => `<section class="rd"><h3><span class="rd-k">${k + 1}</span>${r.t}</h3><p>${r.p}</p>${r.f}<p class="rd-i"><strong>Implication.</strong> ${r.i}</p></section>`).join("") +
-      `<section class="rd"><h3><span class="rd-k">→</span>Two patterns</h3><p>Taken together, the readings describe two patterns of speculation, after Dunne and Raby’s distinction between affirmative and critical design (2013). Both speculate: the affirmative confirms a medium’s course, the critical questions it. The corporate and critical axes found in concept videos (Jang &amp; Bolter 2026; cf. Wong &amp; Khovanskaya 2018) are one case of this, but in the archive the affirmative pattern is shared by inventors, policymakers and researchers as well as companies. Speculative design work carries most of the critical pattern, except reversal (readings 1 and 2). For readers, the affirmative pattern is a check on claims about new media in education, AI among them: a claim that carries it says nothing about retrieval or reversal, so ask. For designers, the critical pattern is a set of heuristics for making and evaluating critical speculative design.</p>
-        <table class="sig"><thead><tr><th></th><th>Affirmative</th><th>Critical</th></tr></thead><tbody>${sig.map(([a, b, c]) => `<tr><th>${a}</th><td>${b}</td><td>${c}</td></tr>`).join("")}</tbody></table>
-        <p class="small">Status, format, hypotheticality and construal move together in this archive; ${cnt(im, c => c.hyp === 4)} of the ${im.length} imagined media are depicted rather than predicted. They may be one split, between predicting what an existing medium will do and depicting one that does not exist, which a larger archive would need to separate.</p></section>
-      <section class="rd rd-refs"><h3>References</h3><ul class="cb-refs">
-        <li>Anthony Dunne and Fiona Raby. 2013. <em>Speculative Everything: Design, Fiction, and Social Dreaming</em>. MIT Press.</li>
-        <li>Soyoun Jang and Jay D. Bolter. 2026. Historicising Speculative Design with McLuhan’s Tetrad. In <em>Proceedings of DRS2026</em>. Design Research Society. https://doi.org/10.21606/drs.2026.479</li>
-        <li>Yaacov Trope and Nira Liberman. 2010. Construal-level theory of psychological distance. <em>Psychological Review</em> 117, 2, 440–463.</li>
-        <li>Richmond Y. Wong and Vera Khovanskaya. 2018. Speculative design in HCI: from corporate imaginations to critical orientations. In <em>New Directions in Third Wave Human-Computer Interaction: Volume 2 – Methodologies</em>, Michael Filimowicz and Veronika Tzankova (Eds.). Springer, 175–202.</li></ul></section>`;
-  }
-  const PAGES = ["overview", "codebook", "book", "climate", "counterfactual"];
-  const SECTIONS = { overview: ["overview"], book: ["bookhead", "archive", "bookcorpus", "readings"], codebook: ["codebook"], climate: ["climate"], counterfactual: ["counterfactual"] };
+  const PAGES = ["overview", "codebook", "book", "climate"];
+  const SECTIONS = { overview: ["overview"], book: ["bookhead", "archive", "bookcorpus"], codebook: ["codebook"], climate: ["climate"] };
   function route() {
     let h = location.hash.slice(1);
-    if (h === "gaps" || h === "ideas" || h === "design") h = "counterfactual";
     if (h === "intro") h = "overview";
-    const anchor = h === "cf-full" ? h : null; if (anchor) h = "counterfactual";
-    if (anchor) setCF(true);
     if (h.startsWith("cb-")) { const t = document.getElementById(h); if (t && !$("#pg-codebook").hidden) { t.scrollIntoView(); return; } }
-    const sub = h === "book" || h === "archive" ? "archive" : h === "book-corpus" || h === "sources" ? "bookcorpus" : h === "readings" ? h : null;
+    const sub = h === "book" || h === "archive" ? "archive" : h === "book-corpus" || h === "sources" ? "bookcorpus" : null;
     const page = sub ? "book" : PAGES.includes(h) ? h : h.startsWith("cb-") ? "codebook" : "overview";
     Object.entries(SECTIONS).forEach(([pg, secs]) => secs.forEach(x => {
       const show = pg === page && (pg !== "book" || x === "bookhead" || x === sub);
@@ -618,23 +433,10 @@
     document.querySelectorAll(".sitenav a").forEach(a => { if (a.dataset.page === page) a.setAttribute("aria-current", "page"); else a.removeAttribute("aria-current"); });
     document.querySelectorAll("#pg-bookhead .subnav a").forEach(a => a.setAttribute("aria-current", String(a.dataset.sub === sub)));
     if (sub === "archive") render();
-    if (sub === "readings") renderReadings();
     if (sub === "bookcorpus") { renderCorpus(); renderSources(); }
-    if (page === "counterfactual") renderCF();
     if (h.startsWith("cb-")) document.getElementById(h)?.scrollIntoView();
-    else if (anchor) document.getElementById(anchor)?.scrollIntoView();
     else window.scrollTo(0, 0);
   }
-  // From readings to design: the counterfactual card opens and closes its full write-up below the cards
-  function setCF(open) {
-    const t = $("#cf-toggle"), w = $("#cf-full-wrap"); if (!t || !w) return;
-    w.hidden = !open; t.classList.toggle("active", open); t.setAttribute("aria-expanded", String(open));
-  }
-  $("#cf-toggle").addEventListener("click", (e) => {
-    e.preventDefault();
-    const open = $("#cf-full-wrap").hidden; setCF(open);
-    if (open) $("#cf-full").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "start" });
-  });
   window.addEventListener("hashchange", route);
   fetch(DATA.book).then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
     .then(d => { ingest(d, DATA.book); route(); })

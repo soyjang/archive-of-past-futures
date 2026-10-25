@@ -20,7 +20,6 @@
       <a href="#codebook" data-page="codebook">Codebook</a>
       <a href="#book" data-page="book">Case 1 · Past futures of the book</a>
       <a href="#climate" data-page="climate">Case 2 · Climate futures</a>
-      <a href="#design" data-page="counterfactual">From readings to design</a>
     </nav>
   </header>
 
@@ -29,25 +28,10 @@
 </div>
 
 <div class="tip" id="tip" hidden></div>
-<div class="overlay" id="overlay" hidden>
-  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="m-title">
-    <header>
-      <div style="display:grid;gap:4px">
-        <div class="eyebrow" id="m-eyebrow">Design fiction for a gap</div>
-        <h2 id="m-title"></h2>
-      </div>
-      <button type="button" class="close" id="m-close">Close</button>
-    </header>
-    <canvas id="stage" width="1280" height="560" aria-label="Multiplane animation sketch"></canvas>
-    <p id="m-world" style="margin:0;font-size:16px"></p>
-    <ol class="beats" id="m-beats"></ol>
-    <p class="small" id="m-note"></p>
-  </div>
-</div>
 
 <script>
   // Each page is a file in pages/. They are loaded in this order, then js/app.js runs.
-  const PAGE_FILES = ["intro", "book-header", "book-wheel", "book-corpus", "book-readings", "climate", "design", "codebook"];
+  const PAGE_FILES = ["intro", "book-header", "book-wheel", "book-corpus", "climate", "codebook"];
   Promise.all(PAGE_FILES.map(p => fetch("pages/" + p + ".html").then(r => { if (!r.ok) throw new Error("pages/" + p + ".html"); return r.text(); })))
     .then(parts => {
       document.getElementById("pages").innerHTML = parts.join("\n");
