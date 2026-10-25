@@ -1236,10 +1236,10 @@
       "year": 2026,
       "who": "Eight education and game-design experts (Özkaya & Baykal)",
       "text": "Among the most notable developments is the growing practice of learners designing their own learning paths through what are often described as skill trees. Learning in this structure follows a progression logic familiar from games.",
-      "note": "Workshop participants: eight experts writing a dated design-fiction news story. The authors read AI as a layer beneath the skill trees (an 'environmental layer that supports student agency').",
+      "note": "Workshop participants: eight experts writing a dated design-fiction news story. Medium Internet: the skill trees are programmes run across the networked school of the same workshop's 2030 story (record 44). The participants name no AI, so AI is not coded; the authors read AI as a layer beneath the skill trees (an 'environmental layer that supports student agency'). Not coded Game: the skill trees are game-like, not a game. Games are the older form they bring back, so retrieve.",
       "direction": "Forward",
-      "medium": "Game",
-      "medium_wording": "Game-like skill trees (2035)",
+      "medium": "Internet",
+      "medium_wording": "Skill-tree learning paths across a networked school (2035)",
       "medium_status": "Imagined",
       "format": "Design project",
       "speaker": "Workshop participants",
@@ -1254,11 +1254,13 @@
       "paper": "P014",
       "tetrad": [
         "enhance",
-        "obsolesce"
+        "obsolesce",
+        "retrieve"
       ],
       "tetrad_detail": {
         "enhance": "learners’ choice of their own learning paths",
-        "obsolesce": "standard classes and single programmes"
+        "obsolesce": "standard classes and single programmes",
+        "retrieve": "the progression logic of games, as skill trees"
       }
     },
     {
