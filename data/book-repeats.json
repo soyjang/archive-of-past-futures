@@ -113,6 +113,125 @@
         "enhance": "feedback on writing, and tutoring as good as any human’s"
       },
       "repeat_of": 18
+    },
+    {
+      "id": 47,
+      "year": 1980,
+      "who": "Seymour Papert, Mindstorms",
+      "text": "I believe that the computer presence will enable us to so modify the learning environment outside the classrooms that much if not all the knowledge schools presently try to teach with such pain and expense and such limited success will be learned, as the child learns to talk, painlessly, successfully, and without organized instruction. This obviously implies that schools as we know them today will have no place in the future.",
+      "note": "Checked against the first edition. Papert leaves open whether schools “adapt by transforming themselves into something new or wither away and be replaced”. Status Emerging: in 1980 children’s learning with computers (LOGO) ran in his group’s trials, not yet in schools at large. Under the one-per-speaker rule (widest scope, ties to the earliest) this ties with 1984 on scope and is earlier, so it would become Papert’s counted speculation; kept as a repeat until that is decided.",
+      "direction": "Forward",
+      "medium": "Computer",
+      "medium_wording": "the computer presence",
+      "medium_status": "Emerging",
+      "format": "Book",
+      "speaker": "Researcher",
+      "scope": "Replaces an institution",
+      "horizon": "Unstated",
+      "horizon_phrase": "in the future",
+      "spatial": "Unspecified",
+      "social": "Unspecified",
+      "hypotheticality": "Will",
+      "construal": "Abstract",
+      "source": "Seymour Papert, Mindstorms: Children, Computers, and Powerful Ideas (New York: Basic Books, 1980), pp. 8–9.",
+      "tetrad": [
+        "enhance",
+        "obsolesce",
+        "retrieve"
+      ],
+      "tetrad_detail": {
+        "enhance": "learning outside the classroom, “painlessly, successfully”",
+        "obsolesce": "schools as we know them today",
+        "retrieve": "learning as a child learns to talk, without organised instruction"
+      },
+      "repeat_of": 12
+    },
+    {
+      "id": 48,
+      "year": 1996,
+      "who": "Seymour Papert, interviewed by David S. Bennahum",
+      "text": "The power of computers is not to improve school but to replace it with a different kind of structure.",
+      "note": "Papert also says future places of learning will “very definitely not” look like schools, and that home computers are “the biggest source of change in education”. He describes school as having absorbed the computer; that is a description of the present, not coded.",
+      "direction": "Forward",
+      "medium": "Computer",
+      "medium_wording": "computers, above all in the home",
+      "medium_status": "Existing",
+      "format": "Press or magazine",
+      "speaker": "Researcher",
+      "scope": "Replaces an institution",
+      "horizon": "Unstated",
+      "horizon_phrase": "",
+      "spatial": "Unspecified",
+      "social": "Unspecified",
+      "hypotheticality": "Will",
+      "construal": "Abstract",
+      "source": "David S. Bennahum, “School’s Out?”, interview with Seymour Papert, MEME 2.13, 1996 (memex.org); republished on The Daily Papert.",
+      "verify": "Original MEME issue and date to confirm; wording via The Daily Papert.",
+      "tetrad": [
+        "obsolesce"
+      ],
+      "tetrad_detail": {
+        "obsolesce": "school, replaced by “a different kind of structure”"
+      },
+      "repeat_of": 12
+    },
+    {
+      "id": 49,
+      "year": 1997,
+      "who": "Seymour Papert",
+      "text": "I am convinced that education will undergo the kind of megachange that came in the wake of technological and scientific developments.",
+      "note": "Papert reports school’s “immune reaction”: “before the computer could change School, School changed the computer”. This is close to a reversal, but it is reported as what happened, not imagined, so it is not coded. Change is now to come by evolution, not reform.",
+      "direction": "Forward",
+      "medium": "Computer",
+      "medium_wording": "the computer",
+      "medium_status": "Existing",
+      "format": "Academic paper",
+      "speaker": "Researcher",
+      "scope": "Transforms practice",
+      "horizon": "Unstated",
+      "horizon_phrase": "",
+      "spatial": "Unspecified",
+      "social": "Unspecified",
+      "hypotheticality": "Will",
+      "construal": "Abstract",
+      "source": "Seymour Papert, “Why School Reform Is Impossible”, The Journal of the Learning Sciences 6(4), 1997, pp. 417–427.",
+      "verify": "Page of the quoted sentence to confirm against the journal.",
+      "tetrad": [
+        "enhance"
+      ],
+      "tetrad_detail": {
+        "enhance": "education, in a “megachange” like medicine’s"
+      },
+      "repeat_of": 12
+    },
+    {
+      "id": 50,
+      "year": 2006,
+      "who": "Seymour Papert, SqueakFest keynote",
+      "text": "Does the computer serve the curriculum or does it make it obsolete? … it makes it also obsolete.",
+      "note": "Papert repeats that “school reform is impossible” and that change must “happen in an evolutionary way”.",
+      "direction": "Forward",
+      "medium": "Computer",
+      "medium_wording": "the computer (children’s laptops)",
+      "medium_status": "Existing",
+      "format": "Talk or broadcast",
+      "speaker": "Researcher",
+      "scope": "Replaces a medium",
+      "horizon": "Unstated",
+      "horizon_phrase": "",
+      "spatial": "Unspecified",
+      "social": "Unspecified",
+      "hypotheticality": "Will",
+      "construal": "Abstract",
+      "source": "Seymour Papert, keynote at SqueakFest, 2006; transcript on The Daily Papert.",
+      "verify": "Transcript is auto-generated; check wording, date and venue against a recording.",
+      "tetrad": [
+        "obsolesce"
+      ],
+      "tetrad_detail": {
+        "obsolesce": "the curriculum"
+      },
+      "repeat_of": 12
     }
   ]
 }

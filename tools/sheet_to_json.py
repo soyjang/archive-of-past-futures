@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Rebuild data/book.json and data/book-repeats.json from the coding sheet.
 
-Download the "Case 1 - Book" tab as CSV (File > Download > Comma-separated values)
+Download the "Case 1: Book" tab as CSV (File > Download > Comma-separated values)
 and run:  python3 tools/sheet_to_json.py path/to/case1.csv
 
 The sheet is the source of truth for the coding; this script only reshapes it.

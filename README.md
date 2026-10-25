@@ -95,7 +95,7 @@ The site reads exported copies in `data/`:
 - `data/book.json` and `data/book-repeats.json` — Case 1, past futures of the book (42 speculations, plus 4 repeats set aside under one per speaker per work).
 - `data/climate.json` — Case 2, climate futures (empty for now).
 
-To update the site after editing the sheet, download the "Case 1 - Book" tab as CSV and run `python3 tools/sheet_to_json.py path/to/file.csv`. The script rebuilds both Case 1 files, keeps their headers and value lists, and stops with a message if a row uses a value the codebook does not list or has no Tetrad law. A Tetrad law counts as held when its column (Enhances, Obsolesces, Retrieves, Reverses into) has text in it.
+To update the site after editing the sheet, download the "Case 1: Book" tab as CSV and run `python3 tools/sheet_to_json.py path/to/file.csv`. The script rebuilds both Case 1 files, keeps their headers and value lists, and stops with a message if a row uses a value the codebook does not list or has no Tetrad law. A Tetrad law counts as held when its column (Enhances, Obsolesces, Retrieves, Reverses into) has text in it.
 
 Because the site loads these files, open it through a web server rather than as a local file, e.g. `python3 -m http.server` in this folder, then visit `http://localhost:8000`.
 
