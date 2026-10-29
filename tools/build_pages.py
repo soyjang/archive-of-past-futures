@@ -14,6 +14,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 CB_IDS = {"Unit of analysis": "cb-unit", "Attributes": "cb-attr", "Codes": "cb-codes", "1. Tetrad": "cb-tetrad",
           "2. Speculative distance": "cb-distance", "3. Construal level": "cb-construal", "Worked example": "cb-example",
           "Reliability": "cb-rel", "References": "cb-refs"}
+SITE_SKIP = {"How it was developed"}
 NOTE = "<!-- Built from {src} by tools/build_pages.py. Do not edit by hand. -->\n"
 
 
@@ -161,6 +162,21 @@ def build_codebook():
 def build_corpus():
     soup = html_of("content/corpus-book.md")
     h1 = soup.find("h1"); h1.extract()
+    # "How it was developed" stays in the repo (content/corpus-book.md) but is not shown on the site
+    for h in soup.find_all("h2"):
+        if h.get_text().strip() in SITE_SKIP:
+            node = h
+            while node is not None:
+                nxt = node.next_sibling
+                node.extract()
+                node = nxt
+                if getattr(node, "name", None) == "h2": break
+    # drop the references if nothing left on the page cites them
+    refs = next((h for h in soup.find_all("h2") if h.get_text().strip() == "References"), None)
+    if refs and not re.search(r"\[\d+\]", "".join(str(x) for x in refs.find_all_previous(string=True))):
+        node = refs
+        while node is not None:
+            nxt = node.next_sibling; node.extract(); node = nxt
     for h in soup.find_all("h2"): h.name = "h4"
     for p in soup.find_all("p"):
         if re.match(r"\[\d+\]", p.get_text()): p["class"] = "small"
