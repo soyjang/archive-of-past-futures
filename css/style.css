@@ -160,7 +160,7 @@ a.approach:hover { border-color: var(--muted); }
 .gapnote-head h3 { margin: 0; }
 .axis-label { font-family: var(--font-display); font-weight: 700; font-size: 20px; fill: var(--ink); }
 .axis-sub { font-family: var(--font-mono); font-size: 11px; fill: var(--muted); letter-spacing: .04em; }
-.ring-label { font-family: var(--font-mono); font-size: 10.5px; fill: var(--muted); }
+.ring-label { font-family: var(--font-mono); font-size: 10.5px; fill: var(--muted); paint-order: stroke; stroke: var(--paper); stroke-width: 4px; stroke-linejoin: round; pointer-events: none; }
 .center-label { font-family: var(--font-mono); font-size: 10.5px; fill: var(--ink); }
 .hatch-line { stroke: var(--accent); stroke-width: 1.2; opacity: .55; }
 .dot { cursor: pointer; stroke: none; stroke-width: 2; }
