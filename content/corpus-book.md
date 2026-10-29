@@ -10,9 +10,11 @@ Speculations that a medium will transform or replace the book, reading, teaching
 
 ## Rationale
 
-The corpus speculates about speculative design: it sets speculative design beside the practices around it (predictions, fiction, film, images, reports and design projects) to see how futures of one medium have been imagined across genres and over time. It is therefore built for range rather than representativeness: a spread of formats and periods, read through one codebook that formalises a speculation by what it speculates about. The academic speculative design papers are the one strand that can be retrieved systematically, so they come from a stated search; the other strands are selected purposively, and their bias is reported under Limitation.
+The corpus speculates about speculative design: it sets speculative design beside the practices around it (predictions, fiction, film, images, reports and design projects) to see how futures of one medium have been imagined across genres and over time. It is therefore built for range rather than representativeness: a spread of formats and periods, read through one codebook that formalises a speculation by what it speculates about.
 
 ## How it was developed
+
+The academic speculative design papers are the one strand that can be retrieved systematically, so they come from a stated search; the other strands are selected purposively, and their bias is reported under Limitation.
 
 **Pilot (31 speculations; 28 after one per speaker per medium).** Assembled purposively, not by systematic search: claims quoted in histories of educational technology [1], [2] and traced, where possible, to the press, broadcast and archival sources they cite; widely discussed fiction, film and images; and scenario and speculative design work on education (e.g. Bayne 2015; Selwyn et al. 2020; OECD 2020). Each claim records its source, and a to-verify flag where the wording comes only from a secondary source.
 
@@ -37,7 +39,7 @@ Each speculation is coded in a coding sheet whose values are limited to the code
 
 ## Limitation
 
-A purposive pilot leans towards well-known, mostly American sources, and the histories it draws on quote claims that were dramatic and turned out wrong. The extension and its stated search procedure are meant to correct this; the aim for later rounds is at least 20 speculations per format, drawn from named source lists by a stated rule.
+Apart from the academic papers, which come from a systematic search of the ACM Digital Library, the corpus is selected purposively. It leans towards well-known, mostly American sources, and the histories and collections it draws on (among them Paleofuture) favour claims that were dramatic and turned out wrong. The systematic strand is meant to correct this; the aim for later rounds is at least 20 speculations per format, drawn from named source lists by a stated rule.
 
 ## References
 

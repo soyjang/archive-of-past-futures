@@ -84,7 +84,7 @@ Breadth to Case 1's depth: speculation about climate change across genres, coded
 The codebook and the Case 1 corpus description are written here, in markdown, and nowhere else:
 
 - `content/codebook.md` — the codebook (master copy).
-- `content/corpus-book.md` — how the Case 1 corpus was scoped and built. Its “How it was developed” section (the pilot, the ACM search and screening, later rounds) is kept here for reviewers and is not shown on the site.
+- `content/corpus-book.md` — how the Case 1 corpus was scoped and built. Its “How it was developed” and “Recording” sections (the pilot, the ACM search and screening, later rounds; how the coding is kept) are for reviewers here and are not shown on the site.
 
 The site's Codebook page and the Corpus section of Case 1 are built from them. After editing either file, run `python3 tools/build_pages.py` (needs `pip install markdown beautifulsoup4`), which rewrites `pages/codebook.html` and `pages/book-corpus.html`; never edit those two pages by hand. Changes are proposed as pull requests, so each revision of the codebook is dated and reviewable in the history. The Introduction is `pages/intro.html`.
 
