@@ -301,6 +301,7 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
 .cb-dl dt { font-weight: 700; }
 .cb-dl dd { margin: 0; line-height: 1.5; }
 .cb-dl q { font-style: italic; }
+.cb-rule p, .cb-rule ul { margin: 0 0 6px; } .cb-rule p:last-child { margin-bottom: 0; }
 .cb-rule { font-size: 14px; background: var(--panel); border: 1px solid var(--rule); border-radius: 8px; padding: 10px 12px; }
 .cb-refs { font-size: 14px; }
 .cb-ex dd strong { font-weight: 700; }
