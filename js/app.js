@@ -18,7 +18,7 @@
   };
   const LAW_ORDER = ["enhance", "obsolesce", "retrieve", "reverse"];
   const DIMS = {
-    scope:    { label: "Scope of change", levels: ["Supplements", "Transforms practice", "Replaces a medium", "Replaces an institution"], get: c => c.ring },
+    scope:    { label: "Scope of change", levels: ["Leaves nothing behind", "Leaves a practice behind", "Leaves a medium behind", "Leaves an institution behind"], get: c => c.ring },
     temporal: { label: "Temporal distance", levels: ["0–5 years", "6–10 years", "11–15 years", "16–20 years", "20+ years", "Unstated"], get: c => c.temporal },
     spatial:  { label: "Spatial distance", levels: ["Here", "Elsewhere", "Unspecified"], get: c => c.spatial },
     social:   { label: "Social distance", levels: ["Us", "Others", "Unspecified"], get: c => c.social },
@@ -221,7 +221,7 @@
     return `<div class="gapnote">
         <div class="gapnote-head"><h3>Empty cell</h3></div>
         <h2>${L.label} · ${R.label}</h2>
-        <p style="margin:0">No speculation in the archive imagines a medium that would ${L.verb} ${state.dim === "scope" ? `at the scale of “${R.label.toLowerCase()}”` : R.label === "Unstated" ? "without stating a horizon" : `on a horizon of ${R.label}`}. ${near} speculation${near === 1 ? "" : "s"} ${near === 1 ? "codes" : "code"} for ${L.label.toLowerCase()} ${state.dim === "scope" ? "at other scales" : "on other horizons"}.</p>
+        <p style="margin:0">${state.dim === "scope" && law === "obsolesce" && +ring === 1 ? "Empty by definition: a speculation that makes something obsolete leaves it behind, so it cannot sit where nothing is left behind." : `No speculation in the archive imagines a medium that would ${L.verb} ${state.dim === "scope" ? (+ring === 1 ? "while leaving nothing behind" : `and ${R.label.toLowerCase().replace("leaves", "leave")}`) : R.label === "Unstated" ? "without stating a horizon" : `on a horizon of ${R.label}`}. ${near} speculation${near === 1 ? "" : "s"} ${near === 1 ? "codes" : "code"} for ${L.label.toLowerCase()} ${state.dim === "scope" ? "at other depths" : "on other horizons"}.`}</p>
         <p class="small">An empty cell describes the archive; it is not an instruction for what to design, and it may reflect what the archive happened to collect.</p>
       </div>`;
   }
