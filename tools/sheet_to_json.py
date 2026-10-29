@@ -15,7 +15,7 @@ LAWS = [("Enhances", "enhance"), ("Obsolesces", "obsolesce"), ("Retrieves", "ret
 FIELDS = [("year", "Year"), ("who", "Who"), ("text", "Quote"), ("note", "Coding notes"), ("direction", "Direction"),
           ("medium", "Medium"), ("medium_wording", "Medium as worded"), ("medium_status", "Medium status"),
           ("format", "Format"), ("speaker", "Speaker"), ("scope", "Scope"), ("horizon", "Horizon"),
-          ("horizon_phrase", "Horizon phrase"), ("spatial", "Spatial"), ("social", "Social"),
+          ("horizon_phrase", "Horizon phrase"), ("horizon_years", "Horizon (years)"), ("spatial", "Spatial"), ("social", "Social"),
           ("hypotheticality", "Hypotheticality"), ("construal", "Construal"), ("source", "Citation"),
           ("verify", "To verify"), ("paper", "ACM paper")]
 
@@ -24,16 +24,19 @@ def record(row, values):
     for key, col in FIELDS:
         v = row.get(col, "").strip()
         if key == "year": v = int(v)
-        if v == "" and key in ("note", "verify", "paper"): continue
+        if v == "" and key in ("note", "verify", "paper", "horizon_years", "medium_status"): continue
+        if key == "horizon_years": v = float(v); v = int(v) if v.is_integer() else v
         r[key] = v
     r["tetrad"] = [law for col, law in LAWS if row.get(col, "").strip()]
     r["tetrad_detail"] = {law: row[col].strip() for col, law in LAWS if row.get(col, "").strip()}
     if row.get("Description, not quote", "").strip().upper() == "TRUE": r["description"] = True
     if row.get("Repeat of", "").strip(): r["repeat_of"] = int(row["Repeat of"])
+    na = r.get("medium") == "N/A"  # no medium named: no medium status, no Tetrad, kept off the wheel
     for key in ("medium", "medium_status", "format", "speaker", "direction", "scope", "horizon", "spatial", "social", "hypotheticality", "construal"):
+        if key == "medium_status" and na: continue
         if r.get(key) not in values[key]:
             sys.exit(f"Row {r['id']}: '{r.get(key)}' is not a codebook value for {key}")
-    if not r["tetrad"]: sys.exit(f"Row {r['id']}: no Tetrad law filled in")
+    if not r["tetrad"] and not na: sys.exit(f"Row {r['id']}: no Tetrad law filled in")
     return r
 
 def main(path):
