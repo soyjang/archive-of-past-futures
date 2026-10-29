@@ -41,7 +41,9 @@ def record(row, values):
 
 def main(path):
     book, reps = json.loads(BOOK.read_text()), json.loads(REPEATS.read_text())
-    rows = [row for row in csv.DictReader(open(path, encoding="utf-8")) if row.get("ID", "").strip()]
+    # "To check" rows await a decision and stay out of every count, so they are not exported
+    rows = [row for row in csv.DictReader(open(path, encoding="utf-8"))
+            if row.get("ID", "").strip() and row.get("In archive", "").strip() != "To check"]
     recs = [record(row, book["values"]) for row in rows]
     book["updated"] = datetime.date.today().isoformat()
     book["speculations"] = [r for r in recs if "repeat_of" not in r]
