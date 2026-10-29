@@ -1323,6 +1323,468 @@
       "tetrad_detail": {
         "enhance": "personalised, mastery-based learning, made faster and open to “millions, even billions of kids”"
       }
+    },
+    {
+      "id": 54,
+      "year": 1924,
+      "who": "Science and Invention (unsigned)",
+      "text": "A complete set in the shape of a leatherette covered book will take the place of bulky primers and readers.",
+      "direction": "Forward",
+      "medium": "Radio",
+      "medium_wording": "Radio-book: a radio set in the shape of a leatherette-covered book",
+      "medium_status": "Imagined",
+      "format": "Press or magazine",
+      "speaker": "Journalist or press",
+      "scope": "Leaves a medium behind",
+      "horizon": "0–5 years",
+      "horizon_phrase": "soon",
+      "spatial": "Unspecified",
+      "social": "Us",
+      "hypotheticality": "Certain",
+      "construal": "Concrete",
+      "source": "“[Title unknown],” Science and Invention, Nov. 1924, as cited in M. Novak, “This radio-book from 1924 was the future of education,” Paleofuture. May 21, 2013. [Online]. Available: https://paleofuture.com/blog/2013/5/21/this-radio-book-was-the-future-of-education",
+      "tetrad": [
+        "enhance",
+        "obsolesce"
+      ],
+      "tetrad_detail": {
+        "enhance": "lessons by radio, and homework made “a great joy”",
+        "obsolesce": "bulky primers and readers"
+      }
+    },
+    {
+      "id": 55,
+      "year": 1976,
+      "who": "Hal Hellman, Technophobia (excerpted in The Futurist)",
+      "text": "…may be the way we will eventually do many of the things that remain to be done in basic education and job training.",
+      "direction": "Forward",
+      "medium": "Computer",
+      "medium_wording": "Fuzzy-Duzzy: a soft, cuddly computer terminal",
+      "medium_status": "Imagined",
+      "format": "Book",
+      "speaker": "Writer or artist",
+      "scope": "Leaves nothing behind",
+      "horizon": "Unstated",
+      "horizon_phrase": "eventually",
+      "spatial": "Unspecified",
+      "social": "Unspecified",
+      "hypotheticality": "Possible",
+      "construal": "Concrete",
+      "source": "H. Hellman, Technophobia: Getting Out of the Technology Trap. 1976, as cited in M. Novak, “Fuzzy-Duzzy, the computer you cuddle (1976),” Paleofuture. Aug. 8, 2007. [Online]. Available: https://paleofuture.com/blog/2007/8/8/fuzzy-duzzy-the-computer-you-cuddle-1976.html",
+      "tetrad": [
+        "enhance"
+      ],
+      "tetrad_detail": {
+        "enhance": "basic education and job training, through humanised machines"
+      }
+    },
+    {
+      "id": 56,
+      "year": 1999,
+      "who": "Courtney Loper, fifth grader, Paxtonia Elementary School (The Patriot-News)",
+      "text": "I think that the schools will be run half by robot and half by people.",
+      "direction": "Forward",
+      "medium": "Robot",
+      "medium_wording": "Robot",
+      "medium_status": "Imagined",
+      "format": "Press or magazine",
+      "speaker": "Workshop participants",
+      "scope": "Leaves a practice behind",
+      "horizon": "20+ years",
+      "horizon_phrase": "2025",
+      "horizon_years": 26,
+      "spatial": "Unspecified",
+      "social": "Unspecified",
+      "hypotheticality": "Certain",
+      "construal": "Concrete",
+      "source": "“[Title unknown],” The Patriot-News, Harrisburg, PA, USA, Jul. 13, 1999, as cited in M. Novak, “‘I think in 2025 Furbys will try to conquer the universe’: How 1990s kids imagined the year 2025,” Paleofuture. Jan. 20, 2025. [Online]. Available: https://paleofuture.com/blog/2025/1/20/i-think-in-2025-furbys-will-try-to-conquer-the-universe-how-1990s-kids-imagined-the-year-2025",
+      "tetrad": [
+        "obsolesce"
+      ],
+      "tetrad_detail": {
+        "obsolesce": "half of the people who run schools"
+      }
+    },
+    {
+      "id": 57,
+      "year": 1999,
+      "who": "Benjamin Wigton, fourth grader, Paxtonia Elementary School (The Patriot-News)",
+      "text": "The school my kids would go to would have TVs and computers on every single desk.",
+      "direction": "Forward",
+      "medium": "Computer",
+      "medium_wording": "TVs and computers on every desk",
+      "medium_status": "Existing",
+      "format": "Press or magazine",
+      "speaker": "Workshop participants",
+      "scope": "Leaves nothing behind",
+      "horizon": "20+ years",
+      "horizon_phrase": "2025",
+      "horizon_years": 26,
+      "spatial": "Unspecified",
+      "social": "Us",
+      "hypotheticality": "Possible",
+      "construal": "Concrete",
+      "source": "“[Title unknown],” The Patriot-News, Harrisburg, PA, USA, Jul. 13, 1999, as cited in M. Novak, “‘I think in 2025 Furbys will try to conquer the universe’: How 1990s kids imagined the year 2025,” Paleofuture. Jan. 20, 2025. [Online]. Available: https://paleofuture.com/blog/2025/1/20/i-think-in-2025-furbys-will-try-to-conquer-the-universe-how-1990s-kids-imagined-the-year-2025",
+      "tetrad": [
+        "enhance"
+      ],
+      "tetrad_detail": {
+        "enhance": "the classroom desk, with a TV and computer at each"
+      }
+    },
+    {
+      "id": 58,
+      "year": 1999,
+      "who": "Andrew Vinton, fifth grader, Paxtonia Elementary School (The Patriot-News)",
+      "text": "At school, you could have a mini laptop about 2 inches high.",
+      "direction": "Forward",
+      "medium": "Computer",
+      "medium_wording": "Mini laptop about 2 inches high",
+      "medium_status": "Imagined",
+      "format": "Press or magazine",
+      "speaker": "Workshop participants",
+      "scope": "Leaves nothing behind",
+      "horizon": "20+ years",
+      "horizon_phrase": "2025",
+      "horizon_years": 26,
+      "spatial": "Unspecified",
+      "social": "Unspecified",
+      "hypotheticality": "Possible",
+      "construal": "Concrete",
+      "source": "“[Title unknown],” The Patriot-News, Harrisburg, PA, USA, Jul. 13, 1999, as cited in M. Novak, “‘I think in 2025 Furbys will try to conquer the universe’: How 1990s kids imagined the year 2025,” Paleofuture. Jan. 20, 2025. [Online]. Available: https://paleofuture.com/blog/2025/1/20/i-think-in-2025-furbys-will-try-to-conquer-the-universe-how-1990s-kids-imagined-the-year-2025",
+      "tetrad": [
+        "enhance"
+      ],
+      "tetrad_detail": {
+        "enhance": "a laptop for each pupil at school, shrunk to two inches"
+      }
+    },
+    {
+      "id": 59,
+      "year": 1959,
+      "who": "Arthur Radebaugh, Closer Than We Think (Chicago Tribune)",
+      "text": "Another pushbutton development will be projection of microfilm books on the ceiling or wall in large type. … To increase their impact on students, an electronic voice may accompany the visual passages.",
+      "direction": "Forward",
+      "medium": "Film",
+      "medium_wording": "Electronic home library: microfilm books projected on the ceiling or wall, with an electronic voice",
+      "medium_status": "Imagined",
+      "format": "Image",
+      "speaker": "Writer or artist",
+      "scope": "Leaves nothing behind",
+      "horizon": "Unstated",
+      "horizon_phrase": "in the future",
+      "spatial": "Here",
+      "social": "Us",
+      "hypotheticality": "Certain",
+      "construal": "Concrete",
+      "source": "A. Radebaugh, Closer Than We Think [comic strip], Chicago Tribune, 1959, as cited in M. Novak, “Electronic home library (1959),” Paleofuture. Jul. 14, 2010. [Online]. Available: https://paleofuture.com/blog/2010/7/14/electronic-home-library-1959.html",
+      "tetrad": [
+        "enhance"
+      ],
+      "tetrad_detail": {
+        "enhance": "reading, with books projected large on the ceiling or wall and read aloud by an electronic voice"
+      }
+    },
+    {
+      "id": 61,
+      "year": 1920,
+      "who": "The Cedar Rapids Gazette (unsigned)",
+      "text": "To the schoolboy of the year 1995 history will not merely be something to be memorized out of books. It will be visualized and made real for him by the moving pictures that are being made now.",
+      "direction": "Forward",
+      "medium": "Film",
+      "medium_wording": "Moving pictures of the present, shown to the schoolchildren of 1995",
+      "medium_status": "Existing",
+      "format": "Press or magazine",
+      "speaker": "Journalist or press",
+      "scope": "Leaves nothing behind",
+      "horizon": "20+ years",
+      "horizon_phrase": "the year 1995",
+      "horizon_years": 75,
+      "spatial": "Unspecified",
+      "social": "Others",
+      "hypotheticality": "Certain",
+      "construal": "Concrete",
+      "source": "“[Title unknown],” The Cedar Rapids Gazette, Cedar Rapids, IA, USA, Mar. 18, 1920, as cited in M. Novak, “15 futuristic technologies that were supposed to forever change the way kids learn,” Paleofuture. Jan. 15, 2014. [Online]. Available: https://paleofuture.com/blog/2019/11/21/15-technologies-that-were-supposed-to-change-education-forever",
+      "tetrad": [
+        "enhance"
+      ],
+      "tetrad_detail": {
+        "enhance": "history, “visualized and made real” by moving pictures"
+      }
+    },
+    {
+      "id": 62,
+      "year": 1923,
+      "who": "Daniel Nelson Clark, Radio Journal",
+      "text": "[Lectures broadcast by publicly funded universities would] bring a university education in every home, and give the general public an educational advantage such as it never had before",
+      "direction": "Forward",
+      "medium": "Radio",
+      "medium_wording": "Broadcast university lectures",
+      "medium_status": "Existing",
+      "format": "Press or magazine",
+      "speaker": "Journalist or press",
+      "scope": "Leaves nothing behind",
+      "horizon": "Unstated",
+      "horizon_phrase": "",
+      "spatial": "Here",
+      "social": "Unspecified",
+      "hypotheticality": "Possible",
+      "construal": "Abstract",
+      "source": "D. N. Clark, “[Title unknown],” Radio Journal, Dec. 1923, as cited in M. Novak, “Radio was going to make everyone a wealthy and well-educated globe trotter,” Paleofuture. Jun. 14, 2023. [Online]. Available: https://paleofuture.com/blog/2023/6/14/radio-was-going-to-make-everyone-a-wealthy-and-well-educated-globe-trotter",
+      "tetrad": [
+        "enhance"
+      ],
+      "tetrad_detail": {
+        "enhance": "a university education, in every home, at no perceptible extra cost"
+      }
+    },
+    {
+      "id": 63,
+      "year": 1934,
+      "who": "Walter Dill Scott, president of Northwestern University (Everyday Science and Mechanics)",
+      "text": "The university of twenty-five years from now will be a different looking place … Instead of concentrating faculty and students around a campus, they will “commute” by air … The course will be carried on, to a large extent, by radio and pictures. Facsimile broadcasting and television will enlarge greatly the range of a library",
+      "direction": "Forward",
+      "medium": "Radio",
+      "medium_wording": "Radio and pictures; facsimile broadcasting and television",
+      "medium_status": "Existing",
+      "format": "Press or magazine",
+      "speaker": "Educator",
+      "scope": "Leaves a practice behind",
+      "horizon": "20+ years",
+      "horizon_phrase": "twenty-five years from now",
+      "horizon_years": 25,
+      "spatial": "Unspecified",
+      "social": "Unspecified",
+      "hypotheticality": "Certain",
+      "construal": "Concrete",
+      "source": "“[Title unknown],” Everyday Science and Mechanics, Sep. 1934, as cited in M. Novak, “This is what online classes were supposed to look like in the 1930s,” Paleofuture. Jan. 29, 2014. [Online]. Available: https://paleofuture.com/blog/2014/1/29/this-is-what-online-classes-were-supposed-to-look-like-in-the-1930s",
+      "tetrad": [
+        "enhance",
+        "obsolesce"
+      ],
+      "tetrad_detail": {
+        "enhance": "courses carried by radio and pictures, and a library’s range, by facsimile and television",
+        "obsolesce": "concentrating faculty and students around a campus"
+      }
+    },
+    {
+      "id": 64,
+      "year": 1935,
+      "who": "Short Wave Craft (unsigned)",
+      "text": "As the illustration shows we will undoubtedly have lectures of every conceivable kind present to us right in our homes, when practical television arrives, possibly a year or two off.",
+      "direction": "Forward",
+      "medium": "Television",
+      "medium_wording": "Television lectures in the home",
+      "medium_status": "Emerging",
+      "format": "Press or magazine",
+      "speaker": "Journalist or press",
+      "scope": "Leaves nothing behind",
+      "horizon": "0–5 years",
+      "horizon_phrase": "possibly a year or two off",
+      "horizon_years": 2,
+      "spatial": "Here",
+      "social": "Us",
+      "hypotheticality": "Certain",
+      "construal": "Concrete",
+      "source": "“[Title unknown],” Short Wave Craft, Apr. 1935, as cited in M. Novak, “Predictions for educational TV in the 1930s,” Paleofuture. May 29, 2012. [Online]. Available: https://paleofuture.com/blog/2012/5/29/predictions-for-educational-tv-in-the-1930s",
+      "tetrad": [
+        "enhance"
+      ],
+      "tetrad_detail": {
+        "enhance": "lectures of every kind, at home, with the diagrams radio cannot carry"
+      }
+    },
+    {
+      "id": 65,
+      "year": 1938,
+      "who": "James Rowland Angell, educational consultant to NBC (Associated Press)",
+      "text": "Five years from now, I expect to see television used very frequently in the classroom.",
+      "direction": "Forward",
+      "medium": "Television",
+      "medium_wording": "Classroom television",
+      "medium_status": "Emerging",
+      "format": "Press or magazine",
+      "speaker": "Company",
+      "scope": "Leaves nothing behind",
+      "horizon": "0–5 years",
+      "horizon_phrase": "five years from now",
+      "horizon_years": 5,
+      "spatial": "Unspecified",
+      "social": "Unspecified",
+      "hypotheticality": "Certain",
+      "construal": "Abstract",
+      "source": "J. R. Angell, quoted by the Associated Press, May 1938, as cited in M. Novak, “Before online education, these 15 TVs were the classroom of tomorrow,” Paleofuture. Jul. 10, 2013. [Online]. Available: https://paleofuture.com/blog/2013/7/10/before-online-education-these-15-tvs-were-the-classroom-of-tomorrow",
+      "tetrad": [
+        "enhance"
+      ],
+      "tetrad_detail": {
+        "enhance": "the classroom, with television used “very frequently”"
+      }
+    },
+    {
+      "id": 66,
+      "year": 1958,
+      "who": "Arthur Radebaugh, Closer Than We Think (Chicago Tribune), after Simon Ramo",
+      "text": "Teaching would be by means of sound movies and mechanical tabulating machines. Pupils would record attendance and answer questions by pushing buttons. Special machines would be “geared” for each individual student so he could advance as rapidly as his abilities warranted. Progress records, also kept by machine, would be periodically reviewed by skilled teachers",
+      "direction": "Forward",
+      "medium": "Teaching machine",
+      "medium_wording": "Push-button school: sound movies and tabulating machines at each desk",
+      "medium_status": "Imagined",
+      "format": "Image",
+      "speaker": "Writer or artist",
+      "scope": "Leaves a practice behind",
+      "horizon": "Unstated",
+      "horizon_phrase": "tomorrow",
+      "spatial": "Unspecified",
+      "social": "Unspecified",
+      "hypotheticality": "Possible",
+      "construal": "Concrete",
+      "source": "A. Radebaugh, Closer Than We Think [comic strip], Chicago Tribune, May 1958, as cited in M. Novak, “The push-button school of tomorrow (1958),” Paleofuture. Aug. 24, 2011. [Online]. Available: https://paleofuture.com/blog/2011/8/24/the-push-button-school-of-tomorrow-1958.html",
+      "tetrad": [
+        "enhance",
+        "obsolesce"
+      ],
+      "tetrad_detail": {
+        "enhance": "each pupil’s pace, with machines “geared” to the individual",
+        "obsolesce": "teaching by the teacher in the room, now reviewing machine records"
+      }
+    },
+    {
+      "id": 67,
+      "year": 1960,
+      "who": "National Education Association (Oakland Tribune)",
+      "text": "It is true that teaching machines are on their way into the modern classroom and today’s youngsters will have a lot more mechanical aids than his parents. But the emphasis will still be on aid — not primary instruction.",
+      "direction": "Forward",
+      "medium": "Teaching machine",
+      "medium_wording": "Teaching machines",
+      "medium_status": "Existing",
+      "format": "Press or magazine",
+      "speaker": "Educator",
+      "scope": "Leaves nothing behind",
+      "horizon": "0–5 years",
+      "horizon_phrase": "on their way",
+      "spatial": "Here",
+      "social": "Us",
+      "hypotheticality": "Certain",
+      "construal": "Abstract",
+      "source": "“NEA allays parent fears on robot teacher,” Oakland Tribune, Oakland, CA, USA, Aug. 24, 1960, as cited in M. Novak, “15 futuristic technologies that were supposed to forever change the way kids learn,” Paleofuture. Jan. 15, 2014. [Online]. Available: https://paleofuture.com/blog/2019/11/21/15-technologies-that-were-supposed-to-change-education-forever",
+      "tetrad": [
+        "enhance"
+      ],
+      "tetrad_detail": {
+        "enhance": "the mechanical aids at today’s youngsters’ disposal"
+      }
+    },
+    {
+      "id": 68,
+      "year": 1967,
+      "who": "Philco-Ford, 1999 A.D.",
+      "text": "A child of 1999 learns at home with a personal computer, audio lectures and computerised testing.",
+      "direction": "Forward",
+      "medium": "Computer",
+      "medium_wording": "Home learning computer",
+      "medium_status": "Imagined",
+      "format": "Film or television",
+      "speaker": "Company",
+      "scope": "Leaves nothing behind",
+      "horizon": "20+ years",
+      "horizon_phrase": "1999",
+      "horizon_years": 32,
+      "spatial": "Here",
+      "social": "Us",
+      "hypotheticality": "Depicted",
+      "construal": "Concrete",
+      "source": "Philco-Ford, 1999 A.D. [Film], 1967, as cited in M. Novak, “Learning in 1999 A.D. (1967),” Paleofuture. Jan. 31, 2008. [Online]. Available: https://paleofuture.com/blog/2008/1/31/learning-in-1999-ad-1967.html",
+      "tetrad": [
+        "enhance"
+      ],
+      "tetrad_detail": {
+        "enhance": "learning at home, by computer, audio lecture and computerised test"
+      },
+      "description": true
+    },
+    {
+      "id": 69,
+      "year": 1981,
+      "who": "Neil Ardley, World of Tomorrow: School, Work and Play",
+      "text": "Instead of sitting in classes and learning each subject from a particular teacher, schoolchildren will be able to learn individually from computers. They will be able to make their own choice of subjects, and the teachers will be there to help them as they learn.",
+      "direction": "Forward",
+      "medium": "Computer",
+      "medium_wording": "Computers for individual learning",
+      "medium_status": "Existing",
+      "format": "Book",
+      "speaker": "Writer or artist",
+      "scope": "Leaves a practice behind",
+      "horizon": "Unstated",
+      "horizon_phrase": "",
+      "spatial": "Unspecified",
+      "social": "Us",
+      "hypotheticality": "Certain",
+      "construal": "Concrete",
+      "source": "N. Ardley, World of Tomorrow: School, Work and Play, 1981, as cited in M. Novak, “15 futuristic technologies that were supposed to forever change the way kids learn,” Paleofuture. Jan. 15, 2014. [Online]. Available: https://paleofuture.com/blog/2019/11/21/15-technologies-that-were-supposed-to-change-education-forever",
+      "tetrad": [
+        "enhance",
+        "obsolesce"
+      ],
+      "tetrad_detail": {
+        "enhance": "learning individually, with pupils choosing their own subjects",
+        "obsolesce": "sitting in classes and learning each subject from a particular teacher"
+      }
+    },
+    {
+      "id": 70,
+      "year": 1981,
+      "who": "Neil Ardley, World of Tomorrow: School, Work and Play",
+      "text": "But if we look further into the future, there could be no schools and no teachers. Schoolwork may not exist. Instead you will have to do homework, for you will learn everything at home using your home video computer.",
+      "direction": "Forward",
+      "medium": "Computer",
+      "medium_wording": "Home video computer",
+      "medium_status": "Imagined",
+      "format": "Book",
+      "speaker": "Writer or artist",
+      "scope": "Leaves an institution behind",
+      "horizon": "Unstated",
+      "horizon_phrase": "further into the future",
+      "spatial": "Here",
+      "social": "Us",
+      "hypotheticality": "Possible",
+      "construal": "Concrete",
+      "source": "N. Ardley, World of Tomorrow: School, Work and Play, 1981, as cited in M. Novak, “15 futuristic technologies that were supposed to forever change the way kids learn,” Paleofuture. Jan. 15, 2014. [Online]. Available: https://paleofuture.com/blog/2019/11/21/15-technologies-that-were-supposed-to-change-education-forever",
+      "tetrad": [
+        "enhance",
+        "obsolesce"
+      ],
+      "tetrad_detail": {
+        "enhance": "learning everything at home, at a time to suit you",
+        "obsolesce": "schools and teachers"
+      }
+    },
+    {
+      "id": 71,
+      "year": 1987,
+      "who": "GTE, Classroom of the Future",
+      "text": "A boy kept home by a sports injury joins his teacher and classmates by videophone from bed, and prepares a presentation on the Battle of Marathon with voice recognition, multimedia and library databases.",
+      "direction": "Forward",
+      "medium": "Computer",
+      "medium_wording": "Home computer with videophone, voice recognition and database access",
+      "medium_status": "Imagined",
+      "format": "Film or television",
+      "speaker": "Company",
+      "scope": "Leaves nothing behind",
+      "horizon": "Unstated",
+      "horizon_phrase": "",
+      "spatial": "Unspecified",
+      "social": "Us",
+      "hypotheticality": "Depicted",
+      "construal": "Concrete",
+      "source": "GTE, Classroom of the Future [Film], 1987, as cited in M. Novak, “15 futuristic technologies that were supposed to forever change the way kids learn,” Paleofuture. Jan. 15, 2014. [Online]. Available: https://paleofuture.com/blog/2019/11/21/15-technologies-that-were-supposed-to-change-education-forever",
+      "tetrad": [
+        "enhance"
+      ],
+      "tetrad_detail": {
+        "enhance": "learning from home: class by videophone, research by voice and database"
+      },
+      "description": true
     }
   ]
 }
