@@ -8,7 +8,7 @@ The archive collects claims that a new medium would transform or replace the boo
 |---|---|---|
 | Tetrad law(s) | McLuhan & McLuhan 1988 | enhance, obsolesce, retrieve, reverse |
 | Scope of change | specific to obsolescence | supplements, transforms practice, replaces a medium, replaces an institution |
-| Temporal distance | construal-level theory | stated horizon: imminent, near, distant, unstated |
+| Temporal distance | construal-level theory | stated horizon in five-year steps: 0–5, 6–10, 11–15, 16–20, 20+ years, unstated; years recorded where given |
 | Spatial distance | construal-level theory | distance of the setting from the speaker: here, elsewhere; unspecified kept off the scale |
 | Social distance | construal-level theory | us, others (incl. future generations and non-humans); unspecified kept off the scale |
 | Hypotheticality | construal-level theory | will, should, could, is (depicted) |
@@ -23,7 +23,7 @@ The archive collects claims that a new medium would transform or replace the boo
 
 Claims of replacement mostly state what a medium enhances and obsolesces, so the archive records only what was predicted. Reading these predictions against what each medium did in practice (television did not replace the book, but it did retrieve the lecture) belongs to the written analysis, drawing on histories of educational technology, not to the archive. The speaker code asks whether a claim's distance follows the interests behind it, and whether speculative design projects sit at different distances from commercial forecasts (Wong & Khovanskaya 2018).
 
-Temporal distance is coded from the horizon a claim *states*, not a year, because most claims (and most speculative design) give none: Edison's "soon", a design fiction's "near future". The signalling phrase is recorded with the code, a year is noted where given, and *unstated* is a value in its own right: in construal-level terms, a vague horizon may itself indicate abstract construal. Placing phrases on the scale is interpretive, so the codebook gives example phrases per level and a second coder checks a sample.
+Temporal distance is coded from the horizon a claim *states*, not a year, because most claims (and most speculative design) give none: Edison's "soon", a design fiction's "near future". The signalling phrase is recorded with the code, the horizon in years is recorded where a year or number is given (so the five-year steps can be redrawn without recoding), and *unstated* is a value in its own right: in construal-level terms, a vague horizon may itself indicate abstract construal. Placing phrases on the scale is interpretive, so the codebook gives example phrases per level and a second coder checks a sample.
 
 ## Pages
 
@@ -111,3 +111,5 @@ Each project has a **Corpus** sub-tab beside the wheel stating scope and how the
 ## Codebook v0.5 and the first extension
 
 The ACM Digital Library extension added 15 speculations from 7 papers (ids 32–46). Media gained *robot* (shown with AI in an "AI and robots" family) and *game* (a "Games" family, after McLuhan 1964). Speaker gained *Workshop participants*, for speculations made by the people a study engages rather than by its authors. One speculation per speaker per medium counts in a case: when a speaker repeats a view about the same medium across works, the earliest counts; a speculation about a different medium counts separately, and distinct speculations within one work all count. The repeats (Edison 1913, 1922 and 1925; Gates 2010 and 2025; Papert 1984, 1996, 1997 and 2006) are kept in `data/book-repeats.json` and kept out of every count. The archive now counts 43: 28 from the pilot and 15 from the extension.
+
+Later in v0.5, temporal distance moved to five-year steps (0–5, 6–10, 11–15, 16–20, 20+ years, unstated), with a **Horizon (years)** column for the stated horizon wherever a year or number is given (`horizon_years` in the data); a range is coded by its upper bound. The unit of analysis now reads "imagines the world otherwise than its present: changed by a medium or, where no medium is named, simply changed". Medium keeps McLuhan's broad sense, glossed for HCI as the sociotechnical intervention imagined (a technology, artefact, practice or policy), and may be *N/A* when a speculation names no medium at all: such speculations are coded on distance and construal but not on medium status or the Tetrad, and are kept off the wheel and counted separately.
