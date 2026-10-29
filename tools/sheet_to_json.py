@@ -12,12 +12,13 @@ import csv, datetime, json, sys, pathlib
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 BOOK, REPEATS = ROOT / "data/book.json", ROOT / "data/book-repeats.json"
 LAWS = [("Enhances", "enhance"), ("Obsolesces", "obsolesce"), ("Retrieves", "retrieve"), ("Reverses into", "reverse")]
-FIELDS = [("year", "Year"), ("who", "Who"), ("text", "Quote"), ("note", "Coding notes"), ("direction", "Direction"),
+# Coding notes and To verify stay in the private sheet: only the quotation, codes and citation are published.
+FIELDS = [("year", "Year"), ("who", "Who"), ("text", "Quote"), ("direction", "Direction"),
           ("medium", "Medium"), ("medium_wording", "Medium as worded"), ("medium_status", "Medium status"),
           ("format", "Format"), ("speaker", "Speaker"), ("scope", "Scope"), ("horizon", "Horizon"),
           ("horizon_phrase", "Horizon phrase"), ("horizon_years", "Horizon (years)"), ("spatial", "Spatial"), ("social", "Social"),
           ("hypotheticality", "Hypotheticality"), ("construal", "Construal"), ("source", "Citation"),
-          ("verify", "To verify"), ("paper", "ACM paper")]
+          ("paper", "ACM paper")]
 
 def record(row, values):
     r = {"id": int(row["ID"])}

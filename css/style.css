@@ -331,3 +331,8 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
 /* Sources sits on a full-width tinted band, so it reads as its own section */
 #pg-bookcorpus { background: var(--band); box-shadow: 0 0 0 100vmax var(--band); clip-path: inset(0 -100vmax); padding: 32px 0 40px; margin-top: 40px; }
 #pg-bookcorpus h3 { margin-top: 0; }
+
+.corpus-text { max-width: 78ch; display: grid; gap: 10px; }
+.corpus-text h4 { font-size: 16px; margin: 12px 0 0; }
+.corpus-text p, .corpus-text ol, .corpus-text ul { margin: 0; line-height: 1.55; }
+.corpus-text ol, .corpus-text ul { padding-left: 22px; }

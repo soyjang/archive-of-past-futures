@@ -23,7 +23,6 @@
       "hypotheticality": "Certain",
       "construal": "Abstract",
       "source": "F. J. Smith, “The evolution of the motion picture VI,” New York Dramatic Mirror, vol. 70, p. 24, Jul. 9, 1913, as cited in L. Cuban, Teachers and Machines: The Classroom Use of Technology Since 1920. New York, NY, USA: Teachers College Press, 1986.",
-      "verify": "Second sentence confirmed in the compilation; check the first against the original page.",
       "tetrad": [
         "enhance",
         "obsolesce"
@@ -53,7 +52,6 @@
       "hypotheticality": "Certain",
       "construal": "Abstract",
       "source": "H. Weir, “The story of the motion picture,” McClure’s Magazine, vol. 54, p. 85, Nov. 1922, as cited in L. Cuban, Teachers and Machines: The Classroom Use of Technology Since 1920. New York, NY, USA: Teachers College Press, 1986.",
-      "verify": "Full wording taken from secondary sources; check against McClure’s.",
       "tetrad": [
         "enhance",
         "obsolesce"
@@ -110,7 +108,6 @@
       "hypotheticality": "Certain",
       "construal": "Abstract",
       "source": "S. Papert, 1984, as quoted in L. Cuban, Teachers and Machines: The Classroom Use of Technology Since 1920. New York, NY, USA: Teachers College Press, 1986.",
-      "verify": "Original 1984 venue not yet identified.",
       "tetrad": [
         "obsolesce"
       ],
@@ -154,7 +151,6 @@
       "year": 1996,
       "who": "Seymour Papert, interviewed by David S. Bennahum",
       "text": "The power of computers is not to improve school but to replace it with a different kind of structure.",
-      "note": "Papert also says future places of learning will “very definitely not” look like schools, and that home computers are “the biggest source of change in education”. He describes school as having absorbed the computer; that is a description of the present, not coded.",
       "direction": "Forward",
       "medium": "Computer",
       "medium_wording": "computers, above all in the home",
@@ -169,7 +165,6 @@
       "hypotheticality": "Certain",
       "construal": "Abstract",
       "source": "D. S. Bennahum, “School’s out? An interview with Seymour Papert,” MEME 2.13, 1996. [Online]. Republished on The Daily Papert.",
-      "verify": "Original MEME issue and date to confirm; wording via The Daily Papert.",
       "tetrad": [
         "obsolesce"
       ],
@@ -183,7 +178,6 @@
       "year": 1997,
       "who": "Seymour Papert",
       "text": "I am convinced that education will undergo the kind of megachange that came in the wake of technological and scientific developments.",
-      "note": "Papert reports school’s “immune reaction”: “before the computer could change School, School changed the computer”. This is close to a reversal, but it is reported as what happened, not imagined, so it is not coded. Change is now to come by evolution, not reform.",
       "direction": "Forward",
       "medium": "Computer",
       "medium_wording": "the computer",
@@ -198,7 +192,6 @@
       "hypotheticality": "Certain",
       "construal": "Abstract",
       "source": "S. Papert, “Why school reform is impossible,” J. Learning Sciences, vol. 6, no. 4, pp. 417–427, 1997.",
-      "verify": "Page of the quoted sentence to confirm against the journal.",
       "tetrad": [
         "enhance"
       ],
@@ -212,7 +205,6 @@
       "year": 2006,
       "who": "Seymour Papert, SqueakFest keynote",
       "text": "Does the computer serve the curriculum or does it make it obsolete? … it makes it also obsolete.",
-      "note": "Papert repeats that “school reform is impossible” and that change must “happen in an evolutionary way”.",
       "direction": "Forward",
       "medium": "Computer",
       "medium_wording": "the computer (children’s laptops)",
@@ -227,7 +219,6 @@
       "hypotheticality": "Certain",
       "construal": "Abstract",
       "source": "S. Papert, keynote address, presented at SqueakFest, 2006. Transcript on The Daily Papert.",
-      "verify": "Transcript is auto-generated; check wording, date and venue against a recording.",
       "tetrad": [
         "obsolesce"
       ],
@@ -241,7 +232,6 @@
       "year": 2010,
       "who": "Bill Gates, Techonomy conference",
       "text": "Five years from now on the web for free you’ll be able to find the best lectures in the world. It will be better than any single university.",
-      "note": "Gates also said “College, except for the parties, needs to be less place-based.” Part of Gates’s thread.",
       "direction": "Forward",
       "medium": "Internet",
       "medium_wording": "the web",
@@ -257,7 +247,6 @@
       "hypotheticality": "Certain",
       "construal": "Concrete",
       "source": "B. Gates, remarks at the Techonomy Conf., Lake Tahoe, CA, USA, Aug. 6, 2010, as reported in TechCrunch, Aug. 6, 2010, and J. R. Young, The Chronicle of Higher Education, Aug. 9, 2010.",
-      "verify": "Wording via press reports; check against the conference video if available.",
       "tetrad": [
         "enhance",
         "obsolesce"
