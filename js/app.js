@@ -66,6 +66,8 @@
   const $ = (s) => document.querySelector(s);
   const css = (v) => getComputedStyle(document.documentElement).getPropertyValue(v).trim();
   const famOf = (c) => FAMS.find(f => f.media.includes(c.succ));
+  // Only the media families the archive actually holds get a chip or a legend entry
+  const famsPresent = () => FAMS.filter(f => CLAIMS.some(c => famOf(c) && famOf(c).id === f.id));
 
   const state = { view: "wheel", dim: "scope", decade: 2030, fams: new Set(), selected: null, gap: null };
   const lawsOf = (c) => c.laws;
@@ -271,7 +273,7 @@
   // ---------- controls ----------
   function renderChips() {
     $("#eras").innerHTML = `<button type="button" class="chip all" aria-pressed="${!state.fams.size}" data-fam="all">All media</button>` +
-      FAMS.map(f => `<button type="button" class="chip" aria-pressed="${state.fams.has(f.id)}" data-fam="${f.id}" style="--c:var(${f.v})"><span class="swatch" style="background:var(${f.v})"></span>${f.label}</button>`).join("");
+      famsPresent().map(f => `<button type="button" class="chip" aria-pressed="${state.fams.has(f.id)}" data-fam="${f.id}" style="--c:var(${f.v})"><span class="swatch" style="background:var(${f.v})"></span>${f.label}</button>`).join("");
   }
   renderChips();
   $("#eras").addEventListener("click", (ev) => {
@@ -301,7 +303,13 @@
     if (d) { select(+d.dataset.id); return true; }
     return false;
   }
-  document.querySelector(".main").addEventListener("click", (e) => activate(e.target));
+  document.querySelector(".main").addEventListener("click", (e) => {
+    if (activate(e.target)) return;
+    // A click on the wheel's background, away from any dot or cell, returns to the overview
+    if (e.target.closest(".figure") && !e.target.closest("a, button, input") && (state.selected || state.gap)) {
+      state.selected = null; state.gap = null; render();
+    }
+  });
   document.querySelector(".main").addEventListener("keydown", (e) => {
     if ((e.key === "Enter" || e.key === " ") && activate(e.target)) e.preventDefault();
   });
@@ -359,7 +367,7 @@
   }
   function renderSources() {
     if (src.sel && !shownSrc().some(c => c.id === src.sel)) src.sel = null;
-    $("#src-legend").innerHTML = FAMS.map(f => `<span><span class="swatch" style="background:var(${f.v})"></span>${f.label}</span>`).join("");
+    $("#src-legend").innerHTML = famsPresent().map(f => `<span><span class="swatch" style="background:var(${f.v})"></span>${f.label}</span>`).join("");
     renderStrip(); renderSrcList();
   }
   // tooltip
@@ -429,6 +437,6 @@
   }
   window.addEventListener("hashchange", route);
   fetch(DATA.book).then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
-    .then(d => { ingest(d, DATA.book); route(); })
+    .then(d => { ingest(d, DATA.book); renderChips(); route(); })
     .catch(err => { $("header").insertAdjacentHTML("beforeend", `<p class="notice">Could not load the archive data (${DATA.book}): ${err.message}. The site has to be opened through a web server, not as a local file.</p>`); route(); });
 })();
