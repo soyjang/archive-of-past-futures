@@ -79,16 +79,25 @@ The site loads its pages and data, so serve the folder rather than opening `inde
 
 Breadth to Case 1's depth: speculation about climate change across genres, coded with the same codebook adapted from media to artefacts, technologies, policies and practices. Strands: academic speculative design (the 28 papers in Soden et al. 2021), historical climate fiction (Blythe 2023, 1880–1978, with the climate novels he discusses), about 20 films, about 20 reports and about 20 design projects, each with its own selection rule and each sampled across its own history (reports from the 1970s, films across decades, fiction from the 1880s), so that climate speculation is historicised as the book's is.
 
+## Codebook and corpus
+
+The codebook and the Case 1 corpus description are written here, in markdown, and nowhere else:
+
+- `content/codebook.md` — the codebook (master copy).
+- `content/corpus-book.md` — how the Case 1 corpus was scoped and built.
+
+The site's Codebook page and the Corpus section of Case 1 are built from them. After editing either file, run `python3 tools/build_pages.py` (needs `pip install markdown beautifulsoup4`), which rewrites `pages/codebook.html` and `pages/book-corpus.html`; never edit those two pages by hand. Changes are proposed as pull requests, so each revision of the codebook is dated and reviewable in the history. The Introduction is `pages/intro.html`.
+
 ## Data
 
-The coding and the sources live outside this repository, so it stays small and collaborators can add to the archive without touching the code:
+The coding and the sources live outside this repository and stay private; the repository holds only what is published:
 
-- **Coding sheet** (Google Sheets, "Coding-Past-Futures"): one row per speculation, one tab per case, every codebook attribute in its own column, with dropdowns drawn from the codebook values on the Lists tab. This is the source of truth for the coding.
-- **Source library** (shared Obsidian vault, "Archive-of-Past-Futures"): one note per work, named `Lastname Year - Short Title`, holding the citation, coding notes, the speculations it contains and any reading. The sheet's "Source note" column gives each row's note.
+- **Coding sheet** (Google Sheets, private): one row per speculation, one tab per case, every codebook attribute in its own column, with dropdowns drawn from the codebook values. This is the source of truth for the coding. Coding notes and to-verify notes stay in the sheet: the export publishes only each speculation's quotation, codes and citation.
+- **Source library** (private Obsidian vault): one note per work, named `Lastname Year - Short Title`, holding the citation, coding notes and the speculations it contains, with the PDFs, threads and readings. The sheet's "Source note" column gives each row's note. Readings are never published.
 
 The site reads exported copies in `data/`:
 
-- `data/book.json` and `data/book-repeats.json` — Case 1, past futures of the book (42 speculations, plus 4 repeats set aside under one per speaker per work).
+- `data/book.json` and `data/book-repeats.json` — Case 1, past futures of the book: counted speculations, and repeats set aside under one per speaker per medium. Rows marked To check in the sheet are not exported.
 - `data/climate.json` — Case 2, climate futures (empty for now).
 
 To update the site after editing the sheet, download the "Case 1: Book" tab as CSV and run `python3 tools/sheet_to_json.py path/to/file.csv`. The script rebuilds both Case 1 files, keeps their headers and value lists, and stops with a message if a row uses a value the codebook does not list or has no Tetrad law. A Tetrad law counts as held when its column (Enhances, Obsolesces, Retrieves, Reverses into) has text in it.
