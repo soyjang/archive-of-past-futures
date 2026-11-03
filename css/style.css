@@ -58,6 +58,8 @@ h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 
 .slider { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 10px; min-width: 0; font-family: var(--font-mono); font-size: 13px; color: var(--muted); }
 .slider input { width: min(260px, 50vw); accent-color: var(--accent); }
 .slider output { color: var(--ink); min-width: 5ch; font-variant-numeric: tabular-nums; }
+.ringsel { display: flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 13px; color: var(--muted); }
+.ringsel select { font: inherit; color: var(--ink); background: var(--bg, transparent); border: 1px solid var(--rule, #ccc); border-radius: 4px; padding: 3px 6px; }
 .play { font: 500 13px var(--font-mono); border: 1px solid var(--rule); background: var(--panel); color: var(--ink); border-radius: 6px; padding: 5px 10px; cursor: pointer; }
 .dimsel { font: 500 14px var(--font-body); border: 1px solid var(--rule); background: var(--panel); color: var(--ink); border-radius: 6px; padding: 5px 8px; }
 .chips { display: flex; flex-wrap: wrap; gap: 6px; }

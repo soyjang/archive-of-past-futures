@@ -15,7 +15,7 @@ LAWS = [("Enhances", "enhance"), ("Obsolesces", "obsolesce"), ("Retrieves", "ret
 # Coding notes and To verify stay in the private sheet: only the quotation, codes and citation are published.
 FIELDS = [("year", "Year"), ("who", "Who"), ("text", "Quote"), ("direction", "Direction"),
           ("medium", "Medium"), ("medium_wording", "Medium as worded"), ("medium_status", "Medium status"),
-          ("format", "Format"), ("speaker", "Speaker"), ("scope", "Scope"), ("horizon", "Horizon"),
+          ("format", "Format"), ("speaker", "Speaker"), ("horizon", "Horizon"),
           ("horizon_phrase", "Horizon phrase"), ("horizon_years", "Horizon (years)"), ("spatial", "Spatial"), ("social", "Social"),
           ("hypotheticality", "Hypotheticality"), ("construal", "Construal"), ("source", "Citation"),
           ("paper", "ACM paper")]
@@ -33,7 +33,7 @@ def record(row, values):
     if row.get("Description, not quote", "").strip().upper() == "TRUE": r["description"] = True
     if row.get("Repeat of", "").strip(): r["repeat_of"] = int(row["Repeat of"])
     na = r.get("medium") == "N/A"  # no medium named: no medium status, no Tetrad, kept off the wheel
-    for key in ("medium", "medium_status", "format", "speaker", "direction", "scope", "horizon", "spatial", "social", "hypotheticality", "construal"):
+    for key in ("medium", "medium_status", "format", "speaker", "direction", "horizon", "spatial", "social", "hypotheticality", "construal"):
         if key == "medium_status" and na: continue
         if r.get(key) not in values[key]:
             sys.exit(f"Row {r['id']}: '{r.get(key)}' is not a codebook value for {key}")

@@ -18,11 +18,15 @@
   };
   const LAW_ORDER = ["enhance", "obsolesce", "retrieve", "reverse"];
   const DIMS = {
-    scope:    { label: "Scope of change", levels: ["Leaves nothing behind", "Leaves a practice behind", "Leaves a medium behind", "Leaves an institution behind"], get: c => c.ring },
-    temporal: { label: "Temporal distance", levels: ["0–5 years", "6–10 years", "11–15 years", "16–20 years", "20+ years", "Unstated"], get: c => c.temporal },
-    spatial:  { label: "Spatial distance", levels: ["Here", "Elsewhere", "Unspecified"], get: c => c.spatial },
-    social:   { label: "Social distance", levels: ["Us", "Others", "Unspecified"], get: c => c.social },
-    hyp:      { label: "Hypotheticality", levels: ["Certain", "Possible", "Depicted"], get: c => c.hyp }
+    // the four dimensions of speculative distance; any one can be the wheel's rings. phrase(k): how a cell reads in an empty-cell note
+    temporal: { label: "Temporal distance", levels: ["0–5 years", "6–10 years", "11–15 years", "16–20 years", "20+ years", "Unstated"], get: c => c.temporal,
+                phrase: l => l === "Unstated" ? "without stating a horizon" : `on a horizon of ${l}` },
+    spatial:  { label: "Spatial distance", levels: ["Here", "Elsewhere", "Unspecified"], get: c => c.spatial,
+                phrase: l => ({ Here: "set here, in the speaker’s own place", Elsewhere: "set elsewhere", Unspecified: "without saying where" })[l] },
+    social:   { label: "Social distance", levels: ["Us", "Others", "Unspecified"], get: c => c.social,
+                phrase: l => ({ Us: "for the speaker’s own people", Others: "for others", Unspecified: "without saying for whom" })[l] },
+    hyp:      { label: "Hypotheticality", levels: ["Certain", "Possible", "Depicted"], get: c => c.hyp,
+                phrase: l => ({ Certain: "as a certainty", Possible: "as a possibility", Depicted: "in a depicted world" })[l] }
   };
   function rings() {
     const D = DIMS[state.dim], n = D.levels.length, r0 = 44, r1 = 296, step = (r1 - r0) / n;
@@ -49,7 +53,6 @@
     data.speculations.forEach(r => {
       const c = { id: r.id, year: r.year, who: r.who, text: r.text, desc: !!r.description, note: r.note, verify: r.verify, source: r.source,
         laws: r.tetrad, lawDetail: r.tetrad_detail || {}, lang: (r.construal || "").toLowerCase(), documented: true, speaker: r.speaker, medium: r.medium, detail: r.medium_wording || r.medium };
-      c.ring = idx(DIMS.scope.levels, r.scope, "scope of change", r.id);
       c.temporal = idx(DIMS.temporal.levels, r.horizon, "horizon", r.id); c.when = r.horizon_phrase || ""; c.years = r.horizon_years;
       c.spatial = idx(DIMS.spatial.levels, r.spatial, "spatial distance", r.id);
       c.social = idx(DIMS.social.levels, r.social, "social distance", r.id);
@@ -69,7 +72,7 @@
   // Only the media families the archive actually holds get a chip or a legend entry
   const famsPresent = () => FAMS.filter(f => CLAIMS.some(c => famOf(c) && famOf(c).id === f.id));
 
-  const state = { view: "wheel", dim: "scope", decade: 2030, fams: new Set(), selected: null, gap: null };
+  const state = { view: "wheel", dim: "temporal", decade: 2030, fams: new Set(), selected: null, gap: null };
   const lawsOf = (c) => c.laws;
 
   function visibleClaims() {
@@ -220,7 +223,6 @@
           <dt>Format</dt><dd>${GENRES[c.genre]}</dd>
           <dt>Speaker</dt><dd>${c.speaker}</dd>
           <dt>Tetrad</dt><dd class="tetrad-dd">${c.laws.map(l => `<div><span class="tag">${LAWS[l].label}</span>${c.lawDetail[l] ? ` ${c.lawDetail[l]}` : ""}</div>`).join("")}</dd>
-          <dt>Scope</dt><dd>${DIMS.scope.levels[c.ring - 1]}</dd>
           <dt>Temporal</dt><dd>${DIMS.temporal.levels[c.temporal - 1]}${c.when ? ` (“${c.when}”)` : ""}${c.years !== undefined ? `; ${c.years} ${c.years === 1 ? "year" : "years"}` : ""}</dd>
           <dt>Spatial</dt><dd>${DIMS.spatial.levels[c.spatial - 1]}</dd>
           <dt>Social</dt><dd>${DIMS.social.levels[c.social - 1]}</dd>
@@ -268,7 +270,7 @@
     return `<div class="gapnote">
         <div class="gapnote-head"><h3>Empty cell</h3></div>
         <h2>${L.label} · ${R.label}</h2>
-        <p style="margin:0">${state.dim === "scope" && law === "obsolesce" && +ring === 1 ? "Empty by definition: a speculation that makes something obsolete leaves it behind, so it cannot sit where nothing is left behind." : `No speculation in the archive imagines a medium that would ${L.verb} ${state.dim === "scope" ? (+ring === 1 ? "while leaving nothing behind" : `and ${R.label.toLowerCase().replace("leaves", "leave")}`) : R.label === "Unstated" ? "without stating a horizon" : `on a horizon of ${R.label}`}. ${near} speculation${near === 1 ? "" : "s"} ${near === 1 ? "codes" : "code"} for ${L.label.toLowerCase()} ${state.dim === "scope" ? "at other depths" : "on other horizons"}.`}</p>
+        <p style="margin:0">No speculation in the archive imagines a medium that would ${L.verb} ${DIMS[state.dim].phrase(R.label)}. ${near} speculation${near === 1 ? "" : "s"} ${near === 1 ? "codes" : "code"} for ${L.label.toLowerCase()} elsewhere on ${DIMS[state.dim].label.toLowerCase()}.</p>
         <p class="small">An empty cell describes the archive; it is not an instruction for what to design, and it may reflect what the archive happened to collect.</p>
       </div>`;
   }
@@ -330,6 +332,7 @@
     renderChips(); render();
   });
   $("#decade").addEventListener("input", (e) => { state.decade = +e.target.value; render(); });
+  $("#ring-dim").addEventListener("change", (e) => { state.dim = e.target.value; state.gap = null; render(); });
   let timer = null;
   $("#play").addEventListener("click", () => {
     if (timer) { clearInterval(timer); timer = null; $("#play").textContent = "Play decades"; return; }
