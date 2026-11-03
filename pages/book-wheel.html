@@ -1,11 +1,20 @@
 <section id="pg-archive" class="page">
-  <p class="lede">Speculations that a new medium would transform or replace the book in education, from the stereograph and Edison’s films to AI tutors, in press interviews, talks, novels, films, images, papers, reports and design projects. Each speculation sits in the Tetrad sector it promised (enhance, obsolesce, retrieve, reverse), on the ring for how much of its present it leaves behind, from nothing at all to the school itself.</p>
+  <p class="lede">Speculations that a new medium would transform or replace the book in education, from the stereograph and Edison’s films to AI tutors, in press interviews, talks, novels, films, images, papers, reports and design projects. Each speculation sits in the Tetrad sector it promised (enhance, obsolesce, retrieve, reverse), on the ring for how far away it places the imagined world: when, where, for whom or how surely.</p>
 <div class="controls" role="group" aria-label="View controls">
   <div class="slider">
     <label for="decade">Speculations up to</label>
     <input type="range" id="decade" min="1900" max="2030" step="10" value="2030">
     <output id="decade-out" for="decade">2039</output>
     <button type="button" class="play" id="play">Play decades</button>
+  </div>
+  <div class="ringsel">
+    <label for="ring-dim">Rings</label>
+    <select id="ring-dim">
+      <option value="temporal" selected>When · temporal distance</option>
+      <option value="spatial">Where · spatial distance</option>
+      <option value="social">For whom · social distance</option>
+      <option value="hyp">How surely · hypotheticality</option>
+    </select>
   </div>
   <div class="chips" id="eras" role="group" aria-label="Filter by media family"></div>
 </div>

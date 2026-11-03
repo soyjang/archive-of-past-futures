@@ -14,7 +14,6 @@
       "medium_status": "Existing",
       "format": "Press or magazine",
       "speaker": "Inventor",
-      "scope": "Leaves a medium behind",
       "horizon": "6–10 years",
       "horizon_phrase": "soon … inside of ten years",
       "horizon_years": 10,
@@ -44,7 +43,6 @@
       "medium_status": "Existing",
       "format": "Press or magazine",
       "speaker": "Inventor",
-      "scope": "Leaves a medium behind",
       "horizon": "0–5 years",
       "horizon_phrase": "in a few years",
       "spatial": "Here",
@@ -73,7 +71,6 @@
       "medium_status": "Existing",
       "format": "Press or magazine",
       "speaker": "Inventor",
-      "scope": "Leaves a medium behind",
       "horizon": "Unstated",
       "horizon_phrase": "",
       "spatial": "Unspecified",
@@ -100,7 +97,6 @@
       "medium_status": "Existing",
       "format": "Format unknown",
       "speaker": "Researcher",
-      "scope": "Leaves an institution behind",
       "horizon": "Unstated",
       "horizon_phrase": "in the future",
       "spatial": "Unspecified",
@@ -127,7 +123,6 @@
       "medium_status": "Existing",
       "format": "Talk or broadcast",
       "speaker": "Company",
-      "scope": "Leaves a practice behind",
       "horizon": "6–10 years",
       "horizon_phrase": "over the next decade",
       "horizon_years": 10,
@@ -157,7 +152,6 @@
       "medium_status": "Existing",
       "format": "Press or magazine",
       "speaker": "Researcher",
-      "scope": "Leaves an institution behind",
       "horizon": "Unstated",
       "horizon_phrase": "",
       "spatial": "Unspecified",
@@ -184,7 +178,6 @@
       "medium_status": "Existing",
       "format": "Academic paper",
       "speaker": "Researcher",
-      "scope": "Leaves nothing behind",
       "horizon": "Unstated",
       "horizon_phrase": "",
       "spatial": "Unspecified",
@@ -211,7 +204,6 @@
       "medium_status": "Existing",
       "format": "Talk or broadcast",
       "speaker": "Researcher",
-      "scope": "Leaves a medium behind",
       "horizon": "Unstated",
       "horizon_phrase": "",
       "spatial": "Unspecified",
@@ -238,7 +230,6 @@
       "medium_status": "Existing",
       "format": "Talk or broadcast",
       "speaker": "Company",
-      "scope": "Leaves an institution behind",
       "horizon": "0–5 years",
       "horizon_phrase": "five years from now",
       "horizon_years": 5,
@@ -256,6 +247,34 @@
         "obsolesce": "the university as the place to learn"
       },
       "repeat_of": 51
+    },
+    {
+      "id": 60,
+      "year": 1960,
+      "who": "Arthur Radebaugh, Closer Than We Think (Chicago Tribune)",
+      "text": "Classroom automation may foreshadow an end to schoolhouses. … Lessons would be televised to students “going to school” at home, where their work would be done and transmitted to a control center for correction and grading.",
+      "direction": "Forward",
+      "medium": "Teaching machine",
+      "medium_wording": "Home learning console: an electronic desk receiving televised lessons and sending work to a control centre",
+      "medium_status": "Imagined",
+      "format": "Image",
+      "speaker": "Writer or artist",
+      "horizon": "Unstated",
+      "horizon_phrase": "",
+      "spatial": "Unspecified",
+      "social": "Unspecified",
+      "hypotheticality": "Possible",
+      "construal": "Concrete",
+      "source": "A. Radebaugh, Closer Than We Think [comic strip], Chicago Tribune, Dec. 18, 1960, as cited in M. Novak, “This computerized desk from the 1960s was going to let kids learn from home,” Paleofuture. Jun. 24, 2014. [Online]. Available: https://paleofuture.com/blog/2014/6/24/this-computerized-desk-from-the-1960s-was-going-to-let-kids-learn-from-home",
+      "tetrad": [
+        "enhance",
+        "obsolesce"
+      ],
+      "tetrad_detail": {
+        "enhance": "schooling at home, with work graded remotely by a control centre",
+        "obsolesce": "schoolhouses"
+      },
+      "repeat_of": 66
     }
   ]
 }

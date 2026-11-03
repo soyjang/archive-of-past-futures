@@ -18,11 +18,15 @@
   };
   const LAW_ORDER = ["enhance", "obsolesce", "retrieve", "reverse"];
   const DIMS = {
-    scope:    { label: "Scope of change", levels: ["Leaves nothing behind", "Leaves a practice behind", "Leaves a medium behind", "Leaves an institution behind"], get: c => c.ring },
-    temporal: { label: "Temporal distance", levels: ["0–5 years", "6–10 years", "11–15 years", "16–20 years", "20+ years", "Unstated"], get: c => c.temporal },
-    spatial:  { label: "Spatial distance", levels: ["Here", "Elsewhere", "Unspecified"], get: c => c.spatial },
-    social:   { label: "Social distance", levels: ["Us", "Others", "Unspecified"], get: c => c.social },
-    hyp:      { label: "Hypotheticality", levels: ["Certain", "Possible", "Depicted"], get: c => c.hyp }
+    // the four dimensions of speculative distance; any one can be the wheel's rings. phrase(k): how a cell reads in an empty-cell note
+    temporal: { label: "Temporal distance", levels: ["0–5 years", "6–10 years", "11–15 years", "16–20 years", "20+ years", "Unstated"], get: c => c.temporal,
+                phrase: l => l === "Unstated" ? "without stating a horizon" : `on a horizon of ${l}` },
+    spatial:  { label: "Spatial distance", levels: ["Here", "Elsewhere", "Unspecified"], get: c => c.spatial,
+                phrase: l => ({ Here: "set here, in the speaker’s own place", Elsewhere: "set elsewhere", Unspecified: "without saying where" })[l] },
+    social:   { label: "Social distance", levels: ["Us", "Others", "Unspecified"], get: c => c.social,
+                phrase: l => ({ Us: "for the speaker’s own people", Others: "for others", Unspecified: "without saying for whom" })[l] },
+    hyp:      { label: "Hypotheticality", levels: ["Certain", "Possible", "Depicted"], get: c => c.hyp,
+                phrase: l => ({ Certain: "as a certainty", Possible: "as a possibility", Depicted: "in a depicted world" })[l] }
   };
   function rings() {
     const D = DIMS[state.dim], n = D.levels.length, r0 = 44, r1 = 296, step = (r1 - r0) / n;
@@ -49,7 +53,6 @@
     data.speculations.forEach(r => {
       const c = { id: r.id, year: r.year, who: r.who, text: r.text, desc: !!r.description, note: r.note, verify: r.verify, source: r.source,
         laws: r.tetrad, lawDetail: r.tetrad_detail || {}, lang: (r.construal || "").toLowerCase(), documented: true, speaker: r.speaker, medium: r.medium, detail: r.medium_wording || r.medium };
-      c.ring = idx(DIMS.scope.levels, r.scope, "scope of change", r.id);
       c.temporal = idx(DIMS.temporal.levels, r.horizon, "horizon", r.id); c.when = r.horizon_phrase || ""; c.years = r.horizon_years;
       c.spatial = idx(DIMS.spatial.levels, r.spatial, "spatial distance", r.id);
       c.social = idx(DIMS.social.levels, r.social, "social distance", r.id);
@@ -69,7 +72,7 @@
   // Only the media families the archive actually holds get a chip or a legend entry
   const famsPresent = () => FAMS.filter(f => CLAIMS.some(c => famOf(c) && famOf(c).id === f.id));
 
-  const state = { view: "wheel", dim: "scope", decade: 2030, fams: new Set(), selected: null, gap: null };
+  const state = { view: "wheel", dim: "temporal", decade: 2030, fams: new Set(), selected: null, gap: null };
   const lawsOf = (c) => c.laws;
 
   function visibleClaims() {
@@ -94,9 +97,40 @@
   // ---------- wheel ----------
   function renderWheel() {
     const claims = visibleClaims();
-    const RS = rings();
     const cells = {};
     claims.forEach(c => lawsOf(c).forEach(l => { (cells[`${l}-${levelOf(c)}`] ||= []).push(c); }));
+    // Ring widths follow how many dots each ring must hold, and one dot size is chosen for the whole
+    // wheel: the largest (9 down to 4) at which every cell fits its dots in rows without overlap.
+    const GAP = 2.5, R_IN = 44, R_OUT = 296;
+    function layout(n, r0, r1, rd) {
+      const step = 2 * rd + GAP, band = r1 - r0 - 2 * GAP;
+      const maxRows = Math.max(1, Math.floor((band + GAP) / step));
+      for (let k = 1; k <= maxRows; k++) {
+        const radii = Array.from({ length: k }, (_, j) => k === 1 ? (r0 + r1) / 2 : r1 - GAP - rd - j * (band - 2 * rd) / (k - 1));
+        const caps = radii.map(r => Math.max(1, Math.floor((rad(90) * r - 2 * (rd + GAP + 2)) / step) + 1));
+        if (caps.reduce((a, b) => a + b, 0) >= n) return { radii, caps };
+      }
+      return null;
+    }
+    const base = rings();
+    const need = base.map(R => Math.max(0, ...LAW_ORDER.map(l => (cells[`${l}-${R.k}`] || []).length)));
+    let DOT = 9, widths = null;
+    for (; DOT >= 4; DOT -= 0.5) {
+      const minW = 2 * DOT + 3 * GAP + 8;
+      let r = R_IN; const ws = [];
+      for (const n of need) {
+        let w = minW;
+        while (n && !layout(n, r, r + w, DOT) && r + w <= R_OUT) w += 1;
+        ws.push(w); r += w;
+      }
+      if (r <= R_OUT) { widths = ws; break; }
+    }
+    if (!widths) { DOT = 4; widths = base.map(R => R.r1 - R.r0); }
+    // share any room left over in proportion to each ring's width
+    const spare = R_OUT - R_IN - widths.reduce((a, b) => a + b, 0);
+    const tw = widths.reduce((a, b) => a + b, 0);
+    let acc = R_IN;
+    const RS = base.map((R, i) => { const w = widths[i] + spare * widths[i] / tw; const o = { ...R, r0: acc, r1: acc + w }; acc += w; return o; });
     let s = `<svg viewBox="-345 -345 690 690" role="img" aria-label="Tetrad wheel: claims placed by Tetrad law and speculative distance">
       <defs><pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line class="hatch-line" x1="0" y1="0" x2="0" y2="8"></line></pattern><pattern id="hatch-sel" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect class="hatch-hl" width="8" height="8"></rect><line class="hatch-line hatch-line-sel" x1="0" y1="0" x2="0" y2="8"></line></pattern></defs>`;
     for (const law of LAW_ORDER) {
@@ -113,7 +147,6 @@
     s += `<circle r="44" fill="var(--panel)" stroke="var(--rule)"></circle>
       <text class="center-label" text-anchor="middle" y="-3">the claim's</text>
       <text class="center-label" text-anchor="middle" y="11">own present</text>`;
-    RS.forEach(R => { s += `<text class="ring-label" x="5" y="${-(R.r0 + R.r1) / 2 + 4}">${R.label}</text>`; });
     const corner = { enhance: [-330, -318, "start"], reverse: [330, -318, "end"], retrieve: [-330, 322, "start"], obsolesce: [330, 322, "end"] };
     for (const law of LAW_ORDER) {
       const [x, y, anchor] = corner[law];
@@ -126,16 +159,29 @@
     for (const [key, list] of Object.entries(cells)) {
       const [law, ring] = key.split("-");
       const L = LAWS[law], R = RS[+ring - 1];
+      const lay = layout(list.length, R.r0, R.r1, DOT) || { radii: [(R.r0 + R.r1) / 2], caps: [list.length] };
+      // fill rows in proportion to their room, never past a row's capacity
+      const total = lay.caps.reduce((a, b) => a + b, 0);
+      const counts = lay.caps.map(c => Math.min(c, Math.floor(list.length * c / total)));
+      for (let j = 0, left = list.length - counts.reduce((a, b) => a + b, 0); left > 0; j = (j + 1) % counts.length) if (counts[j] < lay.caps[j]) { counts[j]++; left--; }
+      const slots = [];
+      counts.forEach((n, j) => {
+        const r = lay.radii[j], pad = (DOT + GAP + 2) / r * 180 / Math.PI; // keep a dot's edge inside its sector
+        // the Reverses sector holds the ring labels along its edge: keep its dots clear of them when there is room
+        const lw = R.label.length * 6.4 + 12 + DOT;
+        const endPad = law === "reverse" && r > lw ? Math.max(pad, 90 - Math.acos(lw / r) * 180 / Math.PI) : pad;
+        const span = 90 - pad - endPad >= (n - 1) * (2 * DOT + GAP) / r * 180 / Math.PI ? 90 - pad - endPad : 90 - 2 * pad;
+        for (let i = 0; i < n; i++) slots.push([r, L.a0 + pad + (n === 1 ? span / 2 : span * i / (n - 1))]);
+      });
       list.sort((a, b) => a.year - b.year).forEach((c, i) => {
-        const a = L.a0 + (90 * (i + 1)) / (list.length + 1);
-        const r = (R.r0 + R.r1) / 2 + (i % 2 ? 9 : -9) * (list.length > 2 ? 1 : 0);
+        const [r, a] = slots[i];
         const [x, y] = pt(r, a);
         const col = `var(${famOf(c).v})`;
         const abstract = c.lang === "abstract";
         const sel = state.selected === c.id ? " sel" : state.selected ? " dim" : "";
         if (state.selected === c.id) selPts.push([+x.toFixed(1), +y.toFixed(1), col]);
         const style = abstract ? `stroke:${col}` : `fill:${col}`;
-        ds += mark(c, +x.toFixed(1), +y.toFixed(1), 9, `dot${abstract ? " hollow" : ""}${sel}`, style, ` tabindex="0" role="button" data-id="${c.id}" aria-label="${c.year}, ${GENRES[c.genre]}, ${c.medium}, ${abstract ? "abstract" : "concrete"} language: ${c.text}"`);
+        ds += mark(c, +x.toFixed(1), +y.toFixed(1), DOT, `dot${abstract ? " hollow" : ""}${sel}`, style, ` tabindex="0" role="button" data-id="${c.id}" aria-label="${c.year}, ${GENRES[c.genre]}, ${c.medium}, ${abstract ? "abstract" : "concrete"} language: ${c.text}"`);
       });
     }
     // A selected speculation that spans several Tetrad laws: link its copies through the centre and pulse each one
@@ -143,8 +189,10 @@
       s += `<g class="span"><circle class="span-ring" r="44"></circle>${selPts.map(([x, y]) => { const d = Math.hypot(x, y); return `<path class="span-line" d="M${(x / d * 44).toFixed(1)} ${(y / d * 44).toFixed(1)} L${x} ${y}"></path>`; }).join("")}</g>`;
     }
     s += ds;
+    // ring labels go on top, with a halo, and let clicks through to the dots beneath
+    RS.forEach(R => { s += `<text class="ring-label" x="5" y="${-(R.r0 + R.r1) / 2 + 4}">${R.label}</text>`; });
     if (selPts.length) {
-      s += selPts.map(([x, y, col]) => `<circle class="halo" cx="${x}" cy="${y}" r="9" style="stroke:${col}"></circle>`).join("");
+      s += selPts.map(([x, y, col]) => `<circle class="halo" cx="${x}" cy="${y}" r="${DOT}" style="stroke:${col}"></circle>`).join("");
       if (selPts.length > 1) s += `<text class="span-label" text-anchor="middle" y="62">spans ${selPts.length} laws</text>`;
     }
     s += `</svg>`;
@@ -175,7 +223,6 @@
           <dt>Format</dt><dd>${GENRES[c.genre]}</dd>
           <dt>Speaker</dt><dd>${c.speaker}</dd>
           <dt>Tetrad</dt><dd class="tetrad-dd">${c.laws.map(l => `<div><span class="tag">${LAWS[l].label}</span>${c.lawDetail[l] ? ` ${c.lawDetail[l]}` : ""}</div>`).join("")}</dd>
-          <dt>Scope</dt><dd>${DIMS.scope.levels[c.ring - 1]}</dd>
           <dt>Temporal</dt><dd>${DIMS.temporal.levels[c.temporal - 1]}${c.when ? ` (“${c.when}”)` : ""}${c.years !== undefined ? `; ${c.years} ${c.years === 1 ? "year" : "years"}` : ""}</dd>
           <dt>Spatial</dt><dd>${DIMS.spatial.levels[c.spatial - 1]}</dd>
           <dt>Social</dt><dd>${DIMS.social.levels[c.social - 1]}</dd>
@@ -223,7 +270,7 @@
     return `<div class="gapnote">
         <div class="gapnote-head"><h3>Empty cell</h3></div>
         <h2>${L.label} · ${R.label}</h2>
-        <p style="margin:0">${state.dim === "scope" && law === "obsolesce" && +ring === 1 ? "Empty by definition: a speculation that makes something obsolete leaves it behind, so it cannot sit where nothing is left behind." : `No speculation in the archive imagines a medium that would ${L.verb} ${state.dim === "scope" ? (+ring === 1 ? "while leaving nothing behind" : `and ${R.label.toLowerCase().replace("leaves", "leave")}`) : R.label === "Unstated" ? "without stating a horizon" : `on a horizon of ${R.label}`}. ${near} speculation${near === 1 ? "" : "s"} ${near === 1 ? "codes" : "code"} for ${L.label.toLowerCase()} ${state.dim === "scope" ? "at other depths" : "on other horizons"}.`}</p>
+        <p style="margin:0">No speculation in the archive imagines a medium that would ${L.verb} ${DIMS[state.dim].phrase(R.label)}. ${near} speculation${near === 1 ? "" : "s"} ${near === 1 ? "codes" : "code"} for ${L.label.toLowerCase()} elsewhere on ${DIMS[state.dim].label.toLowerCase()}.</p>
         <p class="small">An empty cell describes the archive; it is not an instruction for what to design, and it may reflect what the archive happened to collect.</p>
       </div>`;
   }
@@ -285,6 +332,7 @@
     renderChips(); render();
   });
   $("#decade").addEventListener("input", (e) => { state.decade = +e.target.value; render(); });
+  $("#ring-dim").addEventListener("change", (e) => { state.dim = e.target.value; state.gap = null; render(); });
   let timer = null;
   $("#play").addEventListener("click", () => {
     if (timer) { clearInterval(timer); timer = null; $("#play").textContent = "Play decades"; return; }

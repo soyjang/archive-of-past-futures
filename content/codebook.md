@@ -59,27 +59,13 @@ What the speculation says the medium will do, read through McLuhan’s four laws
 
 **Rule.** Code what is promised, not what the coder thinks would follow. For each law coded, name its object in a few words drawn from the speculation: what is enhanced, obsolesced, retrieved or reversed (Edison 1913 obsolesces “books in the public schools”). A denial is not coded as the law it denies: a speculation that a medium will *not* replace teachers, or will *not* end car travel, is not obsolescence. Not coded when the medium is *N/A*.
 
+**Reading the depth of obsolescence.** What a speculation makes obsolete is read at its depth: a practice (a task, a role or a routine, such as homework or the teacher’s role as it was), a medium (the textbook, coal power, the private car) or an institution (the school, the fossil economy). Depth is not coded; it is read in the analysis, from the object of *Obsolesces*, and stated where a reading depends on it. The levels nest. An institution holds media and practices, so leaving it behind leaves them too, while a medium can be left behind with the institution still standing: Edison’s textbook goes and the school remains; Papert’s school goes and its textbooks with it. A speculation that obsolesces nothing (“the biggest positive transformation that education has ever seen”, Khan 2023) promises an upgrade that leaves its present standing. Three cautions. Depth is not rhetoric: “TimeBack is going to transform literally everything we know about education” names nothing left behind. Depth is not breadth: *Fahrenheit 451* leaves the book behind everywhere, but what it leaves behind is a medium. And depth is not critique: a speculation can leave an institution behind in the service of the order it replaces. Depth is read within the case’s own domain: in Case 1 the school; in Case 2 the wider impact of climate change on how people live. Where a speculation sits between two levels (“the school as a single place”), the reading says so rather than forcing a level.
+
 ### 2. Speculative distance
 
-How far the speculation departs from its own present, coded on five dimensions. The first, **scope of change**, is how far the speculation departs from its own present, read from what it leaves behind: the dimension construal-level theory lacks, and the one that matters most for obsolescence. The other four are the dimensions of psychological distance in construal-level theory (Trope & Liberman 2010): **temporal**, **spatial**, **social** and **hypotheticality**, each read against the speaker’s own here and now. They are coded as the speculation marks them in its text, since psychological distance proper is a person’s sense of distance and cannot be read from a document. Scope is primary: crossed with the Tetrad, it forms the wheel. The other four are reported descriptively.
+How far the imagined world is held from the speaker, coded on the four dimensions of psychological distance in construal-level theory (Trope & Liberman 2010): **temporal**, **spatial**, **social** and **hypotheticality**, each read against the speaker’s own here and now. They are coded as the speculation marks them in its text, since psychological distance proper is a person’s sense of distance and cannot be read from a document. Speculative distance says how far away the imagined world is placed, not how different it is: how much of its present a speculation leaves behind is read from the Tetrad (see *Reading the depth of obsolescence*). The two vary independently: a speculation can place deep change close at hand, or slight change far away. Any one dimension can be crossed with the Tetrad to form the wheel.
 
-#### 2a. Scope of change
-
-How far the speculation departs from its own present, read from how much of that present the imagined world leaves behind: the object of *Obsolesces*. The more it leaves behind, the further it departs. The levels nest. An institution holds media and practices, so leaving it behind leaves them too, while a medium can be left behind with the institution still standing: Edison’s textbook goes and the school remains; Papert’s school goes and its textbooks with it.
-
-- **Leaves nothing behind.** Nothing is obsolesced: the imagined world is the present with something added or changed, and no loss named. “The stereograph may be used advantageously either with or without a textbook.” (Eliot, 1906); “…the biggest positive transformation that education has ever seen.” (Khan, 2023)
-
-- **Leaves a practice behind.** A way of doing things is obsolesced: a task, a role or a routine, such as homework, searching the shelves or the teacher’s role as it was. “The role of the teacher may well be changed, for machine instruction will affect several traditional practices.” (Skinner, 1958)
-
-- **Leaves a medium behind.** An existing medium or system is obsolesced: the textbook, coal power, the private car. “…it will supplant largely, if not entirely, the use of textbooks.” (Edison, 1922)
-
-- **Leaves an institution behind.** An institution or a way of life is obsolesced: the school, the fossil economy. “There won’t be schools in the future.” (Papert, 1984)
-
-**Rules.** Code from the Obsolesces column: if it is empty, *leaves nothing behind*; otherwise code the kind of thing its object is, and if it names several, the deepest. How large a change sounds does not count: “TimeBack is going to transform literally everything we know about education” names nothing left behind, so *leaves nothing behind*; the difference in rhetoric is recorded by construal and hypotheticality. A partial loss counts (“half by robot and half by people” → *leaves a practice behind*); a denial does not (see the Tetrad rule). Departure is not critique: a speculation can leave an institution behind in the service of the order it replaces, so whether a speculation is critical is a question for the analysis, not a code.
-
-Scope measures depth, not breadth. Breadth, how many places or people a change reaches, is recorded by spatial and social distance: *Fahrenheit 451* leaves the book behind everywhere, but its scope is *leaves a medium behind*. Scope is read within the case’s own domain: in Case 1 the school; in Case 2 the wider impact of climate change on how people live. When the medium is *N/A* there is no Tetrad, so scope is read from what the changed world leaves behind (the end of the fossil economy, with no technology named → *leaves an institution behind*).
-
-#### 2b. Temporal distance
+#### 2a. Temporal distance
 
 The horizon the speculation *states*, with the signalling phrase recorded. Most give no year, so this is an ordinal code in five-year steps, not a number of years. Where a year or a number is given, the horizon is also recorded in years, in **Horizon (years)**, so that the steps can be redrawn later without recoding.
 
@@ -97,7 +83,7 @@ The horizon the speculation *states*, with the signalling phrase recorded. Most 
 
 **Rules.** If a year is given, take the difference from the speaker’s year, map it by the steps and record it in Horizon (years): a 2026 design fiction set on 25 December 2035 is 9 years → 6–10. Record a number given in words too (“fifty years from now” → 50; “over the next decade” → 10), but leave Horizon (years) blank when the phrase gives no number (“soon”, “at the cusp”) or names only a period (“the 22nd century”). If a phrase gives a range, code its upper bound, the furthest the speaker commits to (Christensen 2013: “in the next 10 to 15 years” → 11–15, recorded as 15). If two phrases conflict, code the more specific (Edison 1913: “soon” and “inside of ten years” → 6–10). For fiction and scenarios, use the setting year if one is given (Asimov’s “The Fun They Had”, written in 1951 and set in 2157 → 20+, recorded as 206). In every direction, measure from the speaker’s present to when the imagined world is set, and record the distance as a positive number; Direction carries which way it runs. Backward: a 2020 work set in a 1960s where television replaced the book → 20+, reading the steps as distances into the past. Sideways: a parallel present is set now → 0–5, recorded as 0; its distance lies in hypotheticality, not in time.
 
-#### 2c. Spatial distance
+#### 2b. Spatial distance
 
 How far the setting lies from the speaker’s own place.
 
@@ -109,7 +95,7 @@ How far the setting lies from the speaker’s own place.
 
 **Rule.** Fiction is read from its author’s place: an American story set in a future American home is *here*; a school on Vulcan is *elsewhere*.
 
-#### 2d. Social distance
+#### 2c. Social distance
 
 How far the people the speculation concerns are from the speaker and audience.
 
@@ -121,7 +107,7 @@ How far the people the speculation concerns are from the speaker and audience.
 
 **Rule.** Code *Us* whenever the group is the speaker’s or audience’s own, however large (Suppes’s “millions of schoolchildren” are American schoolchildren, his audience’s own); *Unspecified* only when no group is singled out.
 
-#### 2e. Hypotheticality
+#### 2d. Hypotheticality
 
 How far the speculation stands from what its speaker takes to be real. Construal-level theory treats likelihood as a distance: an event held certain is near, one held possible is further, and one only depicted in an imagined world is furthest. The codes follow that scale.
 
@@ -175,11 +161,9 @@ One speculation coded on every attribute and code, with the reasoning for each d
 
 #### 1. Tetrad
 
-- **Laws.** **Enhances, Obsolesces.** “Revolutionize our educational system” promises enhancement; “supplant … the use of textbooks” names what becomes obsolete. Nothing is said about what film would bring back or turn into, so retrieval and reversal are not coded, however tempting they are in hindsight.
+- **Laws.** **Enhances, Obsolesces.** “Revolutionize our educational system” promises enhancement; “supplant … the use of textbooks” names what becomes obsolete. Nothing is said about what film would bring back or turn into, so retrieval and reversal are not coded, however tempting they are in hindsight. Read at its depth, the obsolescence is of a medium: the textbook goes and the school remains. “Revolutionize our educational system” is rhetoric about the system, but what the speculation leaves behind is the textbook.
 
 #### 2. Speculative distance
-
-- **Scope.** **Leaves a medium behind.** The textbook is obsolesced; the school is not. “Revolutionize our educational system” is rhetoric about the system, but what the speculation leaves behind is the textbook. Rule: code from what is left behind, not from the most dramatic word.
 
 - **Temporal.** **0–5 years** (“in a few years”). An explicit horizon of up to five years. Horizon (years) is left blank: the phrase gives no number.
 
