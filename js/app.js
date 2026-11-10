@@ -1,7 +1,7 @@
 (function () {
   // Media families: used only for colour and filtering; the coded field is the medium itself
   const FAMS = [
-    { id: "image", label: "Stereograph and film", media: ["stereograph", "film"], v: "--era1" },
+    { id: "image", label: "Stereograph, phonograph and film", media: ["stereograph", "phonograph", "film"], v: "--era1" },
     { id: "broadcast", label: "Radio and television", media: ["radio", "tv"], v: "--era2" },
     { id: "machines", label: "Teaching machines", media: ["machine"], v: "--era3" },
     { id: "computers", label: "Computers", media: ["computer"], v: "--fam7" },
@@ -38,7 +38,7 @@
   // verify: wording or original venue still to be checked against the primary source.
   // ---------- data: each case lives in its own file (data/book.json, data/climate.json) ----------
   const SPEAKERS = ["Inventor", "Company", "Policymaker", "Intergovernmental body", "Activist or NGO", "Educator", "Researcher", "Designer", "Writer or artist", "Journalist or press", "Workshop participants"];
-  const SUCC = { stereograph: "Stereograph", film: "Film", radio: "Radio", tv: "Television", machine: "Teaching machine", computer: "Computer", vr: "Virtual reality", online: "Internet", ai: "AI", robot: "Robot", game: "Game", brain: "Direct transmission to the brain" };
+  const SUCC = { stereograph: "Stereograph", phonograph: "Phonograph", film: "Film", radio: "Radio", tv: "Television", machine: "Teaching machine", computer: "Computer", vr: "Virtual reality", online: "Internet", ai: "AI", robot: "Robot", game: "Game", brain: "Direct transmission to the brain" };
   const GENRES = { press: "Press or magazine", talk: "Talk or broadcast", book: "Book", paper: "Academic paper", report: "Report", story: "Novel or story", film: "Film or television", image: "Image", design: "Design project", unknown: "Format unknown" };
   const STATUS = ["Existing", "Emerging", "Imagined"];
   const CLAIMS = [];

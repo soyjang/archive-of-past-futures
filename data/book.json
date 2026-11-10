@@ -2,7 +2,7 @@
   "case": "book",
   "title": "Past futures of the book",
   "version": "0.5",
-  "updated": "2026-10-29",
+  "updated": "2026-11-10",
   "coder": "One coder (provisional); to be double-coded",
   "note": "One record per speculation. Labels must match the codebook exactly; the site warns about any it does not recognise. v0.3: reach removed; spatial distance (Here, Elsewhere, Everywhere) is distance from the speaker; Speculative designer renamed Designer. v0.4: 15 speculations added from 7 papers in the ACM extension (ids 32–46); each carries its paper ID from the screening sheet. v0.5: Robot and Game added as media; Workshop participants added as a speaker; one speculation per speaker per medium (the earliest kept): repeats across works moved to book-repeats.json; distinct speculations within one work all count. Temporal distance is coded in five-year steps (0–5, 6–10, 11–15, 16–20, 20+ years, Unstated), with the stated horizon in years kept as horizon_years where a year or number is given. Scope of change retired as a code: the depth of obsolescence (a practice, a medium, an institution) is read from the Obsolesces object in the analysis, and speculative distance is the four dimensions of construal-level theory.",
   "values": {
@@ -13,6 +13,7 @@
     ],
     "medium": [
       "Stereograph",
+      "Phonograph",
       "Film",
       "Radio",
       "Television",
@@ -1718,6 +1719,135 @@
         "enhance": "learning from home: class by videophone, research by voice and database"
       },
       "description": true
+    },
+    {
+      "id": 72,
+      "year": 1878,
+      "who": "Thomas A. Edison",
+      "text": "Books may be read by the charitably inclined professional reader, or by such readers especially employed for that purpose … Such books would be listened to where now none are read. … As an elocutionary teacher, or as a primary teacher for children, it will certainly be invaluable.",
+      "direction": "Forward",
+      "medium": "Phonograph",
+      "medium_wording": "Phonograph; “phonographic books”",
+      "medium_status": "Emerging",
+      "format": "Press or magazine",
+      "speaker": "Inventor",
+      "horizon": "Unstated",
+      "horizon_phrase": "",
+      "spatial": "Unspecified",
+      "social": "Unspecified",
+      "hypotheticality": "Certain",
+      "construal": "Concrete",
+      "source": "T. A. Edison, “The phonograph and its future,” North American Review, vol. 126, pp. 527–536, May–Jun. 1878.",
+      "tetrad": [
+        "enhance"
+      ],
+      "tetrad_detail": {
+        "enhance": "reading, as phonographic books “listened to where now none are read”; teaching children to spell and commit lessons to memory"
+      }
+    },
+    {
+      "id": 73,
+      "year": 1972,
+      "who": "Alan C. Kay, Xerox PARC",
+      "text": "We do not feel that technology is a necessary constituent for this process any more than is the book. It may, however, provide us with a better “book”, one which is active (like the child) rather than passive.",
+      "direction": "Forward",
+      "medium": "Computer",
+      "medium_wording": "DynaBook",
+      "medium_status": "Imagined",
+      "format": "Academic paper",
+      "speaker": "Researcher",
+      "horizon": "Unstated",
+      "horizon_phrase": "",
+      "spatial": "Unspecified",
+      "social": "Unspecified",
+      "hypotheticality": "Possible",
+      "construal": "Concrete",
+      "source": "A. C. Kay, “A personal computer for children of all ages,” in Proc. ACM Nat. Conf., Boston, MA, USA, Aug. 1972.",
+      "tetrad": [
+        "enhance",
+        "obsolesce"
+      ],
+      "tetrad_detail": {
+        "enhance": "the book, made “active (like the child) rather than passive”",
+        "obsolesce": "school books, whose function the DynaBook “could assume”"
+      }
+    },
+    {
+      "id": 75,
+      "year": 2012,
+      "who": "Julius Genachowski, Federal Communications Commission",
+      "text": "Digital textbooks are one of the cornerstones of digital learning … [we must] make sure that every student in America has a digital textbook in the next five years.",
+      "direction": "Forward",
+      "medium": "Computer",
+      "medium_wording": "Digital textbooks",
+      "medium_status": "Existing",
+      "format": "Talk or broadcast",
+      "speaker": "Policymaker",
+      "horizon": "0–5 years",
+      "horizon_phrase": "in the next five years",
+      "spatial": "Here",
+      "social": "Us",
+      "hypotheticality": "Certain",
+      "construal": "Concrete",
+      "source": "“Feds look to accelerate e-textbook adoption with ‘Digital Textbook Playbook’,” THE Journal, Feb. 1, 2012.",
+      "tetrad": [
+        "enhance",
+        "obsolesce"
+      ],
+      "tetrad_detail": {
+        "enhance": "access, “every student in America” with a digital textbook",
+        "obsolesce": "“static, hardcover textbooks”"
+      }
+    },
+    {
+      "id": 76,
+      "year": 2012,
+      "who": "Arne Duncan, US Secretary of Education",
+      "text": "Over the next few years, textbooks should be obsolete.",
+      "direction": "Forward",
+      "medium": "Computer",
+      "medium_wording": "Digital textbooks (a move “from print to digital”)",
+      "medium_status": "Existing",
+      "format": "Talk or broadcast",
+      "speaker": "Policymaker",
+      "horizon": "0–5 years",
+      "horizon_phrase": "over the next few years",
+      "spatial": "Here",
+      "social": "Us",
+      "hypotheticality": "Certain",
+      "construal": "Abstract",
+      "source": "“Education chief wants textbooks to go digital,” Associated Press, via MPR News, Oct. 2, 2012.",
+      "tetrad": [
+        "obsolesce"
+      ],
+      "tetrad_detail": {
+        "obsolesce": "textbooks, which “should be obsolete”"
+      }
+    },
+    {
+      "id": 77,
+      "year": 2016,
+      "who": "Sal Khan, Khan Academy",
+      "text": "I would say tomorrow, if we’re talking about a math textbook, there’s no reason why anyone should buy that. … Those resources could now be put to other things.",
+      "direction": "Forward",
+      "medium": "Internet",
+      "medium_wording": "Online tools such as Khan Academy",
+      "medium_status": "Existing",
+      "format": "Talk or broadcast",
+      "speaker": "Company",
+      "horizon": "0–5 years",
+      "horizon_phrase": "tomorrow",
+      "spatial": "Unspecified",
+      "social": "Unspecified",
+      "hypotheticality": "Certain",
+      "construal": "Concrete",
+      "source": "S. Henderson, “Sal Khan: No reason to waste resources on textbooks with online tools available,” Detroit Today, WDET 101.9 FM, May 27, 2016.",
+      "tetrad": [
+        "obsolesce"
+      ],
+      "tetrad_detail": {
+        "obsolesce": "the maths textbook, which there is “no reason why anyone should buy”"
+      }
     }
   ]
 }
