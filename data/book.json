@@ -1850,6 +1850,31 @@
       }
     },
     {
+      "id": 78,
+      "year": 2023,
+      "who": "Lee Ju-ho, Deputy Prime Minister and Minister of Education, South Korea",
+      "text": "The introduction of AI digital textbooks does not mean that printed textbooks will immediately disappear. … AI digital textbooks are expected to be used in all subjects except ethics and arts and physical education by 2028.",
+      "direction": "Forward",
+      "medium": "AI",
+      "medium_wording": "AI digital textbooks",
+      "medium_status": "Emerging",
+      "format": "Report",
+      "speaker": "Policymaker",
+      "horizon": "0–5 years",
+      "horizon_phrase": "by 2028",
+      "spatial": "Here",
+      "social": "Us",
+      "hypotheticality": "Certain",
+      "construal": "Concrete",
+      "source": "“Introduction of AI digital textbooks from 2025… full subject utilization by 2028,” Asia Economy, Jun. 9, 2023.",
+      "tetrad": [
+        "enhance"
+      ],
+      "tetrad_detail": {
+        "enhance": "textbooks, made AI digital textbooks across “all subjects” by 2028"
+      }
+    },
+    {
       "id": 79,
       "year": 1961,
       "who": "Newton N. Minow, Federal Communications Commission",
