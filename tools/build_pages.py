@@ -154,7 +154,7 @@ def build_codebook():
             '<section id="pg-codebook" class="page" hidden>\n'
             f'  <div class="pagehead"><h2>Codebook</h2></div>\n  <div class="cb">\n'
             f'    <nav class="cb-toc" aria-label="Codebook contents">{"".join(toc)}</nav>\n'
-            f'    <div class="cb-body">\n      <p class="small">{title}. {intro_text}</p>\n'
+            f'    <div class="cb-body">\n'
             f'      {body}\n    </div>\n  </div>\n</section>\n')
     (ROOT / "pages/codebook.html").write_text(html, encoding="utf-8")
 
