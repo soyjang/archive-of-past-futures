@@ -14,7 +14,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 CB_IDS = {"Unit of analysis": "cb-unit", "Attributes": "cb-attr", "Codes": "cb-codes", "1. Tetrad": "cb-tetrad",
           "2. Speculative distance": "cb-distance", "3. Construal level": "cb-construal", "Worked example": "cb-example",
           "Reliability": "cb-rel", "References": "cb-refs"}
-SITE_SKIP = {"How it was developed", "Recording"}
+SITE_SKIP = {"Rationale", "How it was developed", "Recording", "Limitation"}
 NOTE = "<!-- Built from {src} by tools/build_pages.py. Do not edit by hand. -->\n"
 
 
