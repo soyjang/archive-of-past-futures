@@ -72,7 +72,10 @@
   // Only the media families the archive actually holds get a chip or a legend entry
   const famsPresent = () => FAMS.filter(f => CLAIMS.some(c => famOf(c) && famOf(c).id === f.id));
 
-  const state = { view: "wheel", dim: "temporal", decade: 2030, fams: new Set(), selected: null, gap: null };
+  // The slider runs by decade up to the decade of the latest speculation; its label stops at that year
+  const LAST_DECADE = 2020;
+  const lastYear = () => Math.max(...CLAIMS.map(c => c.year));
+  const state = { view: "wheel", dim: "temporal", decade: LAST_DECADE, fams: new Set(), selected: null, gap: null };
   const lawsOf = (c) => c.laws;
 
   function visibleClaims() {
@@ -310,7 +313,7 @@
 
   function render() {
     legend();
-    $("#decade-out").textContent = state.decade >= 2030 ? "2039" : `${state.decade + 9}`;
+    $("#decade-out").textContent = `${Math.min(state.decade + 9, lastYear())}`;
     renderWheel();
     renderPanel();
   }
@@ -339,7 +342,7 @@
     state.decade = 1900; $("#decade").value = 1900; render();
     $("#play").textContent = "Stop";
     timer = setInterval(() => {
-      if (state.decade >= 2030) { clearInterval(timer); timer = null; $("#play").textContent = "Play decades"; return; }
+      if (state.decade >= LAST_DECADE) { clearInterval(timer); timer = null; $("#play").textContent = "Play decades"; return; }
       state.decade += 10; $("#decade").value = state.decade; render();
     }, 900);
   });
