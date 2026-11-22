@@ -4,7 +4,7 @@ How and why the Case 1 corpus was scoped and built.
 
 ## Scope
 
-Speculations that a medium will transform or replace the book, reading, teaching or the school, from 1878 to the present, in any format. Excluded: speculations about media with no bearing on learning or reading, and works that cannot be quoted or described from a document, such as installations, games and live performances.
+Speculations that a new medium would transform or replace the book in education (the book itself, reading, teaching or the school), from Edison’s phonograph in 1878 to AI tutors, in press interviews, talks, novels, films, images, papers, reports and design projects. Excluded: speculations about media with no bearing on learning or reading, and works that cannot be quoted or described from a document, such as installations, games and live performances.
 
 **Media:** stereograph · phonograph · film · radio · television · teaching machine · computer · virtual reality · internet · AI · robot · game · direct transmission to the brain.
 
