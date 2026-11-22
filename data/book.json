@@ -1773,6 +1773,31 @@
       }
     },
     {
+      "id": 74,
+      "year": 2010,
+      "who": "Nicholas Negroponte, One Laptop per Child (interviewed by Robert Buderi)",
+      "text": "Paper books are really dead—they’re gone. … physical books don’t work anymore, especially in the developing world.",
+      "direction": "Forward",
+      "medium": "Computer",
+      "medium_wording": "Tablets (the XO-3)",
+      "medium_status": "Emerging",
+      "format": "Press or magazine",
+      "speaker": "Activist or NGO",
+      "horizon": "Unstated",
+      "horizon_phrase": "",
+      "spatial": "Elsewhere",
+      "social": "Others",
+      "hypotheticality": "Certain",
+      "construal": "Abstract",
+      "source": "R. Buderi, “OLPC part 2: Nicholas Negroponte on the Mideast and the XO-3 tablet—and why he may not ever have to build it,” Xconomy, Oct. 7, 2010.",
+      "tetrad": [
+        "obsolesce"
+      ],
+      "tetrad_detail": {
+        "obsolesce": "paper books, “really dead”"
+      }
+    },
+    {
       "id": 75,
       "year": 2012,
       "who": "Julius Genachowski, Federal Communications Commission",
