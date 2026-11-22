@@ -152,7 +152,7 @@ def build_codebook():
     intro_text = " ".join(x for x in re.split(r"(?<=\.) ", intro_text) if "master copy" not in x and "coding sheet" not in x)
     html = (NOTE.format(src="content/codebook.md") +
             '<section id="pg-codebook" class="page" hidden>\n'
-            f'  <div class="pagehead"><h2>Codebook</h2></div>\n  <div class="cb">\n'
+            f'  <div class="pagehead"><p class="small backlink"><a href="#book">← Past futures of the book</a></p><h2>Codebook</h2></div>\n  <div class="cb">\n'
             f'    <nav class="cb-toc" aria-label="Codebook contents">{"".join(toc)}</nav>\n'
             f'    <div class="cb-body">\n'
             f'      {body}\n    </div>\n  </div>\n</section>\n')
@@ -189,6 +189,10 @@ def build_corpus():
                 p.insert(0, " "); p.insert(0, label)
             h.extract()
     for h in soup.find_all("h2"): h.name = "h4"
+    # the site has no menu: point to the codebook from the corpus
+    media = next((p for p in soup.find_all("p") if p.get_text().startswith("Media:")), None)
+    if media is not None:
+        media.insert_after(BeautifulSoup('<p><strong>Codebook:</strong> how each speculation is defined and coded. <a href="#codebook">See the full codebook →</a></p>', "html.parser"))
     for p in soup.find_all("p"):
         if re.match(r"\[\d+\]", p.get_text()): p["class"] = "small"
     page = (ROOT / "pages/book-corpus.html").read_text(encoding="utf-8")
