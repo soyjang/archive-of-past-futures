@@ -51,7 +51,7 @@ h1 { font-family: var(--font-display); font-weight: 700; font-size: clamp(30px, 
 .notice { font-size: 14px; border: 1px dashed var(--accent); background: var(--accent-soft); color: var(--ink); padding: 10px 14px; border-radius: 6px; max-width: 80ch; }
 .notice strong { color: var(--accent); }
 
-.controls { display: flex; flex-wrap: wrap; gap: 14px 22px; align-items: center; border-block: 1px solid var(--rule); padding-block: 12px; }
+.controls { display: flex; flex-wrap: wrap; gap: 14px 22px; align-items: center; border-bottom: 1px solid var(--rule); padding-block: 4px 12px; }
 .seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 999px; overflow: hidden; }
 .seg button { font: 500 14px var(--font-body); background: transparent; color: var(--ink); border: 0; padding: 6px 14px; cursor: pointer; }
 .seg button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }

@@ -2,7 +2,7 @@
   "case": "book",
   "title": "Past futures of the book",
   "version": "0.5",
-  "updated": "2026-11-10",
+  "updated": "2026-11-22",
   "coder": "One coder (provisional); to be double-coded",
   "note": "One record per speculation. Labels must match the codebook exactly; the site warns about any it does not recognise. v0.3: reach removed; spatial distance (Here, Elsewhere, Everywhere) is distance from the speaker; Speculative designer renamed Designer. v0.4: 15 speculations added from 7 papers in the ACM extension (ids 32–46); each carries its paper ID from the screening sheet. v0.5: Robot and Game added as media; Workshop participants added as a speaker; one speculation per speaker per medium (the earliest kept): repeats across works moved to book-repeats.json; distinct speculations within one work all count. Temporal distance is coded in five-year steps (0–5, 6–10, 11–15, 16–20, 20+ years, Unstated), with the stated horizon in years kept as horizon_years where a year or number is given. Scope of change retired as a code: the depth of obsolescence (a practice, a medium, an institution) is read from the Obsolesces object in the analysis, and speculative distance is the four dimensions of construal-level theory.",
   "values": {
@@ -1847,6 +1847,56 @@
       ],
       "tetrad_detail": {
         "obsolesce": "the maths textbook, which there is “no reason why anyone should buy”"
+      }
+    },
+    {
+      "id": 79,
+      "year": 1961,
+      "who": "Newton N. Minow, Federal Communications Commission",
+      "text": "Educational television has an enormous contribution to make to the future, and I intend to give it a hand along the way. If there is not a nation-wide educational television system in this country, it will not be the fault of the FCC.",
+      "direction": "Forward",
+      "medium": "Television",
+      "medium_wording": "Educational television",
+      "medium_status": "Existing",
+      "format": "Talk or broadcast",
+      "speaker": "Policymaker",
+      "horizon": "Unstated",
+      "horizon_phrase": "the future",
+      "spatial": "Here",
+      "social": "Us",
+      "hypotheticality": "Possible",
+      "construal": "Abstract",
+      "source": "N. N. Minow, “Television and the public interest,” address to the National Association of Broadcasters, Washington, DC, USA, May 9, 1961. [Online]. Available: American Rhetoric",
+      "tetrad": [
+        "enhance"
+      ],
+      "tetrad_detail": {
+        "enhance": "education’s national reach, through “a nation-wide educational television system”"
+      }
+    },
+    {
+      "id": 80,
+      "year": 1985,
+      "who": "Neil Postman, Amusing Ourselves to Death",
+      "text": "Our politics, religion, news, athletics, education and commerce have been transformed into congenial adjuncts of show business, largely without protest or even much popular notice. The result is that we are a people on the verge of amusing ourselves to death.",
+      "direction": "Forward",
+      "medium": "Television",
+      "medium_wording": "Show business (television)",
+      "medium_status": "Existing",
+      "format": "Book",
+      "speaker": "Researcher",
+      "horizon": "Unstated",
+      "horizon_phrase": "on the verge of",
+      "spatial": "Here",
+      "social": "Us",
+      "hypotheticality": "Possible",
+      "construal": "Abstract",
+      "source": "N. Postman, Amusing Ourselves to Death: Public Discourse in the Age of Show Business. New York, NY, USA: Viking, 1985.",
+      "tetrad": [
+        "reverse"
+      ],
+      "tetrad_detail": {
+        "reverse": "education, transformed into a “congenial adjunct of show business”"
       }
     }
   ]

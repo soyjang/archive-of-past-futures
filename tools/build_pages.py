@@ -14,7 +14,7 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 CB_IDS = {"Unit of analysis": "cb-unit", "Attributes": "cb-attr", "Codes": "cb-codes", "1. Tetrad": "cb-tetrad",
           "2. Speculative distance": "cb-distance", "3. Construal level": "cb-construal", "Worked example": "cb-example",
           "Reliability": "cb-rel", "References": "cb-refs"}
-SITE_SKIP = {"How it was developed", "Recording"}
+SITE_SKIP = {"Rationale", "How it was developed", "Recording", "Limitation"}
 NOTE = "<!-- Built from {src} by tools/build_pages.py. Do not edit by hand. -->\n"
 
 
@@ -152,9 +152,9 @@ def build_codebook():
     intro_text = " ".join(x for x in re.split(r"(?<=\.) ", intro_text) if "master copy" not in x and "coding sheet" not in x)
     html = (NOTE.format(src="content/codebook.md") +
             '<section id="pg-codebook" class="page" hidden>\n'
-            f'  <div class="pagehead"><h2>Codebook</h2></div>\n  <div class="cb">\n'
+            f'  <div class="pagehead"><p class="small backlink"><a href="#book">← The Tetrad wheel</a></p><h2>Codebook</h2></div>\n  <div class="cb">\n'
             f'    <nav class="cb-toc" aria-label="Codebook contents">{"".join(toc)}</nav>\n'
-            f'    <div class="cb-body">\n      <p class="small">{title}. {intro_text}</p>\n'
+            f'    <div class="cb-body">\n'
             f'      {body}\n    </div>\n  </div>\n</section>\n')
     (ROOT / "pages/codebook.html").write_text(html, encoding="utf-8")
 
@@ -177,7 +177,22 @@ def build_corpus():
         node = refs
         while node is not None:
             nxt = node.next_sibling; node.extract(); node = nxt
+    # On the site the corpus opens straight onto its scope: drop the repo's intro line
+    # and fold the Scope heading into a "Scope:" label, matching "Media:"
+    first = soup.find(["p", "h2"])
+    if first is not None and first.name == "p": first.extract()
+    for h in soup.find_all("h2"):
+        if h.get_text().strip() == "Scope":
+            p = h.find_next_sibling("p")
+            if p is not None:
+                label = soup.new_tag("strong"); label.string = "Scope:"
+                p.insert(0, " "); p.insert(0, label)
+            h.extract()
     for h in soup.find_all("h2"): h.name = "h4"
+    # the site has no menu: point to the codebook from the corpus
+    media = next((p for p in soup.find_all("p") if p.get_text().startswith("Media:")), None)
+    if media is not None:
+        media.insert_after(BeautifulSoup('<p><strong>Codebook:</strong> how each speculation is defined and coded. <a href="#codebook">See the full codebook →</a></p>', "html.parser"))
     for p in soup.find_all("p"):
         if re.match(r"\[\d+\]", p.get_text()): p["class"] = "small"
     page = (ROOT / "pages/book-corpus.html").read_text(encoding="utf-8")
