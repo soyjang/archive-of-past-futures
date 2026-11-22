@@ -152,7 +152,7 @@ def build_codebook():
     intro_text = " ".join(x for x in re.split(r"(?<=\.) ", intro_text) if "master copy" not in x and "coding sheet" not in x)
     html = (NOTE.format(src="content/codebook.md") +
             '<section id="pg-codebook" class="page" hidden>\n'
-            f'  <div class="pagehead"><p class="small backlink"><a href="#book">← Past futures of the book</a></p><h2>Codebook</h2></div>\n  <div class="cb">\n'
+            f'  <div class="pagehead"><p class="small backlink"><a href="#book">← The Tetrad wheel</a></p><h2>Codebook</h2></div>\n  <div class="cb">\n'
             f'    <nav class="cb-toc" aria-label="Codebook contents">{"".join(toc)}</nav>\n'
             f'    <div class="cb-body">\n'
             f'      {body}\n    </div>\n  </div>\n</section>\n')
