@@ -177,6 +177,17 @@ def build_corpus():
         node = refs
         while node is not None:
             nxt = node.next_sibling; node.extract(); node = nxt
+    # On the site the corpus opens straight onto its scope: drop the repo's intro line
+    # and fold the Scope heading into a "Scope:" label, matching "Media:"
+    first = soup.find(["p", "h2"])
+    if first is not None and first.name == "p": first.extract()
+    for h in soup.find_all("h2"):
+        if h.get_text().strip() == "Scope":
+            p = h.find_next_sibling("p")
+            if p is not None:
+                label = soup.new_tag("strong"); label.string = "Scope:"
+                p.insert(0, " "); p.insert(0, label)
+            h.extract()
     for h in soup.find_all("h2"): h.name = "h4"
     for p in soup.find_all("p"):
         if re.match(r"\[\d+\]", p.get_text()): p["class"] = "small"
