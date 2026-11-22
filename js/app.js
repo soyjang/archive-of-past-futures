@@ -465,14 +465,14 @@
 
   // ---------- pages ----------
 
-  const PAGES = ["overview", "codebook", "book"];
-  const SECTIONS = { overview: ["overview"], book: ["bookhead", "archive", "bookcorpus"], codebook: ["codebook"] };
+  // The Case 1 Tetrad wheel is the landing page; any other hash falls back to it.
+  const SECTIONS = { book: ["bookhead", "archive", "bookcorpus"], codebook: ["codebook"] };
   function route() {
     let h = location.hash.slice(1);
-    if (h === "intro") h = "overview";
     if (h.startsWith("cb-")) { const t = document.getElementById(h); if (t && !$("#pg-codebook").hidden) { t.scrollIntoView(); return; } }
-    const sub = h === "book" || h === "archive" ? "archive" : h === "book-corpus" || h === "sources" ? "bookcorpus" : null;
-    const page = sub ? "book" : PAGES.includes(h) ? h : h.startsWith("cb-") ? "codebook" : "overview";
+    const isCodebook = h === "codebook" || h.startsWith("cb-");
+    const sub = isCodebook ? null : h === "book-corpus" || h === "sources" ? "bookcorpus" : "archive";
+    const page = isCodebook ? "codebook" : "book";
     Object.entries(SECTIONS).forEach(([pg, secs]) => secs.forEach(x => {
       const show = pg === page;
       $(`#pg-${x}`).hidden = !show;

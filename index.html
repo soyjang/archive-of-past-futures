@@ -13,14 +13,12 @@
 
 <div class="wrap">
   <header>
-    <div class="eyebrow">Last updated <span id="site-date">10 November 2026</span></div>
+    <div class="eyebrow">Last updated <span id="site-date">22 November 2026</span></div>
     <h1>Archive of Past Futures</h1>
     <p class="site-sub">Part of <em>Historicising Speculative Design</em>, a PhD project by Soyoun Jang</p>
     <nav class="sitenav" aria-label="Pages">
-      <a href="#intro" data-page="overview">Introduction</a>
-      <a href="#codebook" data-page="codebook">Codebook</a>
       <a href="#book" data-page="book">Case 1 · Past futures of the book</a>
-      <span class="nav-off" aria-disabled="true" title="Coming later">Case 2 · Climate futures</span>
+      <a href="#codebook" data-page="codebook">Codebook</a>
     </nav>
   </header>
 
@@ -32,7 +30,7 @@
 
 <script>
   // Each page is a file in pages/. They are loaded in this order, then js/app.js runs.
-  const PAGE_FILES = ["intro", "book-header", "book-wheel", "book-corpus", "codebook"];
+  const PAGE_FILES = ["book-header", "book-wheel", "book-corpus", "codebook"];
   Promise.all(PAGE_FILES.map(p => fetch("pages/" + p + ".html").then(r => { if (!r.ok) throw new Error("pages/" + p + ".html"); return r.text(); })))
     .then(parts => {
       document.getElementById("pages").innerHTML = parts.join("\n");
