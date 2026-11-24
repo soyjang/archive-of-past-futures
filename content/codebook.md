@@ -147,7 +147,7 @@ One speculation coded on every attribute and code, with the reasoning for each d
 
 - **Format.** **Press or magazine.** An interview published in a magazine; where it was found (a book) does not change the format.
 
-- **Source.** **Hugh Weir, “The Story of the Motion Picture”, *McClure’s* 54, November 1922, p. 85; quoted in Cuban (1986).** The original is cited first, then the compilation where it was found. *To verify:* the full wording comes from secondary sources and is checked against *McClure’s* before the code is final.
+- **Source.** **Hugh Weir, “The Story of the Motion Picture”, *McClure’s* 54, November 1922, p. 85; quoted in Cuban (1986, p. 9).** The original is cited first, then the compilation where it was found. *To verify:* the full wording comes from secondary sources and is checked against *McClure’s* before the code is final.
 
 - **Text.** **Quoted**, as above: the two clauses that carry the speculation.
 
