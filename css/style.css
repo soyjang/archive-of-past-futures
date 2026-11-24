@@ -338,3 +338,12 @@ canvas { width: 100%; max-width: 100%; aspect-ratio: 16 / 7; border-radius: 8px;
 .corpus-text h4 { font-size: 16px; margin: 12px 0 0; }
 .corpus-text p, .corpus-text ol, .corpus-text ul { margin: 0; line-height: 1.55; }
 .corpus-text ol, .corpus-text ul { padding-left: 22px; }
+
+/* thread: every statement by the selected speculation's speaker, repeats included */
+.thread { display: grid; gap: 8px; border-top: 1px solid var(--rule); padding-top: 14px; margin-top: 4px; }
+.thread h3 { margin: 0; }
+.thread-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0; }
+.thread-list li { padding: 8px 0 8px 12px; border-left: 2px solid var(--rule); }
+.thread-list li.cur { border-left-color: var(--ink); }
+.thread-head { font: 500 13px var(--font-mono); }
+.thread-q { font-size: 14px; margin: 3px 0 4px; }

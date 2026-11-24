@@ -42,7 +42,9 @@
   const GENRES = { press: "Press or magazine", talk: "Talk or broadcast", book: "Book", paper: "Academic paper", report: "Report", story: "Novel or story", film: "Film or television", image: "Image", design: "Design project", unknown: "Format unknown" };
   const STATUS = ["Existing", "Emerging", "Imagined"];
   const CLAIMS = [];
-  const DATA = { book: "data/book.json", climate: "data/climate.json" };
+  const DATA = { book: "data/book.json", repeats: "data/book-repeats.json", climate: "data/climate.json" };
+  // Repeats: later statements by a speaker about a medium already counted. Read in threads, kept off the wheel and out of every count.
+  const REPEATS = [];
   const META = {};
   // Records use the codebook's labels; turn them into the indices and keys the views use, and warn about any label not in the codebook
   function ingest(data, file) {
@@ -62,8 +64,50 @@
       c.succ = key(SUCC, r.medium, "medium", r.id);
       if (!SPEAKERS.includes(r.speaker)) warn(r.id, "speaker", r.speaker);
       c.short = c.who.split(/[,(]/)[0].trim();
+      c.key = speakerKey(c.short);
       CLAIMS.push(c);
     });
+  }
+
+  // A speaker's thread joins every statement by the same named person: first and last name, so "Thomas Edison" and "Thomas A. Edison" match
+  function speakerKey(short) {
+    const t = short.toLowerCase().replace(/\./g, "").split(/\s+/).filter(Boolean);
+    return t.length > 1 ? `${t[0]}|${t[t.length - 1]}` : t[0] || "";
+  }
+  function ingestRepeats(data) {
+    (data.speculations || []).forEach(r => {
+      if (r.repeat_of === undefined) return;
+      REPEATS.push({ id: r.id, year: r.year, who: r.who, text: r.text, desc: !!r.description, medium: r.medium, laws: r.tetrad || [], lawDetail: r.tetrad_detail || {},
+        horizon: r.horizon, when: r.horizon_phrase || "", repeatOf: r.repeat_of, repeat: true });
+    });
+  }
+  // Every statement by the selected speculation's speaker, counted or repeated, in date order; null when there is only one
+  function threadOf(c) {
+    const counted = CLAIMS.filter(x => x.key && x.key === c.key);
+    const ids = new Set(counted.map(x => x.id));
+    const items = counted.concat(REPEATS.filter(r => ids.has(r.repeatOf)));
+    return items.length > 1 ? items.sort((a, b) => a.year - b.year || a.id - b.id) : null;
+  }
+  function threadHTML(c) {
+    const items = threadOf(c); if (!items) return "";
+    const nRep = items.filter(x => x.repeat).length;
+    const short = (t) => t.length > 150 ? t.slice(0, 148).replace(/\s+\S*$/, "") + "…" : t;
+    const hz = (x) => x.repeat ? (x.horizon || "") : DIMS.temporal.levels[x.temporal - 1];
+    const li = (x) => {
+      const head = `${x.year} · ${x.medium}`;
+      const here = !x.repeat && x.id === c.id;
+      const title = x.repeat ? `<span>${head}</span> <span class="tag ill">Repeat, not counted</span>` : here ? `<strong>${head}</strong>` : `<button type="button" class="linkbtn" data-thread-id="${x.id}">${head}</button>`;
+      return `<li${here ? ' aria-current="true" class="cur"' : ""}>
+          <div class="thread-head">${title}</div>
+          <p class="thread-q">${x.desc ? `<em>${short(x.text)}</em>` : "“" + short(x.text) + "”"}</p>
+          <div>${x.laws.map(l => `<span class="tag">${LAWS[l].label}</span>`).join("")}<span class="small">${hz(x)}${x.when ? ` (“${x.when}”)` : ""}</span></div>
+        </li>`;
+    };
+    return `<section class="thread" aria-label="Thread">
+        <h3>Thread · ${c.short}</h3>
+        <p class="small">Every statement by this speaker in the archive, in date order.${nRep ? ` Repeats (the same speaker on the same medium) are read here but kept off the wheel and out of every count.` : ""}</p>
+        <ol class="thread-list">${items.map(li).join("")}</ol>
+      </section>`;
   }
 
   const $ = (s) => document.querySelector(s);
@@ -232,7 +276,8 @@
           <dt>Hypothetical</dt><dd>${DIMS.hyp.levels[c.hyp - 1]}</dd>
           <dt>Construal</dt><dd>${c.lang === "abstract" ? "Abstract language" : "Concrete language"}</dd>
           <dt>Source</dt><dd>${c.source || "N/A"}${c.verify ? `<br><em>To verify:</em> ${c.verify}` : ""}</dd>
-        </dl>`;
+        </dl>
+        ${threadHTML(c)}`;
   }
   // McLuhan's Tetrad as a figure: four laws around the medium, placed as on the wheel
   function tetradSVG(claims) {
@@ -347,6 +392,14 @@
     }, 900);
   });
 
+  // Thread links in the panel select that speculation, moving the slider forward if it is later than the current decade
+  $("#panel").addEventListener("click", (e) => {
+    const b = e.target.closest("[data-thread-id]"); if (!b) return;
+    const c = CLAIMS.find(x => x.id === +b.dataset.threadId); if (!c) return;
+    if (c.year > state.decade + 9) { state.decade = LAST_DECADE; $("#decade").value = LAST_DECADE; }
+    if (state.fams.size && !state.fams.has(famOf(c).id)) { state.fams.clear(); renderChips(); }
+    state.selected = c.id; state.gap = null; render();
+  });
   function activate(target) {
     const gap = target.closest("[data-gap]");
     if (gap) { state.gap = state.gap === gap.dataset.gap ? null : gap.dataset.gap; state.selected = null; render(); return true; }
@@ -488,6 +541,7 @@
   }
   window.addEventListener("hashchange", route);
   fetch(DATA.book).then(r => { if (!r.ok) throw new Error(`HTTP ${r.status}`); return r.json(); })
-    .then(d => { ingest(d, DATA.book); renderChips(); route(); })
+    .then(d => { ingest(d, DATA.book); return fetch(DATA.repeats).then(r => r.ok ? r.json() : { speculations: [] }).catch(() => ({ speculations: [] })); })
+    .then(rep => { ingestRepeats(rep); renderChips(); route(); })
     .catch(err => { $("header").insertAdjacentHTML("beforeend", `<p class="notice">Could not load the archive data (${DATA.book}): ${err.message}. The site has to be opened through a web server, not as a local file.</p>`); route(); });
 })();

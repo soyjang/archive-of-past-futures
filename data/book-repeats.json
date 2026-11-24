@@ -1,7 +1,7 @@
 {
   "case": "book",
   "title": "Repeat speculations by the same speaker",
-  "note": "One speculation per speaker per medium: when a speaker repeats a view about the same medium across works, the earliest counts; a speculation about a different medium counts separately. The others are kept here, out of every count and reading. Distinct speculations within one work (scenarios, concept cards, a workshop's statements) all count.",
+  "note": "One speculation per speaker per medium: when a speaker repeats a view about the same medium across works, the earliest counts; a speculation about a different medium counts separately. The others are kept here, off the wheel and out of every count, and are read in the speaker’s thread. Distinct speculations within one work (scenarios, concept cards, a workshop's statements) all count.",
   "speculations": [
     {
       "id": 3,
