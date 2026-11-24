@@ -7,7 +7,7 @@
       "id": 3,
       "year": 1913,
       "who": "Thomas Edison",
-      "text": "Books will soon be obsolete in the public schools. … Our school system will be completely changed inside of ten years.",
+      "text": "Books will soon be obsolete in the public schools. Scholars will be instructed through the eye. … Our school system will be completely changed inside of ten years.",
       "direction": "Forward",
       "medium": "Film",
       "medium_wording": "Motion picture",
@@ -21,13 +21,13 @@
       "social": "Us",
       "hypotheticality": "Certain",
       "construal": "Abstract",
-      "source": "F. J. Smith, “The evolution of the motion picture VI,” New York Dramatic Mirror, vol. 70, p. 24, Jul. 9, 1913, as cited in L. Cuban, Teachers and Machines: The Classroom Use of Technology Since 1920. New York, NY, USA: Teachers College Press, 1986.",
+      "source": "F. J. Smith, “The evolution of the motion picture VI,” New York Dramatic Mirror, vol. 70, no. 1803, p. 24, Jul. 9, 1913. [Online]. Available: Internet Archive",
       "tetrad": [
         "enhance",
         "obsolesce"
       ],
       "tetrad_detail": {
-        "enhance": "the school system, to be “completely changed”",
+        "enhance": "instruction, now “through the eye”, and a school system “completely changed”",
         "obsolesce": "books in the public schools"
       },
       "repeat_of": 2
