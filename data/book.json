@@ -2,7 +2,7 @@
   "case": "book",
   "title": "Past futures of the book",
   "version": "0.5",
-  "updated": "2026-11-23",
+  "updated": "2026-11-24",
   "note": "One record per speculation. Labels must match the codebook exactly; the site warns about any it does not recognise. v0.3: reach removed; spatial distance (Here, Elsewhere, Everywhere) is distance from the speaker; Speculative designer renamed Designer. v0.4: 15 speculations added from 7 papers in the ACM extension (ids 32–46); each carries its paper ID from the screening sheet. v0.5: Robot and Game added as media; Workshop participants added as a speaker; one speculation per speaker per medium (the earliest kept): repeats across works moved to book-repeats.json; distinct speculations within one work all count. Temporal distance is coded in five-year steps (0–5, 6–10, 11–15, 16–20, 20+ years, Unstated), with the stated horizon in years kept as horizon_years where a year or number is given. Scope of change retired as a code: the depth of obsolescence (a practice, a medium, an institution) is read from the Obsolesces object in the analysis, and speculative distance is the four dimensions of construal-level theory.",
   "values": {
     "direction": [
@@ -1289,7 +1289,7 @@
       "social": "Us",
       "hypotheticality": "Certain",
       "construal": "Concrete",
-      "source": "“[Title unknown],” Science and Invention, Nov. 1924, as cited in M. Novak, “This radio-book from 1924 was the future of education,” Paleofuture. May 21, 2013. [Online]. Available: https://paleofuture.com/blog/2013/5/21/this-radio-book-was-the-future-of-education",
+      "source": "“[Title unknown],” Science and Invention, Nov. 1924, as cited in M. Novak, “This radio-book was the future of education,” Gizmodo. May 21, 2013. [Online]. Available: https://gizmodo.com/this-radio-book-was-the-future-of-education-509067457",
       "tetrad": [
         "enhance",
         "obsolesce"
@@ -1445,7 +1445,7 @@
       "social": "Others",
       "hypotheticality": "Certain",
       "construal": "Concrete",
-      "source": "“[Title unknown],” The Cedar Rapids Gazette, Cedar Rapids, IA, USA, Mar. 18, 1920, as cited in M. Novak, “15 futuristic technologies that were supposed to forever change the way kids learn,” Paleofuture. Jan. 15, 2014. [Online]. Available: https://paleofuture.com/blog/2019/11/21/15-technologies-that-were-supposed-to-change-education-forever",
+      "source": "“[Title unknown],” The Cedar Rapids Gazette, Cedar Rapids, IA, USA, Mar. 18, 1920, as cited in M. Novak, “15 technologies that were supposed to change education forever,” Gizmodo. Jan. 15, 2014. [Online]. Available: https://gizmodo.com/15-technologies-that-were-supposed-to-change-education-1481232959",
       "tetrad": [
         "enhance"
       ],
@@ -1524,7 +1524,7 @@
       "social": "Us",
       "hypotheticality": "Certain",
       "construal": "Concrete",
-      "source": "“[Title unknown],” Short Wave Craft, Apr. 1935, as cited in M. Novak, “Predictions for educational TV in the 1930s,” Paleofuture. May 29, 2012. [Online]. Available: https://paleofuture.com/blog/2012/5/29/predictions-for-educational-tv-in-the-1930s",
+      "source": "“[Title unknown],” Short Wave Craft, Apr. 1935, as cited in M. Novak, “Predictions for educational TV in the 1930s,” Smithsonian Magazine. May 29, 2012. [Online]. Available: https://www.smithsonianmag.com/history/predictions-for-educational-tv-in-the-1930s-107574983/",
       "tetrad": [
         "enhance"
       ],
@@ -1602,7 +1602,7 @@
       "social": "Us",
       "hypotheticality": "Certain",
       "construal": "Abstract",
-      "source": "“NEA allays parent fears on robot teacher,” Oakland Tribune, Oakland, CA, USA, Aug. 24, 1960, as cited in M. Novak, “15 futuristic technologies that were supposed to forever change the way kids learn,” Paleofuture. Jan. 15, 2014. [Online]. Available: https://paleofuture.com/blog/2019/11/21/15-technologies-that-were-supposed-to-change-education-forever",
+      "source": "“NEA allays parent fears on robot teacher,” Oakland Tribune, Oakland, CA, USA, Aug. 24, 1960, as cited in M. Novak, “15 technologies that were supposed to change education forever,” Gizmodo. Jan. 15, 2014. [Online]. Available: https://gizmodo.com/15-technologies-that-were-supposed-to-change-education-1481232959",
       "tetrad": [
         "enhance"
       ],
@@ -1654,7 +1654,7 @@
       "social": "Us",
       "hypotheticality": "Certain",
       "construal": "Concrete",
-      "source": "N. Ardley, World of Tomorrow: School, Work and Play, 1981, as cited in M. Novak, “15 futuristic technologies that were supposed to forever change the way kids learn,” Paleofuture. Jan. 15, 2014. [Online]. Available: https://paleofuture.com/blog/2019/11/21/15-technologies-that-were-supposed-to-change-education-forever",
+      "source": "N. Ardley, World of Tomorrow: School, Work and Play, 1981, as cited in M. Novak, “15 technologies that were supposed to change education forever,” Gizmodo. Jan. 15, 2014. [Online]. Available: https://gizmodo.com/15-technologies-that-were-supposed-to-change-education-1481232959",
       "tetrad": [
         "enhance",
         "obsolesce"
@@ -1681,7 +1681,7 @@
       "social": "Us",
       "hypotheticality": "Possible",
       "construal": "Concrete",
-      "source": "N. Ardley, World of Tomorrow: School, Work and Play, 1981, as cited in M. Novak, “15 futuristic technologies that were supposed to forever change the way kids learn,” Paleofuture. Jan. 15, 2014. [Online]. Available: https://paleofuture.com/blog/2019/11/21/15-technologies-that-were-supposed-to-change-education-forever",
+      "source": "N. Ardley, World of Tomorrow: School, Work and Play, 1981, as cited in M. Novak, “15 technologies that were supposed to change education forever,” Gizmodo. Jan. 15, 2014. [Online]. Available: https://gizmodo.com/15-technologies-that-were-supposed-to-change-education-1481232959",
       "tetrad": [
         "enhance",
         "obsolesce"
@@ -1708,7 +1708,7 @@
       "social": "Us",
       "hypotheticality": "Depicted",
       "construal": "Concrete",
-      "source": "GTE, Classroom of the Future [Film], 1987, as cited in M. Novak, “15 futuristic technologies that were supposed to forever change the way kids learn,” Paleofuture. Jan. 15, 2014. [Online]. Available: https://paleofuture.com/blog/2019/11/21/15-technologies-that-were-supposed-to-change-education-forever",
+      "source": "GTE, Classroom of the Future [Film], 1987, as cited in M. Novak, “15 technologies that were supposed to change education forever,” Gizmodo. Jan. 15, 2014. [Online]. Available: https://gizmodo.com/15-technologies-that-were-supposed-to-change-education-1481232959",
       "tetrad": [
         "enhance"
       ],

@@ -49,7 +49,7 @@
       "social": "Us",
       "hypotheticality": "Certain",
       "construal": "Abstract",
-      "source": "H. Weir, “The story of the motion picture,” McClure’s Magazine, vol. 54, p. 85, Nov. 1922, as cited in L. Cuban, Teachers and Machines: The Classroom Use of Technology Since 1920. New York, NY, USA: Teachers College Press, 1986.",
+      "source": "H. Weir, “The story of the motion picture,” McClure’s Magazine, vol. 54, p. 85, Nov. 1922, as cited in L. Cuban, Teachers and Machines: The Classroom Use of Technology Since 1920. New York, NY, USA: Teachers College Press, 1986, p. 9.",
       "tetrad": [
         "enhance",
         "obsolesce"
@@ -90,7 +90,7 @@
       "id": 12,
       "year": 1984,
       "who": "Seymour Papert",
-      "text": "I think the computer will blow up the school. … There won’t be schools in the future.",
+      "text": "There won’t be schools in the future. … I think the computer will blow up the school.",
       "direction": "Forward",
       "medium": "Computer",
       "medium_wording": "Personal computer",
@@ -103,7 +103,7 @@
       "social": "Unspecified",
       "hypotheticality": "Certain",
       "construal": "Abstract",
-      "source": "S. Papert, 1984, as quoted in L. Cuban, Teachers and Machines: The Classroom Use of Technology Since 1920. New York, NY, USA: Teachers College Press, 1986.",
+      "source": "S. Papert, 1984, as quoted in L. Cuban, Teachers and Machines: The Classroom Use of Technology Since 1920. New York, NY, USA: Teachers College Press, 1986, p. 72.",
       "tetrad": [
         "obsolesce"
       ],
