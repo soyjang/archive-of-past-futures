@@ -34,7 +34,7 @@
   }
   const levelOf = (c) => DIMS[state.dim].get(c);
 
-  // Documented claims, gathered from primary sources or reputable compilations. Codes are provisional (single coder).
+  // Documented claims, gathered from primary sources or reputable compilations. Codes are provisional.
   // verify: wording or original venue still to be checked against the primary source.
   // ---------- data: each case lives in its own file (data/book.json, data/climate.json) ----------
   const SPEAKERS = ["Inventor", "Company", "Policymaker", "Intergovernmental body", "Activist or NGO", "Educator", "Researcher", "Designer", "Writer or artist", "Journalist or press", "Workshop participants"];
@@ -51,7 +51,7 @@
     const warn = (id, field, v) => console.warn(`${file} #${id}: “${v}” is not a ${field} in the codebook`);
     const idx = (arr, v, field, id) => { const i = arr.indexOf(v); if (i < 0) warn(id, field, v); return i + 1; };
     const key = (obj, v, field, id) => { const k = Object.keys(obj).find(k => obj[k] === v); if (!k) warn(id, field, v); return k; };
-    META.book = { title: data.title, version: data.version, updated: data.updated, coder: data.coder };
+    META.book = { title: data.title, version: data.version, updated: data.updated };
     data.speculations.forEach(r => {
       const c = { id: r.id, year: r.year, who: r.who, text: r.text, desc: !!r.description, note: r.note, verify: r.verify, source: r.source,
         laws: r.tetrad, lawDetail: r.tetrad_detail || {}, lang: (r.construal || "").toLowerCase(), documented: true, speaker: r.speaker, medium: r.medium, detail: r.medium_wording || r.medium };
