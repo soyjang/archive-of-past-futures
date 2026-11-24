@@ -22,7 +22,7 @@ The archive collects claims that a new medium would transform or replace the boo
 
 Claims of replacement mostly state what a medium enhances and obsolesces, so the archive records only what was predicted. Reading these predictions against what each medium did in practice (television did not replace the book, but it did retrieve the lecture) belongs to the written analysis, drawing on histories of educational technology, not to the archive. The speaker code asks whether a claim's distance follows the interests behind it, and whether speculative design projects sit at different distances from commercial forecasts (Wong & Khovanskaya 2018).
 
-Temporal distance is coded from the horizon a claim *states*, not a year, because most claims (and most speculative design) give none: Edison's "soon", a design fiction's "near future". The signalling phrase is recorded with the code, the horizon in years is recorded where a year or number is given (so the five-year steps can be redrawn without recoding), and *unstated* is a value in its own right: in construal-level terms, a vague horizon may itself indicate abstract construal. Placing phrases on the scale is interpretive, so the codebook gives example phrases per level and a second coder checks a sample.
+Temporal distance is coded from the horizon a claim *states*, not a year, because most claims (and most speculative design) give none: Edison's "soon", a design fiction's "near future". The signalling phrase is recorded with the code, the horizon in years is recorded where a year or number is given (so the five-year steps can be redrawn without recoding), and *unstated* is a value in its own right: in construal-level terms, a vague horizon may itself indicate abstract construal. Placing phrases on the scale is interpretive, so the codebook gives example phrases per level.
 
 ## Pages
 
@@ -38,7 +38,7 @@ The site opens on an Introduction: what historicising means here (after Soden et
 
 Each records its **format**, the form in which it was first made: press or magazine, talk or broadcast, book, academic paper, report, novel or story, film or television, image, or design project. Format is descriptive; whether a work functions as speculative design is a question for the analysis, not a code.
 
-Codes are provisional (one coder, codebook v0.1). Entries marked *to verify* need checking against the original page, edition or venue. Still missing: a documented 1960s claim that television would replace the book, 1990s claims that VR would replace the classroom, and more speculative design projects.
+Codes are provisional. Entries marked *to verify* need checking against the original page, edition or venue. Still missing: a documented 1960s claim that television would replace the book, 1990s claims that VR would replace the classroom, and more speculative design projects.
 
 The data lives in `data/book.json` and `data/climate.json` (see Data below).
 

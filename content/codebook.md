@@ -43,7 +43,7 @@ Descriptive facts about the speculation and what it imagines, recorded rather th
 
 ## Codes
 
-Interpretive judgements, applied with the rules below and checked by a second coder. Each speculation is coded on three: the Tetrad, speculative distance and construal level.
+Interpretive judgements, applied with the rules below. Each speculation is coded on three: the Tetrad, speculative distance and construal level.
 
 ### 1. Tetrad (McLuhan & McLuhan 1988)
 
@@ -179,7 +179,7 @@ One speculation coded on every attribute and code, with the reasoning for each d
 
 ## Reliability
 
-All codes in this version are by one coder. A second coder will code a sample of each case after reading this codebook, for the Tetrad, speculative distance and construal level. Disagreements are discussed until resolved, and the codebook is revised where they cluster. Agreement is not measured statistically: the aim is a shared reading and a sharper codebook, not a reliability score (McDonald et al. 2019).
+The codebook was developed iteratively and applied by both authors through repeated discussion of the speculations. Disagreements are discussed until resolved, and the codebook is revised where they cluster. Agreement is not measured statistically: the aim is a shared reading and a sharper codebook, not a reliability score (McDonald et al. 2019).
 
 ## References
 
