@@ -2,7 +2,7 @@
   "case": "book",
   "title": "Past futures of the book",
   "version": "0.5",
-  "updated": "2026-11-24",
+  "updated": "2026-11-25",
   "note": "One record per speculation. Labels must match the codebook exactly; the site warns about any it does not recognise. v0.3: reach removed; spatial distance (Here, Elsewhere, Everywhere) is distance from the speaker; Speculative designer renamed Designer. v0.4: 15 speculations added from 7 papers in the ACM extension (ids 32–46); each carries its paper ID from the screening sheet. v0.5: Robot and Game added as media; Workshop participants added as a speaker; one speculation per speaker per medium (the earliest kept): repeats across works moved to book-repeats.json; distinct speculations within one work all count. Temporal distance is coded in five-year steps (0–5, 6–10, 11–15, 16–20, 20+ years, Unstated), with the stated horizon in years kept as horizon_years where a year or number is given. Scope of change retired as a code: the depth of obsolescence (a practice, a medium, an institution) is read from the Obsolesces object in the analysis, and speculative distance is the four dimensions of construal-level theory.",
   "values": {
     "direction": [
@@ -1798,7 +1798,7 @@
       "id": 75,
       "year": 2012,
       "who": "Julius Genachowski, Federal Communications Commission",
-      "text": "Digital textbooks are one of the cornerstones of digital learning … [we must] make sure that every student in America has a digital textbook in the next five years.",
+      "text": "Digital textbooks are one of the cornerstones of digital learning … We often talk about how technology has changed everything, but static, hardcover textbooks are what I used in school, what my parents used, what their parents used and so on. … [we must] make sure that every student in America has a digital textbook in the next five years.",
       "direction": "Forward",
       "medium": "Computer",
       "medium_wording": "Digital textbooks",
