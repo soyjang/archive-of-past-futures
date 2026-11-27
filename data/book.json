@@ -132,7 +132,7 @@
       "social": "Unspecified",
       "hypotheticality": "Certain",
       "construal": "Abstract",
-      "source": "F. P. Hulette, “An interview with Thomas A. Edison,” Moving Picture World, pp. 104–105, Jul. 22, 1911. Compiled in “Thomas Edison’s education predictions,” muninn.net.",
+      "source": "F. P. Hulette, “An interview with Thomas A. Edison,” Moving Picture World, vol. 9, no. 2, pp. 104–105, Jul. 22, 1911. Compiled in “Thomas Edison’s education predictions,” muninn.net.",
       "tetrad": [
         "enhance"
       ],
@@ -182,7 +182,7 @@
       "social": "Us",
       "hypotheticality": "Certain",
       "construal": "Concrete",
-      "source": "“Federal Communications Commissioner predicts educational TV will become the schoolhouse of the air,” TV Guide, Jun. 18, 1955. [Online]. Available: Media History Digital Library (Lantern)",
+      "source": "“Federal Communications Commissioner predicts educational TV will become the schoolhouse of the air,” TV Guide, vol. 3, no. 25, Jun. 18, 1955. [Online]. Available: Media History Digital Library (Lantern)",
       "tetrad": [
         "enhance"
       ],
@@ -234,7 +234,7 @@
       "social": "Us",
       "hypotheticality": "Possible",
       "construal": "Abstract",
-      "source": "“Television and the crisis in our classrooms,” Electronic Age (RCA), pp. 3–5, Autumn 1959. [Online]. Available: World Radio History",
+      "source": "Radio Corporation of America, “Television and the crisis in our classrooms,” Electronic Age, pp. 3–5, Autumn 1959. [Online]. Available: World Radio History",
       "tetrad": [
         "enhance"
       ],
@@ -259,7 +259,7 @@
       "social": "Us",
       "hypotheticality": "Possible",
       "construal": "Abstract",
-      "source": "E. S. Muskie, remarks on educational television, Congressional Record – Senate, Sep. 12, 1961. [Online]. Available: Muskie Archives, Bates College",
+      "source": "E. S. Muskie, remarks on educational television, Congressional Record – Senate, vol. 107, p. 19087, Sep. 12, 1961 (87th Congress, 1st Session). [Online]. Available: Muskie Archives, Bates College",
       "tetrad": [
         "enhance"
       ],
@@ -284,7 +284,7 @@
       "social": "Unspecified",
       "hypotheticality": "Certain",
       "construal": "Abstract",
-      "source": "P. Suppes, “The uses of computers in education,” Scientific American, vol. 215, no. 3, pp. 206–220, Sep. 1966.",
+      "source": "P. Suppes, “The uses of computers in education,” Scientific American, vol. 215, no. 3, pp. 206–220, Sep. 1966, doi: 10.1038/scientificamerican0966-206.",
       "tetrad": [
         "enhance",
         "retrieve"
@@ -337,7 +337,7 @@
       "social": "Unspecified",
       "hypotheticality": "Certain",
       "construal": "Abstract",
-      "source": "S. Leckart, “The Stanford education experiment could change higher learning forever,” Wired, Mar. 2012.",
+      "source": "S. Leckart, “The Stanford education experiment could change higher learning forever,” Wired, Mar. 20, 2012. [Online]. Available: https://www.wired.com/2012/03/ff-aiclass/",
       "tetrad": [
         "obsolesce"
       ],
@@ -414,7 +414,7 @@
       "social": "Unspecified",
       "hypotheticality": "Certain",
       "construal": "Concrete",
-      "source": "B. Gates, remarks at the ASU+GSV Summit, San Diego, CA, USA, Apr. 2023, as reported in CNBC, Apr. 22, 2023.",
+      "source": "B. Gates, “A conversation with Bill Gates,” fireside chat with J. Woolley-Wilson, ASU+GSV Summit, San Diego, CA, USA, Apr. 18, 2023, as reported in CNBC, Apr. 22, 2023. [Online]. Available: https://www.cnbc.com/make-it/2023/04/22/bill-gates-ai-chatbots-will-teach-kids-how-to-read-within-18-months.html",
       "tetrad": [
         "enhance"
       ],
@@ -469,7 +469,7 @@
       "social": "Us",
       "hypotheticality": "Depicted",
       "construal": "Concrete",
-      "source": "I. Asimov, “The fun they had,” Boys and Girls Page (newspaper supplement), Dec. 1, 1951. Reprinted in I. Asimov, Earth Is Room Enough. Garden City, NY, USA: Doubleday, 1957.",
+      "source": "I. Asimov, “The fun they had,” The Magazine of Fantasy & Science Fiction, vol. 6, no. 2, pp. 125–127, Feb. 1954. Originally published in Boys and Girls Page (newspaper supplement), Dec. 1, 1951. [Online]. Available: https://archive.org/details/Fantasy_Science_Fiction_v006n02_1954-02",
       "tetrad": [
         "obsolesce",
         "retrieve",
@@ -484,7 +484,7 @@
     {
       "id": 21,
       "year": 1953,
-      "who": "Ray Bradbury, Fahrenheit 451 (Faber)",
+      "who": "Ray Bradbury, Fahrenheit 451",
       "text": "The same infinite detail and awareness could be projected through radios and televisors, but are not.",
       "direction": "Forward",
       "medium": "Television",
@@ -498,7 +498,7 @@
       "social": "Unspecified",
       "hypotheticality": "Depicted",
       "construal": "Abstract",
-      "source": "R. Bradbury, Fahrenheit 451. New York, NY, USA: Ballantine, 1953.",
+      "source": "R. Bradbury, Fahrenheit 451. New York, NY, USA: Ballantine Books, 1953.",
       "tetrad": [
         "obsolesce",
         "reverse"
@@ -1289,7 +1289,7 @@
       "social": "Us",
       "hypotheticality": "Certain",
       "construal": "Concrete",
-      "source": "“[Title unknown],” Science and Invention, Nov. 1924, as cited in M. Novak, “This radio-book was the future of education,” Gizmodo. May 21, 2013. [Online]. Available: https://gizmodo.com/this-radio-book-was-the-future-of-education-509067457",
+      "source": "“[Title unknown],” Science and Invention, vol. 12, no. 7, Nov. 1924, as cited in M. Novak, “This radio-book was the future of education,” Gizmodo. May 21, 2013. [Online]. Available: https://gizmodo.com/this-radio-book-was-the-future-of-education-509067457",
       "tetrad": [
         "enhance",
         "obsolesce"
@@ -1510,7 +1510,7 @@
       "id": 64,
       "year": 1935,
       "who": "Short Wave Craft (unsigned)",
-      "text": "As the illustration shows we will undoubtedly have lectures of every conceivable kind present to us right in our homes, when practical television arrives, possibly a year or two off.",
+      "text": "As the illustration shows we will undoubtedly have lectures of every conceivable kind presented to us right in our homes, when practical television arrives, possibly a year or two off.",
       "direction": "Forward",
       "medium": "Television",
       "medium_wording": "Television lectures in the home",
@@ -1524,7 +1524,7 @@
       "social": "Us",
       "hypotheticality": "Certain",
       "construal": "Concrete",
-      "source": "“[Title unknown],” Short Wave Craft, Apr. 1935, as cited in M. Novak, “Predictions for educational TV in the 1930s,” Smithsonian Magazine. May 29, 2012. [Online]. Available: https://www.smithsonianmag.com/history/predictions-for-educational-tv-in-the-1930s-107574983/",
+      "source": "“Teaching by short waves,” Short Wave Craft, vol. 5, no. 12, pp. 712, 741, Apr. 1935. [Online]. Available: World Radio History",
       "tetrad": [
         "enhance"
       ],
@@ -1734,7 +1734,7 @@
       "social": "Unspecified",
       "hypotheticality": "Certain",
       "construal": "Concrete",
-      "source": "T. A. Edison, “The phonograph and its future,” North American Review, vol. 126, pp. 527–536, May–Jun. 1878.",
+      "source": "T. A. Edison, “The phonograph and its future,” North American Review, vol. 126, no. 262, pp. 527–536, May–Jun. 1878.",
       "tetrad": [
         "enhance"
       ],
@@ -1811,7 +1811,7 @@
       "social": "Us",
       "hypotheticality": "Certain",
       "construal": "Concrete",
-      "source": "“Feds look to accelerate e-textbook adoption with ‘Digital Textbook Playbook’,” THE Journal, Feb. 1, 2012.",
+      "source": "J. Genachowski, “Prepared remarks at Digital Learning Day town hall,” Federal Communications Commission, Washington, DC, USA, Feb. 1, 2012. [Online]. Available: https://transition.fcc.gov/Daily_Releases/Daily_Business/2012/db0201/DOC-312248A1.pdf",
       "tetrad": [
         "enhance",
         "obsolesce"
