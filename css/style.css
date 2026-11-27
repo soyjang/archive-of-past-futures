@@ -157,7 +157,7 @@ a.approach:hover { border-color: var(--muted); }
 #wheel-wrap svg { -webkit-tap-highlight-color: transparent; user-select: none; }
 .cell.gap.sel { fill: url(#hatch-sel); }
 .hatch-hl { fill: var(--cell-sel); }
-.gapnote { display: grid; gap: 10px; border-top: 1px solid var(--rule); padding-top: 16px; }
+.gapnote { display: grid; grid-template-columns: minmax(0, 1fr); gap: 10px; border-top: 1px solid var(--rule); padding-top: 16px; }
 .gapnote-head { display: flex; justify-content: space-between; align-items: baseline; }
 .gapnote-head h3 { margin: 0; }
 .axis-label { font-family: var(--font-display); font-weight: 700; font-size: 20px; fill: var(--ink); }
@@ -192,9 +192,9 @@ a.approach:hover { border-color: var(--muted); }
 .panel h2 { font-family: var(--font-display); font-size: 22px; line-height: 1.15; margin: 0; text-wrap: balance; }
 .panel h3 { font: 500 12px var(--font-mono); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin: 0; }
 .quote { font-size: 18px; line-height: 1.4; margin: 0; border-left: 3px solid var(--accent); padding-left: 12px; }
-.meta { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; font-size: 14px; margin: 0; }
+.meta { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 6px 14px; font-size: 14px; margin: 0; }
 .meta dt { font-family: var(--font-mono); font-size: 12px; color: var(--muted); padding-top: 2px; }
-.meta dd { margin: 0; }
+.meta dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
 .tag { display: inline-block; font: 500 12px var(--font-mono); border-radius: 4px; padding: 1px 6px; margin: 0 4px 4px 0; background: var(--accent-soft); color: var(--ink); }
 .tag.ill { background: transparent; border: 1px dashed var(--muted); color: var(--muted); }
 .bars { display: grid; gap: 8px; }
